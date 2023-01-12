@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../styles/login.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-color: #005f86 #fff;
+  scrollbar-width: thin !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #005f86;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat-Regular";
+  background-color: #b5e7ee;
+}
+
+.box-shadow {
+  box-shadow: rgb(90 114 123 / 11%) 0px 7px 30px 0px;
+}
+
+input[type='text'], input[type='password'] {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #b6b3b3;
+  background: transparent;
+  outline: none;
+  border-radius: 6px;
+  padding: 1rem;
+}
