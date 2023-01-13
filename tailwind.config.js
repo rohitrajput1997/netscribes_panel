@@ -4,7 +4,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        MontBold: ["Montserrat-Bold"],
+        MontSemiBold: ["Montserrat-SemiBold"],
+        MontRegular: ["Montserrat-Regular"],
+        MontMedium: ["Montserrat-Medium"],
+      },
+    },
   },
   plugins: [],
   purge: false,

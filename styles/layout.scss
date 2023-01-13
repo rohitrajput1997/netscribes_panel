@@ -1,0 +1,25 @@
+.layout {
+  height: 100vh;
+  .logo {
+    height: 80px;
+    background: var(--pure);
+  }
+}
+
+:where(.css-dev-only-do-not-override-sk7ap8).ant-menu-light.ant-menu-inline
+  .ant-menu-item {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 55px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.ant-menu-item.ant-menu-item-selected.ant-menu-item-selected {
+  background-color: #005f86;
+  color: var(--pure);
+}
+
+:where(.css-dev-only-do-not-override-sk7ap8).ant-layout .ant-layout-sider {
+  box-shadow: 19px 6px 15px -11px rgba(0, 0, 0, 0.1);
+}

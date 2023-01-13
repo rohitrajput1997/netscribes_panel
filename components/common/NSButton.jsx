@@ -9,7 +9,7 @@ function NSButton({
   bgBordered,
 }) {
   const bgColors = bgPrimary
-    ? "bg-yellow-500"
+    ? "bg-yellow-500 text-white"
     : bgBordered
     ? "border border-gray-300 text-black px-2"
     : "bg-yellow-500";
@@ -17,7 +17,9 @@ function NSButton({
   return (
     <div>
       <button
-        className={`${className} ${bgColors} py-3 text-white flex justify-center items-center`}
+        className={`${className} ${bgColors} py-3 text-center ${
+          icon ? "flex justify-center items-center" : ""
+        } rounded-full min-w-[100px]`}
       >
         <div className="mr-3">{icon}</div>
         {title}
