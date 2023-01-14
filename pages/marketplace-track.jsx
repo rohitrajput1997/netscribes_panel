@@ -9,7 +9,7 @@ function MarketplaceTrack() {
     <NSLayout>
       <NSSearchbar
         placeholder="Search for Brand, ASIN, SKU and Category"
-        style={{ backgroundColor: "white", border: "none", height: "40px" }}
+        style={{ backgroundColor: "white", border: "none", height: "40px", paddingLeft: '32px' }}
       />
 
       <div>

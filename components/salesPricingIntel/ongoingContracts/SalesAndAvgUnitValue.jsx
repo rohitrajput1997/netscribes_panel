@@ -2,12 +2,20 @@ import Image from "next/image";
 import React from "react";
 import NSCard from "../../common/NSCard";
 
-function SalesAndAvgUnitValue({ image, title, showPlue, showupDownArrow=true }) {
+function SalesAndAvgUnitValue({
+  image,
+  title,
+  showPlue,
+  showupDownArrow = true,
+  showCount = true,
+  showIcon = true,
+  style,
+}) {
   return (
-    <NSCard className="mb-2">
+    <NSCard className="mb-2" style={style}>
       <div className="flex justify-between">
         <div className="flex">
-          <Image src={image} alt="Tag" width={18} height={18} />
+          {showIcon && <Image src={image} alt="Tag" width={18} height={18} />}
           <h1 className="text-[1rem] ml-2">{title}</h1>
         </div>
         {showPlue && (
@@ -19,7 +27,7 @@ function SalesAndAvgUnitValue({ image, title, showPlue, showupDownArrow=true }) 
           />
         )}
       </div>
-      <h1 className="text-[1.6rem]">12,222,222,222</h1>
+      {showCount && <h1 className="text-[1.6rem]">12,222,222,222</h1>}
 
       <div className="mt-2">
         <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">

@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import Image from "next/image";
 const { Header } = Layout;
 import { MdKeyboardArrowDown } from "react-icons/md";
+import NSSearchbar from "./common/NSSearchbar";
 
 function NSHeader() {
   return (
@@ -17,9 +18,15 @@ function NSHeader() {
       >
         <div className="flex items-center w-[100%] justify-between px-3 h-[100%]">
           <div className="w-[50%]">
-            <input
-              placeholder="Search for brand, ASIN, SKU and Category"
-              className="bg-[var(--bg-main)] w-full h-[40px] outline-none rounded-md py-2 px-4"
+            <NSSearchbar
+              placeholder="Search for Brand, ASIN, SKU and Category"
+              style={{
+                backgroundColor: "white",
+                border: "none",
+                height: "40px",
+                paddingLeft: "32px",
+                backgroundColor: 'var(--bg-main)'
+              }}
             />
           </div>
           <div className="flex">
@@ -44,8 +51,12 @@ function NSHeader() {
       </Header>
 
       <div className="w-full bg-[var(--secondary)] py-1 px-[20px] text-white flex items-center justify-between">
-        <h4 className="uppercase text-[0.9rem] font-bold">Sell/Pricing Intel</h4>
-        <h6 className="uppercase text-[0.7rem]">400 products matches from 10 companies and 1 marcketplace</h6>
+        <h4 className="uppercase text-[0.9rem] font-bold">
+          Sell/Pricing Intel
+        </h4>
+        <h6 className="uppercase text-[0.7rem]">
+          400 products matches from 10 companies and 1 marcketplace
+        </h6>
       </div>
     </>
   );

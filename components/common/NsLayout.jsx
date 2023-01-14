@@ -5,7 +5,6 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import PanelMenu from "../json/PanelMenu";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import SidebarMenu from "../SidebarMenu";
