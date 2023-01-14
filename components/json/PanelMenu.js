@@ -42,11 +42,11 @@ const PanelMenu = [
     route: "/marketplace-track",
   },
   {
-    key: "360BusinessTrends",
+    key: "business-trends",
     label: "360 Business Trends",
-    value: "360BusinessTrends",
+    value: "business-trends",
     icon: <RiRecycleFill size={20} />,
-    route: "/marketplace-track",
+    route: "/business-trends",
   },
   {
     key: "dashboardDemoVedio",
