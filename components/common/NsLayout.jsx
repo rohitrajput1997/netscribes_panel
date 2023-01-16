@@ -1,15 +1,11 @@
-import React from "react";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import SidebarMenu from "../SidebarMenu";
-import NSHeader from "../NSHeader";
-const { Content, Footer, Sider } = Layout;
+/** @format */
+
+import { Layout } from "antd"
+import Image from "next/image"
+import React from "react"
+import NSHeader from "../NSHeader"
+import SidebarMenu from "../SidebarMenu"
+const { Content, Footer, Sider } = Layout
 
 const NSLayout = ({ children }) => {
   return (
@@ -21,10 +17,10 @@ const NSLayout = ({ children }) => {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log(broken);
+          console.log(broken)
         }}
         onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
+          console.log(collapsed, type)
         }}
         width={230}
       >
@@ -56,6 +52,6 @@ const NSLayout = ({ children }) => {
         </Content>
       </Layout>
     </Layout>
-  );
-};
-export default NSLayout;
+  )
+}
+export default NSLayout

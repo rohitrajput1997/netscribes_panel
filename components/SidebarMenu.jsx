@@ -1,17 +1,19 @@
-import { Menu } from "antd";
-import { useRouter } from "next/router";
-import React from "react";
-import PanelMenu from "./json/PanelMenu";
+/** @format */
+
+import { Menu } from "antd"
+import { useRouter } from "next/router"
+import React from "react"
+import PanelMenu from "./json/PanelMenu"
 
 const SidebarMenu = () => {
-  const router = useRouter();
-
+  const router = useRouter()
   return (
     <div>
       <Menu
         mode="inline"
         // defaultSelectedKeys={useRouter?.pathname}
         style={{ height: "100vh" }}
+        selectedKeys={[router?.pathname]}
       >
         {PanelMenu.map((item) => (
           <Menu.Item key={item.key} onClick={() => router.push(item.route)}>
@@ -23,7 +25,7 @@ const SidebarMenu = () => {
         ))}
       </Menu>
     </div>
-  );
-};
+  )
+}
 
-export default SidebarMenu;
+export default SidebarMenu
