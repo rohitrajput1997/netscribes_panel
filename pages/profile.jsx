@@ -12,8 +12,10 @@ const profile = () => {
   return (
     <NSProfileLayout>
       <div className="w-[85vw] mx-auto">
-        <h1 className="text-[1.3rem] my-3 font-MontBold">Pricing and Promotions</h1>
-        <NSCard className="min-h-[450px] p-[32px]">
+        <h1 className="text-[1.3rem] my-3 font-MontBold">
+          Pricing and Promotions
+        </h1>
+        <NSCard className="min-h-[400px]" style={{ padding: "32px" }}>
           <div className="grid grid-cols-4 gap-3">
             <div className="col-span-1 border-r-[1px] border-gray-300 min-h-[400px]">
               {PricingAndPromotions.map((_, index) => (
@@ -39,12 +41,29 @@ const profile = () => {
             </div>
             <div className="col-span-3 ml-4">
               <form action="" className="w-[50%]">
-                <NSInput type="text" title="Email" />
-                <NSInput type="text" title="Name" />
+                <NSInput
+                  type="text"
+                  title="Email"
+                  className="text-gray-500"
+                  placeholder="johndoe@netscribes.com"
+                />
+                <NSInput
+                  type="text"
+                  title="Name"
+                  className="text-gray-500"
+                  placeholder="John Doe"
+                />
                 <NSInput type="text" title="Intelligence Opted" />
                 <div className="flex mt-3">
-                  <Image src='../assets/Group 698.svg' alt='plus-tag' width={25} height={25} />
-                  <p className="pl-4 text-orange-600 text-[1.1rem] font-MontMedium">Add Intelligence</p>
+                  <Image
+                    src="../assets/Group 698.svg"
+                    alt="plus-tag"
+                    width={25}
+                    height={25}
+                  />
+                  <p className="pl-4 text-orange-600 text-[1.1rem] font-MontMedium">
+                    Add Intelligence
+                  </p>
                 </div>
               </form>
             </div>

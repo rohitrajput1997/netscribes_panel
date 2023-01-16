@@ -91,11 +91,22 @@ input[type="password"] {
   padding: 1rem;
 }
 
-:where(.css-dev-only-do-not-override-sk7ap8).ant-layout .ant-layout-content {
+.ant-layout .ant-layout-content {
   background-color: var(--bg-main);
   padding: 0;
 }
 
 .ant-switch-inner {
   background-color: #005f86;
+}
+
+.ant-layout .ant-layout-header {
+  height: 80px;
+  padding-inline: 0;
+  background: var(--pure);
+  overflow: hidden;
+}
+
+.ant-layout .ant-layout-footer {
+  padding: 0;
 }
