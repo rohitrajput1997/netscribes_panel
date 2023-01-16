@@ -12,7 +12,7 @@ function PerformanceRowOne() {
     { label: "Download a Report", icon: "./assets/Group 690.svg" },
   ];
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid grid-cols-4">
       <div className="col-span-1 min-h-[300px] h-auto border-r-2 border-b-2 p-2">
         <div className="flex">
           <div className="repricing-intervals h-[100%] border border-gray-300 rounded-md w-[70%] p-2 mb-2 mr-2">
@@ -32,29 +32,29 @@ function PerformanceRowOne() {
             <h2 className="font-bold truncate">
               New Price should be higher than
             </h2>
-            <div className="flex justify-between flex-wrap mt-3">
-              <NSDropdown options={[]} className="w-[80px]" />
-              <NSDropdown options={[]} className="w-[80px]" />
-              <NSDropdown options={[]} className="w-[80px]" />
+            <div className="flex justify-between mt-3">
+              <NSDropdown options={[]} className="w-[60px]" />
+              <NSDropdown options={[]} className="w-[60px]" />
+              <NSInput type='text' className="w-[50px]" style={{height: '10px', width: '50px'}} />
             </div>
             <h2 className="font-bold truncate mt-2">
               New Price should be lower than
             </h2>
-            <div className="flex justify-between flex-wrap mt-3">
-              <NSDropdown options={[]} className="w-[80px]" />
-              <NSDropdown options={[]} className="w-[80px]" />
-              <NSDropdown options={[]} className="w-[80px]" />
+            <div className="flex justify-between mt-3">
+              <NSDropdown options={[]} className="w-[60px] mr-[.22px]" />
+              <NSDropdown options={[]} className="w-[60px] mr-[.22px]" />
+              <NSInput type='text' className="w-[50px]" style={{height: '10px', width: '50px'}} />
             </div>
           </div>
           <div className="max-items-amount new-pricing border border-gray-300 rounded-md w-[28%] p-2">
             <Switch />
-            <h2 className="font-bold mt-2">Maximum items amount for pricing</h2>
+            <h2 className="text-[.8rem] font-bold mt-2">Maximum items amount for pricing</h2>
             <NSInput type="text" style={{ height: "30px" }} className="mt-2" />
           </div>
         </div>
       </div>
 
-      <div className="col-span-1 min-h-[300px] h-auto border-r-2 border-b-2 p-2">
+      <div className="col-span-2 min-h-[300px] h-auto border-r-2 border-b-2 p-2 overflow-scroll">
         <div class="grid grid-rows-3 grid-flow-col gap-2">
           <div class="row-end-3 row-span-2 border border-gray-300 rounded-md p-2 mb-2 mr-2">
             <div>
@@ -122,7 +122,7 @@ function PerformanceRowOne() {
       </div>
 
       <div className="col-span-1 min-h-[300px] h-auto border-b-2 p-2">
-        <div className=" border border-gray-300 rounded-md p-2 mb-2 mr-2">
+        <div className="border border-gray-300 rounded-md p-2 mb-2 mr-2">
           <div className="flex items-center text-[.8rem]">
             <MdOutlineKeyboardArrowUp className="bg-gray-200" />
             <h1 className="ml-2 font-bold">Samsung black Refregerator</h1>
@@ -136,24 +136,25 @@ function PerformanceRowOne() {
               </span>
             </h1>
           </div>
-        </div>
-        <div className="h-auto bg-[var(--bg-main)] mt-2 p-1 rounded-md">
-          <h6 className="text-[.9rem] font-bold">Repricing Focus:</h6>
-          {[0, 1].map((_) => (
-            <div className="flex mt-1 mb-1" key={_}>
-              <p className="w-[49%] font-semibold">Sales Items</p>
-              <p className="w-[49%] font-semibold">Grow</p>
-            </div>
-          ))}
-        </div>
-        <div className="h-auto bg-[var(--bg-main)] mt-2 p-1 rounded-md">
-          <h6 className="text-[.9rem] font-bold">Price Sensitivity</h6>
-          {[0, 1].map((_) => (
-            <div className="flex mt-1 mb-1" key={_}>
-              <p className="w-[49%] font-semibold">Sales Items</p>
-              <p className="w-[49%] font-semibold">Grow</p>
-            </div>
-          ))}
+          <div className="h-auto bg-[var(--bg-main)] mt-2 p-1 rounded-md">
+            <h6 className="text-[.9rem] font-bold">Repricing Focus:</h6>
+            {[0, 1].map((_) => (
+              <div className="flex mt-1 mb-1" key={_}>
+                <p className="w-[49%] font-semibold">Sales Items</p>
+                <p className="w-[49%] font-semibold">Grow</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="h-auto bg-[var(--bg-main)] mt-2 p-1 rounded-md">
+            <h6 className="text-[.9rem] font-bold">Price Sensitivity</h6>
+            {[0, 1].map((_) => (
+              <div className="flex mt-1 mb-1" key={_}>
+                <p className="w-[49%] font-semibold">Sales Items</p>
+                <p className="w-[49%] font-semibold">Grow</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className=" border border-gray-300 rounded-md p-2 my-2 mr-2">

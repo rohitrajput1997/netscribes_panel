@@ -17,7 +17,7 @@ const SidebarMenu = () => {
           <Menu.Item key={item.key} onClick={() => router.push(item.route)}>
             <div className="flex items-center">
               {item.icon}
-              <div className="ml-4">{item.label}</div>
+              <div className="ml-4 font-MontRegular">{item.label}</div>
             </div>
           </Menu.Item>
         ))}

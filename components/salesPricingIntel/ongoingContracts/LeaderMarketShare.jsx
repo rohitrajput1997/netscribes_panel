@@ -12,14 +12,15 @@ function LeaderMarketShare() {
             <div className="w-[60%]">
               <h1 className="text-xl mb-2">Samsung</h1>
               <p>Sales</p>
-              <h1>12,323,343,767,856,43</h1>
+              <h1>INR 12,323,3437</h1>
             </div>
             <Progress
               strokeLinecap="butt"
               type="circle"
-              percent={75}
+              percent={25}
               width={70}
               strokeWidth={10}
+              strokeColor="rgb(202 138 4)"
             />
           </div>
         </NSCard>
@@ -28,7 +29,7 @@ function LeaderMarketShare() {
             <div className="w-[60%]">
               <h1 className="text-xl mb-2">Samsung</h1>
               <p>Sales</p>
-              <h1>12,323,343,767,856,43</h1>
+              <h1>INR 12,323,3437</h1>
             </div>
             <Progress
               strokeLinecap="butt"
@@ -36,22 +37,24 @@ function LeaderMarketShare() {
               percent={75}
               width={70}
               strokeWidth={10}
+              strokeColor="rgb(107 33 168)"
             />
           </div>
         </NSCard>
         <NSCard>
           <div className="col-span-1 flex items-center justify-between">
             <div className="w-[60%]">
-              <h1 className="text-xl mb-2">Samsung</h1>
+              <h1 className="text-xl mb-2">Whilrpool</h1>
               <p>Sales</p>
-              <h1>12,323,343,767,856,43</h1>
+              <h1 className="flex flex-wrap">INR 12,323,3437</h1>
             </div>
             <Progress
               strokeLinecap="butt"
               type="circle"
-              percent={75}
+              percent={25}
               width={70}
               strokeWidth={10}
+              strokeColor="rgb(139 92 246)"
             />
           </div>
         </NSCard>

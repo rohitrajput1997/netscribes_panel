@@ -12,8 +12,8 @@ import RecentVisits from "../components/json/HomeRecentVisits";
 const Home = () => {
   const Heading = ({ title, subTitle }) => (
     <div className="flex justify-between items-center">
-      <h1 className="text-[1.3rem] mb-3">{title}</h1>
-      <h3 className="text-[1.1rem] text-[#005f86] font-semibold">{subTitle}</h3>
+      <h1 className="text-[1.3rem] mb-3 font-MontBold">{title}</h1>
+      <h3 className="text-[1.1rem] text-[#005f86] font-MontMedium cursor-pointer">{subTitle}</h3>
     </div>
   );
 

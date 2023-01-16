@@ -10,6 +10,8 @@ function NSDropdown({
   title,
   style,
 }) {
+
+  console.log(options);
   return (
     <div>
       {title && <p className="font-MontRegular text-[.8rem]">{title}</p>}

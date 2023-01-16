@@ -27,7 +27,7 @@ function SalesAndAvgUnitValue({
           />
         )}
       </div>
-      {showCount && <h1 className="text-[1.6rem]">12,222,222,222</h1>}
+      {showCount && <h1 className="text-[1.6rem]">1,45,332</h1>}
 
       <div className="mt-2">
         <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">

@@ -50,7 +50,7 @@ const PanelMenu = [
   },
   {
     key: "dashboardDemoVedio",
-    label: "Dashboard Demo Vedio",
+    label: "Dashboard Demo Video",
     value: "dashboardDemoVedio",
     icon: <BsYoutube size={20} />,
     route: "/",

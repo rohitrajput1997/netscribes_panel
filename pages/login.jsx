@@ -12,7 +12,11 @@ function login() {
         <div className="w-[100vw] h-[100vh] min-h-[100vh] max-h-[100vh] bg-white box-shadow grid grid-cols-2">
           <div className="col-span-1 bg-blue-300">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="./assets/Mask Group 183.jpg" alt="" style={{width: '100%', height: '100%', objectFit: ''}} />
+            <img
+              src="./assets/Mask Group 183.jpg"
+              alt=""
+              style={{ width: "100%", height: "100%", objectFit: "" }}
+            />
           </div>
           <div className="col-span-1 bg-white flex justify-center items-center">
             <div className="w-[70%] h-[80%] overflow-y-scroll">
@@ -22,7 +26,6 @@ function login() {
                   type="text"
                   title="User Name"
                   placeholder="Enter your email/User name"
-                  isError
                 />
                 <NSInput
                   type="password"
@@ -39,7 +42,9 @@ function login() {
                   <div className="py-3 flex justify-center text-[.9rem]">
                     <span>
                       Dont have an account?{" "}
-                      <span className="text-blue-600 font-semibold">Sign Up</span>
+                      <span className="text-blue-600 font-semibold cursor-pointer">
+                        Sign Up
+                      </span>
                     </span>
                   </div>
                 </div>

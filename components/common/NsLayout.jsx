@@ -13,7 +13,10 @@ const { Content, Footer, Sider } = Layout;
 
 const NSLayout = ({ children }) => {
   return (
-    <Layout className="layout">
+    <Layout
+      className="layout"
+      style={{ minHeight: "100vh", overflow: "hidden" }}
+    >
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -31,7 +34,13 @@ const NSLayout = ({ children }) => {
         <SidebarMenu />
       </Sider>
 
-      <Layout>
+      <Layout
+        style={{
+          height: "100vh",
+          overflow: "scroll",
+          backgroundColor: "var(--bg-main)",
+        }}
+      >
         {/* header section */}
         <NSHeader />
 

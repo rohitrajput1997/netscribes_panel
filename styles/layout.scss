@@ -1,5 +1,8 @@
 .layout {
   height: 100vh;
+  .ant-layout-content {
+    min-height: auto;
+  }
   .logo {
     height: 80px;
     background: var(--pure);

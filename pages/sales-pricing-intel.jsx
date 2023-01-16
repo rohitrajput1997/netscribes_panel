@@ -1,15 +1,8 @@
-import { Progress, Switch } from "antd";
 import React, { useState } from "react";
-import { MdKeyboardArrowUp, MdOutlineKeyboardArrowUp } from "react-icons/md";
-import NSCard from "../components/common/NSCard";
-import NSDropdown from "../components/common/NSDropdown";
-import NSInput from "../components/common/NSInput";
 import NSLayout from "../components/common/NSLayout";
 import SalesPricingIntelTabs from "../components/json/SalesPricingIntelTabs";
 import OnGoingContracts from "../components/salesPricingIntel/ongoingContracts/OnGoingContracts";
 import Performance from "../components/salesPricingIntel/performance/Performance";
-import RepricingHighlightsTileOne from "../components/salesPricingIntel/performance/RepricingHighlightsTileOne";
-import RepricingHighlightsTileTwo from "../components/salesPricingIntel/performance/RepricingHighlightsTileTwo";
 
 function SalesPricingIntel() {
   //Perofrmance

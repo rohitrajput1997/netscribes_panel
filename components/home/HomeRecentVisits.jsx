@@ -8,8 +8,8 @@ function HomeRecentVisits() {
     <div className="col-span-1">
       <NSCard style={{ padding: "1.3rem" }} className='h-full'>
         <div className="flex justify-between items-center">
-          <h1 className="text-[1.3rem]">Recent Visits</h1>
-          <h4 className="text-[1.1rem] text-[#005f86] font-semibold">Seek</h4>
+          <h1 className="text-[1.3rem] font-MontMedium">Recent Visits</h1>
+          <h4 className="text-[1.1rem] text-[#005f86] font-MontMedium">Seek</h4>
         </div>
         <hr className="border-b-1 border-cyan-500 my-4" />
 
@@ -21,7 +21,7 @@ function HomeRecentVisits() {
               width={10}
               height={10}
             />
-            <p className="text-[1rem] text-[#005f86] ml-3 my-1">
+            <p className="text-[1rem] text-[#005f86] ml-3 my-1 font-MontMedium">
               {listItem.label}
             </p>
           </div>
