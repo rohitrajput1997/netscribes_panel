@@ -15,7 +15,7 @@ function login() {
             <img
               src="./assets/Mask Group 183.jpg"
               alt=""
-              style={{ width: "100%", height: "100%", objectFit: "" }}
+              style={{ width: "100vw", height: "100vh", objectFit: "fill" }}
             />
           </div>
           <div className="col-span-1 bg-white flex justify-center items-center">

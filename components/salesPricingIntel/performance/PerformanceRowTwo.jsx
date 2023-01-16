@@ -35,9 +35,14 @@ function PerformanceRowTwo() {
       <div className="col-span-2 min-h-[300px] h-auto p-2">
         <div className="grid grid-cols-5 gap-1">
           <div className="col-span-1 max-h-[300px] overflow-y-scroll">
-            <div className="bg-[var(--secondary)] p-2 text-white rounded-md text-center">
-              Compititor
-            </div>
+            {[0, 1, 2].map((_, index) => (
+              <div
+                className="bg-[var(--secondary)] p-2 text-white rounded-md text-center mb-2"
+                key={index}
+              >
+                Compititor
+              </div>
+            ))}
           </div>
           <div className="col-span-1 border max-h-[300px] border-gray-300 rounded-md mb-2 mr-2">
             <h1 className="font-bold bg-[var(--bg-main)] p-2">Repricing</h1>
@@ -51,6 +56,13 @@ function PerformanceRowTwo() {
             </div>
           </div>
           <div className="col-span-2 min-h-[300px] h-auto border border-gray-300 rounded-md mb-2 mr-2 p-2">
+            <div className="flex justify-between my-2">
+              <Image src='./assets/tags1.svg' alt='tags' width={20} height={20} />
+              <p className="w-[95%] ml-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium, assumenda.
+              </p>
+            </div>
             <div className="flex justify-between my-2">
               <div className="w-7 h-7 bg-gray-100 mr-2 mt-2"></div>
               <p className="w-[95%]">

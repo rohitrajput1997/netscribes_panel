@@ -8,6 +8,7 @@ function NSButton({
   bgPrimary,
   bgBordered,
   style,
+  onClick,
 }) {
   const bgColors = bgPrimary
     ? "bg-yellow-500 text-white"
@@ -22,6 +23,7 @@ function NSButton({
           icon ? "flex justify-center items-center" : ""
         } rounded-full min-w-[100px]`}
         style={style}
+        onClick={onClick}
       >
         {icon && <div className="mr-3">{icon}</div>}
         {title}
