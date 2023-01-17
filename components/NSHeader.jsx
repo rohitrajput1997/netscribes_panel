@@ -43,7 +43,12 @@ function NSHeader() {
                   className="w-10 h-10 bg-gray-400 rounded-full cursor-pointer"
                   onClick={() => router.push("/profile")}
                 >
-                  {/* <Image src="./images/user.png" alt="" width={30} height={30} /> */}
+                  <Image
+                    src="./assets/avatar.svg"
+                    alt=""
+                    width={50}
+                    height={50}
+                  />
                 </div>
                 <div className="ml-3">
                   <span className="text-[0.8rem] font-bold">John Doe</span>
