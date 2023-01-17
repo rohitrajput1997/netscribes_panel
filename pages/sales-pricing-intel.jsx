@@ -3,6 +3,7 @@ import NSLayout from "../components/common/NSLayout";
 import SalesPricingIntelTabs from "../components/json/SalesPricingIntelTabs";
 import OnGoingContracts from "../components/salesPricingIntel/ongoingContracts/OnGoingContracts";
 import Performance from "../components/salesPricingIntel/performance/Performance";
+import Reports from "../components/salesPricingIntel/reports/Reports";
 
 function SalesPricingIntel() {
   //Perofrmance
@@ -32,6 +33,7 @@ function SalesPricingIntel() {
 
       {selectedTab === 1 && <OnGoingContracts />}
       {selectedTab === 2 && <Performance />}
+      {selectedTab === 6 && <Reports />}
     </NSLayout>
   );
 }

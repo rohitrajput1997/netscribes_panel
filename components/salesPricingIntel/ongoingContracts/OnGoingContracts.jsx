@@ -122,13 +122,6 @@ const OnGoingContracts = () => {
                     fill="url(#colorUv)"
                     fillOpacity={0.3}
                   />
-                  <Area
-                    type={cardinal}
-                    dataKey="uv"
-                    stroke="#82a5ca"
-                    fill="url(#colorUv)"
-                    fillOpacity={0.3}
-                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
