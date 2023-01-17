@@ -1,5 +1,6 @@
-import { Select } from "antd";
+import { Checkbox, Select } from "antd";
 import React from "react";
+const { Option } = Select;
 
 function NSDropdown({
   options,
@@ -9,20 +10,44 @@ function NSDropdown({
   className,
   title,
   style,
+  dropdownRender,
+  optionsWithCheckbox,
+  mode,
 }) {
-
-  console.log(options);
   return (
     <div>
       {title && <p className="font-MontRegular text-[.8rem]">{title}</p>}
       <Select
-        options={options}
+        dropdownRender={(menu) => (
+          <>
+            {dropdownRender}
+            {menu}
+          </>
+        )}
+        mode={mode || "multiple"}
+        // options={options}
         onChange={onChange}
         value={value}
         placeholder={placeholder}
         className={className}
         style={style}
-      />
+        tagRender={(props) => props?.label?.props?.children?.[1]}
+      >
+        {options?.map((item, index) => {
+          return (
+            <Option
+              key={index}
+              className="flex items-center"
+              value={item?.value}
+            >
+              <div className="flex items-center">
+                {optionsWithCheckbox && <Checkbox />}
+                <p className="ml-2">{item?.label}</p>
+              </div>
+            </Option>
+          );
+        })}
+      </Select>
     </div>
   );
 }
