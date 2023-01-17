@@ -4,8 +4,11 @@ import Image from "next/image";
 const { Header } = Layout;
 import { MdKeyboardArrowDown } from "react-icons/md";
 import NSSearchbar from "./common/NSSearchbar";
+import { useRouter } from "next/router";
 
 function NSHeader() {
+  const router = useRouter();
+
   return (
     <>
       <div className="sticky top-0" style={{ zIndex: 1000 }}>
@@ -28,7 +31,7 @@ function NSHeader() {
                   paddingLeft: "32px",
                   backgroundColor: "var(--bg-main)",
                 }}
-                SearchiconPlaceOnTop='top-6'
+                SearchiconPlaceOnTop="top-6"
               />
             </div>
             <div className="flex">
@@ -36,7 +39,10 @@ function NSHeader() {
                 className="w-auto min-w-[220px] bg-[var(--bg-main)] flex items-center p-3"
                 style={{ lineHeight: "initial" }}
               >
-                <div className="w-10 h-10 bg-gray-400 rounded-full">
+                <div
+                  className="w-10 h-10 bg-gray-400 rounded-full cursor-pointer"
+                  onClick={() => router.push("/profile")}
+                >
                   {/* <Image src="./images/user.png" alt="" width={30} height={30} /> */}
                 </div>
                 <div className="ml-3">
