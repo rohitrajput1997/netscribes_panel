@@ -19,6 +19,8 @@ function Login({ token }) {
   React.useEffect(() => {
     if (token) {
       router.push("/login")
+    } else {
+      router.push("/")
     }
   }, [token])
 

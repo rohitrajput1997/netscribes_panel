@@ -1,12 +1,14 @@
 /** @format */
 
-import { Layout } from "antd"
-import ProfileFooterMenuJson from "../../components/json/ProfileFooterMenuJson"
+import { Layout } from "antd";
+import ProfileFooterMenuJson from "../../components/json/ProfileFooterMenuJson";
 
-import Image from "next/image"
-import React from "react"
-import NSButton from "./NSButton"
-const { Content, Footer, Sider, Header } = Layout
+import Image from "next/image";
+import React from "react";
+import NSButton from "./NSButton";
+import NSCookies from "./NSCookies";
+const { Content, Footer, Sider, Header } = Layout;
+
 function NSProfileLayout({ children }) {
   return (
     <Layout className="layout overflow-hidden">
@@ -17,15 +19,33 @@ function NSProfileLayout({ children }) {
           </div>
           <div className="col-span-3 col-end-6 h-full flex justify-end items-center mr-5">
             <ul className="flex font-MontMedium">
-              <li className="min-w-[100px] text-center cursor-pointer">Solutions</li>
-              <li className="min-w-[100px] text-center cursor-pointer">Why Us</li>
-              <li className="min-w-[100px] text-center cursor-pointer">About us</li>
-              <li className="min-w-[100px] text-center cursor-pointer">Blogs</li>
-              <li className="min-w-[100px] text-center cursor-pointer">Case studies</li>
+              <li className="min-w-[100px] text-center cursor-pointer">
+                Solutions
+              </li>
+              <li className="min-w-[100px] text-center cursor-pointer">
+                Why Us
+              </li>
+              <li className="min-w-[100px] text-center cursor-pointer">
+                About us
+              </li>
+              <li className="min-w-[100px] text-center cursor-pointer">
+                Blogs
+              </li>
+              <li className="min-w-[100px] text-center cursor-pointer">
+                Case studies
+              </li>
             </ul>
           </div>
           <div className="col-span-1 col-end-7 flex items-center mt-0 border-l-[1px] border-gray-800">
-            <NSButton title="Logout" className="text-white ml-5 py-0 flex justify-center items-center" style={{width: '100px', padding: 0, height: '40px'}} />
+            <NSButton
+              onClick={() => {
+                NSCookies.clearCookies();
+                window.location.reload();
+              }}
+              title="Logout"
+              className="text-white ml-5 py-0 flex justify-center items-center"
+              style={{ width: "100px", padding: 0, height: "40px" }}
+            />
           </div>
         </div>
       </Header>
@@ -50,7 +70,7 @@ function NSProfileLayout({ children }) {
         </div>
       </Footer>
     </Layout>
-  )
+  );
 }
 
-export default NSProfileLayout
+export default NSProfileLayout;
