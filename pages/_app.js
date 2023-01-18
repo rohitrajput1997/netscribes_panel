@@ -25,16 +25,20 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Auth>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={true}
-          theme="colored"
-        />
+      {isHydrated ? (
+        <Auth>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={true}
+            theme="colored"
+          />
 
-        <Component {...pageProps} />
-      </Auth>
+          <Component {...pageProps} />
+        </Auth>
+      ) : (
+        <IntialLoadComponent />
+      )}
     </>
   );
 }
