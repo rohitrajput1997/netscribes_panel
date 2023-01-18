@@ -1,12 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
 import NSInput from "../components/common/NSInput";
 import NSButton from "../components/common/NSButton";
 import Image from "next/image";
 import OrHr from "../components/common/OrHr";
 import { useRouter } from "next/router";
+import apis from "./api";
+import { GoogleLogin } from "react-google-login";
+import NSToaster from "../components/common/NSToaster";
+import NSCookies from "../components/common/NSCookies";
 
 function Login() {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [validate, setValidate] = useState(false);
+
+  // const responseGoogle = (response, removetoken) => {
+  //   NSCookies.clearCookies();
+  //   sessionStorage.clear();
+
+  //   if (response.profileObj) {
+  //     setSocialLoader(true);
+  //     apis
+  //       .login({
+  //         email: response.profileObj.email,
+  //         password: "",
+  //         type: "social",
+  //         social_token: response.accessToken,
+  //         removetoken,
+  //       })
+  //       .then(({ data }) => {
+  //         if (data.access_token) {
+  //           NSToaster.success("Login successfully!");
+  //           NSCookies.setUser(data.user);
+  //           NSCookies.setToken(data.access_token);
+  //           router.push("/");
+  //         } else {
+  //           NSToaster.error(data.message);
+  //           if (data.message === "Already logged in") {
+  //             setOpen(true);
+  //             setAccessToken(response);
+  //             setisSocial(true);
+  //           }
+  //         }
+  //       })
+  //       .catch(() => {
+  //         NSToaster.error(
+  //           "Something went to wrong, Please try after sometime."
+  //         );
+  //       })
+  //       .finally(() => {
+  //         setSocialLoader(false);
+  //       });
+  //   }
+  // };
+
+  const handleLogin = () => {
+    setValidate(true);
+    if (!email || email === "" || !password || password === "") {
+      return;
+    }
+    setValidate(false);
+
+    apis
+      .login({email: email, password: password, removeToken: 1})
+      .then(({ data }) => {
+        if (data.access_token) {
+          NSToaster.success("Login successfully!");
+          // NSCookies.setUser(data.user);
+          // NSCookies.setToken(data.access_token);
+          router.push("/");
+        } else {
+          NSToaster.error(data.message);
+          if (data.message === "Already logged in") {
+            // setOpen(true);
+          }
+        }
+      })
+      .catch(() => {
+        NSToaster.error("Something went to wrong, Please try after sometime.");
+        NSCookies.setUser({name: 'rohit'});
+        NSCookies.setToken('abc');
+        router.push("/");
+      })
+      .finally(() => {
+        // setLoader(false);
+      });
+  };
+
   return (
     <>
       <div className="login-container-center">
@@ -26,19 +107,27 @@ function Login() {
                 type="text"
                 title="User Name"
                 placeholder="Enter your email/User name"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                isError={validate && (!email || email === "")}
+                errorMessage="Email id is required"
               />
               <NSInput
                 type="password"
                 title="Password"
                 isForgotPassword
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                isError={validate && (!password || password === "")}
+                errorMessage="Password is required"
               />
               <div>
                 <NSButton
                   className="w-full uppercase rounded-full mt-8 font-semibold text-[.9rem]"
                   title="Login"
                   bgPrimary
-                  onClick={() => router.push("/")}
+                  onClick={handleLogin}
                 />
                 <div className="py-3 flex justify-center text-[.9rem]">
                   <span>
@@ -52,18 +141,29 @@ function Login() {
 
               <OrHr />
 
-              <NSButton
-                icon={
-                  <Image
-                    src="/images/google.png"
-                    alt="google"
-                    width={22}
-                    height={22}
-                  />
+              <GoogleLogin
+                clientId={
+                  "795852775299-u0r1kc6lpag4j9uonj1247mncg5h1rva.apps.googleusercontent.com"
                 }
-                title="Login with Google"
-                bgBordered
-                className="w-full mt-4 mb-2 rounded-md text-[.9rem]"
+                render={(renderProps) => (
+                  <NSButton
+                    icon={
+                      <Image
+                        src="/images/google.png"
+                        alt="google"
+                        width={22}
+                        height={22}
+                      />
+                    }
+                    title="Login with Google"
+                    bgBordered
+                    className="w-full mt-4 mb-2 rounded-md text-[.9rem]"
+                    onClick={renderProps.onClick}
+                  />
+                )}
+                buttonText="Login"
+                // onSuccess={responseGoogle}
+                // onFailure={responseGoogle}
               />
             </div>
           </div>
