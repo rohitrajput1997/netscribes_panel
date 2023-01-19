@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import NSCard from "../../common/NSCard";
 
-function totalRevenueUnitVolume() {
+function totalRevenueUnitVolume({totalRevenue, totalUnits}) {
   return (
     <div className="grid grid-cols-2 gap-2 mt-2">
       <div className="col-span-1">
@@ -17,7 +17,7 @@ function totalRevenueUnitVolume() {
             />
             <p>Total Revenue</p>
           </div>
-          <h1 className="text-[1.3rem]">232372737</h1>
+          <h1 className="text-[1.3rem]">{totalRevenue?.sales}</h1>
           <p className="bg-orange-200 w-[fit-content] px-2 rounded-full text-orange-600 mt-1">
             +7%
           </p>
@@ -35,7 +35,7 @@ function totalRevenueUnitVolume() {
             />
             <p>Total Unit Volume</p>
           </div>
-          <h1 className="text-[1.3rem]">232372737</h1>
+          <h1 className="text-[1.3rem]">{totalUnits?.units}</h1>
           <p className="bg-orange-200 w-[fit-content] px-2 rounded-full text-orange-600 mt-1">
             +7%
           </p>

@@ -19,62 +19,28 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { curveCardinal } from "d3-shape";
+import { onGoingContracts } from "../../json/CustomizedTableHeaders";
 
-const OnGoingContracts = () => {
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-
-  const cardinal = curveCardinal.tension(0.2);
+const OnGoingContracts = ({ details }) => {
+  const {
+    total_revenue,
+    total_units,
+    graph_details,
+    unit,
+    sales,
+    avg,
+    total_data_first_sentance,
+  } = details || {};
 
   return (
     <div>
       <div className="grid grid-cols-3 gap-2">
         <div className="col-span-2">
           <MarketOverview />
-          <TotalRevenueUnitVolume />
+          <TotalRevenueUnitVolume
+            totalRevenue={total_revenue}
+            totalUnits={total_units}
+          />
 
           <NSCard className="w-full mt-2 min-h-[434px]">
             <div className="flex justify-between items-center">
@@ -93,7 +59,7 @@ const OnGoingContracts = () => {
                 <AreaChart
                   width={500}
                   height={400}
-                  data={data}
+                  data={graph_details}
                   margin={{
                     top: 50,
                     right: 30,
@@ -112,12 +78,12 @@ const OnGoingContracts = () => {
                       <stop offset="95%" stopColor="#82a5ca" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <XAxis dataKey="name" />
+                  <XAxis dataKey="year" />
                   <YAxis />
                   <Tooltip />
                   <Area
                     type="monotone"
-                    dataKey="uv"
+                    dataKey="sales"
                     stroke="#5a8cd1"
                     fill="url(#colorUv)"
                     fillOpacity={0.3}
@@ -134,12 +100,24 @@ const OnGoingContracts = () => {
           <SalesAndAvgUnitValue
             image="./assets/interactive.svg"
             title="Sales Units"
+            headers={onGoingContracts.salesUnit}
+            tableData={[unit?.units_highest, unit?.units_lowest]}
+            total={total_units?.units}
           />
           <SalesAndAvgUnitValue
             image="./assets/hand-holding-heart.svg"
             title="Sales Value"
+            headers={onGoingContracts.salesValue}
+            tableData={[sales?.sales_highest, sales?.sales_lowest]}
+            total={total_revenue?.sales}
           />
-          <SalesAndAvgUnitValue image="./assets/tags1.svg" title="Avg. Price" />
+          <SalesAndAvgUnitValue
+            image="./assets/tags1.svg"
+            title="Avg. Price"
+            headers={onGoingContracts.avgPrice}
+            tableData={[avg?.avg_highest, avg?.avg_lowest]}
+            total={total_data_first_sentance?.avgsales}
+          />
         </div>
       </div>
     </div>

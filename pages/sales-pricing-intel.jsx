@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { fetchSalesAndPricingIntelDetails } from "../actions/SalesPricingIntel.action";
 import NSLayout from "../components/common/NSLayout";
 import SalesPricingIntelTabs from "../components/json/SalesPricingIntelTabs";
 import OnGoingContracts from "../components/salesPricingIntel/ongoingContracts/OnGoingContracts";
@@ -8,8 +9,15 @@ import Reports from "../components/salesPricingIntel/reports/Reports";
 function SalesPricingIntel() {
   //Perofrmance
   const [selectedTab, setSelectedTab] = useState(1);
+  const [onGoingContractDetails, setOnGoingContractDetails] = useState({});
+  const { total_data_first_sentance } = onGoingContractDetails || {};
+
+  useEffect(() => {
+    fetchSalesAndPricingIntelDetails({ setOnGoingContractDetails });
+  }, []);
+
   return (
-    <NSLayout>
+    <NSLayout header_sentence={total_data_first_sentance}>
       <div className="bg-[var(--bg-main)] w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
         {SalesPricingIntelTabs.map((val, index) => (
           <div
@@ -31,7 +39,9 @@ function SalesPricingIntel() {
         ))}
       </div>
 
-      {selectedTab === 1 && <OnGoingContracts />}
+      {selectedTab === 1 && (
+        <OnGoingContracts details={onGoingContractDetails} />
+      )}
       {selectedTab === 2 && <Performance />}
       {selectedTab === 6 && <Reports />}
     </NSLayout>

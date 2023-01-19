@@ -4,9 +4,13 @@ import NSDropdown from "../components/common/NSDropdown";
 import NSLayout from "../components/common/NSLayout";
 import NSSearchbar from "../components/common/NSSearchbar";
 import SalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/SalesAndAvgUnitValue";
-import marketplaceTrackJson from '../components/json/MarketplaceTrackJson';
+import marketplaceTrackJson from "../components/json/MarketplaceTrackJson";
+import { marketplaceTrack } from "../components/json/CustomizedTableHeaders";
 
 function MarketplaceTrack() {
+  const { tileOneTwo, tileThreeFour, tileFiveSix, tileSevenEight } =
+    marketplaceTrack || {};
+
   return (
     <NSLayout>
       <NSSearchbar
@@ -50,22 +54,26 @@ function MarketplaceTrack() {
               image="./assets/interactive.svg"
               title="Unique SKU Count"
               showupDownArrow={false}
+              headers={tileOneTwo}
             />
             <SalesAndAvgUnitValue
               image="./assets/interactive.svg"
               title="Unique SKU Count"
               showupDownArrow={false}
+              headers={tileThreeFour}
             />
             <SalesAndAvgUnitValue
               image="./assets/interactive.svg"
-              title="Unique SKU Count"
+              title="Discount SKU Count"
               showupDownArrow={false}
+              headers={tileFiveSix}
             />
             <SalesAndAvgUnitValue
               image="./assets/interactive.svg"
-              title="Unique SKU Count"
+              title="Additional Specs. Selector"
               showPlue={true}
               showupDownArrow={false}
+              headers={tileSevenEight}
             />
           </div>
           <div className="col-span-1">
@@ -74,22 +82,26 @@ function MarketplaceTrack() {
               image="./assets/interactive.svg"
               title="Unique SKU Count"
               showupDownArrow={false}
+              headers={tileOneTwo}
             />
             <SalesAndAvgUnitValue
               image="./assets/interactive.svg"
               title="Unique SKU Count"
               showupDownArrow={false}
+              headers={tileThreeFour}
             />
             <SalesAndAvgUnitValue
               image="./assets/interactive.svg"
-              title="Unique SKU Count"
+              title="Discount SKU Count"
               showupDownArrow={false}
+              headers={tileFiveSix}
             />
             <SalesAndAvgUnitValue
               image="./assets/interactive.svg"
-              title="Unique SKU Count"
+              title="Additional Specs. Selector"
               showPlue={true}
               showupDownArrow={false}
+              headers={tileSevenEight}
             />
           </div>
         </div>

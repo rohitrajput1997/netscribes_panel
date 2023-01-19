@@ -10,6 +10,9 @@ function SalesAndAvgUnitValue({
   showCount = true,
   showIcon = true,
   style,
+  headers,
+  tableData,
+  total,
 }) {
   return (
     <NSCard className="mb-2" style={style}>
@@ -27,11 +30,11 @@ function SalesAndAvgUnitValue({
           />
         )}
       </div>
-      {showCount && <h1 className="text-[1.6rem]">1,45,332</h1>}
+      {showCount && <h1 className="text-[1.6rem]">{total}</h1>}
 
       <div className="mt-2">
         <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">
-          <h1 className="text-orange-500 text-start flex items-center">
+          <h1 className="text-orange-500 text-start flex items-center w-[33%]">
             {showupDownArrow && (
               <Image
                 src="./assets/arrow-small-up.svg"
@@ -41,17 +44,21 @@ function SalesAndAvgUnitValue({
                 className="mr-2"
               />
             )}
-            Fastest Player
+            {headers?.one?.headerOne}
           </h1>
-          <h1 className="text-orange-500 text-center">Units</h1>
-          <h1 className="text-orange-500 text-end">Q-o-Q</h1>
+          <h1 className="text-orange-500 text-center w-[33%]">
+            {headers?.one?.headerTwo}
+          </h1>
+          <h1 className="text-orange-500 text-end w-[33%]">
+            {headers?.one?.headerThree}
+          </h1>
         </div>
         <div className="max-h-[50px] overflow-y-scroll">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((_) => (
-            <div className="flex justify-between px-2 mb-1" key={_}>
-              <h1 className="text-start">Samsung</h1>
-              <h1 className="text-center">84,545</h1>
-              <h1 className="text-end text-orange-500">+17%</h1>
+          {tableData?.[0]?.map((_, index) => (
+            <div className="flex justify-between px-2 mb-1" key={index}>
+              <h1 className="text-start w-[33%]">{_?.brand}</h1>
+              <h1 className="text-center w-[33%]">{_?.units}</h1>
+              <h1 className="text-end text-orange-500 w-[33%]">+17%</h1>
             </div>
           ))}
         </div>
@@ -59,7 +66,7 @@ function SalesAndAvgUnitValue({
 
       <div className="mt-2">
         <div className="flex justify-between bg-pink-200 rounded-full px-2 mb-2">
-          <h1 className="text-pink-500 text-start flex items-center">
+          <h1 className="text-pink-500 text-start flex items-center w-[33%]">
             {showupDownArrow && (
               <Image
                 src="./assets/arrow-small-up-1.svg"
@@ -69,17 +76,21 @@ function SalesAndAvgUnitValue({
                 className="mr-2"
               />
             )}{" "}
-            Fastest Player
+            {headers?.two?.headerOne}
           </h1>
-          <h1 className="text-pink-500 text-center">Units</h1>
-          <h1 className="text-pink-500 text-end">Q-o-Q</h1>
+          <h1 className="text-pink-500 text-center w-[33%]">
+            {headers?.one?.headerTwo}
+          </h1>
+          <h1 className="text-pink-500 text-end w-[33%]">
+            {headers?.one?.headerThree}
+          </h1>
         </div>
         <div className="max-h-[50px] overflow-y-scroll">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((_) => (
+          {tableData?.[1]?.map((_) => (
             <div className="flex justify-between px-2 mb-1" key={_}>
-              <h1 className="text-start">Samsung</h1>
-              <h1 className="text-center">84,545</h1>
-              <h1 className="text-end text-orange-500">+17%</h1>
+              <h1 className="text-start w-[33%]">{_?.brand}</h1>
+              <h1 className="text-center w-[33%]">{_?.sales}</h1>
+              <h1 className="text-end text-orange-500 w-[33%]">+17%</h1>
             </div>
           ))}
         </div>

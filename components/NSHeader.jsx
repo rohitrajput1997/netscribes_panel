@@ -7,9 +7,10 @@ import NSSearchbar from "./common/NSSearchbar";
 import { useRouter } from "next/router";
 import NSCookies from "./common/NSCookies";
 
-function NSHeader() {
+function NSHeader({ header_sentence }) {
   const router = useRouter();
   const userData = NSCookies.getUser();
+  const { products, avgsales, companies, marketplace } = header_sentence || {};
 
   return (
     <>
@@ -70,7 +71,7 @@ function NSHeader() {
             Sell/Pricing Intel
           </h4>
           <h6 className="uppercase text-[0.7rem] font-MontMedium">
-            400 products matches from 10 companies and 1 marcketplace
+            {`${products} products matches from ${companies} companies and ${marketplace} marcketplace`}
           </h6>
         </div>
       </div>
