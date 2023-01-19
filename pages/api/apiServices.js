@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 // import { logoutApi } from "../../components/common/logoutApi";
 
-const baseURL = "https://devmi.netscribes.app:8443/marketing_intelligence"; //process.env.BASE_URL;
+const baseURL = "https://devmi.netscribes.app:8443"; //process.env.BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL,

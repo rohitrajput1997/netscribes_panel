@@ -72,12 +72,12 @@ function Login({ token }) {
     setValidate(false)
 
     apis
-      .login({ email: email, password: password, removeToken: 1 })
+      .login({ email: email, password: password, removetoken: 1 })
       .then(({ data }) => {
         if (data.access_token) {
           NSToaster.success("Login successfully!")
-          // NSCookies.setUser(data.user);
-          // NSCookies.setToken(data.access_token);
+          NSCookies.setUser(data.user);
+          NSCookies.setToken(data.access_token);
           router.push("/")
         } else {
           NSToaster.error(data.message)
@@ -88,9 +88,6 @@ function Login({ token }) {
       })
       .catch(() => {
         NSToaster.error("Something went to wrong, Please try after sometime.")
-        NSCookies.setUser({ name: "rohit" })
-        NSCookies.setToken("abc")
-        router.push("/")
       })
       .finally(() => {
         // setLoader(false);

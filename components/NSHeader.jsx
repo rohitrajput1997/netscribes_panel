@@ -5,9 +5,11 @@ const { Header } = Layout;
 import { MdKeyboardArrowDown } from "react-icons/md";
 import NSSearchbar from "./common/NSSearchbar";
 import { useRouter } from "next/router";
+import NSCookies from "./common/NSCookies";
 
 function NSHeader() {
   const router = useRouter();
+  const userData = NSCookies.getUser();
 
   return (
     <>
@@ -51,7 +53,7 @@ function NSHeader() {
                   />
                 </div>
                 <div className="ml-3">
-                  <span className="text-[0.8rem] font-bold">John Doe</span>
+                  <span className="text-[0.8rem] font-bold capitalize">{`${userData?.first_name} ${userData?.last_name}`}</span>
                   <br />
                   <span className="text-[0.8rem]">UI/UX Designer</span>
                 </div>
