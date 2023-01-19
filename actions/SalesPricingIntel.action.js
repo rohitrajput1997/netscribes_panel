@@ -1,3 +1,5 @@
+/** @format */
+
 export const fetchSalesAndPricingIntelDetails = ({
   setOnGoingContractDetails,
 }) => {
@@ -112,53 +114,54 @@ export const fetchSalesAndPricingIntelDetails = ({
         graph_details: [
           {
             week: 52,
-            sales: "100000",
+            sales: 100000,
             year: 2023,
             brand: "Whirlpool",
           },
           {
             week: 51,
-            sales: "70000",
+            sales: 70000,
             year: 2023,
             brand: "Panasonic",
           },
           {
             week: 52,
-            sales: "389815",
+            sales: 389815,
             year: 2022,
             brand: "Panasonic",
           },
           {
             week: 51,
-            sales: "664500",
+            sales: 664500,
             year: 2022,
             brand: "Panasonic",
           },
           {
             week: 50,
-            sales: "483955",
+            sales: 483955,
             year: 2022,
             brand: "Panasonic",
           },
           {
             week: 49,
-            sales: "286520",
+            sales: 286520,
             year: 2022,
             brand: "Bosch",
           },
           {
             week: 48,
-            sales: "52880",
+            sales: 52880,
             year: 2022,
             brand: "Whirlpool",
           },
         ],
       },
       status_message: "data get sucessfully",
-    };
+    }
 
-    setOnGoingContractDetails(onGoingContractDetails.data);
+    setOnGoingContractDetails(onGoingContractDetails.data)
   } catch (err) {
     //
   }
-};
+}
+

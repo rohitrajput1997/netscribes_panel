@@ -1,6 +1,8 @@
-import Image from "next/image";
-import React from "react";
-import NSCard from "../../common/NSCard";
+/** @format */
+
+import Image from "next/image"
+import React from "react"
+import NSCard from "../../common/NSCard"
 
 function SalesAndAvgUnitValue({
   image,
@@ -13,6 +15,7 @@ function SalesAndAvgUnitValue({
   headers,
   tableData,
   total,
+  header_keys = [],
 }) {
   return (
     <NSCard className="mb-2" style={style}>
@@ -56,9 +59,15 @@ function SalesAndAvgUnitValue({
         <div className="max-h-[50px] overflow-y-scroll">
           {tableData?.[0]?.map((_, index) => (
             <div className="flex justify-between px-2 mb-1" key={index}>
-              <h1 className="text-start w-[33%]">{_?.brand}</h1>
-              <h1 className="text-center w-[33%]">{_?.units}</h1>
-              <h1 className="text-end text-orange-500 w-[33%]">+17%</h1>
+              <h1 className="text-start w-[33%]">
+                {_?.[header_keys[0] || ""]}
+              </h1>
+              <h1 className="text-center w-[33%]">
+                {_?.[header_keys[1] || ""]}
+              </h1>
+              <h1 className="text-end text-orange-500 w-[33%]">
+                {_?.[header_keys?.[2] || ""]?.toFixed(2)}%
+              </h1>
             </div>
           ))}
         </div>
@@ -88,15 +97,18 @@ function SalesAndAvgUnitValue({
         <div className="max-h-[50px] overflow-y-scroll">
           {tableData?.[1]?.map((_) => (
             <div className="flex justify-between px-2 mb-1" key={_}>
-              <h1 className="text-start w-[33%]">{_?.brand}</h1>
-              <h1 className="text-center w-[33%]">{_?.sales}</h1>
-              <h1 className="text-end text-orange-500 w-[33%]">+17%</h1>
+              <h1 className="text-start w-[33%]">{_?.[header_keys[0]]}</h1>
+              <h1 className="text-center w-[33%]">{_?.[header_keys[1]]}</h1>
+              <h1 className="text-end text-orange-500 w-[33%]">
+                {_?.[header_keys?.[2] || ""]?.toFixed(2)}%
+              </h1>
             </div>
           ))}
         </div>
       </div>
     </NSCard>
-  );
+  )
 }
 
-export default SalesAndAvgUnitValue;
+export default SalesAndAvgUnitValue
+

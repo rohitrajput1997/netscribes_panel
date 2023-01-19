@@ -1,15 +1,7 @@
-import { Progress } from "antd";
-import Image from "next/image";
-import React from "react";
-import NSButton from "../../common/NSButton";
-import NSCard from "../../common/NSCard";
-import NSDropdown from "../../common/NSDropdown";
-import MarketOverview from "./MarketOverview";
-import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume";
-import LeaderMarketShare from "./LeaderMarketShare";
-import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue";
-import ButtonTabs from "../../common/ButtonTabs";
-import EstimatedSalesTabs from "../../json/EstimatedSalesTabs";
+/** @format */
+
+import Image from "next/image"
+import React from "react"
 import {
   Area,
   AreaChart,
@@ -18,8 +10,15 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts";
-import { onGoingContracts } from "../../json/CustomizedTableHeaders";
+} from "recharts"
+import ButtonTabs from "../../common/ButtonTabs"
+import NSCard from "../../common/NSCard"
+import { onGoingContracts } from "../../json/CustomizedTableHeaders"
+import EstimatedSalesTabs from "../../json/EstimatedSalesTabs"
+import LeaderMarketShare from "./LeaderMarketShare"
+import MarketOverview from "./MarketOverview"
+import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue"
+import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume"
 
 const OnGoingContracts = ({ details }) => {
   const {
@@ -30,7 +29,7 @@ const OnGoingContracts = ({ details }) => {
     sales,
     avg,
     total_data_first_sentance,
-  } = details || {};
+  } = details || {}
 
   return (
     <div>
@@ -103,6 +102,7 @@ const OnGoingContracts = ({ details }) => {
             headers={onGoingContracts.salesUnit}
             tableData={[unit?.units_highest, unit?.units_lowest]}
             total={total_units?.units}
+            header_keys={["brand", "units", "units_per"]}
           />
           <SalesAndAvgUnitValue
             image="./assets/hand-holding-heart.svg"
@@ -110,6 +110,7 @@ const OnGoingContracts = ({ details }) => {
             headers={onGoingContracts.salesValue}
             tableData={[sales?.sales_highest, sales?.sales_lowest]}
             total={total_revenue?.sales}
+            header_keys={["brand", "sales", "sales_per"]}
           />
           <SalesAndAvgUnitValue
             image="./assets/tags1.svg"
@@ -117,11 +118,12 @@ const OnGoingContracts = ({ details }) => {
             headers={onGoingContracts.avgPrice}
             tableData={[avg?.avg_highest, avg?.avg_lowest]}
             total={total_data_first_sentance?.avgsales}
+            header_keys={["brand", "sales", "avg_per"]}
           />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OnGoingContracts;
+export default OnGoingContracts
