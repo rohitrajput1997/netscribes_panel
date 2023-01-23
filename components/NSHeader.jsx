@@ -54,7 +54,9 @@ function NSHeader({ header_sentence }) {
                   />
                 </div>
                 <div className="ml-3">
-                  <span className="text-[0.8rem] font-bold capitalize">{`${userData?.first_name} ${userData?.last_name}`}</span>
+                  <span className="text-[0.8rem] font-bold capitalize">{`${
+                    userData?.first_name || ""
+                  } ${userData?.last_name || ""}`}</span>
                   <br />
                   <span className="text-[0.8rem]">UI/UX Designer</span>
                 </div>
@@ -71,7 +73,9 @@ function NSHeader({ header_sentence }) {
             Sell/Pricing Intel
           </h4>
           <h6 className="uppercase text-[0.7rem] font-MontMedium">
-            {`${products} products matches from ${companies} companies and ${marketplace} marcketplace`}
+            {`${products || 0} products matches from ${
+              companies || 0
+            } companies and ${marketplace || 0} marcketplace`}
           </h6>
         </div>
       </div>
