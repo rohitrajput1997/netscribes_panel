@@ -14,7 +14,7 @@ function HomeRecentVisits() {
         <hr className="border-b-1 border-cyan-500 my-4" />
 
         {RecentVisits.map((listItem, index) => (
-          <div className="flex items-center mb-2 " key={index}>
+          <div className="flex items-center mb-2 cursor-pointer" key={index}>
             <Image
               src="./assets/Polygon 32.svg"
               alt="roket-tag"

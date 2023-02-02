@@ -2,29 +2,33 @@ import { Progress } from "antd";
 import React from "react";
 import NSCard from "../../common/NSCard";
 
-function LeaderMarketShare() {
+function LeaderMarketShare({ cardData }) {
+  const colorsData = ["rgb(202 138 4)", "rgb(107 33 168)", "rgb(139 92 246)"];
+
   return (
     <div>
       <h1 className="text-[1.2rem] my-3">Leader as per Market Share</h1>
       <div className="grid grid-cols-3 gap-2">
-        <NSCard>
-          <div className="col-span-1 flex items-center justify-between">
-            <div className="w-[60%]">
-              <h1 className="text-xl mb-2">Samsung</h1>
-              <p>Sales</p>
-              <h1>INR 12,323,3437</h1>
+        {cardData?.map((data, index) => (
+          <NSCard key={index}>
+            <div className="col-span-1 flex items-center justify-between">
+              <div className="w-[60%]">
+                <h1 className="text-xl mb-2">{data?.Brand}</h1>
+                <p>Sales</p>
+                <h1>INR {data?.Sales}</h1>
+              </div>
+              <Progress
+                strokeLinecap="butt"
+                type="circle"
+                percent={25}
+                width={70}
+                strokeWidth={10}
+                strokeColor={colorsData[index]}
+              />
             </div>
-            <Progress
-              strokeLinecap="butt"
-              type="circle"
-              percent={25}
-              width={70}
-              strokeWidth={10}
-              strokeColor="rgb(202 138 4)"
-            />
-          </div>
-        </NSCard>
-        <NSCard>
+          </NSCard>
+        ))}
+        {/* <NSCard>
           <div className="col-span-1 flex items-center justify-between">
             <div className="w-[60%]">
               <h1 className="text-xl mb-2">Samsung</h1>
@@ -57,7 +61,7 @@ function LeaderMarketShare() {
               strokeColor="rgb(139 92 246)"
             />
           </div>
-        </NSCard>
+        </NSCard> */}
       </div>
     </div>
   );

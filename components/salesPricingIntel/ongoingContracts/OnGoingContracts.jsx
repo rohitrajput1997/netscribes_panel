@@ -22,6 +22,7 @@ import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume"
 
 const OnGoingContracts = ({ details }) => {
   const {
+    data_unit_sales_total,
     total_revenue,
     total_units,
     graph_details,
@@ -29,7 +30,10 @@ const OnGoingContracts = ({ details }) => {
     sales,
     avg,
     total_data_first_sentance,
+    Avrage,
   } = details || {}
+
+  console.log('******', data_unit_sales_total?.Sales);
 
   return (
     <div>
@@ -37,8 +41,8 @@ const OnGoingContracts = ({ details }) => {
         <div className="col-span-2">
           <MarketOverview />
           <TotalRevenueUnitVolume
-            totalRevenue={total_revenue}
-            totalUnits={total_units}
+            totalRevenue={data_unit_sales_total}
+            totalUnits={data_unit_sales_total}
           />
 
           <NSCard className="w-full mt-2 min-h-[434px]">
@@ -58,7 +62,7 @@ const OnGoingContracts = ({ details }) => {
                 <AreaChart
                   width={500}
                   height={400}
-                  data={graph_details}
+                  data={graph_details?.graph}
                   margin={{
                     top: 50,
                     right: 30,
@@ -77,12 +81,12 @@ const OnGoingContracts = ({ details }) => {
                       <stop offset="95%" stopColor="#82a5ca" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <XAxis dataKey="year" />
+                  <XAxis dataKey="Year" />
                   <YAxis />
                   <Tooltip />
                   <Area
                     type="monotone"
-                    dataKey="sales"
+                    dataKey="Sales"
                     stroke="#5a8cd1"
                     fill="url(#colorUv)"
                     fillOpacity={0.3}
@@ -92,7 +96,7 @@ const OnGoingContracts = ({ details }) => {
             </div>
           </NSCard>
 
-          <LeaderMarketShare />
+          <LeaderMarketShare cardData={sales?.sales_highest} />
         </div>
 
         <div className="col-span-1 gap-2">
@@ -102,7 +106,7 @@ const OnGoingContracts = ({ details }) => {
             headers={onGoingContracts.salesUnit}
             tableData={[unit?.units_highest, unit?.units_lowest]}
             total={total_units?.units}
-            header_keys={["brand", "units", "units_per"]}
+            header_keys={["Brand", "Units", "VolumeProgressPercentage"]}
           />
           <SalesAndAvgUnitValue
             image="./assets/hand-holding-heart.svg"
@@ -110,15 +114,15 @@ const OnGoingContracts = ({ details }) => {
             headers={onGoingContracts.salesValue}
             tableData={[sales?.sales_highest, sales?.sales_lowest]}
             total={total_revenue?.sales}
-            header_keys={["brand", "sales", "sales_per"]}
+            header_keys={["Brand", "Sales", "SalesProgressPercentage"]}
           />
           <SalesAndAvgUnitValue
             image="./assets/tags1.svg"
             title="Avg. Price"
             headers={onGoingContracts.avgPrice}
-            tableData={[avg?.avg_highest, avg?.avg_lowest]}
+            tableData={[Avrage?.avg_highest, Avrage?.avg_lowest]}
             total={total_data_first_sentance?.avgsales}
-            header_keys={["brand", "sales", "avg_per"]}
+            header_keys={["Brand", "Price", "avg_per"]}
           />
         </div>
       </div>

@@ -10,14 +10,22 @@ function SalesPricingIntel() {
   //Perofrmance
   const [selectedTab, setSelectedTab] = useState(1);
   const [onGoingContractDetails, setOnGoingContractDetails] = useState({});
+  const [ongoingContractsLoader, setOngoingContractsLoader] = useState(false);
   const { total_data_first_sentance } = onGoingContractDetails || {};
 
   useEffect(() => {
-    fetchSalesAndPricingIntelDetails({ setOnGoingContractDetails });
+    fetchSalesAndPricingIntelDetails({
+      setOnGoingContractDetails,
+      period: "week",
+      setOngoingContractsLoader,
+    });
   }, []);
 
   return (
-    <NSLayout header_sentence={total_data_first_sentance}>
+    <NSLayout
+      header_sentence={total_data_first_sentance}
+      loader={ongoingContractsLoader}
+    >
       <div className="bg-[var(--bg-main)] w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
         {SalesPricingIntelTabs.map((val, index) => (
           <div

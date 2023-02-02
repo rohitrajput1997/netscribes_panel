@@ -5,7 +5,7 @@ import NSCookies from "../../components/common/NSCookies";
 function Auth({ children }) {
   let token = NSCookies.getToken();
   
-  if (token) {
+  if (!token) {
     return children;
   } else {
     return <Login token={true} />;

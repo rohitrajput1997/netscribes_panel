@@ -1,13 +1,14 @@
 /** @format */
 
-import { Layout } from "antd"
-import Image from "next/image"
-import React from "react"
-import NSHeader from "../NSHeader"
-import SidebarMenu from "../SidebarMenu"
-const { Content, Footer, Sider } = Layout
+import { Layout } from "antd";
+import Image from "next/image";
+import React from "react";
+import NSHeader from "../NSHeader";
+import SidebarMenu from "../SidebarMenu";
+import NSLoaderWithMsg from "./NSLoaderWithMsg";
+const { Content, Footer, Sider } = Layout;
 
-const NSLayout = ({ children, header_sentence }) => {
+const NSLayout = ({ children, header_sentence, loader = false }) => {
   return (
     <Layout
       className="layout"
@@ -17,10 +18,10 @@ const NSLayout = ({ children, header_sentence }) => {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log(broken)
+          console.log(broken);
         }}
         onCollapse={(collapsed, type) => {
-          console.log(collapsed, type)
+          console.log(collapsed, type);
         }}
         width={230}
       >
@@ -47,11 +48,11 @@ const NSLayout = ({ children, header_sentence }) => {
               minHeight: 360,
             }}
           >
-            {children}
+            {loader ? <NSLoaderWithMsg /> : children}
           </div>
         </Content>
       </Layout>
     </Layout>
-  )
-}
-export default NSLayout
+  );
+};
+export default NSLayout;

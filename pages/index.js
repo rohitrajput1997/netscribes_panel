@@ -1,9 +1,21 @@
 /** @format */
 
-import HomeComp from "./home"
+import { useEffect, useState } from "react";
+import { fetchHomeDetails } from "../actions/home.action";
+import HomeComp from "./home";
 
 function Home() {
-  return <HomeComp />
+  const [homeDetails, setHomeDetails] = useState([]);
+  const [homeLoader, setHomeLoader] = useState(false);
+
+  useEffect(() => {
+    fetchHomeDetails({
+      setHomeDetails: setHomeDetails,
+      setHomeLoader: setHomeLoader,
+    });
+  }, []);
+
+  return <HomeComp homeDetails={homeDetails} loader={homeLoader} />;
 }
 
-export default Home
+export default Home;

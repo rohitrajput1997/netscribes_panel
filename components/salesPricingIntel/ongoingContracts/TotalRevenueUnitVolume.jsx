@@ -17,7 +17,7 @@ function totalRevenueUnitVolume({totalRevenue, totalUnits}) {
             />
             <p>Total Revenue</p>
           </div>
-          <h1 className="text-[1.3rem]">{totalRevenue?.sales}</h1>
+          <h1 className="text-[1.3rem]">{totalRevenue?.Sales}</h1>
           <p className="bg-orange-200 w-[fit-content] px-2 rounded-full text-orange-600 mt-1">
             +7%
           </p>
@@ -35,7 +35,7 @@ function totalRevenueUnitVolume({totalRevenue, totalUnits}) {
             />
             <p>Total Unit Volume</p>
           </div>
-          <h1 className="text-[1.3rem]">{totalUnits?.units}</h1>
+          <h1 className="text-[1.3rem]">{totalUnits?.Units}</h1>
           <p className="bg-orange-200 w-[fit-content] px-2 rounded-full text-orange-600 mt-1">
             +7%
           </p>

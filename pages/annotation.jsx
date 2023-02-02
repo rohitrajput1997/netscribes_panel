@@ -1,12 +1,12 @@
 /** @format */
 
-import React, { useRef, useState } from "react"
-import Annotator from "react-pdf-ner-annotator"
+import React, { useRef, useState } from "react";
+import Annotator from "react-pdf-ner-annotator";
 // import PDFFile from './pdfs/order.pdf';
 // import KlassifaiLogo from './klassifai.svg';
 // import './App.scss';
 // import "react-pdf-ner-annotator/src/scss/style.scss"
-import "react-pdf-ner-annotator/lib/scss/style.scss"
+import "react-pdf-ner-annotator/lib/scss/style.scss";
 
 const defaultAnnotations = [
   {
@@ -85,7 +85,7 @@ const defaultAnnotations = [
     },
     entity: { id: 6, name: "Other", color: "#FF8A65", entityType: "NER" },
   },
-]
+];
 
 const entities = [
   {
@@ -130,78 +130,78 @@ const entities = [
     color: "#b39ddb",
     entityType: "AREA",
   },
-]
+];
 
 const App = () => {
-  const [selectedEntity, setSelectedEntity] = useState(-1)
-  const [annotations, setAnnotations] = useState(defaultAnnotations)
-  const [textMap, setTextMap] = useState([])
-  const [hoveredEntities, setHoveredEntities] = useState([])
-  const childRef = useRef()
+  const [selectedEntity, setSelectedEntity] = useState(-1);
+  const [annotations, setAnnotations] = useState(defaultAnnotations);
+  const [textMap, setTextMap] = useState([]);
+  const [hoveredEntities, setHoveredEntities] = useState([]);
+  const childRef = useRef();
 
   const handleEnter = (entityId) => {
-    setHoveredEntities((prev) => [...prev, { id: entityId }])
-  }
+    setHoveredEntities((prev) => [...prev, { id: entityId }]);
+  };
 
   const handleLeave = (entityId) => {
     setHoveredEntities((prev) =>
       [...prev].filter((entity) => entity.id !== entityId)
-    )
-  }
+    );
+  };
 
   return (
     <div className="app-container">
-      <div className="app__header">
-        <h1>React PDF NER Annotator</h1>
-      </div>
-      <div className="app__content">
-        <div className="app__content-wrapper">
-          <div className="app__content-main">
-            <Annotator
-              data={"https://www.africau.edu/images/default/sample.pdf"}
-              defaultAnnotations={defaultAnnotations}
-              entity={entities[selectedEntity]}
-              hoveredEntities={hoveredEntities}
-              getAnnotations={setAnnotations}
-              getTextMaps={setTextMap}
-              ref={childRef}
-              config={{
-                shouldUpdateDefaultAnnotations: true,
-              }}
-            />
-          </div>
-          <div className="app__content-entities">
-            <h1>Entities</h1>
-            {entities.map((entity, index) => (
-              <div
-                className="entity-container"
-                key={entity.id}
-                onMouseEnter={() => handleEnter(entity.id)}
-                onMouseLeave={() => handleLeave(entity.id)}
+      <div className="flex justify-between w-full p-4 h-screen max-h-screen overflow-hidden">
+        <div className="w-[20%]">
+          {entities.map((entity, index) => (
+            <div
+              className="h-[50px] flex items-center"
+              key={entity.id}
+              onMouseEnter={() => handleEnter(entity.id)}
+              onMouseLeave={() => handleLeave(entity.id)}
+            >
+              {/* <span className="entity__hotkey">{index + 1}</span> */}
+              <span
+                role="button"
+                className="px-4 py-2 border w-full transition ease-in-out delay-150 duration-300"
+                style={
+                  selectedEntity === index
+                    ? {
+                        backgroundColor: entity.color,
+                      }
+                    : {
+                        borderLeft: `4px solid ${entity.color}`,
+                        borderRight: `1px solid ${entity.color}`,
+                        borderTop: `1px solid ${entity.color}`,
+                        borderBottom: `1px solid ${entity.color}`,
+                      }
+                }
+                onClick={() =>
+                  setSelectedEntity(selectedEntity !== index ? index : -1)
+                }
               >
-                <span className="entity__hotkey">{index + 1}</span>
-                <span
-                  role="button"
-                  className="entity__name"
-                  style={
-                    selectedEntity === index || selectedEntity === -1
-                      ? { backgroundColor: entity.color }
-                      : { backgroundColor: "#bebebe" }
-                  }
-                  onClick={() =>
-                    setSelectedEntity(selectedEntity !== index ? index : -1)
-                  }
-                >
-                  {entity.name}
-                </span>
-              </div>
-            ))}
-          </div>
+                {entity.name}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="w-[80%] p-4 h-[100vh]">
+          <Annotator
+            data={"https://www.africau.edu/images/default/sample.pdf"}
+            defaultAnnotations={defaultAnnotations}
+            entity={entities[selectedEntity]}
+            hoveredEntities={hoveredEntities}
+            getAnnotations={setAnnotations}
+            getTextMaps={setTextMap}
+            ref={childRef}
+            config={{
+              shouldUpdateDefaultAnnotations: true,
+            }}
+          />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;

@@ -25,7 +25,7 @@ module.exports = withPlugins([
         config.resolve.alias["@sentry/node"] = "@sentry/browser";
       }
       config.module.rules.push({
-        test: /\.svg$/,
+        test: /\.svg$/, 
         use: ["@svgr/webpack"]
       });
       return config;

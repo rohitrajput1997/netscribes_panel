@@ -14,14 +14,14 @@ const NSCookies = () => {
     },
 
     setToken(token) {
-      return Cookies.set("token", token);
+      return Cookies.set("mtoken", token);
     },
     getToken() {
-      return Cookies.get("token");
+      return Cookies.get("mtoken");
     },
 
     clearCookies() {
-      Cookies.remove("token");
+      Cookies.remove("mtoken");
       Cookies.remove("userDetails");
     },
   };
