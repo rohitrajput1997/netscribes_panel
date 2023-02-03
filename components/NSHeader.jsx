@@ -10,7 +10,8 @@ import NSCookies from "./common/NSCookies";
 function NSHeader({ header_sentence }) {
   const router = useRouter();
   const userData = NSCookies.getUser();
-  const { products, avgsales, companies, marketplace } = header_sentence || {};
+  const { products, avgsales, companies, marketplace, Brand } =
+    header_sentence || {};
 
   return (
     <>
@@ -73,9 +74,9 @@ function NSHeader({ header_sentence }) {
             Sell/Pricing Intel
           </h4>
           <h6 className="uppercase text-[0.7rem] font-MontMedium">
-            {`${products || 0} products matches from ${
-              companies || 0
-            } companies and ${marketplace || 0} marcketplace`}
+            {`${products || 300} products matches from ${
+              1 || 1
+            } companies and ${marketplace || 1} marcketplace`}
           </h6>
         </div>
       </div>

@@ -3,7 +3,7 @@ import NSCard from "../common/NSCard";
 import SuggestedHighlitesTiles from "./SuggestedHighlitesTiles";
 
 function HomeHighlights({ homeDetails }) {
-  const { newness, competitiveness, assortment, most_expensive_sku } =
+  const { newness, competitiveness, assortment, most_expensive_SKU } =
     homeDetails || {};
 
   return (
@@ -37,7 +37,7 @@ function HomeHighlights({ homeDetails }) {
             <SuggestedHighlitesTiles
               image="/assets/Group 684.svg"
               title="Activeness"
-              content={`Brand A is a latest, Brand ${assortment?.[0].Brand} has best assorment and Brand E has priciest product`}
+              content={`Brand Samsung is a latest, Brand ${assortment?.[0].Brand} has best assorment and Brand ${most_expensive_SKU?.[0]?.Brand} has priciest product`}
               bg="bg-green-200"
               borderColor="border-green-200"
             />

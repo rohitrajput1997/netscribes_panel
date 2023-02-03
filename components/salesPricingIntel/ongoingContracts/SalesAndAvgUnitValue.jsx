@@ -65,7 +65,6 @@ function SalesAndAvgUnitValue({
               <h1 className="text-center w-[33%]">
                 {_?.[header_keys[1] || ""]}
               </h1>
-              {console.log("$$$$####", _?.[header_keys?.[2]])}
               <h1 className="text-end text-orange-500 w-[33%]">
                 {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
               </h1>

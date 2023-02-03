@@ -17,12 +17,8 @@ const NSLayout = ({ children, header_sentence, loader = false }) => {
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
+        onBreakpoint={(broken) => {}}
+        onCollapse={(collapsed, type) => {}}
         width={230}
       >
         <div className="logo flex justify-center items-center">

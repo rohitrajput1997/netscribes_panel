@@ -1,7 +1,8 @@
 /** @format */
 
-import Image from "next/image"
-import React from "react"
+import Image from "next/image";
+import React from "react";
+import { useState } from "react";
 import {
   Area,
   AreaChart,
@@ -10,17 +11,19 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts"
-import ButtonTabs from "../../common/ButtonTabs"
-import NSCard from "../../common/NSCard"
-import { onGoingContracts } from "../../json/CustomizedTableHeaders"
-import EstimatedSalesTabs from "../../json/EstimatedSalesTabs"
-import LeaderMarketShare from "./LeaderMarketShare"
-import MarketOverview from "./MarketOverview"
-import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue"
-import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume"
+} from "recharts";
+import ButtonTabs from "../../common/ButtonTabs";
+import NSCard from "../../common/NSCard";
+import { onGoingContracts } from "../../json/CustomizedTableHeaders";
+import EstimatedSalesTabs from "../../json/EstimatedSalesTabs";
+import LeaderMarketShare from "./LeaderMarketShare";
+import MarketOverview from "./MarketOverview";
+import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue";
+import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume";
 
 const OnGoingContracts = ({ details }) => {
+  const [selectedGraphFilter, setSelectedGraphFilter] = useState("week");
+  const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
   const {
     data_unit_sales_total,
     total_revenue,
@@ -31,9 +34,7 @@ const OnGoingContracts = ({ details }) => {
     avg,
     total_data_first_sentance,
     Avrage,
-  } = details || {}
-
-  console.log('******', data_unit_sales_total?.Sales);
+  } = details || {};
 
   return (
     <div>
@@ -54,7 +55,12 @@ const OnGoingContracts = ({ details }) => {
                 </h1>
               </div>
               <div>
-                <ButtonTabs arr={EstimatedSalesTabs} />
+                <ButtonTabs
+                  arr={EstimatedSalesTabs}
+                  setFunc={setSelectedGraphFilter}
+                  selectedValue={selectedGraphFilter}
+                  selectedKey={setSelectedFilterKey}
+                />
               </div>
             </div>
             <div className="w-[100%] h-[380px]">
@@ -62,7 +68,7 @@ const OnGoingContracts = ({ details }) => {
                 <AreaChart
                   width={500}
                   height={400}
-                  data={graph_details?.graph}
+                  data={graph_details?.[selectedFilterKey]}
                   margin={{
                     top: 50,
                     right: 30,
@@ -81,7 +87,15 @@ const OnGoingContracts = ({ details }) => {
                       <stop offset="95%" stopColor="#82a5ca" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <XAxis dataKey="Year" />
+                  <XAxis
+                    dataKey={(data) => {
+                      return selectedFilterKey === "week_graph"
+                        ? `W${data?.Week} ${data?.Year}`
+                        : selectedFilterKey === "month_graph"
+                        ? `M${data?.Month} ${data?.Year}`
+                        : "";
+                    }}
+                  />
                   <YAxis />
                   <Tooltip />
                   <Area
@@ -127,7 +141,7 @@ const OnGoingContracts = ({ details }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OnGoingContracts
+export default OnGoingContracts;
