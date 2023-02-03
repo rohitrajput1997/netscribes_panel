@@ -5,7 +5,7 @@ import RecentVisits from "../json/HomeRecentVisits";
 
 function HomeRecentVisits() {
   return (
-    <div className="col-span-1">
+    <div className="col-span-1 max-h-[40rem]">
       <NSCard style={{ padding: "1.3rem" }} className='h-full'>
         <div className="flex justify-between items-center">
           <h1 className="text-[1.3rem] font-MontMedium">Recent Visits</h1>

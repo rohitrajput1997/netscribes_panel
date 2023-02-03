@@ -92,7 +92,7 @@ const OnGoingContracts = ({ details }) => {
                       return selectedFilterKey === "week_graph"
                         ? `W${data?.Week} ${data?.Year}`
                         : selectedFilterKey === "month_graph"
-                        ? `M${data?.Month} ${data?.Year}`
+                        ? `${data?.Month} ${data?.Year}`
                         : "";
                     }}
                   />

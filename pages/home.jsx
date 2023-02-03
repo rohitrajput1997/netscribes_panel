@@ -29,7 +29,7 @@ const Home = ({ homeDetails, loader }) => {
 
           <div className="my-3">
             <Heading title="Suggested Brand Updates" subTitle="Explore" />
-            <HomeBrandUpdates />
+            <HomeBrandUpdates homeDetails={homeDetails} />
           </div>
         </div>
 
