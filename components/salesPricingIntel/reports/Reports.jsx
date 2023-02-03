@@ -143,7 +143,7 @@ const Reports = () => {
                 <ButtonTabs
                   arr={[
                     { label: "Weekly", value: "aa" },
-                    { label: "Quaterly", value: "aa" },
+                    { label: "Quarterly", value: "aa" },
                     { label: "Half-Yearly", value: "aa" },
                   ]}
                   style={{ height: "32px" }}
@@ -183,8 +183,8 @@ const Reports = () => {
           <h1 className="text-xl font-MontBold">Key Highlights</h1>
           <hr className="my-3 border-b-0 border-[var(--bg-main)]" />
 
-          <QuaterResults header="Last Quater Results" childs={Quaters?.last} />
-          <QuaterResults header="Next Quater Results" childs={Quaters?.next} />
+          <QuaterResults header="Last Quarter Results" childs={Quaters?.last} />
+          <QuaterResults header="Next Quarter Results" childs={Quaters?.next} />
         </NSCard>
       </div>
     </div>

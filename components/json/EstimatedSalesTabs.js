@@ -10,8 +10,8 @@ const EstimatedSalesTabs = [
     key: "month_graph",
   },
   {
-    label: "Quater",
-    value: "quater",
+    label: "Quarter",
+    value: "quarter",
     key: "",
   },
   {

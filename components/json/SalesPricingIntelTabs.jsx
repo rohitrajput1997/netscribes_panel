@@ -1,8 +1,8 @@
 const SalesPricingIntelTabs = [
   {
     key: 1,
-    label: "Ongoing Contracts",
-    value: "ongoingContarcts",
+    label: "Market Overview",
+    value: "marketOverview",
   },
   {
     key: 2,
@@ -21,7 +21,7 @@ const SalesPricingIntelTabs = [
   },
   {
     key: 5,
-    label: "optimization settings",
+    label: "Optimization Settings",
     value: "optimizationTechniques",
   },
   {
