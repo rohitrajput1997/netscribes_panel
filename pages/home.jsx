@@ -1,13 +1,8 @@
-import Image from "next/image";
 import React from "react";
-import NSCard from "../components/common/NSCard";
 import NSLayout from "../components/common/NSLayout";
 import HomeBrandUpdates from "../components/home/HomeBrandUpdates";
 import HomeHighlights from "../components/home/HomeHighlights";
 import HomeRecentVisits from "../components/home/HomeRecentVisits";
-import SuggestedBrandUpdatesTile from "../components/home/SuggestedBrandUpdatesTile";
-import SuggestedHighlitesTiles from "../components/home/SuggestedHighlitesTiles";
-import RecentVisits from "../components/json/HomeRecentVisits";
 
 const Home = ({ homeDetails, loader }) => {
   const Heading = ({ title, subTitle }) => (
@@ -23,7 +18,7 @@ const Home = ({ homeDetails, loader }) => {
     <NSLayout loader={loader}>
       <div className="grid grid-cols-3 gap-3">
         <div className="col-span-2">
-          <Heading title="Suggested Highlights" subTitle="Explore" />
+          <Heading title="Key Highlights" subTitle="Explore" />
 
           <HomeHighlights homeDetails={homeDetails} />
 

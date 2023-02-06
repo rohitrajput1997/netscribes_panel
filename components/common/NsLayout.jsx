@@ -8,7 +8,7 @@ import SidebarMenu from "../SidebarMenu";
 import NSLoaderWithMsg from "./NSLoaderWithMsg";
 const { Content, Footer, Sider } = Layout;
 
-const NSLayout = ({ children, header_sentence, loader = false }) => {
+const NSLayout = ({ children, header_sentence, loader = false, subHeaderTitle }) => {
   return (
     <Layout
       className="layout"
@@ -35,7 +35,7 @@ const NSLayout = ({ children, header_sentence, loader = false }) => {
         }}
       >
         {/* header section */}
-        <NSHeader header_sentence={header_sentence} />
+        <NSHeader header_sentence={header_sentence} subHeaderTitle={subHeaderTitle} />
 
         <Content>
           <div

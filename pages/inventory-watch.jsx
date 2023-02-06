@@ -13,6 +13,7 @@ import {
 import NSCard from "../components/common/NSCard";
 import NSLayout from "../components/common/NSLayout";
 import NSSearchbar from "../components/common/NSSearchbar";
+import { InventoryWatchHeadres } from "../components/json/CustomizedTableHeaders";
 import SalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/SalesAndAvgUnitValue";
 import SelfPresenceChart from "../components/salesPricingIntel/reports/SelfPresenceChart";
 
@@ -39,16 +40,23 @@ function InventoryWatch() {
     { name: 19, cost: 3, impression: 100, count: 200 },
     { name: 20, cost: 7, impression: 100, count: 200 },
   ];
+  const { selectorOne, selectorTwo } = InventoryWatchHeadres || {};
 
   return (
     <NSLayout>
       <div className="grid grid-cols-3 gap-3">
         <div className="col-span-2">
-          <NSCard className="mb-3" style={{ height: "300px" }}>
-            <SelfPresenceChart header="Shelf Presence Trend Over Time" data={initialData} />
+          <NSCard className="mb-3" style={{ minHeight: "300px" }}>
+            <SelfPresenceChart
+              header="Shelf Presence Trend Over Time"
+              data={initialData}
+            />
           </NSCard>
-          <NSCard className="mb-3" style={{ height: "300px" }}>
-            <SelfPresenceChart header="Shelf Presence Trend Over Time" data={initialData} />
+          <NSCard className="mb-3" style={{ minHeight: "300px" }}>
+            <SelfPresenceChart
+              header="Shelf Presence Trend Over Time"
+              data={initialData}
+            />
           </NSCard>
         </div>
         <div className="col-span-1">
@@ -57,14 +65,16 @@ function InventoryWatch() {
             showPlue
             showCount={false}
             showIcon={false}
-            style={{ height: "300px" }}
-          />
+            style={{ height: "318px" }}
+            headers={selectorOne}
+            />
           <SalesAndAvgUnitValue
             title="Additional specs. Selector"
             showPlue
             showCount={false}
             showIcon={false}
-            style={{ height: "300px" }}
+            style={{ height: "318px" }}
+            headers={selectorTwo}
           />
         </div>
       </div>

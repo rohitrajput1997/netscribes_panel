@@ -87,3 +87,30 @@ export const marketplaceTrack = {
     },
   },
 };
+
+export const InventoryWatchHeadres = {
+  selectorOne: {
+    one: {
+      headerOne: "Specifications",
+      headerTwo: "Bound 1",
+      headerThree: "Bound 2",
+    },
+    two: {
+      headerOne: "Slowest Players",
+      headerTwo: "Bound 1",
+      headerThree: "Bound 2",
+    },
+  },
+  selectorTwo: {
+    one: {
+      headerOne: "Specifications",
+      headerTwo: "Bound 1",
+      headerThree: "Bound 2",
+    },
+    two: {
+      headerOne: "Slowest Players",
+      headerTwo: "Bound 1",
+      headerThree: "Bound 2",
+    },
+  },
+};

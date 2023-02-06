@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import {
   CartesianGrid,
+  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -66,6 +67,7 @@ function SelfPresenceChart({header, data}) {
               axisLine={{ stroke: "#ffffff" }}
             />
             <Tooltip />
+            <Legend />
             <Line
               yAxisId="1"
               type="natural"

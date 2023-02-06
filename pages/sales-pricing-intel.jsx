@@ -25,6 +25,7 @@ function SalesPricingIntel() {
     <NSLayout
       header_sentence={total_data_first_sentance}
       loader={ongoingContractsLoader}
+      subHeaderTitle='Sales/Pricing Intel'
     >
       <div className="bg-[var(--bg-main)] w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
         {SalesPricingIntelTabs.map((val, index) => (
@@ -50,8 +51,8 @@ function SalesPricingIntel() {
       {selectedTab === 1 && (
         <OnGoingContracts details={onGoingContractDetails} />
       )}
-      {selectedTab === 2 && <Performance />}
-      {selectedTab === 6 && <Reports />}
+      {selectedTab === 2 && <Reports />}
+      {selectedTab === 4 && <Performance />}
     </NSLayout>
   );
 }

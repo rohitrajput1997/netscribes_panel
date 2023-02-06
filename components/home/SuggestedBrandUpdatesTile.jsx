@@ -19,7 +19,7 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle }) {
         <h1 className="text-[1.3rem] font-MontMedium">{title}</h1>
         <hr className="border-b-2 border-cyan-100 my-1" />
         <div className="mt-3">
-          <p className="leading-8 text-[1rem] font-MontRegular">
+          <p className="leading-8 text-[1rem] font-MontRegular capitalize">
             {subtitle.split("_").join(" ")}
           </p>
           <h1 className="text-xl">{salesCount}</h1>

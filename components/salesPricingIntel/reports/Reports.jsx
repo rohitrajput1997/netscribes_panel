@@ -1,6 +1,6 @@
 import { Tooltip } from "antd";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
   Bar,
   BarChart,
@@ -13,9 +13,12 @@ import {
 import ButtonTabs from "../../common/ButtonTabs";
 import NSCard from "../../common/NSCard";
 import NSDropdown from "../../common/NSDropdown";
+import PerformaceFilterTabs from "../../json/PerformanceFilterTabs";
 import QuaterResults from "./QuaterResults";
 
 const Reports = () => {
+  const [selectedFilter, setSelectedFilter] = useState("weekly");
+  const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
   const Quaters = {
     last: [
       { icon: "./assets/Group 693.svg", count: 520, subTitle: "In Actual" },
@@ -141,11 +144,10 @@ const Reports = () => {
               <NSDropdown options={[]} className="w-40" />
               <div className="flex items-center">
                 <ButtonTabs
-                  arr={[
-                    { label: "Weekly", value: "aa" },
-                    { label: "Quarterly", value: "aa" },
-                    { label: "Half-Yearly", value: "aa" },
-                  ]}
+                  arr={PerformaceFilterTabs}
+                  setFunc={setSelectedFilter}
+                  selectedValue={selectedFilter}
+                  selectedKey={setSelectedFilterKey}
                   style={{ height: "32px" }}
                 />
                 <NSDropdown options={[]} className="w-32 ml-2" />
@@ -165,12 +167,22 @@ const Reports = () => {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" axisLine={{ stroke: '#ffffff' }} />
-                  <YAxis  axisLine={{ stroke: '#ffffff' }} />
+                  <XAxis dataKey="name" axisLine={{ stroke: "#ffffff" }} />
+                  <YAxis axisLine={{ stroke: "#ffffff" }} />
                   <Tooltip />
                   <Legend iconType="circle" />
-                  <Bar dataKey="pv" fill="rgb(52 211 153)" radius={[20,20,20,20]} barSize={15} />
-                  <Bar dataKey="uv" fill="rgb(8 145 178)" radius={[20,20,20,20]} barSize={15} />
+                  <Bar
+                    dataKey="pv"
+                    fill="rgb(52 211 153)"
+                    radius={[20, 20, 20, 20]}
+                    barSize={15}
+                  />
+                  <Bar
+                    dataKey="uv"
+                    fill="rgb(8 145 178)"
+                    radius={[20, 20, 20, 20]}
+                    barSize={15}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>

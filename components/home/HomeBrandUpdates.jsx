@@ -9,8 +9,8 @@ function HomeBrandUpdates({ homeDetails }) {
       {Object.keys(suggested_brands || {})?.map((item, index) => (
         <div key={index}>
           <SuggestedBrandUpdatesTile
-            title={suggested_brands?.[item]?.[0]?.Brand}
-            salesCount={suggested_brands?.[item]?.[0]?.[item]}
+            title={suggested_brands?.[item]?.Brand}
+            salesCount={suggested_brands?.[item]?.[item]}
             subtitle={item}
           />
         </div>

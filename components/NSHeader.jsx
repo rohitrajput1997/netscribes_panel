@@ -7,7 +7,7 @@ import NSSearchbar from "./common/NSSearchbar";
 import { useRouter } from "next/router";
 import NSCookies from "./common/NSCookies";
 
-function NSHeader({ header_sentence }) {
+function NSHeader({ header_sentence, subHeaderTitle }) {
   const router = useRouter();
   const userData = NSCookies.getUser();
   const { products, avgsales, companies, marketplace, Brand } =
@@ -71,7 +71,7 @@ function NSHeader({ header_sentence }) {
 
         <div className="w-full bg-[var(--secondary)] py-1 px-[20px] text-white flex items-center justify-between">
           <h4 className="uppercase text-[0.9rem] font-bold">
-            Sell/Pricing Intel
+            {subHeaderTitle || "Sales/Pricing Intel"}
           </h4>
           <h6 className="uppercase text-[0.7rem] font-MontMedium">
             {`${products || 300} products matches from ${

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import NSCard from "../../common/NSCard";
+import { BiRupee } from "react-icons/bi";
 
 function SalesAndAvgUnitValue({
   image,
@@ -33,11 +34,16 @@ function SalesAndAvgUnitValue({
           />
         )}
       </div>
-      {showCount && <h1 className="text-[1.6rem]">{total}</h1>}
+      {showCount && (
+        <h1 className="text-[1.6rem] flex items-center">
+          <BiRupee size={25} className='mt-[2px]' />
+          <h1>{total}</h1>
+        </h1>
+      )}
 
       <div className="mt-2">
         <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">
-          <h1 className="text-orange-500 text-start flex items-center w-[33%]">
+          <h1 className="text-orange-500 text-start flex items-center w-[33%] text-[.8rem]">
             {showupDownArrow && (
               <Image
                 src="./assets/arrow-small-up.svg"
@@ -49,10 +55,10 @@ function SalesAndAvgUnitValue({
             )}
             {headers?.one?.headerOne}
           </h1>
-          <h1 className="text-orange-500 text-center w-[33%]">
+          <h1 className="text-orange-500 text-center w-[33%] text-[.8rem]">
             {headers?.one?.headerTwo}
           </h1>
-          <h1 className="text-orange-500 text-end w-[33%]">
+          <h1 className="text-orange-500 text-end w-[33%] text-[.8rem]">
             {headers?.one?.headerThree}
           </h1>
         </div>
@@ -75,7 +81,7 @@ function SalesAndAvgUnitValue({
 
       <div className="mt-2">
         <div className="flex justify-between bg-pink-200 rounded-full px-2 mb-2">
-          <h1 className="text-pink-500 text-start flex items-center w-[33%]">
+          <h1 className="text-pink-500 text-start flex items-center w-[33%] text-[.8rem]">
             {showupDownArrow && (
               <Image
                 src="./assets/arrow-small-up-1.svg"
@@ -87,10 +93,10 @@ function SalesAndAvgUnitValue({
             )}{" "}
             {headers?.two?.headerOne}
           </h1>
-          <h1 className="text-pink-500 text-center w-[33%]">
+          <h1 className="text-pink-500 text-center w-[33%] text-[.8rem]">
             {headers?.one?.headerTwo}
           </h1>
-          <h1 className="text-pink-500 text-end w-[33%]">
+          <h1 className="text-pink-500 text-end w-[33%] text-[.8rem]">
             {headers?.one?.headerThree}
           </h1>
         </div>

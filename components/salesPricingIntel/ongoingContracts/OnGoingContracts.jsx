@@ -46,7 +46,7 @@ const OnGoingContracts = ({ details }) => {
             totalUnits={data_unit_sales_total}
           />
 
-          <NSCard className="w-full mt-2 min-h-[434px]">
+          <NSCard className="w-full mt-2 min-h-[467px]">
             <div className="flex justify-between items-center">
               <div>
                 <Image src="" alt="" className="mr-2" />
@@ -113,22 +113,24 @@ const OnGoingContracts = ({ details }) => {
           <LeaderMarketShare cardData={sales?.sales_highest} />
         </div>
 
-        <div className="col-span-1 gap-2">
+        <div className="col-span-1 gap-2 flex flex-col justify-between">
           <SalesAndAvgUnitValue
             image="./assets/interactive.svg"
             title="Sales Units"
             headers={onGoingContracts.salesUnit}
             tableData={[unit?.units_highest, unit?.units_lowest]}
-            total={total_units?.units}
+            total={data_unit_sales_total?.Units}
             header_keys={["Brand", "Units", "VolumeProgressPercentage"]}
+            style={{height: '262px'}}
           />
           <SalesAndAvgUnitValue
             image="./assets/hand-holding-heart.svg"
             title="Sales Value"
             headers={onGoingContracts.salesValue}
             tableData={[sales?.sales_highest, sales?.sales_lowest]}
-            total={total_revenue?.sales}
+            total={data_unit_sales_total?.Sales}
             header_keys={["Brand", "Sales", "SalesProgressPercentage"]}
+            style={{height: '262px'}}
           />
           <SalesAndAvgUnitValue
             image="./assets/tags1.svg"
@@ -137,6 +139,7 @@ const OnGoingContracts = ({ details }) => {
             tableData={[Avrage?.avg_highest, Avrage?.avg_lowest]}
             total={total_data_first_sentance?.avgsales}
             header_keys={["Brand", "Price", "avg_per"]}
+            style={{height: '262px'}}
           />
         </div>
       </div>

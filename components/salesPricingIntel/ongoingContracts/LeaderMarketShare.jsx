@@ -7,7 +7,7 @@ function LeaderMarketShare({ cardData }) {
 
   return (
     <div>
-      <h1 className="text-[1.2rem] my-3">Leader as per Market Share</h1>
+      <h1 className="text-[1.2rem] my-5 font-MontBold">Leader as per Market Share</h1>
       <div className="grid grid-cols-3 gap-2">
         {cardData?.map((data, index) => (
           <NSCard key={index}>
