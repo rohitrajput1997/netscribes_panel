@@ -5,13 +5,15 @@
 @import "../styles/login.scss";
 @import "../styles/layout.scss";
 @import "../styles/ongoingContracts.scss";
-@import "../styles//loading.scss";
+@import "../styles/loading.scss";
+@import "../styles/datePicker.css";
+@import "../styles/dateCalender.css";
 
 :root {
   --primary-color: rgb(202 138 4);
   --pure: #ffffff;
   --light-shadow: rgb(90 114 123 / 11%) 0px 7px 30px 0px;
-  --bg-main: #b5e7ee;
+  --bg-main: #eaeaea;
   --secondary: #005f86;
 }
 
@@ -115,4 +117,9 @@ input[type="password"] {
 
 .annotator-container {
   background-color: transparent;
+}
+
+.ant-select-selection-item {
+  display: flex;
+  align-items: center;
 }

@@ -12,7 +12,7 @@ function NSDropdown({
   style,
   dropdownRender,
   optionsWithCheckbox,
-  mode,
+  isMultiple,
 }) {
   return (
     <div>
@@ -24,7 +24,7 @@ function NSDropdown({
             {menu}
           </>
         )}
-        mode={mode || "multiple"}
+        mode={isMultiple && "multiple"}
         // options={options}
         onChange={onChange}
         value={value}
