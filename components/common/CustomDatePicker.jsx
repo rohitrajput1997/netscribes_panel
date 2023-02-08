@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import DateRangePicker from "@wojtekmaj/react-daterange-picker/dist/entry.nostyle";
 import NSDropdown from "./NSDropdown";
 import moment from "moment";
@@ -28,9 +28,43 @@ function CustomDatePicker({
   customOpen,
   setFromDate,
   setToDate,
+  setFromTo,
 }) {
-    const [value, onChange] = useState([yesterdayBegin, todayEnd]);
-    
+  const [value, onChange] = useState([yesterdayBegin, todayEnd]);
+
+  const handleChange = useMemo(() => {
+    const today = moment().format("YYYY-MM-DD");
+    if (date) {
+      if (date === "thisMonth") {
+        const startOfMonth = moment().startOf("month").format("YYYY-MM-DD");
+        setFromDate(today);
+        setToDate(startOfMonth);
+        setFromTo({
+          toDate: today,
+          fromDate: startOfMonth,
+        });
+      }
+      if (date === "lastMonth") {
+        const endOfMonth = moment(moment())
+          .subtract(1, "months")
+          .endOf("month")
+          .format("YYYY-MM-DD");
+        const startOfMonth = moment(moment())
+          .subtract(1, "months")
+          .startOf("month")
+          .format("YYYY-MM-DD");
+        setFromDate(startOfMonth);
+        setToDate(endOfMonth);
+        setFromTo({
+          fromDate: startOfMonth,
+          toDate: endOfMonth,
+        });
+      }
+    }
+  }, [date]);
+
+  console.log('******', date);
+
   return (
     <>
       <NSDropdown
@@ -47,6 +81,7 @@ function CustomDatePicker({
           onChange([todayEnd, todayEnd]);
         }}
         isMultiple={false}
+        defaultValue="thisMonth"
       />
       <div className="absolute">
         {date === "customRange" && (
@@ -56,6 +91,10 @@ function CustomDatePicker({
               let to_date = e?.[1];
               setFromDate(moment(from_date).format("MMM DD, YYYY"));
               setToDate(moment(to_date).format("MMM DD, YYYY"));
+              setFromTo({
+                fromDate: moment(from_date).format("MMM DD, YYYY"),
+                toDate: moment(to_date).format("MMM DD, YYYY"),
+              });
               setCustomOpen(false);
               setDate(
                 `${moment(from_date).format("MMM DD, YYYY")} - ${moment(

@@ -1,12 +1,14 @@
 import { Spin } from "antd";
 import React from "react";
 
-function NSLoaderWithMsg() {
+function NSLoaderWithMsg({ style, withMessage }) {
   return (
     <>
-      <div className="text-center">
+      <div className="text-center" style={style}>
         <Spin size="large" />
-        <p className="font-MontMedium mt-2">Please wait fetching data!</p>
+        {withMessage && (
+          <p className="font-MontMedium mt-2">Please wait fetching data!</p>
+        )}
       </div>
     </>
   );

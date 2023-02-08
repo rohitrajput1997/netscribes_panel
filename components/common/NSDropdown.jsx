@@ -13,6 +13,7 @@ function NSDropdown({
   dropdownRender,
   optionsWithCheckbox,
   isMultiple,
+  defaultValue,
 }) {
   return (
     <div>
@@ -32,6 +33,7 @@ function NSDropdown({
         className={className}
         style={style}
         tagRender={(props) => props?.label?.props?.children?.[1]}
+        defaultValue={defaultValue}
       >
         {options?.map((item, index) => {
           return (

@@ -42,7 +42,8 @@ function HomeHighlights({ homeDetails }) {
             <SuggestedHighlitesTiles
               image="/assets/Group 684.svg"
               title="Activeness"
-              content={`Samsung is a latest, ${assortment?.[0].Brand} has best assorment and Brand ${most_expensive_SKU?.[0]?.Brand} has priciest product`}
+              // content={`Samsung is a latest, ${assortment?.[0].Brand} has best assorment and Brand ${most_expensive_SKU?.[0]?.Brand} has priciest product`}
+              content={`Samsung is latest, LG has best assortment and Whirlpool has priciest product`}
               bg="bg-green-200"
               borderColor="border-green-200"
               textColor='text-green-800'

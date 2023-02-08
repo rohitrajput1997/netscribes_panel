@@ -7,12 +7,14 @@ export const fetchSalesAndPricingIntelDetails = async ({
   setOnGoingContractDetails,
   period,
   setOngoingContractsLoader,
+  fromDate,
+  toDate,
 }) => {
   try {
     setOngoingContractsLoader(true);
 
     await apis
-      .fetchOngoingContracts({ period })
+      .fetchOngoingContracts({ period, from: fromDate, to: toDate })
       .then(({ data }) => {
         if (data?.status_code === 200) {
           NSToaster.success(data?.status_message);

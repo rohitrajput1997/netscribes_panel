@@ -2,8 +2,9 @@ import Image from "next/image";
 import React from "react";
 import NSCard from "../../common/NSCard";
 import { BiRupee } from "react-icons/bi";
+import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 
-function totalRevenueUnitVolume({ totalRevenue, totalUnits }) {
+function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
   const valOne = "+7%";
   const valTwo = "-7%";
 
@@ -21,13 +22,25 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits }) {
             />
             <p>Total Revenue</p>
           </div>
-          <h1 className="text-[1.3rem] flex items-center">
-            <BiRupee size={25} className="mt-[2px]" />
-            {totalRevenue?.Sales}
-          </h1>
-          <p className={`${valOne.includes('-') ? 'bg-red-500 text-white' : 'bg-green-500 text-white'} w-[fit-content] px-2 rounded-full mt-1`}>
-            {valOne}
-          </p>
+          {loader ? (
+            <NSLoaderWithMsg withMessage={false} />
+          ) : (
+            <>
+              <h1 className="text-[1.3rem] flex items-center">
+                <BiRupee size={25} className="mt-[2px]" />
+                {totalRevenue?.Sales}
+              </h1>
+              <p
+                className={`${
+                  valOne.includes("-")
+                    ? "bg-red-500 text-white"
+                    : "bg-green-500 text-white"
+                } w-[fit-content] px-2 rounded-full mt-1`}
+              >
+                {valOne}
+              </p>
+            </>
+          )}
         </NSCard>
       </div>
       <div className="col-span-1">
@@ -42,15 +55,25 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits }) {
             />
             <p>Total Unit Volume</p>
           </div>
-          <h1 className="text-[1.3rem] flex items-center">
-            <BiRupee size={25} className="mt-[2px]" />
-            {totalUnits?.Units}
-          </h1>
-          <p
-            className={`${valTwo.includes('-') ? 'bg-red-500 text-white' : 'bg-green-500 text-white'} w-[fit-content] px-2 rounded-full mt-1`}
-          >
-            {valTwo}
-          </p>
+          {loader ? (
+            <NSLoaderWithMsg withMessage={false} />
+          ) : (
+            <>
+              <h1 className="text-[1.3rem] flex items-center">
+                <BiRupee size={25} className="mt-[2px]" />
+                {totalUnits?.Units}
+              </h1>
+              <p
+                className={`${
+                  valTwo.includes("-")
+                    ? "bg-red-500 text-white"
+                    : "bg-green-500 text-white"
+                } w-[fit-content] px-2 rounded-full mt-1`}
+              >
+                {valTwo}
+              </p>
+            </>
+          )}
         </NSCard>
       </div>
     </div>

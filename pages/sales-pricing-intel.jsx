@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { fetchSalesAndPricingIntelDetails } from "../actions/SalesPricingIntel.action";
 import NSLayout from "../components/common/NSLayout";
@@ -12,20 +13,33 @@ function SalesPricingIntel() {
   const [onGoingContractDetails, setOnGoingContractDetails] = useState({});
   const [ongoingContractsLoader, setOngoingContractsLoader] = useState(false);
   const { total_data_first_sentance } = onGoingContractDetails || {};
+  const today = moment().format("YYYY-MM-DD");
+  const startOfMonth = moment().startOf("month").format("YYYY-MM-DD");
+  const [fromTo, setFromTo] = useState({
+    fromDate: startOfMonth,
+    toDate: today,
+  });
+  const [period, setPeriod] = useState("week");
 
-  useEffect(() => {
+  const handleFetchSalesAndPricingIntelDetails = (resetDate) => {
     fetchSalesAndPricingIntelDetails({
       setOnGoingContractDetails,
-      period: "week",
+      period: period,
       setOngoingContractsLoader,
+      fromDate: resetDate ? startOfMonth : fromTo.fromDate,
+      toDate: resetDate ? today : fromTo.toDate,
     });
-  }, []);
+  };
+
+  useEffect(() => {
+    handleFetchSalesAndPricingIntelDetails();
+  }, [period]);
 
   return (
     <NSLayout
       header_sentence={total_data_first_sentance}
-      loader={ongoingContractsLoader}
-      subHeaderTitle='Sales/Pricing Intel'
+      // loader={ongoingContractsLoader}
+      subHeaderTitle="Sales/Pricing Intel"
     >
       <div className="bg-[var(--bg-main)] w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
         {SalesPricingIntelTabs.map((val, index) => (
@@ -49,7 +63,14 @@ function SalesPricingIntel() {
       </div>
 
       {selectedTab === 1 && (
-        <OnGoingContracts details={onGoingContractDetails} />
+        <OnGoingContracts
+          details={onGoingContractDetails}
+          setFromTo={setFromTo}
+          handleApply={handleFetchSalesAndPricingIntelDetails}
+          fromTo={fromTo}
+          setPeriod={setPeriod}
+          loader={ongoingContractsLoader}
+        />
       )}
       {selectedTab === 2 && <Reports />}
       {selectedTab === 4 && <Performance />}

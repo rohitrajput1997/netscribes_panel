@@ -4,7 +4,7 @@ import CustomDatePicker from "../../common/CustomDatePicker";
 import NSButton from "../../common/NSButton";
 import NSCard from "../../common/NSCard";
 
-function MarketOverview() {
+function MarketOverview({ setFromTo, handleApply }) {
   const [date_picker, setDatePicker] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
@@ -14,12 +14,9 @@ function MarketOverview() {
       ? `${moment(fromDate).format("MMM DD, YYYY")} - ${moment(toDate).format(
           "MMM DD, YYYY"
         )}`
-      : ""
+      : "thisMonth"
   );
   const options = [
-    { label: "Today", value: "today" },
-    { label: "Yesterday", value: "yesterday" },
-    { label: "Last 7 Days", value: "lastWeek" },
     { label: "This Month", value: "thisMonth" },
     { label: "Last Month", value: "lastMonth" },
     { label: "Custom Range", value: "customRange" },
@@ -41,9 +38,23 @@ function MarketOverview() {
             customOpen={customOpen}
             setFromDate={setFromDate}
             setToDate={setToDate}
+            setFromTo={setFromTo}
           />
-          <NSButton title="Cancel" bgBordered className="ml-2" />
-          <NSButton title="Apply" bgPrimary className="ml-2" />
+          <NSButton
+            title="Cancel"
+            bgBordered
+            className="ml-2"
+            onClick={() => {
+              setDate("thisMonth");
+              handleApply(true);
+            }}
+          />
+          <NSButton
+            title="Apply"
+            bgPrimary
+            className="ml-2"
+            onClick={() => handleApply()}
+          />
         </div>
       </div>
     </NSCard>
