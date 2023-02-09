@@ -131,7 +131,7 @@ const OnGoingContracts = ({
                         return selectedFilterKey === "week_graph"
                           ? `W${data?.Week} ${data?.Year}`
                           : selectedFilterKey === "month_graph"
-                          ? `${data?.Month_Name} ${data?.Year}`
+                          ? `${data?.Month} ${data?.Year}`
                           : "";
                       }}
                     />
