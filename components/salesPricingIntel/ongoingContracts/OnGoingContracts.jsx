@@ -134,8 +134,9 @@ const OnGoingContracts = ({
                           ? `${data?.Month} ${data?.Year}`
                           : "";
                       }}
+                      tick={{fontSize: '10px'}}
                     />
-                    <YAxis />
+                    <YAxis tick={{fontSize: '10px'}} />
                     <Tooltip />
                     <Area
                       type="monotone"

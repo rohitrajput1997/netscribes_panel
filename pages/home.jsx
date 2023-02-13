@@ -1,5 +1,6 @@
 import React from "react";
 import NSLayout from "../components/common/NSLayout";
+import NSLoaderWithMsg from "../components/common/NSLoaderWithMsg";
 import HomeBrandUpdates from "../components/home/HomeBrandUpdates";
 import HomeHighlights from "../components/home/HomeHighlights";
 import HomeRecentVisits from "../components/home/HomeRecentVisits";
@@ -15,16 +16,20 @@ const Home = ({ homeDetails, loader }) => {
   );
 
   return (
-    <NSLayout loader={loader}>
+    <NSLayout loader={false}>
       <div className="grid grid-cols-3 gap-3">
         <div className="col-span-2">
           <Heading title="Key Highlights" subTitle="Explore" />
 
-          <HomeHighlights homeDetails={homeDetails} />
+          <HomeHighlights homeDetails={homeDetails} loader={loader} />
 
           <div className="my-3">
             <Heading title="Suggested Brand Updates" subTitle="Explore" />
-            <HomeBrandUpdates homeDetails={homeDetails} />
+            {loader ? (
+              <NSLoaderWithMsg withMessage={false} />
+            ) : (
+              <HomeBrandUpdates homeDetails={homeDetails} loader={loader} />
+            )}
           </div>
         </div>
 
