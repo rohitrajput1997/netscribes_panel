@@ -3,10 +3,13 @@ import React from "react";
 import NSCard from "../../common/NSCard";
 import { BiRupee } from "react-icons/bi";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
+import commaSeperator from '../../../utils/commaSeperator';
 
 function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
   const valOne = "+7%";
   const valTwo = "-7%";
+  const sales = totalRevenue?.Sales;
+  const units = totalUnits?.Units;
 
   return (
     <div className="grid grid-cols-2 gap-2 mt-2">
@@ -27,8 +30,9 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
           ) : (
             <>
               <h1 className="text-[1.3rem] flex items-center">
-                <BiRupee size={25} className="mt-[2px]" />
-                {totalRevenue?.Sales}
+                {/* <BiRupee size={25} className="mt-[2px]" /> */}
+                <p className="font-MontRegular mr-1">INR</p>
+                {commaSeperator(sales)}
               </h1>
               <p
                 className={`${
@@ -60,8 +64,9 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
           ) : (
             <>
               <h1 className="text-[1.3rem] flex items-center">
-                <BiRupee size={25} className="mt-[2px]" />
-                {totalUnits?.Units}
+                {/* <BiRupee size={25} className="mt-[2px]" /> */}
+                <p className="font-MontRegular mr-1">INR</p>
+                {commaSeperator(units)}
               </h1>
               <p
                 className={`${

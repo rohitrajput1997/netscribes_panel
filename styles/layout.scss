@@ -25,3 +25,12 @@
 .ant-layout .ant-layout-sider {
   box-shadow: 19px 6px 15px -11px rgba(0, 0, 0, 0.1);
 }
+
+// menu Icon
+:where(.css-dev-only-do-not-override-sk7ap8).ant-layout
+  .ant-layout-sider-zero-width-trigger {
+  top: 10px;
+  z-index: 10000;
+  background-color: var(--secondary);
+  // left: 25px;
+}

@@ -1,13 +1,25 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import NSCard from "../common/NSCard";
 import RecentVisits from "../json/HomeRecentVisits";
 
 function HomeRecentVisits() {
+  const [collapsible, setCollapsible] = useState(true);
+
   return (
-    <div className="col-span-1 max-h-[40rem]">
-      <NSCard style={{ padding: "1.3rem" }} className='h-full'>
-        <div className="flex justify-between items-center">
+    <div className="col-span-1 max-h-[39rem]">
+      <NSCard
+        style={{ padding: "1.3rem" }}
+        className={
+          `${collapsible
+            ? "h-full duration-150 ease-in-out"
+            : "h-16 overflow-y-hidden duration-700 ease-in-out"} cursor-pointer`
+        }
+      >
+        <div
+          className="flex justify-between items-center"
+          onClick={() => setCollapsible(!collapsible)}
+        >
           <h1 className="text-[1.3rem] font-MontMedium">Recent Visits</h1>
           <h4 className="text-[1.1rem] text-[#005f86] font-MontMedium">Seek</h4>
         </div>

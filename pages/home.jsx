@@ -17,8 +17,8 @@ const Home = ({ homeDetails, loader }) => {
 
   return (
     <NSLayout loader={false}>
-      <div className="grid grid-cols-3 gap-3">
-        <div className="col-span-2">
+      <div className="grid grid-cols-4 gap-3">
+        <div className="col-span-3">
           <Heading title="Key Highlights" subTitle="Explore" />
 
           <HomeHighlights homeDetails={homeDetails} loader={loader} />

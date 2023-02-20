@@ -18,6 +18,7 @@ const NSLayout = ({ children, header_sentence, loader = false, subHeaderTitle })
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {}}
+        collapsible
         onCollapse={(collapsed, type) => {}}
         width={230}
       >

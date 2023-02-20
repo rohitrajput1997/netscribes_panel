@@ -44,7 +44,8 @@ function SalesAndAvgUnitValue({
           </div>
           {showCount && (
             <h1 className="text-[1.6rem] flex items-center">
-              <BiRupee size={25} className="mt-[2px]" />
+              {/* <BiRupee size={25} className="mt-[2px]" /> */}
+              <p className="font-MontRegular mr-1">INR</p>
               <h1>{total}</h1>
             </h1>
           )}

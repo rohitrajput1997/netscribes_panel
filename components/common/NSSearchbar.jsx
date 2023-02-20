@@ -8,19 +8,22 @@ function NSSearchbar({
   className,
   style,
   SearchiconPlaceOnTop,
+  showSearchIcon = true,
 }) {
   return (
     <>
       <div className="relative">
-        <Image
-          src="./assets/search.svg"
-          alt=""
-          width={15}
-          height={15}
-          className={`absolute ${
-            SearchiconPlaceOnTop ? SearchiconPlaceOnTop : "top-3"
-          } left-2`}
-        />
+        {showSearchIcon && (
+          <Image
+            src="./assets/search.svg"
+            alt=""
+            width={15}
+            height={15}
+            className={`absolute ${
+              SearchiconPlaceOnTop ? SearchiconPlaceOnTop : "top-3"
+            } left-2`}
+          />
+        )}
         <input
           type="text"
           placeholder={placeholder}

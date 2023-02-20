@@ -25,7 +25,7 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
           }}
         >
           <div className="flex items-center w-[100%] justify-between px-3 h-[100%]">
-            <div className="w-[50%]">
+            <div className="w-[50%] ml-[26px]">
               <NSSearchbar
                 placeholder="Search for Brand, ASIN, SKU and Category"
                 style={{
