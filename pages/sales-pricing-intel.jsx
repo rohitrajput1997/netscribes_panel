@@ -35,6 +35,26 @@ function SalesPricingIntel() {
     handleFetchSalesAndPricingIntelDetails();
   }, [period]);
 
+  const handleComponent = () => {
+    switch (selectedTab) {
+      case 1:
+        return (
+          <OnGoingContracts
+            details={onGoingContractDetails}
+            setFromTo={setFromTo}
+            handleApply={handleFetchSalesAndPricingIntelDetails}
+            fromTo={fromTo}
+            setPeriod={setPeriod}
+            loader={ongoingContractsLoader}
+          />
+        );
+      case 2:
+        return <Reports />;
+      case 3:
+        return <Performance />;
+    }
+  };
+
   return (
     <NSLayout
       header_sentence={total_data_first_sentance}
@@ -62,18 +82,7 @@ function SalesPricingIntel() {
         ))}
       </div>
 
-      {selectedTab === 1 && (
-        <OnGoingContracts
-          details={onGoingContractDetails}
-          setFromTo={setFromTo}
-          handleApply={handleFetchSalesAndPricingIntelDetails}
-          fromTo={fromTo}
-          setPeriod={setPeriod}
-          loader={ongoingContractsLoader}
-        />
-      )}
-      {selectedTab === 2 && <Reports />}
-      {selectedTab === 4 && <Performance />}
+      {handleComponent()}
     </NSLayout>
   );
 }
