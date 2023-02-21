@@ -5,6 +5,7 @@ import NSLayout from "../components/common/NSLayout";
 import SalesPricingIntelTabs from "../components/json/SalesPricingIntelTabs";
 import OnGoingContracts from "../components/salesPricingIntel/ongoingContracts/OnGoingContracts";
 import Performance from "../components/salesPricingIntel/performance/Performance";
+import ProductListing from "../components/salesPricingIntel/productListing/ProductListing";
 import Reports from "../components/salesPricingIntel/reports/Reports";
 
 function SalesPricingIntel() {
@@ -51,6 +52,8 @@ function SalesPricingIntel() {
       case 2:
         return <Reports />;
       case 3:
+        return <ProductListing />;
+      case 4:
         return <Performance />;
     }
   };

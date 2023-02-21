@@ -5,6 +5,7 @@ import React from "react";
 import NSCard from "../../common/NSCard";
 import { BiRupee } from "react-icons/bi";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
+import commaSeperator from "../../../utils/commaSeperator";
 
 function SalesAndAvgUnitValue({
   image,
@@ -46,7 +47,7 @@ function SalesAndAvgUnitValue({
             <h1 className="text-[1.6rem] flex items-center">
               {/* <BiRupee size={25} className="mt-[2px]" /> */}
               <p className="font-MontRegular mr-1">INR</p>
-              <h1>{total}</h1>
+              <h1>{commaSeperator(total)}</h1>
             </h1>
           )}
 
