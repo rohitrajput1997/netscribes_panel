@@ -69,7 +69,7 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
           </div>
         </Header>
 
-        <div className="w-full bg-[var(--secondary)] py-1 px-[20px] text-white flex items-center justify-between">
+        {/* <div className="w-full bg-[var(--secondary)] py-1 px-[20px] text-white flex items-center justify-between">
           <h4 className="uppercase text-[0.9rem] font-bold">
             {subHeaderTitle || "Sales/Pricing Intel"}
           </h4>
@@ -78,7 +78,7 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
               1 || 1
             } companies and ${marketplace || 1} marcketplace`}
           </h6>
-        </div>
+        </div> */}
       </div>
     </>
   );

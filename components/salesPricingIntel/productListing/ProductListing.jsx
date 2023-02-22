@@ -34,6 +34,20 @@ function ProductListing() {
       ct: "black, men &#039;s",
       np: "$1696.94",
     },
+    {
+      productName: "Baume &amp; Mercler classima Mens watchMOAB462",
+      sku: "Baume et merclerMOAB462",
+      cp: "$1696.95",
+      cp1: "$0.90",
+      cost: "$0.95",
+      minPrice: "$0.95",
+      price: "$1749.00",
+      stock: 1,
+      oc: "$0.00",
+      ms: "$0.00",
+      ct: "black, men &#039;s",
+      np: "$1696.94",
+    },
   ];
 
   const columns = [
