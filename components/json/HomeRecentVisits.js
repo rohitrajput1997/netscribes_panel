@@ -9,7 +9,7 @@ const RecentVisits = [
     {label: 'Optimization Settings'},
     {label: 'Reports'},
     {label: 'Recreators'},
-    {label: 'Compititor Capture'},
+    {label: 'Competitor Capture'},
     {label: 'Marketplace track'},
 ];
 
