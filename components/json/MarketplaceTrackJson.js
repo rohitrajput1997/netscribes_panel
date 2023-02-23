@@ -9,7 +9,8 @@ const MarketplaceTrackJson = [
   { label: "Toshiba", value: "Toshiba" },
   { label: "Bosch", value: "Bosch" },
   { label: "Rockwell", value: "Rockwell" },
-  { label: "Chroma", value: "Chroma" },
+  { label: "Croma", value: "CROMA" },
+  { label: "Voltas", value: "Voltas" },
 ];
 
 export default MarketplaceTrackJson;

@@ -14,6 +14,8 @@ function NSDropdown({
   optionsWithCheckbox,
   isMultiple,
   defaultValue,
+  isError = false,
+  errorMessage,
 }) {
   return (
     <div>
@@ -50,6 +52,8 @@ function NSDropdown({
           );
         })}
       </Select>
+
+      {isError && <p className="text-red-500 font-montMedium mt-[-10px] mb-6">{errorMessage || "This field is required"}</p>}
     </div>
   );
 }
