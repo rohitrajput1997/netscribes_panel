@@ -18,13 +18,13 @@ function Login({ token }) {
   const [validate, setValidate] = useState(false);
   const [loader, setLoader] = useState(false);
 
-  React.useEffect(() => {
-    if (token) {
-      router.push("/login");
-    } else {
-      router.push("/");
-    }
-  }, [token]);
+  // React.useEffect(() => {
+  //   if (token) {
+  //     router.push("/login");
+  //   } else {
+  //     router.push("/");
+  //   }
+  // }, [token]);
 
   // const responseGoogle = (response, removetoken) => {
   //   NSCookies.clearCookies();
@@ -130,6 +130,7 @@ function Login({ token }) {
                 onChange={(e) => setPassword(e.target.value)}
                 isError={validate && (!password || password === "")}
                 errorMessage="Password is required"
+                router={router}
               />
               <div>
                 <NSButton

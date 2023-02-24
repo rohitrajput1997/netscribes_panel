@@ -12,6 +12,7 @@ function NSInput(
     isForgotPassword,
     placeholder,
     style,
+    router,
   },
   ...rest
 ) {
@@ -34,7 +35,12 @@ function NSInput(
           </p>
         )}
         {isForgotPassword && (
-          <p className="text-blue-600 font-MontMedium text-[.8rem]">Forgot Your Password?</p>
+          <p
+            className="text-blue-600 font-MontMedium text-[.8rem] cursor-pointer"
+            onClick={() => router.push("/forgot-password")}
+          >
+            Forgot Your Password?
+          </p>
         )}
       </div>
     </>
