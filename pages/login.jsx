@@ -1,28 +1,30 @@
 /** @format */
 
-import Image from "next/image"
-import { useRouter } from "next/router"
-import React, { useState } from "react"
-import { GoogleLogin } from "react-google-login"
-import NSButton from "../components/common/NSButton"
-import NSCookies from "../components/common/NSCookies"
-import NSInput from "../components/common/NSInput"
-import NSToaster from "../components/common/NSToaster"
-import OrHr from "../components/common/OrHr"
-import apis from "./api"
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { GoogleLogin } from "react-google-login";
+import NSButton from "../components/common/NSButton";
+import NSCookies from "../components/common/NSCookies";
+import NSInput from "../components/common/NSInput";
+import NSToaster from "../components/common/NSToaster";
+import OrHr from "../components/common/OrHr";
+import apis from "./api";
 
 function Login({ token }) {
-  const router = useRouter()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [validate, setValidate] = useState(false)
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [validate, setValidate] = useState(false);
+  const [loader, setLoader] = useState(false);
+
   React.useEffect(() => {
     if (token) {
-      router.push("/login")
+      router.push("/login");
     } else {
-      router.push("/")
+      router.push("/");
     }
-  }, [token])
+  }, [token]);
 
   // const responseGoogle = (response, removetoken) => {
   //   NSCookies.clearCookies();
@@ -65,34 +67,35 @@ function Login({ token }) {
   // };
 
   const handleLogin = () => {
-    setValidate(true)
+    setValidate(true);
     if (!email || email === "" || !password || password === "") {
-      return
+      return;
     }
-    setValidate(false)
+    setValidate(false);
+    setLoader(true);
 
     apis
       .login({ email: email, password: password, removetoken: 1 })
       .then(({ data }) => {
         if (data.access_token) {
-          NSToaster.success("Login successfully!")
+          NSToaster.success("Login successfully!");
           NSCookies.setUser(data.user);
           NSCookies.setToken(data.access_token);
-          router.push("/")
+          router.push("/");
         } else {
-          NSToaster.error(data.message)
+          NSToaster.error(data.message);
           if (data.message === "Already logged in") {
             // setOpen(true);
           }
         }
       })
       .catch(() => {
-        NSToaster.error("Something went to wrong, Please try after sometime.")
+        NSToaster.error("Something went to wrong, Please try after sometime.");
       })
       .finally(() => {
-        // setLoader(false);
-      })
-  }
+        setLoader(false);
+      });
+  };
 
   return (
     <>
@@ -134,6 +137,7 @@ function Login({ token }) {
                   title="Login"
                   bgPrimary
                   onClick={handleLogin}
+                  loader={loader}
                 />
                 <div className="py-3 flex justify-center text-[.9rem]">
                   <span>
@@ -176,8 +180,7 @@ function Login({ token }) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Login
-
+export default Login;

@@ -1,4 +1,5 @@
 import React from "react";
+import NSLoaderWithMsg from "./NSLoaderWithMsg";
 
 function NSButton({
   title,
@@ -9,6 +10,7 @@ function NSButton({
   bgBordered,
   style,
   onClick,
+  loader,
 }) {
   const bgColors = bgPrimary
     ? "bg-yellow-500 text-white"
@@ -18,16 +20,20 @@ function NSButton({
 
   return (
     <div>
-      <button
-        className={`${className} ${bgColors} py-3 text-center ${
-          icon ? "flex justify-center items-center" : ""
-        } rounded-full min-w-[100px]`}
-        style={style}
-        onClick={onClick}
-      >
-        {icon && <div className="mr-3">{icon}</div>}
-        {title}
-      </button>
+      {loader ? (
+        <NSLoaderWithMsg style={{margin: '1rem 0'}} />
+      ) : (
+        <button
+          className={`${className} ${bgColors} py-3 text-center ${
+            icon ? "flex justify-center items-center" : ""
+          } rounded-full min-w-[100px]`}
+          style={style}
+          onClick={onClick}
+        >
+          {icon && <div className="mr-3">{icon}</div>}
+          {title}
+        </button>
+      )}
     </div>
   );
 }
