@@ -30,7 +30,7 @@ export const fetchMarketPlaceTracks = async ({
   }
 };
 
-export const fetchMarketPlaceTracksBrands = async ({ setBrandList }) => {
+export const fetchMarketPlaceTracksBrands = async ({ setBrandList, setselectedBrand1, setselectedBrand2 }) => {
   try {
     await apis
       .fetchMarketPlaceTrackBrands()
@@ -42,6 +42,9 @@ export const fetchMarketPlaceTracksBrands = async ({ setBrandList }) => {
           data?.data?.suggested_brands?.map((b) => {
             brands.push({ label: b?.Brand, value: b?.Brand });
           });
+
+          setselectedBrand1 && setselectedBrand1(brands[0]?.value);
+          setselectedBrand2 && setselectedBrand2(brands[1]?.value);
 
           setBrandList && setBrandList(brands);
         } else {

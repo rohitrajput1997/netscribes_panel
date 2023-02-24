@@ -24,9 +24,9 @@ export default function App({ Component, pageProps }) {
   const [isHydrated, setIsHydrated] = useState(false);
   let access = false;
 
-  if (allowRoutes.includes(pathName) === true) {
-    access = true;
-  }
+  // if (allowRoutes.includes(pathName) === true) {
+  //   access = true;
+  // }
 
   useEffect(() => {
     setIsHydrated(true);

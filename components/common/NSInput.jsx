@@ -18,7 +18,7 @@ function NSInput(
 ) {
   return (
     <>
-      {title && <p className="py-3 text-[.9rem]">{title}</p>}
+      {title && <p className="py-3 text-[.9rem] font-MontRegular">{title}</p>}
       <input
         placeholder={placeholder}
         type={type}

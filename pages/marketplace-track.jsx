@@ -4,6 +4,7 @@ import NSDropdown from "../components/common/NSDropdown";
 import NSLayout from "../components/common/NSLayout";
 import NSSearchbar from "../components/common/NSSearchbar";
 import SalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/SalesAndAvgUnitValue";
+import SingleSalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/SingleSalesAndAvgUnitValue";
 import marketplaceTrackJson from "../components/json/MarketplaceTrackJson";
 import { marketplaceTrack } from "../components/json/CustomizedTableHeaders";
 import { useEffect } from "react";
@@ -25,8 +26,10 @@ function MarketplaceTrack() {
   const { tileOneTwo, tileThreeFour, tileFiveSix, tileSevenEight } =
     marketplaceTrack || {};
 
+    console.log(brandList);
+
   useEffect(() => {
-    fetchMarketPlaceTracksBrands({ setBrandList });
+    fetchMarketPlaceTracksBrands({ setBrandList, setselectedBrand1, setselectedBrand2 });
   }, []);
 
   useEffect(() => {
@@ -103,16 +106,22 @@ function MarketplaceTrack() {
               <NSLoaderWithMsg />
             ) : (
               <>
-                <SalesAndAvgUnitValue
+                <SingleSalesAndAvgUnitValue
                   image="./assets/interactive.svg"
                   title="Unique SKU Count"
                   showupDownArrow={false}
                   headers={tileOneTwo}
                   header_keys={["name", "sku", "sku_percentage"]}
-                  tableData={[
-                    tilesData?.[selectedBrand1]?.stock,
-                    tilesData?.[selectedBrand1]?.discounted,
-                  ]}
+                  tableData={tilesData?.[selectedBrand1]?.stock}
+                  total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
+                />
+                <SingleSalesAndAvgUnitValue
+                  image="./assets/interactive.svg"
+                  title="Unique SKU Count"
+                  showupDownArrow={false}
+                  headers={tileOneTwo}
+                  header_keys={["name", "sku", "sku_percentage"]}
+                  tableData={tilesData?.[selectedBrand1]?.discounted}
                   total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
                 />
                 <SalesAndAvgUnitValue
@@ -167,16 +176,22 @@ function MarketplaceTrack() {
               <NSLoaderWithMsg />
             ) : (
               <>
-                <SalesAndAvgUnitValue
+                <SingleSalesAndAvgUnitValue
                   image="./assets/interactive.svg"
                   title="Unique SKU Count"
                   showupDownArrow={false}
                   headers={tileOneTwo}
                   header_keys={["name", "sku", "sku_percentage"]}
-                  tableData={[
-                    tilesData?.[selectedBrand2]?.stock,
-                    tilesData?.[selectedBrand2]?.discounted,
-                  ]}
+                  tableData={tilesData?.[selectedBrand2]?.stock}
+                  total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
+                />
+                <SingleSalesAndAvgUnitValue
+                  image="./assets/interactive.svg"
+                  title="Unique SKU Count"
+                  showupDownArrow={false}
+                  headers={tileOneTwo}
+                  header_keys={["name", "sku", "sku_percentage"]}
+                  tableData={tilesData?.[selectedBrand2]?.discounted}
                   total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
                 />
                 <SalesAndAvgUnitValue
