@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import NSButton from "../components/common/NSButton";
 import NSInput from "../components/common/NSInput";
 import apis from "./api";
+import passwordValidation from "../utils/passwordValidation";
+import NSToaster from "../components/common/NSToaster";
 
 function ResetPass() {
   const router = useRouter();
@@ -79,11 +81,12 @@ function ResetPass() {
           <div className="form_input mt-6">
             <div className="flex flex-col">
               <NSInput
+                type="password"
                 title="Enter Password"
                 placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                validation={isValidate && !passwordValidation(password)}
+                isError={isValidate && !passwordValidation(password)}
                 errorMessage={
                   <ul>
                     <li>Password must be at least 8 characters long.</li>
@@ -97,10 +100,11 @@ function ResetPass() {
                 style={inputStyle}
               />
               <NSInput
+                type="password"
                 title="Re-enter Password"
                 placeholder="Re-enter Password"
                 value={reEnterPassword}
-                validation={isValidate && !passwordValidation(reEnterPassword)}
+                isError={isValidate && !passwordValidation(reEnterPassword)}
                 errorMessage={
                   <ul>
                     <li>Password must be at least 8 characters long.</li>
@@ -119,7 +123,10 @@ function ResetPass() {
               />
               {(!isValidate && reEnterPassword === "") ||
               (!isValidate && !passwordValidation(reEnterPassword)) ? (
-                <ul className="common_error font-MontMedium" style={{ color: "black", fontSize: '.8rem' }}>
+                <ul
+                  className="common_error font-MontMedium"
+                  style={{ color: "black", fontSize: ".8rem" }}
+                >
                   <li>Password must be at least 8 characters long.</li>
                   <li>
                     Contain an uppercase letter, a lowercase letter and a

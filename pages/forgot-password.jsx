@@ -5,10 +5,10 @@ import React, { useState } from "react";
 import NSButton from "../components/common/NSButton";
 import NSInput from "../components/common/NSInput";
 import NSToaster from "../components/common/NSToaster";
-import { validateEmail } from "../utils/validateEmail";
+import validateEmail from "../utils/validateEmail";
 import apis from "./api";
 
-function forgotPassword() {
+function ForgotPassword() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -60,17 +60,23 @@ function forgotPassword() {
               placeholder="Enter Email Id"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              // validation={(isValidate && !validateEmail(credential[item.key])))}
-              errorMessage={"Please valid email address"}
-              validation={isValidate}
-              style={{ backgroundColor: "var(--bg-main)", height: '40px', paddingLeft: '1rem', borderRadius: '10px', outline: 'none' }}
+              isError={(isValidate && !validateEmail(email))}
+              errorMessage={"Please enter valid email address"}
+              style={{
+                backgroundColor: "var(--bg-main)",
+                height: "40px",
+                paddingLeft: "1rem",
+                borderRadius: "10px",
+                outline: "none",
+              }}
             />
           </div>
           <NSButton
             className="mt-6 w-[100%] h-[40px] pt-[6px] font-MontMedium"
             title={"Send"}
             isPrimary
-            onClick={() => router.push('/resetpass')}
+            // onClick={() => router.push('/resetpass')}
+            onClick={() => handleResetPassword()}
             loading={loading}
           />
         </div>
@@ -79,4 +85,4 @@ function forgotPassword() {
   );
 }
 
-export default forgotPassword;
+export default ForgotPassword;
