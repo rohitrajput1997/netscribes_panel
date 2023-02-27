@@ -1,20 +1,25 @@
-import React from "react";
-import Login from "../../pages/login";
-import NSCookies from "../../components/common/NSCookies";
+/** @format */
 
-function Auth({ children, access }) {
-  let token = NSCookies.getToken();
-  const allowedRoutes = ["/forgot-password", "/resetpass"];
+import { useEffect } from "react"
+import NSCookies from "../../components/common/NSCookies"
+import Login from "../../pages/login"
 
-  if (access) {
-    return children;
-  } else if (token) {
-    return children;
-  } else if (!token && allowedRoutes.includes(window.location.pathname)) {
-    return children;
+function Auth({ children, router }) {
+  let token = NSCookies.getToken()
+  const allowRoutes = ["/forgot-password", "/resetpass"]
+  const pathName = router.pathname
+  useEffect(() => {
+    if (!token && !allowRoutes.includes(pathName)) {
+      router.push("/login")
+    }
+  }, [token])
+  if (token) {
+    return children
+  } else if (!token && allowRoutes.includes(pathName)) {
+    return children
   } else {
-    return <Login token={true} />;
+    return <Login />
   }
 }
 
-export default Auth;
+export default Auth

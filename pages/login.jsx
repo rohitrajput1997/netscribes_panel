@@ -1,30 +1,35 @@
 /** @format */
 
-import Image from "next/image";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { GoogleLogin } from "react-google-login";
-import NSButton from "../components/common/NSButton";
-import NSCookies from "../components/common/NSCookies";
-import NSInput from "../components/common/NSInput";
-import NSToaster from "../components/common/NSToaster";
-import OrHr from "../components/common/OrHr";
-import apis from "./api";
+import Image from "next/image"
+import { useRouter } from "next/router"
+import React, { useState } from "react"
+import { GoogleLogin } from "react-google-login"
+import NSButton from "../components/common/NSButton"
+import NSCookies from "../components/common/NSCookies"
+import NSInput from "../components/common/NSInput"
+import NSToaster from "../components/common/NSToaster"
+import OrHr from "../components/common/OrHr"
+import apis from "./api"
 
-function Login({ token }) {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [validate, setValidate] = useState(false);
-  const [loader, setLoader] = useState(false);
+function Login({ token, public_route = [] }) {
+  const router = useRouter()
+  const pathName = router.pathname
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [validate, setValidate] = useState(false)
+  const [loader, setLoader] = useState(false)
 
   React.useEffect(() => {
-    if (token) {
-      router.push("/login");
-    } else {
-      router.push("/");
-    }
-  }, [token]);
+    // if (public_route.includes(pathName) === true) {
+    //   //
+    // } else {
+    //   if (token) {
+    //     router.push("/login")
+    //   } else {
+    //     router.push("/")
+    //   }
+    // }
+  }, [token])
 
   // const responseGoogle = (response, removetoken) => {
   //   NSCookies.clearCookies();
@@ -67,35 +72,35 @@ function Login({ token }) {
   // };
 
   const handleLogin = () => {
-    setValidate(true);
+    setValidate(true)
     if (!email || email === "" || !password || password === "") {
-      return;
+      return
     }
-    setValidate(false);
-    setLoader(true);
+    setValidate(false)
+    setLoader(true)
 
     apis
       .login({ email: email, password: password, removetoken: 1 })
       .then(({ data }) => {
         if (data.access_token) {
-          NSToaster.success("Login successfully!");
-          NSCookies.setUser(data.user);
-          NSCookies.setToken(data.access_token);
-          router.push("/");
+          NSToaster.success("Login successfully!")
+          NSCookies.setUser(data.user)
+          NSCookies.setToken(data.access_token)
+          router.push("/")
         } else {
-          NSToaster.error(data.message);
+          NSToaster.error(data.message)
           if (data.message === "Already logged in") {
             // setOpen(true);
           }
         }
       })
       .catch(() => {
-        NSToaster.error("Something went to wrong, Please try after sometime.");
+        NSToaster.error("Something went to wrong, Please try after sometime.")
       })
       .finally(() => {
-        setLoader(false);
-      });
-  };
+        setLoader(false)
+      })
+  }
 
   return (
     <>
@@ -181,7 +186,8 @@ function Login({ token }) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Login;
+export default Login
+

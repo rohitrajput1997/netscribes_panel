@@ -1,50 +1,49 @@
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import NSButton from "../components/common/NSButton";
-import NSInput from "../components/common/NSInput";
-import NSToaster from "../components/common/NSToaster";
-import validateEmail from "../utils/validateEmail";
-import apis from "./api";
+/** @format */
+
+import Image from "next/image"
+import { useRouter } from "next/router"
+import React, { useState } from "react"
+import NSButton from "../components/common/NSButton"
+import NSInput from "../components/common/NSInput"
+import NSToaster from "../components/common/NSToaster"
+import validateEmail from "../utils/validateEmail"
+import apis from "./api"
 
 function ForgotPassword() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [isValidate, setIsValidate] = useState(false);
+  const router = useRouter()
+  const [email, setEmail] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [isValidate, setIsValidate] = useState(false)
 
   const handleResetPassword = () => {
-    setLoading(true);
-    setIsValidate(true);
+    setLoading(true)
+    setIsValidate(true)
 
     if (!email || !validateEmail(email)) {
-      setIsValidate(true);
-      setLoading(false);
+      setIsValidate(true)
+      setLoading(false)
     } else {
-      let formData = new FormData();
-      formData.append("email", email);
+      let formData = new FormData()
+      formData.append("email", email)
 
       apis
         .forgetPassword(formData)
         .then(({ data }) => {
           if (data) {
-            NSToaster.success(data?.status_message);
+            NSToaster.success(data?.status_message)
           } else {
-            NSToaster.error(data.message);
+            NSToaster.error(data.message)
           }
         })
         .catch(() => {
-          NSToaster.error(
-            "Something went to wrong, Please try after sometime."
-          );
+          NSToaster.error("Something went to wrong, Please try after sometime.")
         })
         .finally(() => {
-          setLoading(false);
-        });
-      setIsValidate(false);
+          setLoading(false)
+        })
+      setIsValidate(false)
     }
-  };
+  }
 
   return (
     <div className="login_inner_container relative">
@@ -60,7 +59,7 @@ function ForgotPassword() {
               placeholder="Enter Email Id"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              isError={(isValidate && !validateEmail(email))}
+              isError={isValidate && !validateEmail(email)}
               errorMessage={"Please enter valid email address"}
               style={{
                 backgroundColor: "var(--bg-main)",
@@ -82,7 +81,8 @@ function ForgotPassword() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ForgotPassword;
+export default ForgotPassword
+

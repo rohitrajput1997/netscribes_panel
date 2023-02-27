@@ -1,9 +1,11 @@
-import React from "react";
-import NSLayout from "../components/common/NSLayout";
-import NSLoaderWithMsg from "../components/common/NSLoaderWithMsg";
-import HomeBrandUpdates from "../components/home/HomeBrandUpdates";
-import HomeHighlights from "../components/home/HomeHighlights";
-import HomeRecentVisits from "../components/home/HomeRecentVisits";
+/** @format */
+
+import React from "react"
+import NSLayout from "../components/common/NSLayout"
+import NSLoaderWithMsg from "../components/common/NSLoaderWithMsg"
+import HomeBrandUpdates from "../components/home/HomeBrandUpdates"
+import HomeHighlights from "../components/home/HomeHighlights"
+import HomeRecentVisits from "../components/home/HomeRecentVisits"
 
 const Home = ({ homeDetails, loader }) => {
   const Heading = ({ title, subTitle }) => (
@@ -13,7 +15,7 @@ const Home = ({ homeDetails, loader }) => {
         {subTitle}
       </h3>
     </div>
-  );
+  )
 
   return (
     <NSLayout loader={false}>
@@ -36,7 +38,8 @@ const Home = ({ homeDetails, loader }) => {
         <HomeRecentVisits />
       </div>
     </NSLayout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
+
