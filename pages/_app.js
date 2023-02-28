@@ -34,15 +34,14 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={true}
+        theme="colored"
+      />
       {isHydrated ? (
         <Auth access={access}>
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={true}
-            theme="colored"
-          />
-
           <Component {...pageProps} />
         </Auth>
       ) : (

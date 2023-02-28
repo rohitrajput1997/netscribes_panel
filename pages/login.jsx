@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { GoogleLogin } from "react-google-login";
+import { handleLogin } from "../actions/Login.action";
 import NSButton from "../components/common/NSButton";
 import NSCookies from "../components/common/NSCookies";
 import NSInput from "../components/common/NSInput";
@@ -66,35 +67,14 @@ function Login({ token }) {
   //   }
   // };
 
-  const handleLogin = () => {
-    setValidate(true);
-    if (!email || email === "" || !password || password === "") {
-      return;
-    }
-    setValidate(false);
-    setLoader(true);
-
-    apis
-      .login({ email: email, password: password, removetoken: 1 })
-      .then(({ data }) => {
-        if (data.access_token) {
-          NSToaster.success("Login successfully!");
-          NSCookies.setUser(data.user);
-          NSCookies.setToken(data.access_token);
-          router.push("/");
-        } else {
-          NSToaster.error(data.message);
-          if (data.message === "Already logged in") {
-            // setOpen(true);
-          }
-        }
-      })
-      .catch(() => {
-        NSToaster.error("Something went to wrong, Please try after sometime.");
-      })
-      .finally(() => {
-        setLoader(false);
-      });
+  const handleLoginUser = () => {
+    handleLogin({
+      email: email,
+      password: password,
+      setValidate: setValidate,
+      setLoader: setLoader,
+      router: router,
+    });
   };
 
   return (
@@ -137,7 +117,7 @@ function Login({ token }) {
                   className="w-full uppercase rounded-full mt-8 font-semibold text-[.9rem]"
                   title="Login"
                   bgPrimary
-                  onClick={handleLogin}
+                  onClick={handleLoginUser}
                   loader={loader}
                 />
                 <div className="py-3 flex justify-center text-[.9rem]">
