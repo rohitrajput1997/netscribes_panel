@@ -103,6 +103,7 @@ function ProductListing() {
       title: "Competitor Pricing (Competing Products if selected)",
       dataIndex: "cp1",
       key: "cp1",
+      width: 200,
     },
     {
       title: "Cost",

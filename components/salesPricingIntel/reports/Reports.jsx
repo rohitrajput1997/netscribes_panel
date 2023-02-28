@@ -127,12 +127,12 @@ const Reports = () => {
             </div>
             <div className="flex">
               <div className="w-[50%] border-r-[1px] border-black">
-                <h1 className="text-2xl font-MontBold">540</h1>
-                <p className="text-gray-500 font-MontMedium">Revenue</p>
+                <h1 className="text-2xl font-MontBold">Revenue</h1>
+                <p className="text-gray-500 font-MontMedium">Model</p>
               </div>
               <div className="w-[50%] pl-4">
-                <h1 className="text-2xl font-MontBold">0</h1>
-                <p className="text-gray-500 font-MontMedium">Missing Data</p>
+                <h1 className="text-2xl font-MontBold">3</h1>
+                <p className="text-gray-500 font-MontMedium">Limits</p>
               </div>
             </div>
           </NSCard>

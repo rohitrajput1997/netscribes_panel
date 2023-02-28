@@ -8,7 +8,7 @@ function NSTable({ dataSource, columns, rowSelection }) {
         dataSource={dataSource}
         columns={columns}
         rowSelection={rowSelection || {}}
-        scroll={{ x: true }}
+        scroll={{ x: 'max-content' }}
       />
     </>
   );

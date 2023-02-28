@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import NSCard from "../components/common/NSCard";
 import NSLayout from "../components/common/NSLayout";
@@ -7,10 +8,10 @@ const BusinessTrends = () => {
     <NSLayout>
       <div>
         <div className="flex justify-between items-center">
-          <h1 className="text-[1.1rem] my-3">
+          <h1 className="text-[1.1rem] my-3 font-MontBold">
             Search page ranking as on Dec 25, 2022
           </h1>
-          <h6 className="text-blue-800">Refresh request</h6>
+          <h6 className="text-blue-800 flex items-center font-MontMedium">Refresh request <span className="ml-2"><Image src='./assets/refresh.svg' alt="refresh" width={15} height={15} /></span></h6>
         </div>
 
         <NSCard style={{ padding: "15px" }}>
