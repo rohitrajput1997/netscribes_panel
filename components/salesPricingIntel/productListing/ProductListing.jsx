@@ -130,7 +130,15 @@ function ProductListing() {
       dataIndex: "rpr",
       key: "rpr",
       render: () => {
-        return <NSDropdown options={[]} className="w-32" />;
+        return (
+          <NSDropdown
+            options={[
+              { label: "RepriceRule_1", value: "RepriceRule_1" },
+              { label: "MatchTo", value: "MatchTo" },
+            ]}
+            className="w-32"
+          />
+        );
       },
     },
     {
@@ -170,9 +178,15 @@ function ProductListing() {
       <NSCard className="mt-4">
         <div className="flex justify-between">
           <div className="flex">
-            <div className="bg-gray-200 py-2 px-6 cursor-pointer">Webstore Demo</div>
-            <div className="bg-gray-200 py-2 px-6 cursor-pointer">All Products (150)</div>
-            <div className="bg-gray-200 py-2 px-6 cursor-pointer">Price Reduction (55)</div>
+            <div className="bg-gray-200 py-2 px-6 cursor-pointer">
+              Webstore Demo
+            </div>
+            <div className="bg-gray-200 py-2 px-6 cursor-pointer">
+              All Products (150)
+            </div>
+            <div className="bg-gray-200 py-2 px-6 cursor-pointer">
+              Price Reduction (55)
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <NSSearchbar
