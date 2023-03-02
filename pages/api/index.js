@@ -9,6 +9,8 @@ const fetchMarketPlaceTrackData = (payload) =>
 const fetchMarketPlaceTrackBrands = () => api.post("/api/get_brands");
 const resetPassword = (payload) => api.post("/api/reset_pass", payload);
 const forgetPassword = (payload) => api.post("/api/forgot_password", payload);
+const fetchPerformanceReports = (payload) =>
+  api.post("/api/pricing_intel_performance", payload);
 
 const apis = {
   login,
@@ -18,6 +20,7 @@ const apis = {
   fetchMarketPlaceTrackBrands,
   resetPassword,
   forgetPassword,
+  fetchPerformanceReports,
 };
 
 export default apis;

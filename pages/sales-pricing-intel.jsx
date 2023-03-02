@@ -50,11 +50,11 @@ function SalesPricingIntel() {
           />
         );
       case 2:
-        return <Reports />;
-      case 3:
-        return <ProductListing />;
-      case 4:
         return <Performance />;
+        case 3:
+        return <ProductListing />;
+        case 4:
+          return <Reports />;
     }
   };
 
