@@ -1,4 +1,4 @@
-import { Switch } from "antd";
+import { Progress, Slider, Switch } from "antd";
 import React from "react";
 import NSCard from "../../common/NSCard";
 import NSDropdown from "../../common/NSDropdown";
@@ -17,19 +17,55 @@ const Performance = () => {
           <div className="col-span-1 border-r-2 p-2">
             <h1 className="font-MontBold mb-2">Revenue boosted</h1>
             <div className="flex">
-              <p className="w-[50%]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus, quo!</p>
+              <p className="w-[50%]">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Possimus, quo!
+              </p>
+              <div className="w-[50%] flex justify-center items-center">
+                <Progress
+                  type="circle"
+                  percent={75}
+                  size={80}
+                  strokeWidth={16}
+                  strokeColor="#005f86"
+                />
+              </div>
             </div>
           </div>
           <div className="col-span-1 border-r-2 p-2">
             <h1 className="font-MontBold mb-2">Price Optimized Products</h1>
             <div className="flex">
-              <p className="w-[50%]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus, quo!</p>
+              <p className="w-[50%]">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Possimus, quo!
+              </p>
+              <div className="w-[50%] flex justify-center items-center">
+                <Progress
+                  type="circle"
+                  percent={75}
+                  size={80}
+                  strokeWidth={16}
+                  strokeColor="#005f86"
+                />
+              </div>
             </div>
           </div>
           <div className="col-span-1 p-2">
             <h1 className="font-MontBold mb-2">Products. at Optim Lim</h1>
             <div className="flex">
-              <p className="w-[50%]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus, quo!</p>
+              <p className="w-[50%]">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Possimus, quo!
+              </p>
+              <div className="w-[50%] flex justify-center items-center">
+                <Progress
+                  type="circle"
+                  percent={75}
+                  size={80}
+                  strokeWidth={16}
+                  strokeColor="#005f86"
+                />
+              </div>
             </div>
           </div>
         </NSCard>
@@ -42,7 +78,16 @@ const Performance = () => {
                   <p className="text-[0.8rem]">New price should be</p>
                   <NSDropdown options={[]} className="w-[110px]" />
                 </div>
-                <div className="h-20 bg-[var(--bg-main)] mt-2"></div>
+                <div className="h-20 mt-2 pt-5">
+                  <Slider
+                    range={{
+                      draggableTrack: true,
+                    }}
+                    defaultValue={[20, 50]}
+                    handleStyle={{borderColor: '#005f86'}}
+                    trackStyle={{backgroundColor: '#005f86'}}
+                  />
+                </div>
                 <p className="text-blue-600 text-[.7rem] font-bold mt-2">
                   Current Price - 5% and Current Price + 5%
                 </p>
@@ -88,7 +133,7 @@ const Performance = () => {
               <NSInput
                 type="text"
                 style={{ height: "30px" }}
-                className="mt-2"
+                className="mt-10"
               />
             </div>
           </div>
