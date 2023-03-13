@@ -90,16 +90,18 @@ function ProductListing() {
               list.product_list[index].cp = e.target.value;
               // setCompetitorSku(e.target.value);
             }}
-            onBlur={(e) =>
-              fetchProductListingsPrice({
-                competitor_sku: e.target.value?.split(","),
-              }).then((data) => {
-                const list = { ...productListingDetails };
-                list.product_list[index].cp_selected = data.data.competitor_pricing;
-                setProductListingDetails(list);
-                console.log(list);
-              })
-            }
+            onBlur={(e) => {
+              if (e) {
+                fetchProductListingsPrice({
+                  competitor_sku: e.target.value?.split(","),
+                }).then((data) => {
+                  const list = { ...productListingDetails };
+                  list.product_list[index].cp_selected =
+                    data.data.competitor_pricing;
+                  setProductListingDetails(list);
+                });
+              }
+            }}
           />
         );
       },
@@ -149,8 +151,8 @@ function ProductListing() {
     },
     {
       title: "Stock",
-      dataIndex: "stock",
-      key: "stock",
+      dataIndex: "Stock_Status",
+      key: "Stock_Status",
     },
     {
       title: "Re-pricing Rule",
@@ -227,10 +229,10 @@ function ProductListing() {
               Webstore Demo
             </div>
             <div className="bg-gray-200 py-2 px-6 cursor-pointer">
-              All Products (150)
+              All Products ({productListingDetails?.eligible.total_items})
             </div>
             <div className="bg-gray-200 py-2 px-6 cursor-pointer">
-              Price Reduction (55)
+              Price Reduction ({productListingDetails?.eligible.price_decrease})
             </div>
           </div>
           <div className="flex items-center gap-2">

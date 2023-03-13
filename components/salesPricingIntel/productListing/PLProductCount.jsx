@@ -16,7 +16,7 @@ const PLProductCount = ({ details }) => {
     <NSCard className="grid grid-cols-3">
       <div className="col-span-2 p-2 border-r-2">
         <div className="flex justify-between items-center">
-          <p className="font-MontRegular">136 Products require action</p>
+          <p className="font-MontRegular">{details?.action_required} Products require action</p>
           <RiSettings5Fill size={25} className="cursor-pointer" />
         </div>
 
@@ -73,7 +73,7 @@ const PLProductCount = ({ details }) => {
           </ResponsiveContainer>
           <div className="flex flex-col justify-center">
             <p className="font-MontRegular mb-1">
-              <span className="font-MontBold">150 items</span>&nbsp;&nbsp;in
+              <span className="font-MontBold">{details?.total_items} items</span>&nbsp;&nbsp;in
               Webstore Demos
             </p>
             <div className="mt-[2px]">
