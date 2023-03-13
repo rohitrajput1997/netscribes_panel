@@ -18,12 +18,12 @@ import NextandLastQuarters from "./NextandLastQuarters";
 import ProductAndOptimization from "./ProductAndOptimization";
 
 const Reports = () => {
-  const [selectedFilter, setSelectedFilter] = useState("weekly");
+  const [selectedFilter, setSelectedFilter] = useState("week");
   const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
   const [performanceDetails, setPerformanceDetails] = useState(null);
   const [loader, setLoader] = useState(false);
 
-  const { product, optimization, last_quarter_result, next_quarter_result } =
+  const { product, optimization, last_result, next_result, graph_details } =
     performanceDetails || {};
 
   const data = [
@@ -75,8 +75,9 @@ const Reports = () => {
     fetchPerformanceReportsData({
       setPerformanceDetails: setPerformanceDetails,
       setLoader: setLoader,
+      selectedFilter
     });
-  }, []);
+  }, [selectedFilter]);
 
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
@@ -99,7 +100,7 @@ const Reports = () => {
                   selectedKey={setSelectedFilterKey}
                   style={{ height: "32px" }}
                 />
-                <NSDropdown options={[]} className="w-32 ml-2" />
+                {/* <NSDropdown options={[]} className="w-32 ml-2" /> */}
               </div>
             </div>
             <div className="w-full h-[328px]">
@@ -107,7 +108,7 @@ const Reports = () => {
                 <BarChart
                   width={500}
                   height={300}
-                  data={data}
+                  data={selectedFilter === 'week' ? graph_details?.week_graph || []: graph_details?.month_graph || []}
                   margin={{
                     top: 30,
                     right: 10,
@@ -116,18 +117,20 @@ const Reports = () => {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" axisLine={{ stroke: "#ffffff" }} />
-                  <YAxis axisLine={{ stroke: "#ffffff" }} />
+                  <XAxis dataKey={(data) => {
+                    return  selectedFilter === 'week' ? `W${data?.Week} ${data?.Year}` : `${data?.Month} ${data?.Year}`
+                  }} axisLine={{ stroke: "#ffffff" }} tick={{ fontSize: "10px" }}/>
+                  <YAxis axisLine={{ stroke: "#ffffff" }} tick={{ fontSize: "10px" }}/>
                   <Tooltip />
                   <Legend iconType="circle" />
                   <Bar
-                    dataKey="pv"
+                    dataKey="Actual_Revenue"
                     fill="rgb(52 211 153)"
                     radius={[20, 20, 20, 20]}
                     barSize={15}
                   />
                   <Bar
-                    dataKey="uv"
+                    dataKey="Forecasted_Revenue"
                     fill="rgb(8 145 178)"
                     radius={[20, 20, 20, 20]}
                     barSize={15}
@@ -140,8 +143,8 @@ const Reports = () => {
       </div>
 
       <NextandLastQuarters
-        last_quarter_result={last_quarter_result}
-        next_quarter_result={next_quarter_result}
+        last_quarter_result={last_result}
+        next_quarter_result={next_result}
         loader={loader}
       />
     </div>

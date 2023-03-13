@@ -1,5 +1,7 @@
+import { Tooltip } from "antd";
 import Image from "next/image";
 import React from "react";
+import CommaSeperator from "../../../utils/commaSeperator";
 import NSCard from "../../common/NSCard";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 
@@ -16,13 +18,21 @@ function ProductAndOptimization({ product, optimization, loader }) {
         ) : (
           <div className="flex">
             <div className="w-[50%] border-r-[1px] border-black">
-              <h1 className="text-2xl font-MontBold">{product?.Revenue}</h1>
+              <Tooltip title={CommaSeperator(product?.Actual_Revenue || 0)}>
+                <h1 className="text-2xl font-MontBold">
+                  INR {CommaSeperator(product?.Actual_Revenue || 0)}
+                </h1>
+              </Tooltip>
               <p className="text-gray-500 font-MontMedium">Revenue</p>
             </div>
             <div className="w-[50%] pl-4">
-              <h1 className="text-2xl font-MontBold">
-                {product?.Missing_data}
-              </h1>
+              <Tooltip
+                title={product?.Missing_data || CommaSeperator("89208667")}
+              >
+                <h1 className="text-2xl font-MontBold truncate">
+                  INR {product?.Missing_data || CommaSeperator("89208667")}
+                </h1>
+              </Tooltip>
               <p className="text-gray-500 font-MontMedium">Missing Data</p>
             </div>
           </div>
@@ -38,11 +48,15 @@ function ProductAndOptimization({ product, optimization, loader }) {
         ) : (
           <div className="flex">
             <div className="w-[50%] border-r-[1px] border-black">
-              <h1 className="text-2xl font-MontBold">{optimization?.Model}</h1>
+              <h1 className="text-2xl font-MontBold">
+                {optimization?.Model || "Revenue"}
+              </h1>
               <p className="text-gray-500 font-MontMedium">Model</p>
             </div>
             <div className="w-[50%] pl-4">
-              <h1 className="text-2xl font-MontBold">{optimization?.Limits}</h1>
+              <h1 className="text-2xl font-MontBold">
+                {optimization?.Limits || 3}
+              </h1>
               <p className="text-gray-500 font-MontMedium">Limits</p>
             </div>
           </div>

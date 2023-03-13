@@ -13,6 +13,8 @@ function NSInput(
     placeholder,
     style,
     router,
+    ref,
+    onBlur,
   },
   ...rest
 ) {
@@ -20,10 +22,12 @@ function NSInput(
     <>
       {title && <p className="py-3 text-[.9rem] font-MontRegular">{title}</p>}
       <input
+        ref={ref}
         placeholder={placeholder}
         type={type}
         className={className}
         onChange={onChange}
+        onBlur={onBlur}
         value={value}
         style={style}
         {...rest}

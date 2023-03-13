@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { RiSettings5Fill } from "react-icons/ri";
 import NSCard from "../../common/NSCard";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
@@ -7,48 +7,24 @@ import NSDropdown from "../../common/NSDropdown";
 import NSTable from "../../common/NSTable";
 import { Radio, Table } from "antd";
 import { IoStarOutline, IoStarSharp } from "react-icons/io5";
-import { useState } from "react";
 import NSPopover from "../../common/NSPopover";
 import NSButton from "../../common/NSButton";
 import productListingRepriceingRadiosJson from "../../json/productListingRepriceingRadiosJson";
 import PLProductCount from "./PLProductCount";
 import RepricingPopover from "./RepricingPopover";
+import {
+  fetchProductListings,
+  fetchProductListingsPrice,
+} from "../../../actions/SalesPricingIntel.action";
+import NSInput from "../../common/NSInput";
 
 function ProductListing() {
   const [activeStar, setActiveStar] = useState(false);
   const [popoverOne, setPopoverOne] = useState(1);
   const [popoverTwo, setPopoverTwo] = useState(1);
-
-  const dataSource = [
-    {
-      productName: "Baume &amp; Mercler classima Mens watchMOAB462",
-      sku: "Baume et merclerMOAB462",
-      cp: "$1696.95",
-      cp1: "$0.90",
-      cost: "$0.95",
-      minPrice: "$0.95",
-      price: "$1749.00",
-      stock: 1,
-      oc: "$0.00",
-      ms: "$0.00",
-      ct: "black, men &#039;s",
-      np: "$1696.94",
-    },
-    {
-      productName: "Baume &amp; Mercler classima Mens watchMOAB462",
-      sku: "Baume et merclerMOAB462",
-      cp: "$1696.95",
-      cp1: "$0.90",
-      cost: "$0.95",
-      minPrice: "$0.95",
-      price: "$1749.00",
-      stock: 1,
-      oc: "$0.00",
-      ms: "$0.00",
-      ct: "black, men &#039;s",
-      np: "$1696.94",
-    },
-  ];
+  const [loader, setLoader] = useState(false);
+  const [productListingDetails, setProductListingDetails] = useState([]);
+  const [competitorSku, setCompetitorSku] = useState("");
 
   const columns = [
     {
@@ -82,43 +58,94 @@ function ProductListing() {
     },
     {
       title: "Product Name",
-      dataIndex: "productName",
-      key: "productName",
+      dataIndex: "Product_Name",
+      key: "Product_Name",
       width: 200,
     },
     {
       title: "SKU",
-      dataIndex: "sku",
-      key: "sku",
+      dataIndex: "ASIN_details",
+      key: "ASIN_details",
     },
     {
       title: "Competitor Pricing (Marketplace)",
-      dataIndex: "cp",
-      key: "cp",
+      dataIndex: "competitor_prcing",
+      key: "competitor_prcing",
       render: (data) => {
         return <p className="text-blue-500">{data}</p>;
       },
     },
     {
+      title: "Competitor SKU",
+      dataIndex: "cp",
+      key: "cp",
+      render: (data, record, index) => {
+        return (
+          <NSInput
+            type="text"
+            style={{ height: "30px", backgroundColor: "white", width: "200px" }}
+            value={data}
+            onChange={(e) => {
+              const list = { ...productListingDetails };
+              list.product_list[index].cp = e.target.value;
+              // setCompetitorSku(e.target.value);
+            }}
+            onBlur={(e) =>
+              fetchProductListingsPrice({
+                competitor_sku: e.target.value?.split(","),
+              }).then((data) => {
+                const list = { ...productListingDetails };
+                list.product_list[index].cp_selected = data.data.competitor_pricing;
+                setProductListingDetails(list);
+                console.log(list);
+              })
+            }
+          />
+        );
+      },
+    },
+    {
       title: "Competitor Pricing (Competing Products if selected)",
-      dataIndex: "cp1",
-      key: "cp1",
+      dataIndex: "cp_selected",
+      key: "cp_selected",
       width: 200,
     },
     {
       title: "Cost",
       dataIndex: "Cost",
       key: "Cost",
+      render: (data) => {
+        return (
+          <NSInput
+            type="text"
+            style={{ height: "30px", backgroundColor: "white", width: "200px" }}
+            // value={competitorSku}
+            // onChange={(e) => setCompetitorSku(e.target.value)}
+            // onBlur={() => alert('')}
+          />
+        );
+      },
     },
     {
       title: "MinPrice",
       dataIndex: "minPrice",
       key: "minPrice",
+      render: (data) => {
+        return (
+          <NSInput
+            type="text"
+            style={{ height: "30px", backgroundColor: "white", width: "200px" }}
+            // value={competitorSku}
+            // onChange={(e) => setCompetitorSku(e.target.value)}
+            // onBlur={() => alert('')}
+          />
+        );
+      },
     },
     {
       title: "Price",
-      dataIndex: "price",
-      key: "price",
+      dataIndex: "Price",
+      key: "Price",
     },
     {
       title: "Stock",
@@ -145,11 +172,33 @@ function ProductListing() {
       title: "Other Costs (Shipping, Support, etc.)",
       dataIndex: "oc",
       key: "oc",
+      render: (data) => {
+        return (
+          <NSInput
+            type="text"
+            style={{ height: "30px", backgroundColor: "white", width: "200px" }}
+            // value={competitorSku}
+            // onChange={(e) => setCompetitorSku(e.target.value)}
+            // onBlur={() => alert('')}
+          />
+        );
+      },
     },
     {
       title: "Custom Tags/Labels",
       dataIndex: "ct",
       key: "ct",
+      render: (data) => {
+        return (
+          <NSInput
+            type="text"
+            style={{ height: "30px", backgroundColor: "white", width: "200px" }}
+            // value={competitorSku}
+            // onChange={(e) => setCompetitorSku(e.target.value)}
+            // onBlur={() => alert('')}
+          />
+        );
+      },
     },
     {
       title: "Min. Selling Retail Price (MSRP)",
@@ -163,17 +212,13 @@ function ProductListing() {
     },
   ];
 
-  const onChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  const onChange1 = (e) => {
-    setValue1(e.target.value);
-  };
+  useEffect(() => {
+    fetchProductListings({ setLoader, setProductListingDetails });
+  }, []);
 
   return (
     <>
-      <PLProductCount />
+      <PLProductCount details={productListingDetails?.eligible} />
 
       <NSCard className="mt-4">
         <div className="flex justify-between">
@@ -212,7 +257,11 @@ function ProductListing() {
         </div>
 
         <div className="mt-3">
-          <NSTable dataSource={dataSource} columns={columns} />
+          <NSTable
+            dataSource={productListingDetails?.product_list}
+            columns={columns}
+            loader={loader}
+          />
         </div>
       </NSCard>
     </>

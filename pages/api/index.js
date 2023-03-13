@@ -11,6 +11,9 @@ const resetPassword = (payload) => api.post("/api/reset_pass", payload);
 const forgetPassword = (payload) => api.post("/api/forgot_password", payload);
 const fetchPerformanceReports = (payload) =>
   api.post("/api/pricing_intel_performance", payload);
+const fetchProductListingData = () => api.post("/api/product_listing");
+const fetchProductListingPrice = (payload) =>
+  api.post("/api/get_price", payload);
 
 const apis = {
   login,
@@ -21,6 +24,8 @@ const apis = {
   resetPassword,
   forgetPassword,
   fetchPerformanceReports,
+  fetchProductListingData,
+  fetchProductListingPrice,
 };
 
 export default apis;

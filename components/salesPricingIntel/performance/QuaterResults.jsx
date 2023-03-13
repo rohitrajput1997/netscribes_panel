@@ -13,7 +13,7 @@ function QuaterResults({ header, childs, last_quarter_result, loader }) {
           ) : (
             <div className="ml-3">
               <h2 className="text-xl font-MontMedium leading-4">
-                {item?.count}
+                INR {item?.count}
               </h2>
               <p className="text-gray-500 font-MontMedium">{item?.subTitle}</p>
             </div>

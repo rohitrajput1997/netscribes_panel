@@ -3,7 +3,7 @@ import { RiSettings5Fill } from "react-icons/ri";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import NSCard from "../../common/NSCard";
 
-const PLProductCount = () => {
+const PLProductCount = ({ details }) => {
   const data = [
     { name: "Group A", value: 400 },
     { name: "Group B", value: 300 },
@@ -11,7 +11,7 @@ const PLProductCount = () => {
     { name: "Group D", value: 200 },
   ];
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-  
+
   return (
     <NSCard className="grid grid-cols-3">
       <div className="col-span-2 p-2 border-r-2">
@@ -21,26 +21,30 @@ const PLProductCount = () => {
         </div>
 
         <div className="grid grid-cols-4 gap-4 mt-4">
-          <div className="col-span-1">
-            <h1 className="text-3xl font-MontBold">81</h1>
+          <div className="col-span-1 cursor-pointer">
+            <h1 className="text-3xl font-MontBold">
+              {details?.price_increase || 0}
+            </h1>
             <p className="font-MontRegular mt-2 text-stone-500">
               Eligible for Price Increase
             </p>
           </div>
-          <div className="col-span-1">
-            <h1 className="text-3xl font-MontBold">55</h1>
+          <div className="col-span-1 cursor-pointer">
+            <h1 className="text-3xl font-MontBold">
+              {details?.price_decrease || 0}
+            </h1>
             <p className="font-MontRegular mt-2 text-stone-500">
               Eligible for Price Reduction
             </p>
           </div>
-          <div className="col-span-1">
-            <h1 className="text-3xl font-MontBold">150</h1>
+          <div className="col-span-1 cursor-pointer">
+            <h1 className="text-3xl font-MontBold">{details?.matched || 0}</h1>
             <p className="font-MontRegular mt-2 text-stone-500">
               100% Match with Compititors
             </p>
           </div>
-          <div className="col-span-1">
-            <h1 className="text-3xl font-MontBold">2</h1>
+          <div className="col-span-1 cursor-pointer">
+            <h1 className="text-3xl font-MontBold">{details?.starred || 0}</h1>
             <p className="font-MontRegular mt-2 text-stone-500">Started</p>
           </div>
         </div>

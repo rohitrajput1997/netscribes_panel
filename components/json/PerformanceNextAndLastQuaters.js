@@ -1,36 +1,63 @@
+import CommaSeperator from "../../utils/commaSeperator";
 
-const PerformanceNextAndLastQuaters = ({last_quarter_result, next_quarter_result}) => {
-    return {
-        last: [
-            {
-              icon: "./assets/Group 693.svg",
-              count: last_quarter_result?.IN_actual,
-              subTitle: "In Actual",
-            },
-            {
-              icon: "./assets/Group 694.svg",
-              count: last_quarter_result?.Forcasted,
-              subTitle: "Forcasted",
-            },
-            {
-              icon: "./assets/Group 695.svg",
-              count: last_quarter_result?.Forcast_accurancy,
-              subTitle: "Forcast Accuracy",
-            },
-          ],
-          next: [
-            {
-              icon: "./assets/Group 697.svg",
-              count: next_quarter_result?.With_current_prices,
-              subTitle: "With Current Prices",
-            },
-            {
-              icon: "./assets/Group 696.svg",
-              count: next_quarter_result?.With_suggested_prices,
-              subTitle: "With Suggested Prices",
-            },
-          ],
-    }
+const PerformanceNextAndLastQuaters = ({
+  last_quarter_result,
+  next_quarter_result,
+}) => {
+  return {
+    last: [
+      {
+        icon: "./assets/Group 693.svg",
+        count: CommaSeperator(String(last_quarter_result?.Actual_Revenue || 0)),
+        subTitle: "In Actual",
+      },
+      {
+        icon: "./assets/Group 694.svg",
+        count: CommaSeperator(
+          String(last_quarter_result?.Forecasted_Revenue || 0)
+        ),
+        subTitle: "Forcasted",
+      },
+      {
+        icon: "./assets/Group 695.svg",
+        count: CommaSeperator(
+          String(last_quarter_result?.Forecasted_Revenue_Variance || 0)
+        ),
+        subTitle: "Forcast Accuracy",
+      },
+    ],
+    next: [
+      // {
+      //   icon: "./assets/Group 697.svg",
+      //   count: next_quarter_result?.With_current_prices,
+      //   subTitle: "With Current Prices",
+      // },
+      // {
+      //   icon: "./assets/Group 696.svg",
+      //   count: next_quarter_result?.With_suggested_prices,
+      //   subTitle: "With Suggested Prices",
+      // },
+      {
+        icon: "./assets/Group 693.svg",
+        count: CommaSeperator(String(next_quarter_result?.Actual_Revenue || 0)),
+        subTitle: "In Actual",
+      },
+      {
+        icon: "./assets/Group 694.svg",
+        count: CommaSeperator(
+          String(next_quarter_result?.Forecasted_Revenue || 0)
+        ),
+        subTitle: "Forcasted",
+      },
+      {
+        icon: "./assets/Group 695.svg",
+        count: CommaSeperator(
+          String(next_quarter_result?.Forecasted_Revenue_Variance || 0)
+        ),
+        subTitle: "Forcast Accuracy",
+      },
+    ],
+  };
 };
 
 export default PerformanceNextAndLastQuaters;
