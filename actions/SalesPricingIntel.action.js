@@ -127,8 +127,6 @@ export const fetchRepricingRules = async ({ setPricingRuleData }) => {
   // setLoader(true);
 
   try {
-    let listingDetails = null;
-
     await apis
       .fetchRepricingRulesData()
       .then(({ data }) => {
@@ -137,10 +135,46 @@ export const fetchRepricingRules = async ({ setPricingRuleData }) => {
           NSToaster.success(data?.status_message);
 
           data?.data?.map((item) => {
-            dropdownData?.push({ label: item?.title, value: item?.title });
+            dropdownData?.push({
+              label: item?.title,
+              value: item?.title,
+              id: item?.id,
+            });
           });
 
           setPricingRuleData && setPricingRuleData(dropdownData);
+        } else {
+          NSToaster.error(data?.status_message);
+        }
+      })
+      .catch((err) => {
+        NSToaster.error(data?.status_message);
+      })
+      .finally(() => {
+        // setLoader(false);
+      });
+  } catch (err) {
+    throw new Error("", err);
+  }
+};
+
+export const setProductListingRule = async ({
+  price,
+  rule_id,
+  setNewPrice,
+}) => {
+  // setLoader(true);
+
+  try {
+    let listingDetails = null;
+
+    await apis
+      .setRule({ rule_id: rule_id, price: price })
+      .then(({ data }) => {
+        if (data?.status_code === 200) {
+          NSToaster.success(data?.status_message);
+          setNewPrice && setNewPrice(data?.data?.new_price);
+          listingDetails = data?.data;
         } else {
           NSToaster.error(data?.status_message);
         }

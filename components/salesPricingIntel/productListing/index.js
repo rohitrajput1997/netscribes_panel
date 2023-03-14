@@ -4,6 +4,7 @@ import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import {
   fetchProductListings,
   fetchRepricingRules,
+  setProductListingRule,
 } from "../../../actions/SalesPricingIntel.action";
 import NSDropdown from "../../common/NSDropdown";
 import NSInput from "../../common/NSInput";
@@ -22,6 +23,7 @@ const MainProductListingPage = () => {
   const [enableSettings, setEnableSettings] = useState(false);
   const [pricingRuleData, setPricingRuleData] = useState([]);
   const [SelectedPricingRule, setSelectedPricingRule] = useState("NetsPrice");
+  const [newPrice, setNewPrice] = useState("");
 
   const columns = [
     {
@@ -162,13 +164,24 @@ const MainProductListingPage = () => {
       title: "Re-pricing Rule",
       dataIndex: "rpr",
       key: "rpr",
-      render: () => {
+      render: (data, record, index) => {
         return (
           <NSDropdown
             options={pricingRuleData}
             className="w-32"
-            value={SelectedPricingRule}
-            onChange={(e) => setSelectedPricingRule(e.target.value)}
+            value={data}
+            onChange={(e, index, data) => {
+              setSelectedPricingRule(e);
+            }}
+            onSelect={(e, data) => {
+              handleFetchNewPrice(data, record).then((data) => {
+                const list = { ...productListingDetails };
+                list.product_list[index].np = data?.new_price;
+                console.log("******^^^^^^", index);
+                setProductListingDetails(list);
+              });
+            }}
+            defaultValue="NetsPrice"
           />
         );
       },
@@ -216,6 +229,14 @@ const MainProductListingPage = () => {
       key: "np",
     },
   ];
+
+  const handleFetchNewPrice = (data, record) => {
+    return setProductListingRule({
+      rule_id: data?.key || 4,
+      price: record?.Price || 0,
+      setNewPrice: setNewPrice,
+    });
+  };
 
   useEffect(() => {
     fetchProductListings({ setLoader, setProductListingDetails });

@@ -15,6 +15,8 @@ const fetchProductListingData = () => api.post("/api/product_listing");
 const fetchProductListingPrice = (payload) =>
   api.post("/api/get_price", payload);
 const fetchRepricingRulesData = () => api.get("/api/get_pricing_rule");
+const setRule = (payload) =>
+  api.post("api/set_rule", payload);
 
 const apis = {
   login,
@@ -28,6 +30,7 @@ const apis = {
   fetchProductListingData,
   fetchProductListingPrice,
   fetchRepricingRulesData,
+  setRule,
 };
 
 export default apis;

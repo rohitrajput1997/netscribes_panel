@@ -16,6 +16,7 @@ function NSDropdown({
   defaultValue,
   isError = false,
   errorMessage,
+  onSelect,
 }) {
   return (
     <div>
@@ -36,11 +37,12 @@ function NSDropdown({
         style={style}
         tagRender={(props) => props?.label?.props?.children?.[1]}
         defaultValue={defaultValue}
+        onSelect={onSelect}
       >
         {options?.map((item, index) => {
           return (
             <Option
-              key={index}
+              key={item.id}
               className="flex items-center"
               value={item?.value}
             >
