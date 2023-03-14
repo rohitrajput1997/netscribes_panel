@@ -229,10 +229,10 @@ function ProductListing() {
               Webstore Demo
             </div>
             <div className="bg-gray-200 py-2 px-6 cursor-pointer">
-              All Products ({productListingDetails?.eligible.total_items})
+              All Products ({productListingDetails?.eligible?.total_items})
             </div>
             <div className="bg-gray-200 py-2 px-6 cursor-pointer">
-              Price Reduction ({productListingDetails?.eligible.price_decrease})
+              Price Reduction ({productListingDetails?.eligible?.price_decrease})
             </div>
           </div>
           <div className="flex items-center gap-2">
