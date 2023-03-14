@@ -219,60 +219,60 @@ function ProductListing() {
   }, []);
 
   return (
-    // <>
-    //   <PLProductCount details={productListingDetails?.eligible} />
-
-    //   <NSCard className="mt-4">
-    //     <div className="flex justify-between">
-    //       <div className="flex">
-    //         <div className="bg-gray-200 py-2 px-6 cursor-pointer">
-    //           Webstore Demo
-    //         </div>
-    //         <div className="bg-gray-200 py-2 px-6 cursor-pointer">
-    //           All Products ({productListingDetails?.eligible?.total_items})
-    //         </div>
-    //         <div className="bg-gray-200 py-2 px-6 cursor-pointer">
-    //           Price Reduction ({productListingDetails?.eligible?.price_decrease})
-    //         </div>
-    //       </div>
-    //       <div className="flex items-center gap-2">
-    //         <NSSearchbar
-    //           placeholder="Search..."
-    //           className="w-20"
-    //           showSearchIcon={false}
-    //           style={{ height: "30px" }}
-    //         />
-    //         <NSDropdown options={[]} className="w-28" placeholder="Filters" />
-    //         <NSDropdown options={[]} className="w-28" placeholder="Actions" />
-    //         <NSPopover
-    //           title="Reprice"
-    //           content={
-    //             <RepricingPopover
-    //               popoverOne={popoverOne}
-    //               popoverTwo={popoverTwo}
-    //               setPopoverOne={setPopoverOne}
-    //               setPopoverTwo={setPopoverTwo}
-    //             />
-    //           }
-    //         />
-    //       </div>
-    //     </div>
-
-    //     <div className="mt-3">
-    //       <NSTable
-    //         dataSource={productListingDetails?.product_list}
-    //         columns={columns}
-    //         loader={loader}
-    //       />
-    //     </div>
-    //   </NSCard>
-    // </>
     <>
-      <div className="flex justify-between items-center">
-        <h1 className="text-xl font-MontBold">Repricing Rules</h1>
-        <NSButton title='New User' />
-      </div>
+      <PLProductCount details={productListingDetails?.eligible} />
+
+      <NSCard className="mt-4">
+        <div className="flex justify-between">
+          <div className="flex">
+            <div className="bg-gray-200 py-2 px-6 cursor-pointer">
+              Webstore Demo
+            </div>
+            <div className="bg-gray-200 py-2 px-6 cursor-pointer">
+              All Products ({productListingDetails?.eligible?.total_items})
+            </div>
+            <div className="bg-gray-200 py-2 px-6 cursor-pointer">
+              Price Reduction ({productListingDetails?.eligible?.price_decrease})
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <NSSearchbar
+              placeholder="Search..."
+              className="w-20"
+              showSearchIcon={false}
+              style={{ height: "30px" }}
+            />
+            <NSDropdown options={[]} className="w-28" placeholder="Filters" />
+            <NSDropdown options={[]} className="w-28" placeholder="Actions" />
+            <NSPopover
+              title="Reprice"
+              content={
+                <RepricingPopover
+                  popoverOne={popoverOne}
+                  popoverTwo={popoverTwo}
+                  setPopoverOne={setPopoverOne}
+                  setPopoverTwo={setPopoverTwo}
+                />
+              }
+            />
+          </div>
+        </div>
+
+        <div className="mt-3">
+          <NSTable
+            dataSource={productListingDetails?.product_list}
+            columns={columns}
+            loader={loader}
+          />
+        </div>
+      </NSCard>
     </>
+    // <>
+    //   <div className="flex justify-between items-center">
+    //     <h1 className="text-xl font-MontBold">Repricing Rules</h1>
+    //     <NSButton title='New User' />
+    //   </div>
+    // </>
   );
 }
 
