@@ -90,8 +90,8 @@ const Reports = () => {
 
         <div className="mt-3">
           <NSCard className="col-span-1">
-            <div className="flex justify-between items-center">
-              <NSDropdown options={[]} className="w-40" />
+            <div className="flex justify-end items-center">
+              {/* <NSDropdown options={[]} className="w-40" /> */}
               <div className="flex items-center">
                 <ButtonTabs
                   arr={PerformaceFilterTabs}

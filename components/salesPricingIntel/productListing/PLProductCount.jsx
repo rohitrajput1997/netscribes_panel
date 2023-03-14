@@ -3,12 +3,12 @@ import { RiSettings5Fill } from "react-icons/ri";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import NSCard from "../../common/NSCard";
 
-const PLProductCount = ({ details }) => {
+const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
   const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
+    { name: "Machted", value: details?.matched },
+    { name: "Price Decrease", value: details?.price_decrease },
+    { name: "Price Increase", value: details?.price_increase },
+    { name: "Starred", value: details?.starred },
   ];
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -16,12 +16,21 @@ const PLProductCount = ({ details }) => {
     <NSCard className="grid grid-cols-3">
       <div className="col-span-2 p-2 border-r-2">
         <div className="flex justify-between items-center">
-          <p className="font-MontRegular">{details?.action_required} Products require action</p>
-          <RiSettings5Fill size={25} className="cursor-pointer" />
+          <p className="font-MontRegular">
+            {details?.action_required} Products require action
+          </p>
+          <RiSettings5Fill
+            size={25}
+            className="cursor-pointer"
+            onClick={() => setEnableSettings(true)}
+          />
         </div>
 
         <div className="grid grid-cols-4 gap-4 mt-4">
-          <div className="col-span-1 cursor-pointer">
+          <div
+            className="col-span-1 cursor-pointer"
+            onClick={() => setSelectedFilter("price_increase")}
+          >
             <h1 className="text-3xl font-MontBold">
               {details?.price_increase || 0}
             </h1>
@@ -29,7 +38,10 @@ const PLProductCount = ({ details }) => {
               Eligible for Price Increase
             </p>
           </div>
-          <div className="col-span-1 cursor-pointer">
+          <div
+            className="col-span-1 cursor-pointer"
+            onClick={() => setSelectedFilter("price_decrease")}
+          >
             <h1 className="text-3xl font-MontBold">
               {details?.price_decrease || 0}
             </h1>
@@ -37,13 +49,19 @@ const PLProductCount = ({ details }) => {
               Eligible for Price Reduction
             </p>
           </div>
-          <div className="col-span-1 cursor-pointer">
+          <div
+            className="col-span-1 cursor-pointer"
+            onClick={() => setSelectedFilter("matched")}
+          >
             <h1 className="text-3xl font-MontBold">{details?.matched || 0}</h1>
             <p className="font-MontRegular mt-2 text-stone-500">
               100% Match with Compititors
             </p>
           </div>
-          <div className="col-span-1 cursor-pointer">
+          <div
+            className="col-span-1 cursor-pointer"
+            onClick={() => setSelectedFilter("")}
+          >
             <h1 className="text-3xl font-MontBold">{details?.starred || 0}</h1>
             <p className="font-MontRegular mt-2 text-stone-500">Started</p>
           </div>
@@ -73,8 +91,10 @@ const PLProductCount = ({ details }) => {
           </ResponsiveContainer>
           <div className="flex flex-col justify-center">
             <p className="font-MontRegular mb-1">
-              <span className="font-MontBold">{details?.total_items} items</span>&nbsp;&nbsp;in
-              Webstore Demos
+              <span className="font-MontBold">
+                {details?.total_items} items
+              </span>
+              &nbsp;&nbsp;in Webstore Demos
             </p>
             <div className="mt-[2px]">
               <p>9 items (6.00%) are Optimized</p>

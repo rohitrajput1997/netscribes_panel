@@ -122,3 +122,38 @@ export const fetchProductListingsPrice = async ({
     throw new Error("", err);
   }
 };
+
+export const fetchRepricingRules = async ({ setPricingRuleData }) => {
+  // setLoader(true);
+
+  try {
+    let listingDetails = null;
+
+    await apis
+      .fetchRepricingRulesData()
+      .then(({ data }) => {
+        if (data?.status_code === 200) {
+          let dropdownData = [];
+          NSToaster.success(data?.status_message);
+
+          data?.data?.map((item) => {
+            dropdownData?.push({ label: item?.title, value: item?.title });
+          });
+
+          setPricingRuleData && setPricingRuleData(dropdownData);
+        } else {
+          NSToaster.error(data?.status_message);
+        }
+      })
+      .catch((err) => {
+        NSToaster.error(data?.status_message);
+      })
+      .finally(() => {
+        // setLoader(false);
+      });
+
+    return listingDetails;
+  } catch (err) {
+    throw new Error("", err);
+  }
+};
