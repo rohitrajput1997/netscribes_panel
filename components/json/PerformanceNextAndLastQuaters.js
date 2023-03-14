@@ -16,14 +16,14 @@ const PerformanceNextAndLastQuaters = ({
         count: CommaSeperator(
           String(last_quarter_result?.Forecasted_Revenue || 0)
         ),
-        subTitle: "Forcasted",
+        subTitle: "Forecasted",
       },
       {
         icon: "./assets/Group 695.svg",
         count: CommaSeperator(
           String(last_quarter_result?.Forecasted_Revenue_Variance || 0)
         ),
-        subTitle: "Forcast Accuracy",
+        subTitle: "Forecast Accuracy",
       },
     ],
     next: [
@@ -47,14 +47,14 @@ const PerformanceNextAndLastQuaters = ({
         count: CommaSeperator(
           String(next_quarter_result?.Forecasted_Revenue || 0)
         ),
-        subTitle: "Forcasted",
+        subTitle: "Forecasted",
       },
       {
         icon: "./assets/Group 695.svg",
         count: CommaSeperator(
           String(next_quarter_result?.Forecasted_Revenue_Variance || 0)
         ),
-        subTitle: "Forcast Accuracy",
+        subTitle: "Forecast Accuracy",
       },
     ],
   };
