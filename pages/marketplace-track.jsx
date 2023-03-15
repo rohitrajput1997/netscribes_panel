@@ -26,8 +26,6 @@ function MarketplaceTrack() {
   const { tileOneTwo, tileThreeFour, tileFiveSix, tileSevenEight } =
     marketplaceTrack || {};
 
-    console.log(brandList);
-
   useEffect(() => {
     fetchMarketPlaceTracksBrands({ setBrandList, setselectedBrand1, setselectedBrand2 });
   }, []);

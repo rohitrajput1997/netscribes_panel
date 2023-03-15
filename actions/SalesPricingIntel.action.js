@@ -152,13 +152,14 @@ export const fetchRepricingRules = async ({
         }
       })
       .catch((err) => {
-        NSToaster.error(data?.status_message);
+        NSToaster.error(err);
       })
       .finally(() => {
         // setLoader(false);
       });
   } catch (err) {
-    throw new Error("", err);
+    // throw new Error("", err);
+    console.log("******", err);
   }
 };
 
@@ -210,6 +211,10 @@ export const addPricingRuleData = async ({
       .then(({ data }) => {
         if (data?.status_code === 200) {
           NSToaster.success(data?.status_message);
+          fetchRepricingRules({
+            setPricingRuleData: setPricingRuleData,
+            setPricingRuleFullData: setPricingRuleFullData,
+          });
           setAddOrEditRule(false);
         } else {
           NSToaster.error(data?.status_message);
@@ -222,7 +227,8 @@ export const addPricingRuleData = async ({
         // setLoader(false);
       });
   } catch (err) {
-    throw new Error("", err);
+    // throw new Error("", err);
+    console.log("$$$$$$", err);
   }
 };
 
@@ -246,6 +252,31 @@ export const fetchBrandsProductListingData = async ({ setBrandList }) => {
 
           NSToaster.success(data?.status_message);
           setBrandList && setBrandList(dropdownData);
+        } else {
+          NSToaster.error(data?.status_message);
+        }
+      })
+      .catch((err) => {
+        NSToaster.error(data?.status_message);
+      })
+      .finally(() => {
+        // setLoader(false);
+      });
+  } catch (err) {
+    throw new Error("", err);
+  }
+};
+
+export const getPricingRuleById = async ({ id, setDataToEdit }) => {
+  // setLoader(true);
+
+  try {
+    await apis
+      .getPricingRuleById({ id: id })
+      .then(({ data }) => {
+        if (data?.status_code === 200) {
+          NSToaster.success(data?.status_message);
+          setDataToEdit && setDataToEdit(data?.data);
         } else {
           NSToaster.error(data?.status_message);
         }

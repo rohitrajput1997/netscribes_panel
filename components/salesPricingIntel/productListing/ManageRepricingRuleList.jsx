@@ -11,6 +11,7 @@ function ManageRepricingRuleList({
   pricingRuleData,
   addOrEditRule,
   setAddOrEditRule,
+  handleEditRule,
 }) {
   return (
     <div>
@@ -30,7 +31,14 @@ function ManageRepricingRuleList({
               </Tooltip>
               <span className="w-[5%] flex gap-2">
                 <RiDeleteBin6Fill size={20} className="cursor-pointer" />
-                <MdEdit size={20} className="cursor-pointer" />
+                <MdEdit
+                  size={20}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setAddOrEditRule(true);
+                    handleEditRule(item?.id);
+                  }}
+                />
               </span>
             </div>
           </div>

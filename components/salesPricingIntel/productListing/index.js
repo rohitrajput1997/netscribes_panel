@@ -275,7 +275,7 @@ const MainProductListingPage = () => {
           addOrEditRule={addOrEditRule}
           setAddOrEditRule={setAddOrEditRule}
           brandList={brandList}
-          setPricingRuleData={{ setPricingRuleData }}
+          setPricingRuleData={setPricingRuleData}
           setPricingRuleFullData={setPricingRuleFullData}
         />
       ) : (
