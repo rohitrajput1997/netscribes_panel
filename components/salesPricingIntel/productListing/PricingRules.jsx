@@ -28,7 +28,7 @@ function PricingRules({
     short_description: "",
     repricing_logic: [
       {
-        status: false,
+        status: 'inactive',
         price_order: "",
         price_filter: "",
         selected_competitors: [],
@@ -36,21 +36,21 @@ function PricingRules({
         price_unit: "%",
       },
       {
-        status: false,
+        status: 'inactive',
         price_order: "",
         price_filter_by_price: "",
         price_by: 1,
         price_unit: "%",
       },
       {
-        status: false,
+        status: 'inactive',
         price_order: "",
-        price_filter_by_rank: "2nd_top_competitor_by_rank",
+        price_filter_by_rank: "",
         price_by: 1,
         price_unit: "%",
       },
       {
-        status: false,
+        status: 'inactive',
         automatic_reprice_no: "",
       },
     ],
@@ -64,7 +64,7 @@ function PricingRules({
       NSToaster.warning("Please fill title and description");
       return;
     }
-    
+
     addPricingRuleData({
       payload: newRule,
       setPricingRuleData: setPricingRuleData,
@@ -138,10 +138,11 @@ function PricingRules({
                 <Checkbox
                   onChange={(e) => {
                     let obj = { ...newRule };
-                    obj.repricing_logic[0].status = e.target.checked;
+                    obj.repricing_logic[0].status = e.target.checked ? 'active' : 'inactive';
                     setNewRule(obj);
                   }}
                   value={newRule.repricing_logic[0].status}
+                  className="font-MontMedium"
                 >
                   I want my new price to be
                 </Checkbox>
@@ -203,10 +204,11 @@ function PricingRules({
                 <Checkbox
                   onChange={(e) => {
                     let obj = { ...newRule };
-                    obj.repricing_logic[1].status = e.target.checked;
+                    obj.repricing_logic[1].status = e.target.checked ? 'active' : 'inactive';
                     setNewRule(obj);
                   }}
                   value={newRule.repricing_logic[1].status}
+                  className="font-MontMedium"
                 >
                   I want my new price to be
                 </Checkbox>
@@ -257,10 +259,11 @@ function PricingRules({
                 <Checkbox
                   onChange={(e) => {
                     let obj = { ...newRule };
-                    obj.repricing_logic[2].status = e.target.checked;
+                    obj.repricing_logic[2].status = e.target.checked ? 'active' : 'inactive';
                     setNewRule(obj);
                   }}
                   value={newRule.repricing_logic[2].status}
+                  className="font-MontMedium"
                 >
                   I want my new price to be
                 </Checkbox>
@@ -279,10 +282,10 @@ function PricingRules({
                   options={rank}
                   onChange={(e) => {
                     let obj = { ...newRule };
-                    obj.repricing_logic[2].price_filter_by_price = e;
+                    obj.repricing_logic[2].price_filter_by_rank = e;
                     setNewRule(obj);
                   }}
-                  value={newRule.repricing_logic[2].price_filter_by_price}
+                  value={newRule.repricing_logic[2].price_filter_by_rank}
                 />{" "}
                 by{" "}
                 <NSInput
@@ -311,10 +314,11 @@ function PricingRules({
                 <Checkbox
                   onChange={(e) => {
                     let obj = { ...newRule };
-                    obj.repricing_logic[3].status = e.target.checked;
+                    obj.repricing_logic[3].status = e.target.checked ? 'active' : 'inactive';
                     setNewRule(obj);
                   }}
                   value={newRule.repricing_logic[3].status}
+                  className="font-MontMedium"
                 >
                   Reprice based on price + shipping (may change based on
                   designation)
@@ -338,7 +342,7 @@ function PricingRules({
             <div className="border-b-2 border-black my-6" />
             <h1 className="text-xl font-MontBold">Repricing logic</h1>
             <div>
-              <p className="my-2 ml-3">
+              <p className="my-2 ml-3 text-lg font-MontRegular">
                 What should WisePricer do if the New Price is below minimum
                 Price?
               </p>
@@ -348,10 +352,16 @@ function PricingRules({
                 value={repricingLogic}
               >
                 <Space direction="vertical">
-                  <Radio value="leave_product_at_current_price">
+                  <Radio
+                    value="leave_product_at_current_price"
+                    className="font-MontMedium"
+                  >
                     Leave product at current price
                   </Radio>
-                  <Radio value="set_it_to_minimum_price">
+                  <Radio
+                    value="set_it_to_minimum_price"
+                    className="font-MontMedium"
+                  >
                     Set it to minimum price
                   </Radio>
                 </Space>

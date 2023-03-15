@@ -180,8 +180,7 @@ const MainProductListingPage = () => {
             onSelect={(e, data) => {
               handleFetchNewPrice(data, record).then((data) => {
                 const list = { ...productListingDetails };
-                list.product_list[index].np = data?.new_price;
-                console.log("******^^^^^^", index);
+                list.product_list[index].new_price = data?.new_price;
                 setProductListingDetails(list);
               });
             }}
@@ -229,8 +228,8 @@ const MainProductListingPage = () => {
     },
     {
       title: "New Price",
-      dataIndex: "np",
-      key: "np",
+      dataIndex: "new_price",
+      key: "new_price",
     },
   ];
 
