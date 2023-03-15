@@ -2,6 +2,7 @@ import { Table } from "antd";
 import { useEffect, useState } from "react";
 import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import {
+  fetchBrandsProductListingData,
   fetchProductListings,
   fetchRepricingRules,
   setProductListingRule,
@@ -22,8 +23,11 @@ const MainProductListingPage = () => {
   const [selectedFilter, setSelectedFilter] = useState("");
   const [enableSettings, setEnableSettings] = useState(false);
   const [pricingRuleData, setPricingRuleData] = useState([]);
+  const [pricingRuleFullData, setPricingRuleFullData] = useState([]);
   const [SelectedPricingRule, setSelectedPricingRule] = useState("NetsPrice");
   const [newPrice, setNewPrice] = useState("");
+  const [addOrEditRule, setAddOrEditRule] = useState(false);
+  const [brandList, setBrandList] = useState([]);
 
   const columns = [
     {
@@ -243,7 +247,14 @@ const MainProductListingPage = () => {
   }, []);
 
   useEffect(() => {
-    fetchRepricingRules({ setPricingRuleData: setPricingRuleData });
+    fetchRepricingRules({
+      setPricingRuleData: setPricingRuleData,
+      setPricingRuleFullData: setPricingRuleFullData,
+    });
+  }, []);
+
+  useEffect(() => {
+    fetchBrandsProductListingData({ setBrandList: setBrandList });
   }, []);
 
   const handleTableFilter = () => {
@@ -259,7 +270,15 @@ const MainProductListingPage = () => {
   return (
     <>
       {enableSettings ? (
-        <PricingRules setEnableSettings={setEnableSettings} />
+        <PricingRules
+          setEnableSettings={setEnableSettings}
+          pricingRuleData={pricingRuleFullData}
+          addOrEditRule={addOrEditRule}
+          setAddOrEditRule={setAddOrEditRule}
+          brandList={brandList}
+          setPricingRuleData={{ setPricingRuleData }}
+          setPricingRuleFullData={setPricingRuleFullData}
+        />
       ) : (
         <ProductListing
           productListingDetails={productListingDetails}

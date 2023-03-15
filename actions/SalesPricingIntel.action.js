@@ -123,7 +123,10 @@ export const fetchProductListingsPrice = async ({
   }
 };
 
-export const fetchRepricingRules = async ({ setPricingRuleData }) => {
+export const fetchRepricingRules = async ({
+  setPricingRuleData,
+  setPricingRuleFullData,
+}) => {
   // setLoader(true);
 
   try {
@@ -143,6 +146,7 @@ export const fetchRepricingRules = async ({ setPricingRuleData }) => {
           });
 
           setPricingRuleData && setPricingRuleData(dropdownData);
+          setPricingRuleFullData && setPricingRuleFullData(data?.data);
         } else {
           NSToaster.error(data?.status_message);
         }
@@ -187,6 +191,71 @@ export const setProductListingRule = async ({
       });
 
     return listingDetails;
+  } catch (err) {
+    throw new Error("", err);
+  }
+};
+
+export const addPricingRuleData = async ({
+  payload,
+  setPricingRuleData,
+  setPricingRuleFullData,
+  setAddOrEditRule,
+}) => {
+  // setLoader(true);
+
+  try {
+    await apis
+      .addPricingRule(payload)
+      .then(({ data }) => {
+        if (data?.status_code === 200) {
+          NSToaster.success(data?.status_message);
+          setAddOrEditRule(false);
+        } else {
+          NSToaster.error(data?.status_message);
+        }
+      })
+      .catch((err) => {
+        NSToaster.error(data?.status_message);
+      })
+      .finally(() => {
+        // setLoader(false);
+      });
+  } catch (err) {
+    throw new Error("", err);
+  }
+};
+
+export const fetchBrandsProductListingData = async ({ setBrandList }) => {
+  // setLoader(true);
+
+  try {
+    await apis
+      .fetchBrandsProductListing()
+      .then(({ data }) => {
+        if (data?.status_code === 200) {
+          let dropdownData = [];
+
+          data?.data?.suggested_brands?.map((item, index) => {
+            dropdownData?.push({
+              label: item?.Brand,
+              value: item?.Brand,
+              id: index,
+            });
+          });
+
+          NSToaster.success(data?.status_message);
+          setBrandList && setBrandList(dropdownData);
+        } else {
+          NSToaster.error(data?.status_message);
+        }
+      })
+      .catch((err) => {
+        NSToaster.error(data?.status_message);
+      })
+      .finally(() => {
+        // setLoader(false);
+      });
   } catch (err) {
     throw new Error("", err);
   }

@@ -15,8 +15,10 @@ const fetchProductListingData = () => api.post("/api/product_listing");
 const fetchProductListingPrice = (payload) =>
   api.post("/api/get_price", payload);
 const fetchRepricingRulesData = () => api.get("/api/get_pricing_rule");
-const setRule = (payload) =>
-  api.post("api/set_rule", payload);
+const setRule = (payload) => api.post("/api/set_rule", payload);
+const addPricingRule = (payload) => api.post("/api/add_pricing_rule", payload);
+const fetchBrandsProductListing = () =>
+  api.post("/api/get_brands_product_listing");
 
 const apis = {
   login,
@@ -31,6 +33,8 @@ const apis = {
   fetchProductListingPrice,
   fetchRepricingRulesData,
   setRule,
+  addPricingRule,
+  fetchBrandsProductListing,
 };
 
 export default apis;
