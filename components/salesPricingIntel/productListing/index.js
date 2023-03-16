@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Table, Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import {
@@ -63,7 +63,15 @@ const MainProductListingPage = () => {
       title: "Product Name",
       dataIndex: "Product_Name",
       key: "Product_Name",
-      width: 200,
+      render: (data) => {
+        return (
+          <>
+            <Tooltip title={data}>
+              <p className="font-MontRegular truncate w-[150px]">{data}</p>
+            </Tooltip>
+          </>
+        );
+      },
     },
     {
       title: "SKU",

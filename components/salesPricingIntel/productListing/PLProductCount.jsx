@@ -14,10 +14,10 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
 
   return (
     <NSCard className="grid grid-cols-3">
-      <div className="col-span-2 p-2 border-r-2">
+      <div className="col-span-2 py-1 px-2 border-r-2">
         <div className="flex justify-between items-center">
-          <p className="font-MontRegular">
-            {details?.action_required} Products require action
+          <p className="font-MontRegular text-xl">
+            <span className="font-MontBold">{details?.action_required}</span> Products require action
           </p>
           <RiSettings5Fill
             size={25}
@@ -26,7 +26,7 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
           />
         </div>
 
-        <div className="grid grid-cols-4 gap-4 mt-4">
+        <div className="grid grid-cols-4 gap-4 mt-8">
           <div
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("price_increase")}
@@ -67,7 +67,7 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
           </div>
         </div>
       </div>
-      <div className="col-span-1 p-2">
+      <div className="col-span-1 py-1 px-2">
         <div className="flex">
           <ResponsiveContainer width={150} height={150}>
             <PieChart width={150} height={150}>

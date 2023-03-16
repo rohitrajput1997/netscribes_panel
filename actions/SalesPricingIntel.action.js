@@ -202,12 +202,13 @@ export const addPricingRuleData = async ({
   setPricingRuleData,
   setPricingRuleFullData,
   setAddOrEditRule,
+  authorization,
 }) => {
   // setLoader(true);
 
   try {
     await apis
-      .addPricingRule(payload)
+      .addPricingRule({ ...payload, authorization })
       .then(({ data }) => {
         if (data?.status_code === 200) {
           NSToaster.success(data?.status_message);

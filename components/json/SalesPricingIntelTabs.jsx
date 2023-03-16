@@ -19,16 +19,16 @@ const SalesPricingIntelTabs = [
     label: "Repricing Hub",
     value: "repricingHub",
   },
-  {
-    key: 5,
-    label: "Optimization Settings",
-    value: "optimizationTechniques",
-  },
-  {
-    key: 6,
-    label: "Reports",
-    value: "reports",
-  },
+  // {
+  //   key: 5,
+  //   label: "Optimization Settings",
+  //   value: "optimizationTechniques",
+  // },
+  // {
+  //   key: 6,
+  //   label: "Reports",
+  //   value: "reports",
+  // },
 ];
 
 export default SalesPricingIntelTabs;
