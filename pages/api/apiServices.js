@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     // Do something before request is sent
-    if (Cookies.get("token"))
+    if (Cookies.get("mtoken"))
       config.headers["Authorization"] = `Bearer ${Cookies.get("mtoken")}`;
     return config;
   },
@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(
     }
     if (error === "Unauthenticated.") {
       //TODO we need to add logout function here
-    //   logoutApi();
+      //   logoutApi();
     }
     if (error === "") {
       error = err.message;
