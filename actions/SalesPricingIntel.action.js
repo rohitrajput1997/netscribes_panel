@@ -202,13 +202,10 @@ export const addPricingRuleData = async ({
   setPricingRuleData,
   setPricingRuleFullData,
   setAddOrEditRule,
-  authorization,
 }) => {
-  // setLoader(true);
-
   try {
     await apis
-      .addPricingRule({ ...payload, authorization })
+      .addPricingRule(payload)
       .then(({ data }) => {
         if (data?.status_code === 200) {
           NSToaster.success(data?.status_message);
@@ -224,9 +221,7 @@ export const addPricingRuleData = async ({
       .catch((err) => {
         NSToaster.error(data?.status_message);
       })
-      .finally(() => {
-        // setLoader(false);
-      });
+      .finally(() => {});
   } catch (err) {
     // throw new Error("", err);
     console.log("$$$$$$", err);
@@ -234,8 +229,6 @@ export const addPricingRuleData = async ({
 };
 
 export const fetchBrandsProductListingData = async ({ setBrandList }) => {
-  // setLoader(true);
-
   try {
     await apis
       .fetchBrandsProductListing()
@@ -260,17 +253,13 @@ export const fetchBrandsProductListingData = async ({ setBrandList }) => {
       .catch((err) => {
         NSToaster.error(data?.status_message);
       })
-      .finally(() => {
-        // setLoader(false);
-      });
+      .finally(() => {});
   } catch (err) {
     throw new Error("", err);
   }
 };
 
 export const getPricingRuleById = async ({ id, setDataToEdit }) => {
-  // setLoader(true);
-
   try {
     await apis
       .getPricingRuleById({ id: id })
@@ -285,8 +274,39 @@ export const getPricingRuleById = async ({ id, setDataToEdit }) => {
       .catch((err) => {
         NSToaster.error(data?.status_message);
       })
+      .finally(() => {});
+  } catch (err) {
+    throw new Error("", err);
+  }
+};
+
+export const deletePricingRuleById = async ({
+  id,
+  setPricingRuleFullData,
+  setAddOrEditRule,
+  setLoading,
+}) => {
+  setLoading(true);
+
+  try {
+    await apis
+      .deletePricingRuleById({ id: id })
+      .then(({ data }) => {
+        if (data?.status_code === 200) {
+          NSToaster.success(data?.status_message);
+          fetchRepricingRules({
+            setPricingRuleFullData: setPricingRuleFullData,
+            setAddOrEditRule: setAddOrEditRule,
+          });
+        } else {
+          NSToaster.error(data?.status_message);
+        }
+      })
+      .catch((err) => {
+        NSToaster.error(data?.status_message);
+      })
       .finally(() => {
-        // setLoader(false);
+        setLoading(false);
       });
   } catch (err) {
     throw new Error("", err);

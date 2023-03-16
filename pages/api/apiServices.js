@@ -12,7 +12,7 @@ axiosInstance.interceptors.request.use(
   (config) => {
     // Do something before request is sent
     if (Cookies.get("token"))
-      config.headers["Authorization"] = `Bearer ${Cookies.get("token")}`;
+      config.headers["Authorization"] = `Bearer ${Cookies.get("mtoken")}`;
     return config;
   },
   (err) => {

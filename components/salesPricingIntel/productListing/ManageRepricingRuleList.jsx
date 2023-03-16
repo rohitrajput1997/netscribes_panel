@@ -6,13 +6,28 @@ import { AiFillTag } from "react-icons/ai";
 import NSDropdown from "../../common/NSDropdown";
 import NSInput from "../../common/NSInput";
 import NSButton from "../../common/NSButton";
+import { deletePricingRuleById } from "../../../actions/SalesPricingIntel.action";
+import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 
 function ManageRepricingRuleList({
   pricingRuleData,
   addOrEditRule,
   setAddOrEditRule,
   handleEditRule,
+  setPricingRuleFullData,
 }) {
+  const [loading, setLoading] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState();
+
+  const handleDeleteRule = (id) => {
+    deletePricingRuleById({
+      id: id,
+      setPricingRuleFullData: setPricingRuleFullData,
+      setAddOrEditRule: setAddOrEditRule,
+      setLoading: setLoading,
+    });
+  };
+
   return (
     <div>
       <h1 className="text-xl font-MontBold mt-6">Manage Repricing Rules</h1>
@@ -30,13 +45,26 @@ function ManageRepricingRuleList({
                 </span>
               </Tooltip>
               <span className="w-[5%] flex gap-2">
-                <RiDeleteBin6Fill size={20} className="cursor-pointer" />
+                {loading && index === selectedIndex ? (
+                  <NSLoaderWithMsg />
+                ) : (
+                  <RiDeleteBin6Fill
+                    size={20}
+                    className="cursor-pointer"
+                    onClick={() => {
+                      handleDeleteRule(item?.id);
+                      setSelectedIndex(index);
+                    }}
+                  />
+                )}
                 <MdEdit
                   size={20}
                   className="cursor-pointer"
                   onClick={() => {
-                    setAddOrEditRule(true);
-                    handleEditRule(item?.id);
+                    if (![1, 2, 3, 4].includes(item?.id)) {
+                      setAddOrEditRule(true);
+                      handleEditRule(item?.id);
+                    }
                   }}
                 />
               </span>

@@ -21,6 +21,8 @@ const fetchBrandsProductListing = () =>
   api.post("/api/get_brands_product_listing");
 const getPricingRuleById = (payload) =>
   api.post("/api/get_pricing_rule_by_id", payload);
+const deletePricingRuleById = (payload) =>
+  api.post("/api/delete_pricing_rule_by_id", payload);
 
 const apis = {
   login,
@@ -38,6 +40,7 @@ const apis = {
   addPricingRule,
   fetchBrandsProductListing,
   getPricingRuleById,
+  deletePricingRuleById,
 };
 
 export default apis;

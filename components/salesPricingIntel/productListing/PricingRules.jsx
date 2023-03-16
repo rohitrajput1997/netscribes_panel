@@ -108,7 +108,6 @@ function PricingRules({
       setPricingRuleData: setPricingRuleData,
       setPricingRuleFullData: setPricingRuleFullData,
       setAddOrEditRule: setAddOrEditRule,
-      authorization: NSCookies?.getToken(),
     });
     setNewRule(initialNewRuleData);
   };
@@ -158,6 +157,7 @@ function PricingRules({
             setAddOrEditRule={setAddOrEditRule}
             handleEditRule={(value) => handleEditRule(value)}
             brandList={brandList}
+            setPricingRuleFullData={setPricingRuleFullData}
           />
         </>
       )}
