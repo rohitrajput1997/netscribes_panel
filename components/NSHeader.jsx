@@ -43,20 +43,16 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
                 className="w-auto min-w-[220px] bg-[var(--bg-main)] flex items-center p-3"
                 style={{ lineHeight: "initial" }}
               >
-                <div className="w-10 h-10 bg-gray-400 rounded-full cursor-pointer">
-                  <Image
-                    src="./assets/avatar.svg"
-                    alt=""
-                    width={50}
-                    height={50}
-                  />
+                <div className="w-10 h-10 bg-gray-400 rounded-full cursor-pointer overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="./assets/userone.jpeg" alt="" />
                 </div>
                 <div className="ml-3">
                   <span className="text-[0.8rem] font-bold capitalize">{`${
                     userData?.first_name || ""
                   } ${userData?.last_name || ""}`}</span>
                   <br />
-                  <span className="text-[0.8rem]">UI/UX Designer</span>
+                  <span className="text-[0.8rem]">Admin</span>
                 </div>
               </div>
               <div className="w-[50px] p-3 flex items-center">
