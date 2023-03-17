@@ -26,7 +26,7 @@ const profile = () => {
                       ? "bg-[var(--secondary)] text-[var(--pure)] font-MontMedium"
                       : ""
                   }`}
-                  onClick={() => setSelectedTab(index)}
+                  // onClick={() => setSelectedTab(index)}
                 >
                   <Image
                     src={_.icon}

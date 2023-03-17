@@ -7,9 +7,12 @@ import Image from "next/image";
 import React from "react";
 import NSButton from "./NSButton";
 import NSCookies from "./NSCookies";
+import { useRouter } from "next/router";
 const { Content, Footer, Sider, Header } = Layout;
 
 function NSProfileLayout({ children }) {
+  const router = useRouter();
+
   return (
     <Layout className="layout overflow-hidden">
       <Header>
@@ -19,6 +22,12 @@ function NSProfileLayout({ children }) {
           </div>
           <div className="col-span-3 col-end-6 h-full flex justify-end items-center mr-5">
             <ul className="flex font-MontMedium">
+              <li
+                className="min-w-[100px] text-center cursor-pointer"
+                onClick={() => router.push("/")}
+              >
+                Home
+              </li>
               <li className="min-w-[100px] text-center cursor-pointer">
                 Solutions
               </li>

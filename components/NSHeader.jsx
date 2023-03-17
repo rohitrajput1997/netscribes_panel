@@ -43,10 +43,7 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
                 className="w-auto min-w-[220px] bg-[var(--bg-main)] flex items-center p-3"
                 style={{ lineHeight: "initial" }}
               >
-                <div
-                  className="w-10 h-10 bg-gray-400 rounded-full cursor-pointer"
-                  onClick={() => router.push("/profile")}
-                >
+                <div className="w-10 h-10 bg-gray-400 rounded-full cursor-pointer">
                   <Image
                     src="./assets/avatar.svg"
                     alt=""
@@ -63,7 +60,11 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
                 </div>
               </div>
               <div className="w-[50px] p-3 flex items-center">
-                <MdKeyboardArrowDown size={20} />
+                <MdKeyboardArrowDown
+                  size={20}
+                  onClick={() => router.push("/profile")}
+                  className="cursor-pointer"
+                />
               </div>
             </div>
           </div>
