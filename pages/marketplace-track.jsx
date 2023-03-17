@@ -122,7 +122,7 @@ function MarketplaceTrack() {
                   tableData={tilesData?.[selectedBrand1]?.discounted}
                   total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
                 />
-                <SalesAndAvgUnitValue
+                {/* <SalesAndAvgUnitValue
                   image="./assets/interactive.svg"
                   title="Unique SKU Count"
                   showupDownArrow={false}
@@ -140,7 +140,7 @@ function MarketplaceTrack() {
                   showPlue={true}
                   showupDownArrow={false}
                   headers={tileSevenEight}
-                />
+                /> */}
               </>
             )}
           </div>
@@ -192,7 +192,7 @@ function MarketplaceTrack() {
                   tableData={tilesData?.[selectedBrand2]?.discounted}
                   total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
                 />
-                <SalesAndAvgUnitValue
+                {/* <SalesAndAvgUnitValue
                   image="./assets/interactive.svg"
                   title="Unique SKU Count"
                   showupDownArrow={false}
@@ -210,7 +210,7 @@ function MarketplaceTrack() {
                   showPlue={true}
                   showupDownArrow={false}
                   headers={tileSevenEight}
-                />
+                /> */}
               </>
             )}
           </div>
