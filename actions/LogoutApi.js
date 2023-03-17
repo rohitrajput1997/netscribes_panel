@@ -5,7 +5,7 @@ import NSToaster from "../components/common/NSToaster"
 import apis from "../pages/api"
 
 export const logoutApi = async () => {
-  if (sessionStorage.getItem("logout") === "true") return
+  // if (sessionStorage.getItem("logout") === "true") return
 
   await apis
     .log_out({

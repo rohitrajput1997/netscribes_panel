@@ -32,14 +32,12 @@ function ProductListing({
   handleTableFilter,
   columns,
   loader,
-  setEnableSettings,
 }) {
   return (
     <>
       <PLProductCount
         details={productListingDetails?.eligible}
         setSelectedFilter={setSelectedFilter}
-        setEnableSettings={setEnableSettings}
       />
 
       <NSCard className="mt-4">

@@ -21,7 +21,6 @@ const MainProductListingPage = () => {
   const [productListingDetails, setProductListingDetails] = useState([]);
   const [competitorSku, setCompetitorSku] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("");
-  const [enableSettings, setEnableSettings] = useState(false);
   const [pricingRuleData, setPricingRuleData] = useState([]);
   const [pricingRuleFullData, setPricingRuleFullData] = useState([]);
   const [SelectedPricingRule, setSelectedPricingRule] = useState("NetsPrice");
@@ -253,17 +252,6 @@ const MainProductListingPage = () => {
     fetchProductListings({ setLoader, setProductListingDetails });
   }, []);
 
-  useEffect(() => {
-    fetchRepricingRules({
-      setPricingRuleData: setPricingRuleData,
-      setPricingRuleFullData: setPricingRuleFullData,
-    });
-  }, []);
-
-  useEffect(() => {
-    fetchBrandsProductListingData({ setBrandList: setBrandList });
-  }, []);
-
   const handleTableFilter = () => {
     return productListingDetails?.product_list?.filter(
       (item) => item?.[selectedFilter] === true
@@ -276,31 +264,18 @@ const MainProductListingPage = () => {
 
   return (
     <>
-      {enableSettings ? (
-        <PricingRules
-          setEnableSettings={setEnableSettings}
-          pricingRuleData={pricingRuleFullData}
-          addOrEditRule={addOrEditRule}
-          setAddOrEditRule={setAddOrEditRule}
-          brandList={brandList}
-          setPricingRuleData={setPricingRuleData}
-          setPricingRuleFullData={setPricingRuleFullData}
-        />
-      ) : (
-        <ProductListing
-          productListingDetails={productListingDetails}
-          setSelectedFilter={setSelectedFilter}
-          selectedFilter={selectedFilter}
-          popoverOne={popoverOne}
-          popoverTwo={popoverTwo}
-          setPopoverOne={setPopoverOne}
-          setPopoverTwo={setPopoverTwo}
-          handleTableFilter={handleTableFilter}
-          columns={columns}
-          loader={loader}
-          setEnableSettings={setEnableSettings}
-        />
-      )}
+      <ProductListing
+        productListingDetails={productListingDetails}
+        setSelectedFilter={setSelectedFilter}
+        selectedFilter={selectedFilter}
+        popoverOne={popoverOne}
+        popoverTwo={popoverTwo}
+        setPopoverOne={setPopoverOne}
+        setPopoverTwo={setPopoverTwo}
+        handleTableFilter={handleTableFilter}
+        columns={columns}
+        loader={loader}
+      />
     </>
   );
 };

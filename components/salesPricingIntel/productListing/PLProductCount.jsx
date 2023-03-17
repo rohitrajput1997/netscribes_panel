@@ -3,7 +3,7 @@ import { RiSettings5Fill } from "react-icons/ri";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import NSCard from "../../common/NSCard";
 
-const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
+const PLProductCount = ({ details, setSelectedFilter }) => {
   const data = [
     { name: "Machted", value: details?.matched },
     { name: "Price Decrease", value: details?.price_decrease },
@@ -17,13 +17,12 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
       <div className="col-span-2 py-1 px-2 border-r-2">
         <div className="flex justify-between items-center">
           <p className="font-interRegular text-xl">
-            <span className="font-interSemiBold">{details?.action_required}</span> Products require action
+            <span className="font-interSemiBold">
+              {details?.action_required}
+            </span>{" "}
+            Products require action
           </p>
-          <RiSettings5Fill
-            size={25}
-            className="cursor-pointer"
-            onClick={() => setEnableSettings(true)}
-          />
+          <RiSettings5Fill size={25} className="cursor-pointer" />
         </div>
 
         <div className="grid grid-cols-4 gap-4 mt-8">

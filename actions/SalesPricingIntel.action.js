@@ -126,8 +126,9 @@ export const fetchProductListingsPrice = async ({
 export const fetchRepricingRules = async ({
   setPricingRuleData,
   setPricingRuleFullData,
+  setLoader,
 }) => {
-  // setLoader(true);
+  setLoader && setLoader(true);
 
   try {
     await apis
@@ -155,7 +156,7 @@ export const fetchRepricingRules = async ({
         NSToaster.error(err);
       })
       .finally(() => {
-        // setLoader(false);
+        setLoader && setLoader(false);
       });
   } catch (err) {
     // throw new Error("", err);
