@@ -1,6 +1,8 @@
-import NSCookies from "../components/common/NSCookies";
-import NSToaster from "../components/common/NSToaster";
-import apis from "../pages/api";
+/** @format */
+
+import NSCookies from "../components/common/NSCookies"
+import NSToaster from "../components/common/NSToaster"
+import apis from "../pages/api"
 
 export const handleLogin = ({
   email,
@@ -10,30 +12,36 @@ export const handleLogin = ({
   setToken,
   setLoader,
   router,
+  removetoken,
+  setOpen,
 }) => {
-  setValidate(true);
+  setValidate(true)
   if (!email || email === "" || !password || password === "") {
-    return;
+    return
   }
-  setValidate(false);
-  setLoader(true);
+  setValidate(false)
+  setLoader(true)
 
   apis
-    .login({ email: email, password: password, removetoken: 1 })
+    .login({ email: email, password: password, removetoken })
     .then(({ data }) => {
       if (data?.access_token !== undefined) {
-        NSToaster.success("Login successfully!");
-        NSCookies.setUser(data.user);
-        NSCookies.setToken(data.access_token);
-        router.push("/");
+        NSToaster.success("Login successfully!")
+        NSCookies.setUser(data.user)
+        NSCookies.setToken(data.access_token)
+        router.push("/")
       } else {
-        NSToaster.error(data?.message);
+        NSToaster.error(data?.message)
+        if (data.message === "Already logged in") {
+          setOpen(true)
+        }
       }
     })
     .catch(() => {
-      NSToaster.error("Something went to wrong, Please try after sometime.");
+      NSToaster.error("Something went to wrong, Please try after sometime.")
     })
     .finally(() => {
-      setLoader(false);
-    });
-};
+      setLoader(false)
+    })
+}
+

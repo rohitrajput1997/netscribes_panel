@@ -1,31 +1,30 @@
 /** @format */
 
-import Image from "next/image";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { GoogleLogin } from "react-google-login";
-import { handleLogin } from "../actions/Login.action";
-import NSButton from "../components/common/NSButton";
-import NSCookies from "../components/common/NSCookies";
-import NSInput from "../components/common/NSInput";
-import NSToaster from "../components/common/NSToaster";
-import OrHr from "../components/common/OrHr";
-import apis from "./api";
+import Image from "next/image"
+import { useRouter } from "next/router"
+import React, { useState } from "react"
+import { GoogleLogin } from "react-google-login"
+import { handleLogin } from "../actions/Login.action"
+import ConfirmationModal from "../components/auth/ConfirmationModal"
+import NSButton from "../components/common/NSButton"
+import NSInput from "../components/common/NSInput"
+import OrHr from "../components/common/OrHr"
 
 function Login({ token }) {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [validate, setValidate] = useState(false);
-  const [loader, setLoader] = useState(false);
-
+  const router = useRouter()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [validate, setValidate] = useState(false)
+  const [loader, setLoader] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [isSocial, setisSocial] = useState(false)
   React.useEffect(() => {
     if (token) {
-      router.push("/login");
+      router.push("/login")
     } else {
-      router.push("/");
+      router.push("/")
     }
-  }, [token]);
+  }, [token])
 
   // const responseGoogle = (response, removetoken) => {
   //   NSCookies.clearCookies();
@@ -67,15 +66,17 @@ function Login({ token }) {
   //   }
   // };
 
-  const handleLoginUser = () => {
+  const handleLoginUser = ({ removetoken = 0 }) => {
     handleLogin({
       email: email,
       password: password,
       setValidate: setValidate,
       setLoader: setLoader,
       router: router,
-    });
-  };
+      removetoken,
+      setOpen,
+    })
+  }
 
   return (
     <>
@@ -159,9 +160,23 @@ function Login({ token }) {
             </div>
           </div>
         </div>
+        <ConfirmationModal
+          onClickYes={() => {
+            if (isSocial) {
+              // responseGoogle(accessToken, 1)
+            } else {
+              handleLoginUser({ removetoken: 1 })
+            }
+          }}
+          open={open}
+          setOpen={setOpen}
+          title="Do you want to close your active session and create a new one?"
+          loader={loader}
+        />
       </div>
     </>
-  );
+  )
 }
 
-export default Login;
+export default Login
+
