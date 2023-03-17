@@ -20,7 +20,7 @@ const SidebarMenu = () => {
           <Menu.Item key={item.key} onClick={() => router.push(item.route)}>
             <div className="flex items-center">
               <Image src={item.icon} alt={item.label} width={20} height={20} className='filter invert' />
-              <div className="ml-4 font-MontRegular">{item.label}</div>
+              <div className="ml-4 font-interRegular">{item.label}</div>
             </div>
           </Menu.Item>
         ))}

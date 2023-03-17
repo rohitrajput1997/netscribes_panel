@@ -67,7 +67,7 @@ const MainProductListingPage = () => {
         return (
           <>
             <Tooltip title={data}>
-              <p className="font-MontRegular truncate w-[150px]">{data}</p>
+              <p className="font-interRegular truncate w-[150px]">{data}</p>
             </Tooltip>
           </>
         );

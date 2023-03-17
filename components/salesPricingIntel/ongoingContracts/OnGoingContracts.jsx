@@ -67,7 +67,7 @@ const OnGoingContracts = ({
             <div className="flex justify-between items-center">
               <div>
                 <Image src="" alt="" className="mr-2" />
-                <h1 className="text-[1.2rem]">
+                <h1 className="text-[1.2rem] font-interSemiBold">
                   Total Estimates Sales Over Time
                 </h1>
               </div>

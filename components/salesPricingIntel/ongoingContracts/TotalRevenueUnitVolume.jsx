@@ -3,7 +3,7 @@ import React from "react";
 import NSCard from "../../common/NSCard";
 import { BiRupee } from "react-icons/bi";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
-import commaSeperator from '../../../utils/commaSeperator';
+import commaSeperator from "../../../utils/commaSeperator";
 
 function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
   const valOne = "+7%";
@@ -23,7 +23,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
               height={40}
               className="mr-2"
             />
-            <p>Total Revenue</p>
+            <p className="font-interMedium">Total Revenue</p>
           </div>
           {loader ? (
             <NSLoaderWithMsg withMessage={false} />
@@ -31,8 +31,9 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
             <>
               <h1 className="text-[1.3rem] flex items-center">
                 {/* <BiRupee size={25} className="mt-[2px]" /> */}
-                <p className="font-MontRegular mr-1">INR</p>
-                {commaSeperator(sales)}
+                <p className="font-interRegular mr-1">
+                  INR {commaSeperator(sales)}
+                </p>
               </h1>
               <p
                 className={`${
@@ -57,7 +58,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
               height={40}
               className="mr-2"
             />
-            <p>Total Unit Volume</p>
+            <p className="font-interMedium">Total Unit Volume</p>
           </div>
           {loader ? (
             <NSLoaderWithMsg withMessage={false} />
@@ -65,8 +66,9 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
             <>
               <h1 className="text-[1.3rem] flex items-center">
                 {/* <BiRupee size={25} className="mt-[2px]" /> */}
-                <p className="font-MontRegular mr-1">INR</p>
-                {commaSeperator(units)}
+                <p className="font-MontRegular mr-1">
+                  INR {commaSeperator(units)}
+                </p>
               </h1>
               <p
                 className={`${

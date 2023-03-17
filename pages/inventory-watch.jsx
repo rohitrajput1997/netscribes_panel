@@ -15,7 +15,8 @@ import NSLayout from "../components/common/NSLayout";
 import NSSearchbar from "../components/common/NSSearchbar";
 import { InventoryWatchHeadres } from "../components/json/CustomizedTableHeaders";
 import SalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/SalesAndAvgUnitValue";
-import SelfPresenceChart from "../components/salesPricingIntel/reports/SelfPresenceChart";
+import SelfPresenceChart from "../components/salesPricingIntel/performance/SelfPresenceChart";
+SelfPresenceChart
 
 function InventoryWatch() {
   const initialData = [

@@ -8,14 +8,14 @@ const BusinessTrends = () => {
     <NSLayout>
       <div>
         <div className="flex justify-between items-center">
-          <h1 className="text-[1.1rem] my-3 font-MontBold">
+          <h1 className="text-[1.1rem] my-3 font-interMedium">
             Search page ranking as on Dec 25, 2022
           </h1>
-          <h6 className="text-blue-800 flex items-center font-MontMedium">Refresh request <span className="ml-2"><Image src='./assets/refresh.svg' alt="refresh" width={15} height={15} /></span></h6>
+          <h6 className="text-blue-800 flex items-center font-interMedium">Refresh request <span className="ml-2"><Image src='./assets/refresh.svg' alt="refresh" width={15} height={15} /></span></h6>
         </div>
 
         <NSCard style={{ padding: "15px" }}>
-          <h1 className="text-gray-700 text-[1.2rem]">News</h1>
+          <h1 className="text-gray-700 text-[1.2rem] font-interSemiBold">News</h1>
 
           {[0, 1, 2, 3, 4, 5].map((news, index) => (
             <div
@@ -25,20 +25,20 @@ const BusinessTrends = () => {
               <div className="w-[85%]">
                 <div className="flex items-center">
                   <div className="w-5 h-5 bg-gray-600"></div>
-                  <span className="ml-2">CBS News</span>
+                  <span className="ml-2 font-interMedium">CBS News</span>
                 </div>
-                <h1 className="text-blue-800 font-semibold text-xl my-2 cursor-pointer">
+                <h1 className="text-blue-800 font-interSemiBold text-xl my-2 cursor-pointer">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Libero quibusdam assumenda earum commodi unde quaerat vitae
                   sed ullam ipsa doloremque?
                 </h1>
-                <h3 className="text-gray-600 text-base font-normal my-2">
+                <h3 className="text-gray-600 text-[.9rem] font-interRegular my-2">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Debitis, sequi ut! Enim eius quia, nulla quas commodi corporis
                   exercitationem dignissimos quod, aspernatur quis excepturi
                   doloremque!
                 </h3>
-                <h3 className="text-gray-600 text-base font-normal my-2">
+                <h3 className="text-gray-600 text-base font-interRegular my-2 text-[12px]">
                   2 days ago
                 </h3>
               </div>

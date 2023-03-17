@@ -8,8 +8,8 @@ import HomeRecentVisits from "../components/home/HomeRecentVisits";
 const Home = ({ homeDetails, loader }) => {
   const Heading = ({ title, subTitle }) => (
     <div className="flex justify-between items-center">
-      <h1 className="text-[1.3rem] mb-3 font-MontBold">{title}</h1>
-      <h3 className="text-[1.1rem] text-[#005f86] font-MontMedium cursor-pointer">
+      <h1 className="text-[1.3rem] mb-3 font-interBold">{title}</h1>
+      <h3 className="text-[1.1rem] text-[#005f86] font-interMedium cursor-pointer">
         {subTitle}
       </h3>
     </div>

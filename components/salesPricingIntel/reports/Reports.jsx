@@ -8,16 +8,16 @@ import RepricingHighlightsTileTwo from "./RepricingHighlightsTileTwo";
 const Performance = () => {
   return (
     <div>
-      <h1 className="text-[1.4rem] font-bold">
+      <h1 className="text-[1.4rem] font-interBold">
         Your Persona Selection Settings
       </h1>
 
       <div>
         <NSCard className="my-3 p-4 grid grid-cols-3">
           <div className="col-span-1 border-r-2 p-2">
-            <h1 className="font-MontBold mb-2">Revenue boosted</h1>
+            <h1 className="font-interSemiBold mb-2">Revenue boosted</h1>
             <div className="flex">
-              <p className="w-[50%]">
+              <p className="w-[50%] font-interRegular">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Possimus, quo!
               </p>
@@ -33,9 +33,9 @@ const Performance = () => {
             </div>
           </div>
           <div className="col-span-1 border-r-2 p-2">
-            <h1 className="font-MontBold mb-2">Price Optimized Products</h1>
+            <h1 className="font-MontBold mb-2 font-interSemiBold">Price Optimized Products</h1>
             <div className="flex">
-              <p className="w-[50%]">
+              <p className="w-[50%] font-interRegular">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Possimus, quo!
               </p>
@@ -51,9 +51,9 @@ const Performance = () => {
             </div>
           </div>
           <div className="col-span-1 p-2">
-            <h1 className="font-MontBold mb-2">Products. at Optim Lim</h1>
+            <h1 className="font-MontBold mb-2 font-interSemiBold">Products. at Optim Lim</h1>
             <div className="flex">
-              <p className="w-[50%]">
+              <p className="w-[50%] font-interRegular">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Possimus, quo!
               </p>
@@ -70,12 +70,12 @@ const Performance = () => {
           </div>
         </NSCard>
         <NSCard className="my-3 p-4 grid grid-cols-6 gap-3">
-          <div className="col-span-2  border rounded-md">
+          <div className="col-span-2 border rounded-md">
             <div className="flex">
               <div className="repricing-intervals h-[100%] w-[100%] p-2 mb-2 mr-2">
-                <h2 className="font-bold">Repricing intervals</h2>
+                <h2 className="font-interBold">Repricing intervals</h2>
                 <div className="flex items-center justify-between">
-                  <p className="text-[0.8rem]">New price should be</p>
+                  <p className="text-[0.8rem] font-interRegular">New price should be</p>
                   <NSDropdown options={[]} className="w-[110px]" />
                 </div>
                 <div className="h-20 mt-2 pt-5">
@@ -88,7 +88,7 @@ const Performance = () => {
                     trackStyle={{backgroundColor: '#005f86'}}
                   />
                 </div>
-                <p className="text-blue-600 text-[.7rem] font-bold mt-2">
+                <p className="text-blue-600 text-[.7rem] font-bold mt-2 font-interSemiBold">
                   Current Price - 5% and Current Price + 5%
                 </p>
               </div>
@@ -97,7 +97,7 @@ const Performance = () => {
           <div className="col-span-3 border border-gray-300 rounded-md p-2">
             <div className="flex justify-between mr-2">
               <div className="new-pricingp-2 w-[100%]">
-                <h2 className="font-bold truncate">
+                <h2 className="font-interBold truncate">
                   New Price should be higher than
                 </h2>
                 <div className="flex justify-between mt-3">
@@ -105,7 +105,7 @@ const Performance = () => {
                   <NSDropdown options={[]} className="w-[200px]" />
                   <NSInput
                     type="text"
-                    className="w-[100px]"
+                    className="w-[100px] font-interRegular"
                     style={{ height: "10px", width: "100px" }}
                   />
                 </div>
@@ -117,7 +117,7 @@ const Performance = () => {
                   <NSDropdown options={[]} className="w-[200px] mr-[.22px]" />
                   <NSInput
                     type="text"
-                    className="w-[100px]"
+                    className="w-[100px] font-interRegular"
                     style={{ height: "10px", width: "100px" }}
                   />
                 </div>
@@ -127,7 +127,7 @@ const Performance = () => {
           <div className="col-span-1 border border-gray-300 rounded-md">
             <div className="max-items-amount new-pricing p-2">
               <Switch />
-              <h2 className="text-[.8rem] font-bold mt-2">
+              <h2 className="text-[.8rem] font-interBold mt-2">
                 Maximum items amount for pricing
               </h2>
               <NSInput

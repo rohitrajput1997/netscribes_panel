@@ -16,13 +16,13 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle }) {
         className="float-right"
       />
       <div className="mt-3">
-        <h1 className="text-[1.3rem] font-MontMedium">{title}</h1>
+        <h1 className="text-[1.3rem] font-interSemiBold">{title}</h1>
         <hr className="border-b-2 border-cyan-100 my-1" />
         <div className="mt-3">
-          <p className="leading-8 text-[1rem] font-MontRegular capitalize">
+          <p className="leading-8 text-[1rem] font-interMedium capitalize">
             {subtitle.split("_").join(" ")}
           </p>
-          <h1 className="text-xl">{salesCount}</h1>
+          <h1 className="text-xl font-interRegular">{salesCount}</h1>
         </div>
       </div>
     </NSCard>

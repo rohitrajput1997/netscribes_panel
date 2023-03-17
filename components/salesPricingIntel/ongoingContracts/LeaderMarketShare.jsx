@@ -7,15 +7,15 @@ function LeaderMarketShare({ cardData }) {
 
   return (
     <div>
-      <h1 className="text-[1.2rem] my-5 font-MontBold">Leader as per Market Share</h1>
+      <h1 className="text-[1.2rem] my-5 font-interSemiBold">Leader as per Market Share</h1>
       <div className="grid grid-cols-3 gap-2">
         {cardData?.map((data, index) => (
           <NSCard key={index}>
             <div className="col-span-1 flex items-center justify-between">
               <div className="w-[60%]">
-                <h1 className="text-xl mb-2">{data?.Brand}</h1>
-                <p>Sales</p>
-                <h1>INR {data?.Sales}</h1>
+                <h1 className="text-xl mb-2 font-interMedium">{data?.Brand}</h1>
+                <p className="font-interMedium">Sales</p>
+                <h1 className="font-interRegular">INR {data?.Sales}</h1>
               </div>
               <Progress
                 strokeLinecap="butt"

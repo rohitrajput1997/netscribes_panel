@@ -30,21 +30,21 @@ function ManageRepricingRuleList({
 
   return (
     <div>
-      <h1 className="text-xl font-MontBold mt-6">Manage Repricing Rules</h1>
+      <h1 className="text-xl font-interBold mt-6">Manage Repricing Rules</h1>
       <div className="mt-4">
         {pricingRuleData.map((item, index) => (
           <div key={item} className="w-[100%] min-h-[50px] mt-2">
             <div className="flex items-center justify-between shadow cursor-pointer hover:bg-[#005f86] hover:text-white duration-700 ease-in-out p-3">
-              <span className="w-[30%] font-MontMedium flex items-center">
+              <span className="w-[30%] font-interSemiBold flex items-center">
                 <AiFillTag size={20} className="mr-3" />
                 {item?.title}
               </span>
               <Tooltip title="WisePrice default rule" placement="topLeft">
-                <span className="w-[65%] truncate font-MontRegular">
+                <span className="w-[65%] truncate font-interRegular">
                   {item?.short_description}
                 </span>
               </Tooltip>
-              <span className="w-[5%] flex gap-2">
+              <span className="w-[5%] flex gap-2 font-interRegular">
                 {loading && index === selectedIndex ? (
                   <NSLoaderWithMsg />
                 ) : (

@@ -18,7 +18,7 @@ function SelfPresenceChart({header, data}) {
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <Image src="./assets/Group 694.svg" alt="" width={50} height={50} />
-          <h1 className="text-[1.1rem] font-MontMedium ml-1">{header}</h1>
+          <h1 className="text-[1.1rem] font-interMedium ml-1">{header}</h1>
         </div>
         <NSSearchbar
           placeholder="Search for brand"

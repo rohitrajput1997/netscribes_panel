@@ -32,7 +32,7 @@ function SalesAndAvgUnitValue({
               {showIcon && (
                 <Image src={image} alt="Tag" width={18} height={18} />
               )}
-              <h1 className="text-[1rem] ml-2">{title}</h1>
+              <h1 className="text-[1rem] ml-2 font-interMedium">{title}</h1>
             </div>
             {showPlue && (
               <Image
@@ -46,14 +46,14 @@ function SalesAndAvgUnitValue({
           {showCount && (
             <h1 className="text-[1.6rem] flex items-center">
               {/* <BiRupee size={25} className="mt-[2px]" /> */}
-              <p className="font-MontRegular mr-1">INR</p>
+              <p className="font-interRegular mr-1 mt-[2px]">INR</p>
               <h1>{commaSeperator(total)}</h1>
             </h1>
           )}
 
           <div className="mt-2">
             <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">
-              <h1 className="text-orange-500 text-start flex items-center w-[33%] text-[.8rem]">
+              <h1 className="text-orange-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image
                     src="./assets/arrow-small-up.svg"
@@ -65,18 +65,21 @@ function SalesAndAvgUnitValue({
                 )}
                 {headers?.one?.headerOne}
               </h1>
-              <h1 className="text-orange-500 text-center w-[33%] text-[.8rem]">
+              <h1 className="text-orange-500 text-center w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerTwo}
               </h1>
-              <h1 className="text-orange-500 text-end w-[33%] text-[.8rem]">
+              <h1 className="text-orange-500 text-end w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerThree}
               </h1>
             </div>
             <div className="max-h-[50px] overflow-y-scroll">
               {tableData?.[0]?.map((_, index) => (
-                <div className="flex justify-between px-2 mb-1" key={index}>
+                <div
+                  className="flex justify-between px-2 mb-1 font-interRegular"
+                  key={index}
+                >
                   <h1 className="text-start w-[33%]">
-                    {_?.[header_keys[0] || ""].replaceAll('_', ' ')}
+                    {_?.[header_keys[0] || ""].replaceAll("_", " ")}
                   </h1>
                   <h1 className="text-center w-[33%]">
                     {_?.[header_keys[1] || ""]}
@@ -91,7 +94,7 @@ function SalesAndAvgUnitValue({
 
           <div className="mt-2">
             <div className="flex justify-between bg-pink-200 rounded-full px-2 mb-2">
-              <h1 className="text-pink-500 text-start flex items-center w-[33%] text-[.8rem]">
+              <h1 className="text-pink-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image
                     src="./assets/arrow-small-up-1.svg"
@@ -103,17 +106,22 @@ function SalesAndAvgUnitValue({
                 )}{" "}
                 {headers?.two?.headerOne}
               </h1>
-              <h1 className="text-pink-500 text-center w-[33%] text-[.8rem]">
+              <h1 className="text-pink-500 text-center w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerTwo}
               </h1>
-              <h1 className="text-pink-500 text-end w-[33%] text-[.8rem]">
+              <h1 className="text-pink-500 text-end w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerThree}
               </h1>
             </div>
             <div className="max-h-[50px] overflow-y-scroll">
               {tableData?.[1]?.map((_) => (
-                <div className="flex justify-between px-2 mb-1" key={_}>
-                  <h1 className="text-start w-[33%]">{_?.[header_keys[0]].replaceAll('_', ' ')}</h1>
+                <div
+                  className="flex justify-between px-2 mb-1 font-interRegular"
+                  key={_}
+                >
+                  <h1 className="text-start w-[33%]">
+                    {_?.[header_keys[0]].replaceAll("_", " ")}
+                  </h1>
                   <h1 className="text-center w-[33%]">{_?.[header_keys[1]]}</h1>
                   <h1 className="text-end text-orange-500 w-[33%]">
                     {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%

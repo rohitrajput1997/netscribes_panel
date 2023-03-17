@@ -130,23 +130,24 @@ function PricingRules({
       {!addOrEditRule && (
         <>
           <div
-            className="flex items-center mb-2 cursor-pointer font-MontMedium"
+            className="flex items-center mb-2 cursor-pointer font-interMedium"
             onClick={() => setEnableSettings(false)}
           >
             <FaArrowAltCircleLeft size={20} className="mr-2" color="#005f86" />
             Back to main page
           </div>
           <div className="flex justify-between items-center">
-            <h1 className="text-xl font-MontBold">Repricing Rules</h1>
+            <h1 className="text-xl font-interBold">Repricing Rules</h1>
             <NSButton
               title="New Rule"
               onClick={() => {
                 setAddOrEditRule(true);
                 setNewRule(initialNewRuleData);
               }}
+              className='font-interMedium'
             />
           </div>
-          <p className="font-MontRegular">
+          <p className="font-interRegular">
             Wisepricer sets a new price for each of your products, based on the
             rules you define below
           </p>

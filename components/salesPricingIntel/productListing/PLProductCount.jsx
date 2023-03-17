@@ -16,8 +16,8 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
     <NSCard className="grid grid-cols-3">
       <div className="col-span-2 py-1 px-2 border-r-2">
         <div className="flex justify-between items-center">
-          <p className="font-MontRegular text-xl">
-            <span className="font-MontBold">{details?.action_required}</span> Products require action
+          <p className="font-interRegular text-xl">
+            <span className="font-interSemiBold">{details?.action_required}</span> Products require action
           </p>
           <RiSettings5Fill
             size={25}
@@ -31,10 +31,10 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("price_increase")}
           >
-            <h1 className="text-3xl font-MontBold">
+            <h1 className="text-3xl font-interBold">
               {details?.price_increase || 0}
             </h1>
-            <p className="font-MontRegular mt-2 text-stone-500">
+            <p className="font-interRegular mt-2 text-stone-500">
               Eligible for Price Increase
             </p>
           </div>
@@ -42,10 +42,10 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("price_decrease")}
           >
-            <h1 className="text-3xl font-MontBold">
+            <h1 className="text-3xl font-interBold">
               {details?.price_decrease || 0}
             </h1>
-            <p className="font-MontRegular mt-2 text-stone-500">
+            <p className="font-interRegular mt-2 text-stone-500">
               Eligible for Price Reduction
             </p>
           </div>
@@ -53,8 +53,8 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("matched")}
           >
-            <h1 className="text-3xl font-MontBold">{details?.matched || 0}</h1>
-            <p className="font-MontRegular mt-2 text-stone-500">
+            <h1 className="text-3xl font-interBold">{details?.matched || 0}</h1>
+            <p className="font-interRegular mt-2 text-stone-500">
               100% Match with Compititors
             </p>
           </div>
@@ -62,8 +62,8 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("")}
           >
-            <h1 className="text-3xl font-MontBold">{details?.starred || 0}</h1>
-            <p className="font-MontRegular mt-2 text-stone-500">Started</p>
+            <h1 className="text-3xl font-interBold">{details?.starred || 0}</h1>
+            <p className="font-interRegular mt-2 text-stone-500">Started</p>
           </div>
         </div>
       </div>
@@ -89,9 +89,9 @@ const PLProductCount = ({ details, setSelectedFilter, setEnableSettings }) => {
               </Pie>
             </PieChart>
           </ResponsiveContainer>
-          <div className="flex flex-col justify-center">
-            <p className="font-MontRegular mb-1">
-              <span className="font-MontBold">
+          <div className="flex flex-col justify-center font-interRegular">
+            <p className="mb-1">
+              <span className="font-interBold">
                 {details?.total_items} items
               </span>
               &nbsp;&nbsp;in Webstore Demos

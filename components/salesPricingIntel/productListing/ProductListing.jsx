@@ -44,7 +44,7 @@ function ProductListing({
 
       <NSCard className="mt-4">
         <div className="flex justify-between">
-          <div className="flex">
+          <div className="flex font-interRegular">
             <div className="bg-gray-200 py-2 px-6">Webstore Demo</div>
             <div
               className="bg-gray-200 py-2 px-6 cursor-pointer"
@@ -63,7 +63,7 @@ function ProductListing({
           <div className="flex items-center gap-2">
             <NSSearchbar
               placeholder="Search..."
-              className="w-20"
+              className="w-20 font-interRegular"
               showSearchIcon={false}
               style={{ height: "30px" }}
             />

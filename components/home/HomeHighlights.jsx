@@ -9,7 +9,7 @@ function HomeHighlights({ homeDetails, loader }) {
   return (
     <>
       <NSCard style={{ padding: "1.3rem", marginTop: "10px" }}>
-        <h1 className="pb-3 text-[1.2rem] font-MontMedium">
+        <h1 className="pb-3 text-[1.2rem] font-interMedium">
           5 Star Rated Refrigerators
         </h1>
         <div className="grid grid-cols-2 gap-3">

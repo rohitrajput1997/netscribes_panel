@@ -6,9 +6,9 @@ const RepricingHighlightsTileTwo = ({ title, subtitle, showupDownArrow }) => {
   return (
     <NSCard className="max-h-[250px] overflow-y-scroll relative">
       <div className="sticky top-[-10px] bg-white">
-        <h4 className="font-semibold">{title}</h4>
+        <h4 className="font-interSemiBold">{title}</h4>
         <h1
-          className={`font-bold text-xl ${
+          className={`font-interSemiBold text-xl ${
             subtitle ? "text-black" : "text-white"
           }`}
         >
@@ -17,7 +17,7 @@ const RepricingHighlightsTileTwo = ({ title, subtitle, showupDownArrow }) => {
       </div>
       <div className="col-span-1">
         <div className="mt-2">
-          <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">
+          <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2 font-interMedium">
             <h1 className="text-orange-500 text-start flex items-center">
               {showupDownArrow && (
                 <Image
@@ -33,7 +33,7 @@ const RepricingHighlightsTileTwo = ({ title, subtitle, showupDownArrow }) => {
             <h1 className="text-orange-500 text-center">Units</h1>
             <h1 className="text-orange-500 text-end">Q-o-Q</h1>
           </div>
-          <div className="max-h-[50px] overflow-y-scroll">
+          <div className="max-h-[50px] overflow-y-scroll font-interRegular">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((_) => (
               <div className="flex justify-between px-2 mb-1" key={_}>
                 <h1 className="text-start">Samsung</h1>
@@ -45,7 +45,7 @@ const RepricingHighlightsTileTwo = ({ title, subtitle, showupDownArrow }) => {
         </div>
 
         <div className="mt-2">
-          <div className="flex justify-between bg-pink-200 rounded-full px-2 mb-2">
+          <div className="flex justify-between bg-pink-200 rounded-full px-2 mb-2 font-interMedium">
             <h1 className="text-pink-500 text-start flex items-center">
               {showupDownArrow && (
                 <Image
@@ -61,7 +61,7 @@ const RepricingHighlightsTileTwo = ({ title, subtitle, showupDownArrow }) => {
             <h1 className="text-pink-500 text-center">Units</h1>
             <h1 className="text-pink-500 text-end">Q-o-Q</h1>
           </div>
-          <div className="max-h-[50px] overflow-y-scroll">
+          <div className="max-h-[50px] overflow-y-scroll font-interRegular">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((_) => (
               <div className="flex justify-between px-2 mb-1" key={_}>
                 <h1 className="text-start">Samsung</h1>

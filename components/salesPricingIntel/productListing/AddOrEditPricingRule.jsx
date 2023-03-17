@@ -21,7 +21,7 @@ function AddOrEditPricingRule({
   return (
     <>
       <div
-        className="flex items-center mb-2 cursor-pointer font-MontMedium"
+        className="flex items-center mb-2 cursor-pointer font-interMedium"
         onClick={() => {
           setAddOrEditRule(false);
           setNewRule({});
@@ -33,14 +33,14 @@ function AddOrEditPricingRule({
       <div className="p-3">
         <div className="flex items-center gap-2">
           <NSInput
-            className="w-[220px] rounded-md pl-3"
+            className="w-[220px] rounded-md pl-3 font-interRegular"
             style={{ height: "40px" }}
             placeholder="Name your rule"
             onChange={(e) => setNewRule({ ...newRule, title: e.target.value })}
             value={newRule.title}
           />
           <NSInput
-            className="w-[500px] rounded-md pl-3"
+            className="w-[500px] rounded-md pl-3 font-interRegular"
             style={{ height: "40px" }}
             placeholder="Short Description (upto 160 charachters)"
             onChange={(e) =>
@@ -50,8 +50,8 @@ function AddOrEditPricingRule({
           />
         </div>
         <div className="border-b-2 border-black my-6" />
-        <h1 className="text-xl font-MontBold">Repricing logic</h1>
-        <div>
+        <h1 className="text-xl font-interBold">Repricing logic</h1>
+        <div className="font-interRegular">
           <div className="flex items-center gap-2 mt-2">
             <Checkbox
               onChange={(e) => {
@@ -278,9 +278,9 @@ function AddOrEditPricingRule({
         </div>
 
         <div className="border-b-2 border-black my-6" />
-        <h1 className="text-xl font-MontBold">Repricing logic</h1>
+        <h1 className="text-xl font-interBold">Repricing logic</h1>
         <div>
-          <p className="my-2 ml-3 text-lg font-MontRegular">
+          <p className="my-2 ml-3 text-lg font-interMedium text-gray-600">
             What should WisePricer do if the New Price is below minimum Price?
           </p>
           <Radio.Group
@@ -291,13 +291,13 @@ function AddOrEditPricingRule({
             <Space direction="vertical">
               <Radio
                 value="leave_product_at_current_price"
-                className="font-MontMedium"
+                className="font-interRegular"
               >
                 Leave product at current price
               </Radio>
               <Radio
                 value="set_it_to_minimum_price"
-                className="font-MontMedium"
+                className="font-interRegular"
               >
                 Set it to minimum price
               </Radio>
@@ -306,7 +306,7 @@ function AddOrEditPricingRule({
         </div>
 
         <div className="mt-4 flex justify-end">
-          <NSButton title="Save Changes" onClick={handleAddPricingRule} />
+          <NSButton title="Save Changes" onClick={handleAddPricingRule} className='font-interMedium px-2' />
         </div>
       </div>
     </>
