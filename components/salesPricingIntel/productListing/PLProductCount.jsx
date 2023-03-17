@@ -3,7 +3,7 @@ import { RiSettings5Fill } from "react-icons/ri";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import NSCard from "../../common/NSCard";
 
-const PLProductCount = ({ details, setSelectedFilter }) => {
+const PLProductCount = ({ details, setSelectedFilter, setSelectedTab }) => {
   const data = [
     { name: "Machted", value: details?.matched },
     { name: "Price Decrease", value: details?.price_decrease },
@@ -22,7 +22,11 @@ const PLProductCount = ({ details, setSelectedFilter }) => {
             </span>{" "}
             Products require action
           </p>
-          <RiSettings5Fill size={25} className="cursor-pointer" />
+          <RiSettings5Fill
+            size={25}
+            className="cursor-pointer"
+            onClick={() => setSelectedTab(4)}
+          />
         </div>
 
         <div className="grid grid-cols-4 gap-4 mt-8">

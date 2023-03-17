@@ -66,7 +66,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
             <>
               <h1 className="text-[1.3rem] flex items-center">
                 {/* <BiRupee size={25} className="mt-[2px]" /> */}
-                <p className="font-MontRegular mr-1">
+                <p className="font-interRegular mr-1">
                   INR {commaSeperator(units)}
                 </p>
               </h1>

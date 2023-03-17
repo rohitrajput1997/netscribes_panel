@@ -52,10 +52,10 @@ function SalesPricingIntel() {
         );
       case 2:
         return <Performance />;
-        case 3:
-        return <MainProductListingPage />;
-        case 4:
-          return <Reports />;
+      case 3:
+        return <MainProductListingPage setSelectedTab={setSelectedTab} />;
+      case 4:
+        return <Reports />;
     }
   };
 

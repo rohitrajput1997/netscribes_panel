@@ -32,12 +32,14 @@ function ProductListing({
   handleTableFilter,
   columns,
   loader,
+  setSelectedTab,
 }) {
   return (
     <>
       <PLProductCount
         details={productListingDetails?.eligible}
         setSelectedFilter={setSelectedFilter}
+        setSelectedTab={setSelectedTab}
       />
 
       <NSCard className="mt-4">

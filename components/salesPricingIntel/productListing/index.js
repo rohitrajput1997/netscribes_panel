@@ -13,7 +13,7 @@ import NSTableTooltipTitle from "../../common/NSTableTooltipTitle";
 import PricingRules from "./PricingRules";
 import ProductListing from "./ProductListing";
 
-const MainProductListingPage = () => {
+const MainProductListingPage = ({ setSelectedTab }) => {
   const [activeStar, setActiveStar] = useState(false);
   const [popoverOne, setPopoverOne] = useState(1);
   const [popoverTwo, setPopoverTwo] = useState(1);
@@ -275,6 +275,7 @@ const MainProductListingPage = () => {
         handleTableFilter={handleTableFilter}
         columns={columns}
         loader={loader}
+        setSelectedTab={setSelectedTab}
       />
     </>
   );
