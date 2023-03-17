@@ -112,7 +112,7 @@ const RepricingGeneral = () => {
                   <NSInput
                     type="text"
                     className="w-[100px] font-interRegular"
-                    style={{ height: "10px", width: "100px" }}
+                    style={{ height: "10px", width: "100px", backgroundColor: 'white' }}
                   />
                 </div>
                 <h2 className="font-bold truncate mt-2">
@@ -124,7 +124,7 @@ const RepricingGeneral = () => {
                   <NSInput
                     type="text"
                     className="w-[100px] font-interRegular"
-                    style={{ height: "10px", width: "100px" }}
+                    style={{ height: "10px", width: "100px", backgroundColor: 'white' }}
                   />
                 </div>
               </div>
@@ -138,7 +138,7 @@ const RepricingGeneral = () => {
               </h2>
               <NSInput
                 type="text"
-                style={{ height: "30px" }}
+                style={{ height: "30px", backgroundColor: 'white' }}
                 className="mt-10"
               />
             </div>
