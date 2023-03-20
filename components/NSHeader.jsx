@@ -44,7 +44,7 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
                 style={{ lineHeight: "initial" }}
               >
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-400 rounded-full cursor-pointer overflow-hidden">
+                  <div className="w-10 h-10 bg-gray-400 rounded-full overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="./assets/userone.jpeg" alt="" />
                   </div>

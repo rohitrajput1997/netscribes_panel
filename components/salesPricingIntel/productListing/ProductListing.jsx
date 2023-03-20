@@ -92,6 +92,7 @@ function ProductListing({
             }
             columns={columns}
             loader={loader}
+            rowKey={(record) => record.id}
           />
         </div>
       </NSCard>

@@ -1,6 +1,7 @@
 import { Checkbox, Radio, Space } from "antd";
 import React from "react";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { AiFillTag } from "react-icons/ai";
 import NSButton from "../../common/NSButton";
 import NSDropdown from "../../common/NSDropdown";
 import NSInput from "../../common/NSInput";
@@ -16,22 +17,52 @@ function AddOrEditPricingRule({
 }) {
   const { one, two, rank, price, measurment, status } = PricingRuleJson || {};
 
-  console.log('New Rule $$$$$$ ******', newRule);
+  console.log("New Rule $$$$$$ ******", newRule);
 
   return (
     <>
-      <div
-        className="flex items-center mb-2 cursor-pointer font-interMedium"
-        onClick={() => {
-          setAddOrEditRule(false);
-          setNewRule({});
-        }}
-      >
-        <FaArrowAltCircleLeft size={20} className="mr-2" color="#005f86" />
-        Go Back
+      <div className="p-3">
+        <h1 className="text-xl font-interBold">Repricing Rules</h1>
+
+        <p className="font-interRegular mt-2">
+          Wisepricer sets a new price for each of your products, based on the
+          rules you define below
+        </p>
+
+        <div className="flex justify-between items-center mt-4">
+          <div className="flex items-center">
+            <Checkbox
+            // onChange={(e) => {
+            //   let obj = { ...newRule };
+            //   obj.repricing_auto_enable = e.target.checked ? 1 : 0;
+            //   setNewRule(obj);
+            // }}
+            // value={newRule.repricing_auto_enable}
+            // className="font-MontMedium"
+            // checked={newRule.repricing_auto_enable === 1 ? true : false}
+            >
+              Reprice Automatically everyday at
+            </Checkbox>
+            <NSDropdown
+              className="w-32"
+              options={[{ label: "00:00 AM", value: "00:00" }]}
+              onChange={(e) => {
+                let obj = { ...newRule };
+                obj.repricing_auto_time = e;
+                setNewRule(obj);
+              }}
+              value={newRule?.repricing_auto_time}
+              defaultValue="00:00"
+            />
+          </div>
+        </div>
       </div>
       <div className="p-3">
+        <h1 className="font-interBold text-xl pb-4 mt-6">
+          Manage Repricing Rules
+        </h1>
         <div className="flex items-center gap-2">
+          <AiFillTag size={25} />
           <NSInput
             className="w-[220px] rounded-md pl-3 font-interRegular"
             style={{ height: "40px" }}
@@ -306,7 +337,22 @@ function AddOrEditPricingRule({
         </div>
 
         <div className="mt-4 flex justify-end">
-          <NSButton title="Save Changes" onClick={handleAddPricingRule} className='font-interMedium px-2' />
+          <NSButton
+            title="Cancel"
+            onClick={() => {
+              setAddOrEditRule(false);
+              setNewRule({});
+            }}
+            className="font-interMedium px-2 mr-2"
+            bgBordered
+            style={{border: '1px solid black'}}
+            />
+          <NSButton
+            title="Save Changes"
+            onClick={handleAddPricingRule}
+            className="font-interMedium px-2"
+            bgPrimary
+          />
         </div>
       </div>
     </>

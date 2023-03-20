@@ -29,7 +29,7 @@ function PricingRules() {
   const [loader, setLoader] = useState(false);
   const [newRule, setNewRule] = useState({
     repricing_auto_enable: 1,
-    repricing_auto_time: "11:00",
+    repricing_auto_time: "00:00",
     title: "",
     short_description: "",
     repricing_logic: [
@@ -65,7 +65,7 @@ function PricingRules() {
 
   const initialNewRuleData = {
     repricing_auto_enable: 1,
-    repricing_auto_time: "11:00",
+    repricing_auto_time: "00:00",
     title: "",
     short_description: "",
     repricing_logic: [
@@ -153,9 +153,9 @@ function PricingRules() {
             <FaArrowAltCircleLeft size={20} className="mr-2" color="#005f86" />
             Back to main page
           </div> */}
-          <div className="flex justify-between items-center">
+          {/* <div className="flex justify-between items-center"> */}
             <h1 className="text-xl font-interBold">Repricing Rules</h1>
-            <NSButton
+            {/* <NSButton
               title="New Rule"
               onClick={() => {
                 setAddOrEditRule(true);
@@ -163,14 +163,14 @@ function PricingRules() {
               }}
               className="font-interMedium"
             />
-          </div>
+          </div> */}
 
           <p className="font-interRegular mt-2">
             Wisepricer sets a new price for each of your products, based on the
             rules you define below
           </p>
 
-          {/* <div className="flex justify-between items-center mt-4">
+          <div className="flex justify-between items-center mt-4">
             <div className="flex items-center">
               <Checkbox
                 onChange={(e) => {
@@ -185,10 +185,9 @@ function PricingRules() {
                 Reprice Automatically everyday at
               </Checkbox>
               <NSDropdown
-                className="w-24"
+                className="w-32"
                 options={[
-                  { label: "11:00 AM", value: "11:00" },
-                  { label: "12:00 PM", value: "12:00" },
+                  { label: "00:00 AM", value: "00:00" },
                 ]}
                 onChange={(e) => {
                   let obj = { ...newRule };
@@ -196,6 +195,7 @@ function PricingRules() {
                   setNewRule(obj);
                 }}
                 value={newRule?.repricing_auto_time}
+                defaultValue='00:00'
               />
             </div>
             <NSButton
@@ -206,7 +206,7 @@ function PricingRules() {
               }}
               className="font-interMedium"
             />
-          </div> */}
+          </div>
 
           <ManageRepricingRuleList
             pricingRuleData={pricingRuleData}

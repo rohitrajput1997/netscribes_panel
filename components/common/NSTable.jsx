@@ -1,7 +1,7 @@
 import { Table } from "antd";
 import React from "react";
 
-function NSTable({ dataSource, columns, rowSelection, loader }) {
+function NSTable({ dataSource, columns, rowSelection, rowKey, loader }) {
   return (
     <>
       <Table
@@ -10,6 +10,7 @@ function NSTable({ dataSource, columns, rowSelection, loader }) {
         rowSelection={rowSelection || {}}
         scroll={{ x: "max-content" }}
         loading={loader}
+        rowKey={rowKey}
       />
     </>
   );

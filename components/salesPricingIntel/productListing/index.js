@@ -55,7 +55,7 @@ const MainProductListingPage = ({ setSelectedTab }) => {
     Table.SELECTION_COLUMN,
     {
       title: "",
-      dataIndex: "",
+      dataIndex: "name",
       key: "name",
     },
     {
@@ -276,6 +276,7 @@ const MainProductListingPage = ({ setSelectedTab }) => {
         columns={columns}
         loader={loader}
         setSelectedTab={setSelectedTab}
+        rowKey={(record) => record.ASIN_details}
       />
     </>
   );
