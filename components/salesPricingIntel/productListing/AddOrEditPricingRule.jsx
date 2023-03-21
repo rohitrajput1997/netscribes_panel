@@ -38,7 +38,7 @@ function AddOrEditPricingRule({
             //   setNewRule(obj);
             // }}
             // value={newRule.repricing_auto_enable}
-            // className="font-MontMedium"
+            className="font-interMedium"
             // checked={newRule.repricing_auto_enable === 1 ? true : false}
             >
               Reprice Automatically everyday at
@@ -93,7 +93,7 @@ function AddOrEditPricingRule({
                 setNewRule(obj);
               }}
               value={newRule.repricing_logic?.[0].status}
-              className="font-MontMedium"
+              className="font-interMedium"
               checked={
                 newRule.repricing_logic?.[0].status === "active" ? true : false
               }
@@ -164,7 +164,7 @@ function AddOrEditPricingRule({
                 setNewRule(obj);
               }}
               value={newRule.repricing_logic?.[1].status}
-              className="font-MontMedium"
+              className="font-interMedium"
               checked={
                 newRule.repricing_logic?.[1].status === "active" ? true : false
               }
@@ -224,7 +224,7 @@ function AddOrEditPricingRule({
                 setNewRule(obj);
               }}
               value={newRule.repricing_logic?.[2].status}
-              className="font-MontMedium"
+              className="font-interMedium"
               checked={
                 newRule.repricing_logic?.[2].status === "active" ? true : false
               }
@@ -284,7 +284,7 @@ function AddOrEditPricingRule({
                 setNewRule(obj);
               }}
               value={newRule.repricing_logic?.[3].status}
-              className="font-MontMedium"
+              className="font-interMedium"
               checked={
                 newRule.repricing_logic?.[3].status === "active" ? true : false
               }

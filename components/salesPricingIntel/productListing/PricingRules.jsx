@@ -179,7 +179,7 @@ function PricingRules() {
                   setNewRule(obj);
                 }}
                 value={newRule.repricing_auto_enable}
-                className="font-MontMedium"
+                className="font-interMedium"
                 checked={newRule.repricing_auto_enable === 1 ? true : false}
               >
                 Reprice Automatically everyday at

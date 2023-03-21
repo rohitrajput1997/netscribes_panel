@@ -40,6 +40,7 @@ function ProductListing({
         details={productListingDetails?.eligible}
         setSelectedFilter={setSelectedFilter}
         setSelectedTab={setSelectedTab}
+        loader={loader}
       />
 
       <NSCard className="mt-4">

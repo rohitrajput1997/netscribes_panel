@@ -32,7 +32,7 @@ function ManageRepricingRuleList({
     <div>
       <h1 className="text-xl font-interBold mt-6">Manage Repricing Rules</h1>
       {loader ? (
-        <NSLoaderWithMsg style={{marginTop: '6rem'}} />
+        <NSLoaderWithMsg style={{ marginTop: "6rem" }} />
       ) : (
         <div className="mt-4">
           {pricingRuleFullData.map((item, index) => (
@@ -47,30 +47,32 @@ function ManageRepricingRuleList({
                     {item?.short_description}
                   </span>
                 </Tooltip>
-                <span className="w-[5%] flex gap-2 font-interRegular">
-                  {loading && index === selectedIndex ? (
-                    <NSLoaderWithMsg />
-                  ) : (
-                    <RiDeleteBin6Fill
+                {item?.user_id !== null && (
+                  <span className="w-[5%] flex gap-2 font-interRegular">
+                    {loading && index === selectedIndex ? (
+                      <NSLoaderWithMsg />
+                    ) : (
+                      <RiDeleteBin6Fill
+                        size={20}
+                        className="cursor-pointer"
+                        onClick={() => {
+                          handleDeleteRule(item?.id);
+                          setSelectedIndex(index);
+                        }}
+                      />
+                    )}
+                    <MdEdit
                       size={20}
                       className="cursor-pointer"
                       onClick={() => {
-                        handleDeleteRule(item?.id);
-                        setSelectedIndex(index);
+                        if (![1, 2, 3, 4].includes(item?.id)) {
+                          setAddOrEditRule(true);
+                          handleEditRule(item?.id);
+                        }
                       }}
                     />
-                  )}
-                  <MdEdit
-                    size={20}
-                    className="cursor-pointer"
-                    onClick={() => {
-                      if (![1, 2, 3, 4].includes(item?.id)) {
-                        setAddOrEditRule(true);
-                        handleEditRule(item?.id);
-                      }
-                    }}
-                  />
-                </span>
+                  </span>
+                )}
               </div>
             </div>
           ))}
