@@ -1,5 +1,5 @@
 import { Checkbox, Radio, Space } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { AiFillTag } from "react-icons/ai";
 import NSButton from "../../common/NSButton";
@@ -15,10 +15,16 @@ function AddOrEditPricingRule({
   repricingLogic,
   setAddOrEditRule,
   isValidate,
+  isViewOnly,
+  setIsViewOnly,
 }) {
   const { one, two, rank, price, measurment, status } = PricingRuleJson || {};
 
-  console.log("New Rule $$$$$$ ******", newRule);
+  useEffect(() => {
+    return () => {
+      setIsViewOnly(false);
+    };
+  }, []);
 
   return (
     <>
@@ -345,24 +351,26 @@ function AddOrEditPricingRule({
           </Radio.Group>
         </div>
 
-        <div className="mt-4 flex justify-end">
-          <NSButton
-            title="Cancel"
-            onClick={() => {
-              setAddOrEditRule(false);
-              setNewRule({});
-            }}
-            className="font-interMedium px-2 mr-2"
-            bgBordered
-            style={{ border: "1px solid black" }}
-          />
-          <NSButton
-            title="Save Changes"
-            onClick={handleAddPricingRule}
-            className="font-interMedium px-2"
-            bgPrimary
-          />
-        </div>
+        {!isViewOnly && (
+          <div className="mt-4 flex justify-end">
+            <NSButton
+              title="Cancel"
+              onClick={() => {
+                setAddOrEditRule(false);
+                setNewRule({});
+              }}
+              className="font-interMedium px-2 mr-2"
+              bgBordered
+              style={{ border: "1px solid black" }}
+            />
+            <NSButton
+              title="Save Changes"
+              onClick={handleAddPricingRule}
+              className="font-interMedium px-2"
+              bgPrimary
+            />
+          </div>
+        )}
       </div>
     </>
   );

@@ -28,6 +28,7 @@ function PricingRules() {
   const [pricingRuleData, setPricingRuleData] = useState([]);
   const [loader, setLoader] = useState(false);
   const [isValidate, setIsValidate] = useState(false);
+  const [isViewOnly, setIsViewOnly] = useState(false);
   const [newRule, setNewRule] = useState({
     repricing_auto_enable: 1,
     repricing_auto_time: "00:00",
@@ -216,6 +217,7 @@ function PricingRules() {
             setPricingRuleFullData={setPricingRuleFullData}
             pricingRuleFullData={pricingRuleFullData}
             loader={loader}
+            setIsViewOnly={setIsViewOnly}
           />
         </>
       )}
@@ -229,6 +231,8 @@ function PricingRules() {
           repricingLogic={repricingLogic}
           setAddOrEditRule={setAddOrEditRule}
           isValidate={isValidate}
+          isViewOnly={isViewOnly}
+          setIsViewOnly={setIsViewOnly}
         />
       )}
     </NSCard>

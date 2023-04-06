@@ -1,6 +1,7 @@
 import { Checkbox, Radio, Space, Tooltip } from "antd";
 import React, { useState } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { HiEye } from "react-icons/hi";
 import { MdEdit } from "react-icons/md";
 import { AiFillTag } from "react-icons/ai";
 import NSDropdown from "../../common/NSDropdown";
@@ -15,6 +16,7 @@ function ManageRepricingRuleList({
   setPricingRuleFullData,
   pricingRuleFullData,
   loader,
+  setIsViewOnly,
 }) {
   const [loading, setLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState();
@@ -47,8 +49,8 @@ function ManageRepricingRuleList({
                     {item?.short_description}
                   </span>
                 </Tooltip>
-                <span className="w-[5%] flex gap-2 font-interRegular">
-                  {item?.user_id !== null && (
+                <span className="w-[5%] flex gap-2 font-interRegular justify-end">
+                  {item?.user_id !== null ? (
                     <>
                       {loading && index === selectedIndex ? (
                         <NSLoaderWithMsg />
@@ -73,6 +75,16 @@ function ManageRepricingRuleList({
                         }}
                       />
                     </>
+                  ) : (
+                    <HiEye
+                      size={20}
+                      className="cursor-pointer"
+                      onClick={() => {
+                        setAddOrEditRule(true);
+                        handleEditRule(item?.id);
+                        setIsViewOnly(true);
+                      }}
+                    />
                   )}
                 </span>
               </div>
