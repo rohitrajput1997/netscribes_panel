@@ -33,7 +33,9 @@ function ProductListing({
   columns,
   loader,
   setSelectedTab,
+  pricingRuleData,
 }) {
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   return (
     <>
       <PLProductCount
@@ -68,8 +70,8 @@ function ProductListing({
               showSearchIcon={false}
               style={{ height: "30px" }}
             />
-            <NSDropdown options={[]} className="w-28" placeholder="Filters" />
-            <NSDropdown options={[]} className="w-28" placeholder="Actions" />
+            {/* <NSDropdown options={[]} className="w-28" placeholder="Filters" />
+            <NSDropdown options={[]} className="w-28" placeholder="Actions" /> */}
             <NSPopover
               title="Reprice"
               content={
@@ -78,6 +80,7 @@ function ProductListing({
                   popoverTwo={popoverTwo}
                   setPopoverOne={setPopoverOne}
                   setPopoverTwo={setPopoverTwo}
+                  pricingRuleData={pricingRuleData}
                 />
               }
             />
@@ -93,7 +96,10 @@ function ProductListing({
             }
             columns={columns}
             loader={loader}
-            rowKey={(record) => record.id}
+            rowKey={(record) => record.ASIN_details}
+            rowSelection
+            selectedRowKeys={selectedRowKeys}
+            setSelectedRowKeys={setSelectedRowKeys}
           />
         </div>
       </NSCard>

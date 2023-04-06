@@ -14,6 +14,7 @@ function AddOrEditPricingRule({
   brandList,
   repricingLogic,
   setAddOrEditRule,
+  isValidate,
 }) {
   const { one, two, rank, price, measurment, status } = PricingRuleJson || {};
 
@@ -32,14 +33,14 @@ function AddOrEditPricingRule({
         <div className="flex justify-between items-center mt-4">
           <div className="flex items-center">
             <Checkbox
-            // onChange={(e) => {
-            //   let obj = { ...newRule };
-            //   obj.repricing_auto_enable = e.target.checked ? 1 : 0;
-            //   setNewRule(obj);
-            // }}
-            // value={newRule.repricing_auto_enable}
-            className="font-interMedium"
-            // checked={newRule.repricing_auto_enable === 1 ? true : false}
+              // onChange={(e) => {
+              //   let obj = { ...newRule };
+              //   obj.repricing_auto_enable = e.target.checked ? 1 : 0;
+              //   setNewRule(obj);
+              // }}
+              // value={newRule.repricing_auto_enable}
+              className="font-interMedium"
+              // checked={newRule.repricing_auto_enable === 1 ? true : false}
             >
               Reprice Automatically everyday at
             </Checkbox>
@@ -62,22 +63,30 @@ function AddOrEditPricingRule({
           Manage Repricing Rules
         </h1>
         <div className="flex items-center gap-2">
-          <AiFillTag size={25} />
+          <AiFillTag size={25} className="mt-[2.4rem]" />
           <NSInput
             className="w-[220px] rounded-md pl-3 font-interRegular"
             style={{ height: "40px" }}
             placeholder="Name your rule"
+            title="Name your rule"
             onChange={(e) => setNewRule({ ...newRule, title: e.target.value })}
             value={newRule.title}
+            isRequired
+            isError={isValidate && !newRule.title}
+            errorMessage="Rule name is required"
           />
           <NSInput
             className="w-[500px] rounded-md pl-3 font-interRegular"
             style={{ height: "40px" }}
             placeholder="Short Description (upto 160 charachters)"
+            title="Short Description"
             onChange={(e) =>
               setNewRule({ ...newRule, short_description: e.target.value })
             }
             value={newRule.short_description}
+            isRequired
+            isError={isValidate && !newRule.short_description}
+            errorMessage="Short description is required"
           />
         </div>
         <div className="border-b-2 border-black my-6" />
@@ -345,8 +354,8 @@ function AddOrEditPricingRule({
             }}
             className="font-interMedium px-2 mr-2"
             bgBordered
-            style={{border: '1px solid black'}}
-            />
+            style={{ border: "1px solid black" }}
+          />
           <NSButton
             title="Save Changes"
             onClick={handleAddPricingRule}

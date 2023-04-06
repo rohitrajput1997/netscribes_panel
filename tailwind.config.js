@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        MontBold: ["Montserrat-Bold"],
-        MontSemiBold: ["Montserrat-SemiBold"],
-        MontRegular: ["Montserrat-Regular"],
-        MontMedium: ["Montserrat-Medium"],
+        interBold: ["Inter-Bold"],
+        interSemiBold: ["Inter-SemiBold"],
+        interRegular: ["Inter-Regular"],
+        interMedium: ["Inter-Medium"],
       },
     },
   },

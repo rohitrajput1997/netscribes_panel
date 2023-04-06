@@ -4,6 +4,7 @@ import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import {
   fetchBrandsProductListingData,
   fetchProductListings,
+  fetchProductListingsPrice,
   fetchRepricingRules,
   setProductListingRule,
 } from "../../../actions/SalesPricingIntel.action";
@@ -52,12 +53,12 @@ const MainProductListingPage = ({ setSelectedTab }) => {
         </>
       ),
     },
-    Table.SELECTION_COLUMN,
-    {
-      title: "",
-      dataIndex: "name",
-      key: "name",
-    },
+    // Table.SELECTION_COLUMN,
+    // {
+    //   title: "",
+    //   dataIndex: "name",
+    //   key: "name",
+    // },
     {
       title: "Product Name",
       dataIndex: "Product_Name",
@@ -103,13 +104,13 @@ const MainProductListingPage = ({ setSelectedTab }) => {
               // setCompetitorSku(e.target.value);
             }}
             onBlur={(e) => {
-              if (e) {
+              if (e.target.value !== "") {
                 fetchProductListingsPrice({
                   competitor_sku: e.target.value?.split(","),
                 }).then((data) => {
                   const list = { ...productListingDetails };
                   list.product_list[index].cp_selected =
-                    data.data.competitor_pricing;
+                    data?.data?.competitor_pricing;
                   setProductListingDetails(list);
                 });
               }
@@ -170,6 +171,9 @@ const MainProductListingPage = ({ setSelectedTab }) => {
       title: "Stock",
       dataIndex: "Stock_Status",
       key: "Stock_Status",
+      render: (data) => {
+        return <span>{data.split("_").join(" ")}</span>;
+      },
     },
     {
       title: "Re-pricing Rule",
@@ -252,6 +256,14 @@ const MainProductListingPage = ({ setSelectedTab }) => {
     fetchProductListings({ setLoader, setProductListingDetails });
   }, []);
 
+  useEffect(() => {
+    fetchRepricingRules({
+      setPricingRuleData: setPricingRuleData,
+      setPricingRuleFullData: setPricingRuleFullData,
+      setLoader: setLoader,
+    });
+  }, []);
+
   const handleTableFilter = () => {
     return productListingDetails?.product_list?.filter(
       (item) => item?.[selectedFilter] === true
@@ -277,6 +289,7 @@ const MainProductListingPage = ({ setSelectedTab }) => {
         loader={loader}
         setSelectedTab={setSelectedTab}
         rowKey={(record) => record.ASIN_details}
+        pricingRuleData={pricingRuleData}
       />
     </>
   );

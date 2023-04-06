@@ -119,7 +119,8 @@ export const fetchProductListingsPrice = async ({
 
     return listingDetails;
   } catch (err) {
-    throw new Error("", err);
+    // throw new Error("", err);
+    console.log('$$$$$$', err);
   }
 };
 

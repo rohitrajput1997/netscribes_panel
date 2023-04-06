@@ -9,6 +9,7 @@ const RepricingPopover = ({
   popoverTwo,
   setPopoverOne,
   setPopoverTwo,
+  pricingRuleData,
 }) => {
   return (
     <div className="w-[250px]">
@@ -46,7 +47,7 @@ const RepricingPopover = ({
           ))}
           <br />
         </Radio.Group>
-        <NSDropdown options={[]} className="w-44 mt-2" />
+        <NSDropdown options={pricingRuleData || []} className="w-44 mt-2" />
       </div>
       <div className="flex justify-end mt-3">
         <NSButton

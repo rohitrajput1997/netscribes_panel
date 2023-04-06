@@ -15,12 +15,18 @@ function NSInput(
     router,
     ref,
     onBlur,
+    isRequired,
   },
   ...rest
 ) {
   return (
-    <>
-      {title && <p className="py-3 text-[.9rem] font-MontRegular">{title}</p>}
+    <div>
+      {title && (
+        <p className="py-3 text-[.9rem] font-interMedium">
+          {title}
+          {isRequired && <span className="text-red-600">*</span>}
+        </p>
+      )}
       <input
         ref={ref}
         placeholder={placeholder}
@@ -34,7 +40,7 @@ function NSInput(
       />
       <div className="flex justify-between mt-2">
         {isError && (
-          <p className="text-red-500 font-MontMedium text-[.8rem]">
+          <p className="text-red-500 font-interMedium text-[.8rem]">
             {errorMessage || "This field is required"}
           </p>
         )}
@@ -47,7 +53,7 @@ function NSInput(
           </p>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

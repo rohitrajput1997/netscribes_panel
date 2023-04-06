@@ -47,32 +47,34 @@ function ManageRepricingRuleList({
                     {item?.short_description}
                   </span>
                 </Tooltip>
-                {item?.user_id !== null && (
-                  <span className="w-[5%] flex gap-2 font-interRegular">
-                    {loading && index === selectedIndex ? (
-                      <NSLoaderWithMsg />
-                    ) : (
-                      <RiDeleteBin6Fill
+                <span className="w-[5%] flex gap-2 font-interRegular">
+                  {item?.user_id !== null && (
+                    <>
+                      {loading && index === selectedIndex ? (
+                        <NSLoaderWithMsg />
+                      ) : (
+                        <RiDeleteBin6Fill
+                          size={20}
+                          className="cursor-pointer"
+                          onClick={() => {
+                            handleDeleteRule(item?.id);
+                            setSelectedIndex(index);
+                          }}
+                        />
+                      )}
+                      <MdEdit
                         size={20}
                         className="cursor-pointer"
                         onClick={() => {
-                          handleDeleteRule(item?.id);
-                          setSelectedIndex(index);
+                          if (![1, 2, 3, 4].includes(item?.id)) {
+                            setAddOrEditRule(true);
+                            handleEditRule(item?.id);
+                          }
                         }}
                       />
-                    )}
-                    <MdEdit
-                      size={20}
-                      className="cursor-pointer"
-                      onClick={() => {
-                        if (![1, 2, 3, 4].includes(item?.id)) {
-                          setAddOrEditRule(true);
-                          handleEditRule(item?.id);
-                        }
-                      }}
-                    />
-                  </span>
-                )}
+                    </>
+                  )}
+                </span>
               </div>
             </div>
           ))}

@@ -27,6 +27,7 @@ function PricingRules() {
   const [brandList, setBrandList] = useState([]);
   const [pricingRuleData, setPricingRuleData] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [isValidate, setIsValidate] = useState(false);
   const [newRule, setNewRule] = useState({
     repricing_auto_enable: 1,
     repricing_auto_time: "00:00",
@@ -100,11 +101,11 @@ function PricingRules() {
   };
 
   const handleAddPricingRule = () => {
-    console.log("called one");
+    setIsValidate(true);
     if (!newRule.title && !newRule.short_description) {
-      NSToaster.warning("Please fill title and description");
       return;
     }
+    setIsValidate(false);
 
     addPricingRuleData({
       payload: newRule,
@@ -154,8 +155,8 @@ function PricingRules() {
             Back to main page
           </div> */}
           {/* <div className="flex justify-between items-center"> */}
-            <h1 className="text-xl font-interBold">Repricing Rules</h1>
-            {/* <NSButton
+          <h1 className="text-xl font-interBold">Repricing Rules</h1>
+          {/* <NSButton
               title="New Rule"
               onClick={() => {
                 setAddOrEditRule(true);
@@ -186,16 +187,14 @@ function PricingRules() {
               </Checkbox>
               <NSDropdown
                 className="w-32"
-                options={[
-                  { label: "00:00 AM", value: "00:00" },
-                ]}
+                options={[{ label: "00:00 AM", value: "00:00" }]}
                 onChange={(e) => {
                   let obj = { ...newRule };
                   obj.repricing_auto_time = e;
                   setNewRule(obj);
                 }}
                 value={newRule?.repricing_auto_time}
-                defaultValue='00:00'
+                defaultValue="00:00"
               />
             </div>
             <NSButton
@@ -229,6 +228,7 @@ function PricingRules() {
           handleAddPricingRule={handleAddPricingRule}
           repricingLogic={repricingLogic}
           setAddOrEditRule={setAddOrEditRule}
+          isValidate={isValidate}
         />
       )}
     </NSCard>
