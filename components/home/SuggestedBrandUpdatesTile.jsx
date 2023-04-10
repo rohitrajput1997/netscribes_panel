@@ -18,14 +18,20 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle }) {
       <div className="mt-3">
         <h1 className="text-[1.3rem] font-interSemiBold">
           {title === "Samsung" ? (
-            <Image src="/assets/samsung.png" alt="" width={100} height={100} />
+            <Image
+              src="/assets/samsung1.png"
+              alt=""
+              width={100}
+              height={100}
+              className="mt-[31px] mb-[13px]"
+            />
           ) : title === "Bosch" ? (
             <Image
               src="/assets/bosch.png"
               alt=""
               width={100}
               height={100}
-              className="my-[2rem]"
+              className="mt-[28px] mb-[10px]"
             />
           ) : (
             title
