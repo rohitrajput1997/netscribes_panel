@@ -6,7 +6,7 @@ const PricingRuleJson = {
   ],
   two: [
     { label: "Lowest Of", value: "lowest_of" },
-    { label: "Avarage Of", value: "avg_of" },
+    { label: "Average Of", value: "avg_of" },
     { label: "highest Of", value: "highest_of" },
   ],
   rank: [

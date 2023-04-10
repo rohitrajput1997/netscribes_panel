@@ -87,17 +87,17 @@ function CustomDatePicker({
             onChange={(e) => {
               let from_date = e?.[0];
               let to_date = e?.[1];
-              setFromDate(moment(from_date).format("MMM DD, YYYY"));
-              setToDate(moment(to_date).format("MMM DD, YYYY"));
+              setFromDate(moment(from_date).format("YYYY-MM-DD"));
+              setToDate(moment(to_date).format("YYYY-MM-DD"));
               setFromTo({
-                fromDate: moment(from_date).format("MMM DD, YYYY"),
-                toDate: moment(to_date).format("MMM DD, YYYY"),
+                fromDate: moment(from_date).format("YYYY-MM-DD"),
+                toDate: moment(to_date).format("YYYY-MM-DD"),
               });
               setCustomOpen(false);
               setDate(
-                `${moment(from_date).format("MMM DD, YYYY")} - ${moment(
+                `${moment(from_date).format("YYYY-MM-DD")} - ${moment(
                   to_date
-                ).format("MMM DD, YYYY")}`
+                ).format("YYYY-MM-DD")}`
               );
               onChange([from_date, to_date]);
             }}
