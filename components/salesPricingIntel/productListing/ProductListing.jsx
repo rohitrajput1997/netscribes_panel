@@ -20,6 +20,7 @@ import NSInput from "../../common/NSInput";
 import NSTableTooltipTitle from "../../common/NSTableTooltipTitle";
 import ManageRepricingRuleList from "./ManageRepricingRuleList";
 import PricingRules from "./PricingRules";
+import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 
 function ProductListing({
   productListingDetails,
@@ -88,7 +89,7 @@ function ProductListing({
         </div>
 
         <div className="mt-3">
-          <NSTable
+          {loader ? <NSLoaderWithMsg /> : <NSTable
             dataSource={
               selectedFilter
                 ? handleTableFilter()
@@ -100,7 +101,7 @@ function ProductListing({
             rowSelection
             selectedRowKeys={selectedRowKeys}
             setSelectedRowKeys={setSelectedRowKeys}
-          />
+          />}
         </div>
       </NSCard>
     </>

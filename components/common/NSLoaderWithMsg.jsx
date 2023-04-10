@@ -1,11 +1,11 @@
 import { Spin } from "antd";
 import React from "react";
 
-function NSLoaderWithMsg({ style, withMessage }) {
+function NSLoaderWithMsg({ style, withMessage, loaderSize = "large" }) {
   return (
     <>
       <div className="text-center" style={style}>
-        <Spin size="large" style={{color: 'var(--secondary)'}} />
+        <Spin size={loaderSize} style={{ color: "var(--secondary)" }} />
         {withMessage && (
           <p className="font-MontMedium mt-2">Please wait fetching data!</p>
         )}

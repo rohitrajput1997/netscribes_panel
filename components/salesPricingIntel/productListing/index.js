@@ -13,12 +13,15 @@ import NSInput from "../../common/NSInput";
 import NSTableTooltipTitle from "../../common/NSTableTooltipTitle";
 import PricingRules from "./PricingRules";
 import ProductListing from "./ProductListing";
+import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 
 const MainProductListingPage = ({ setSelectedTab }) => {
   const [activeStar, setActiveStar] = useState(false);
   const [popoverOne, setPopoverOne] = useState(1);
   const [popoverTwo, setPopoverTwo] = useState(1);
   const [loader, setLoader] = useState(false);
+  const [listingLoader, setListingLoader] = useState(false);
+  const [newPricingLoader, setNewPricingLoader] = useState(false);
   const [productListingDetails, setProductListingDetails] = useState([]);
   const [competitorSku, setCompetitorSku] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("");
@@ -28,6 +31,7 @@ const MainProductListingPage = ({ setSelectedTab }) => {
   const [newPrice, setNewPrice] = useState("");
   const [addOrEditRule, setAddOrEditRule] = useState(false);
   const [brandList, setBrandList] = useState([]);
+  const [pricingIndex, setPricingIndex] = useState(null);
 
   const columns = [
     {
@@ -185,8 +189,9 @@ const MainProductListingPage = ({ setSelectedTab }) => {
             options={pricingRuleData}
             className="w-32"
             value={data}
-            onChange={(e, index, data) => {
+            onChange={(e, idx, data) => {
               setSelectedPricingRule(e);
+              setPricingIndex(index);
             }}
             onSelect={(e, data) => {
               handleFetchNewPrice(data, record).then((data) => {
@@ -241,6 +246,16 @@ const MainProductListingPage = ({ setSelectedTab }) => {
       title: "New Price",
       dataIndex: "new_price",
       key: "new_price",
+      render: (data, record, index) => {
+        return (
+          <>
+            {newPricingLoader && pricingIndex === index && (
+              <NSLoaderWithMsg loaderSize="small" />
+            )}
+            <p>{data}</p>
+          </>
+        );
+      },
     },
   ];
 
@@ -249,11 +264,15 @@ const MainProductListingPage = ({ setSelectedTab }) => {
       rule_id: data?.key || 4,
       price: record?.Price || 0,
       setNewPrice: setNewPrice,
+      setNewPricingLoader: setNewPricingLoader,
     });
   };
 
   useEffect(() => {
-    fetchProductListings({ setLoader, setProductListingDetails });
+    fetchProductListings({
+      setLoader: setListingLoader,
+      setProductListingDetails,
+    });
   }, []);
 
   useEffect(() => {
@@ -286,7 +305,7 @@ const MainProductListingPage = ({ setSelectedTab }) => {
         setPopoverTwo={setPopoverTwo}
         handleTableFilter={handleTableFilter}
         columns={columns}
-        loader={loader}
+        loader={listingLoader}
         setSelectedTab={setSelectedTab}
         rowKey={(record) => record.ASIN_details}
         pricingRuleData={pricingRuleData}

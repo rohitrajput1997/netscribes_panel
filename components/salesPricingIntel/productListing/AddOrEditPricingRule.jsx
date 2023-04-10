@@ -136,7 +136,7 @@ function AddOrEditPricingRule({
               value={newRule.repricing_logic?.[0].price_filter}
             />{" "}
             <NSDropdown
-              className="w-32"
+              className="w-32 rp"
               options={brandList}
               isMultiple
               onChange={(e) => {
@@ -145,6 +145,7 @@ function AddOrEditPricingRule({
                 setNewRule(obj);
               }}
               value={newRule.repricing_logic?.[0].selected_competitors}
+              style={{ height: "32px"}}
             />{" "}
             by{" "}
             <NSInput

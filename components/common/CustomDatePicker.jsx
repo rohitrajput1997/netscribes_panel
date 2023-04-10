@@ -63,8 +63,6 @@ function CustomDatePicker({
     }
   }, [date]);
 
-  console.log('******', date);
-
   return (
     <>
       <NSDropdown

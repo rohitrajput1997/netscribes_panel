@@ -96,9 +96,11 @@ const PLProductCount = ({
           </div>
         </div>
       </div>
+
+      {/* PiChart Graph */}
       <div className="col-span-1 py-1 px-2">
         {loader ? (
-          <NSLoaderWithMsg style={{marginTop: '4rem'}} />
+          <NSLoaderWithMsg style={{ marginTop: "4rem" }} />
         ) : (
           <div className="flex">
             <ResponsiveContainer width={150} height={150}>

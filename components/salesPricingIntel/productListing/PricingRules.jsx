@@ -118,13 +118,11 @@ function PricingRules() {
   };
 
   const handleEditRule = (id) => {
-    console.log("called two");
     setSelectedId(id);
     getPricingRuleById({ id: id, setDataToEdit: setDataToEdit });
   };
 
   useEffect(() => {
-    console.log("called three");
     let data = { ...dataToEdit };
     data.id = selectedId ? selectedId : undefined;
     setNewRule(dataToEdit);
@@ -141,8 +139,6 @@ function PricingRules() {
   useEffect(() => {
     fetchBrandsProductListingData({ setBrandList: setBrandList });
   }, []);
-
-  console.log("******", automaticReprice);
 
   return (
     <NSCard style={{ backgroundColor: "var(--bg-main)" }}>
