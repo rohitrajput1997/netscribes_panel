@@ -16,6 +16,7 @@ import NSDropdown from "../../common/NSDropdown";
 import PerformaceFilterTabs from "../../json/PerformanceFilterTabs";
 import NextandLastQuarters from "./NextandLastQuarters";
 import ProductAndOptimization from "./ProductAndOptimization";
+import moment from "moment/moment";
 
 const Reports = () => {
   const [selectedFilter, setSelectedFilter] = useState("week");
@@ -75,9 +76,13 @@ const Reports = () => {
     fetchPerformanceReportsData({
       setPerformanceDetails: setPerformanceDetails,
       setLoader: setLoader,
-      selectedFilter
+      selectedFilter,
     });
   }, [selectedFilter]);
+
+  // const today = moment().format("MM-DD-YYYY");
+  // const monthNumber = moment(today, "MM-DD-YYYY").month();
+  // const yearNumber = moment(today, "MM-DD-YYYY").year();
 
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
@@ -108,7 +113,11 @@ const Reports = () => {
                 <BarChart
                   width={500}
                   height={300}
-                  data={selectedFilter === 'week' ? graph_details?.week_graph || []: graph_details?.month_graph || []}
+                  data={
+                    selectedFilter === "week"
+                      ? graph_details?.week_graph || []
+                      : graph_details?.month_graph || []
+                  }
                   margin={{
                     top: 30,
                     right: 10,
@@ -117,10 +126,19 @@ const Reports = () => {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey={(data) => {
-                    return  selectedFilter === 'week' ? `W${data?.Week} ${data?.Year}` : `${data?.Month} ${data?.Year}`
-                  }} axisLine={{ stroke: "#ffffff" }} tick={{ fontSize: "10px" }}/>
-                  <YAxis axisLine={{ stroke: "#ffffff" }} tick={{ fontSize: "10px" }}/>
+                  <XAxis
+                    dataKey={(data) => {
+                      return selectedFilter === "week"
+                        ? `W${data?.Week} ${data?.Year}`
+                        : `${data?.Month} ${data?.Year}`;
+                    }}
+                    axisLine={{ stroke: "#ffffff" }}
+                    tick={{ fontSize: "10px" }}
+                  />
+                  <YAxis
+                    axisLine={{ stroke: "#ffffff" }}
+                    tick={{ fontSize: "10px" }}
+                  />
                   <Tooltip />
                   <Legend iconType="circle" />
                   <Bar
@@ -128,12 +146,14 @@ const Reports = () => {
                     fill="rgb(52 211 153)"
                     radius={[20, 20, 20, 20]}
                     barSize={15}
+                    name="Actual Revenue"
                   />
                   <Bar
                     dataKey="Forecasted_Revenue"
-                    fill="rgb(8 145 178)"
+                    fill={"rgb(8 145 178)"}
                     radius={[20, 20, 20, 20]}
                     barSize={15}
+                    name="Forecasted Revenue"
                   />
                 </BarChart>
               </ResponsiveContainer>

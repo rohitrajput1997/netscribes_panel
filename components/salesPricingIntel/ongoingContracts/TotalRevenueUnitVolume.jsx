@@ -32,18 +32,18 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
               <h1 className="text-[1.3rem] flex items-center">
                 {/* <BiRupee size={25} className="mt-[2px]" /> */}
                 <p className="font-interRegular mr-1 ml-[3.01rem]">
-                  INR{" "}{commaSeperator(sales)}
+                  INR {commaSeperator(sales)}
+                </p>
+                <p
+                  className={`${
+                    valOne.includes("-")
+                      ? "bg-red-500 text-white"
+                      : "bg-green-500 text-white"
+                  } w-[fit-content] px-2 rounded-full mt-1 ml-[.5rem] text-[14px] mt-[-3px]`}
+                >
+                  {valOne}
                 </p>
               </h1>
-              <p
-                className={`${
-                  valOne.includes("-")
-                    ? "bg-red-500 text-white"
-                    : "bg-green-500 text-white"
-                } w-[fit-content] px-2 rounded-full mt-1 ml-[3.01rem]`}
-              >
-                {valOne}
-              </p>
             </>
           )}
         </NSCard>
@@ -69,16 +69,16 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
                 <p className="font-interRegular mr-1">
                   <span className="ml-[3.01rem]">{commaSeperator(units)}</span>
                 </p>
+                <p
+                  className={`${
+                    valTwo.includes("-")
+                      ? "bg-red-500 text-white"
+                      : "bg-green-500 text-white"
+                  } w-[fit-content] px-2 rounded-full mt-1 ml-[.5rem] text-[14px] mt-[-3px]`}
+                >
+                  {valTwo}
+                </p>
               </h1>
-              <p
-                className={`${
-                  valTwo.includes("-")
-                    ? "bg-red-500 text-white"
-                    : "bg-green-500 text-white"
-                } w-[fit-content] px-2 rounded-full mt-1 ml-[3.01rem]`}
-              >
-                {valTwo}
-              </p>
             </>
           )}
         </NSCard>
