@@ -31,8 +31,8 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
             <>
               <h1 className="text-[1.3rem] flex items-center">
                 {/* <BiRupee size={25} className="mt-[2px]" /> */}
-                <p className="font-interRegular mr-1">
-                  INR {commaSeperator(sales)}
+                <p className="font-interRegular mr-1 ml-[3.01rem]">
+                  INR{" "}{commaSeperator(sales)}
                 </p>
               </h1>
               <p
@@ -40,7 +40,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
                   valOne.includes("-")
                     ? "bg-red-500 text-white"
                     : "bg-green-500 text-white"
-                } w-[fit-content] px-2 rounded-full mt-1`}
+                } w-[fit-content] px-2 rounded-full mt-1 ml-[3.01rem]`}
               >
                 {valOne}
               </p>
@@ -67,7 +67,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
               <h1 className="text-[1.3rem] flex items-center">
                 {/* <BiRupee size={25} className="mt-[2px]" /> */}
                 <p className="font-interRegular mr-1">
-                  {commaSeperator(units)}
+                  <span className="ml-[3.01rem]">{commaSeperator(units)}</span>
                 </p>
               </h1>
               <p
@@ -75,7 +75,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
                   valTwo.includes("-")
                     ? "bg-red-500 text-white"
                     : "bg-green-500 text-white"
-                } w-[fit-content] px-2 rounded-full mt-1`}
+                } w-[fit-content] px-2 rounded-full mt-1 ml-[3.01rem]`}
               >
                 {valTwo}
               </p>

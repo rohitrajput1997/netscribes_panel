@@ -27,7 +27,11 @@ function MarketplaceTrack() {
     marketplaceTrack || {};
 
   useEffect(() => {
-    fetchMarketPlaceTracksBrands({ setBrandList, setselectedBrand1, setselectedBrand2 });
+    fetchMarketPlaceTracksBrands({
+      setBrandList,
+      setselectedBrand1,
+      setselectedBrand2,
+    });
   }, []);
 
   useEffect(() => {
@@ -59,7 +63,7 @@ function MarketplaceTrack() {
   return (
     <NSLayout>
       <NSSearchbar
-        placeholder="Search for Brand, ASIN, SKU and Category"
+        placeholder="Search for Band, ASIN, SKU, Category, Color, Design, Energy Rating, and Capacity"
         style={{
           backgroundColor: "white",
           border: "none",
