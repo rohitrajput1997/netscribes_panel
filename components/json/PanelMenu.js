@@ -49,13 +49,13 @@ const PanelMenu = [
     route: "/business-trends",
     key: "/business-trends",
   },
-  {
-    label: "Dashboard Demo Video",
-    value: "dashboardDemoVedio",
-    icon: "./assets/XMLID_184_.svg",
-    route: "/dashboardDemoVedio",
-    key: "/dashboardDemoVedio",
-  },
+  // {
+  //   label: "Dashboard Demo Video",
+  //   value: "dashboardDemoVedio",
+  //   icon: "./assets/XMLID_184_.svg",
+  //   route: "/dashboardDemoVedio",
+  //   key: "/dashboardDemoVedio",
+  // },
 ];
 
 export default PanelMenu;
