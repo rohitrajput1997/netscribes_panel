@@ -17,15 +17,19 @@ const PLProductCount = ({
     { name: "Starred", value: details?.starred },
   ];
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const actionRequired = details?.action_required || 0,
+    priceIncrease = details?.price_increase || 0,
+    priceDecrease = details?.price_decrease || 0,
+    matched = details?.matched || 0,
+    starred = details?.starred || 0,
+    total = details?.total_items || 0;
 
   return (
     <NSCard className="grid grid-cols-3">
       <div className="col-span-2 py-1 px-2 border-r-2">
         <div className="flex justify-between items-center">
           <p className="font-interRegular text-xl">
-            <span className="font-interSemiBold">
-              {details?.action_required}
-            </span>{" "}
+            <span className="font-interSemiBold">{actionRequired}</span>{" "}
             Products require action
           </p>
           <RiSettings5Fill
@@ -43,9 +47,7 @@ const PLProductCount = ({
             {loader ? (
               <NSLoaderWithMsg />
             ) : (
-              <h1 className="text-3xl font-interBold">
-                {details?.price_increase || 0}
-              </h1>
+              <h1 className="text-3xl font-interBold">{priceIncrease}</h1>
             )}
             <p className="font-interRegular mt-2 text-stone-500">
               Eligible for Price Increase
@@ -58,9 +60,7 @@ const PLProductCount = ({
             {loader ? (
               <NSLoaderWithMsg />
             ) : (
-              <h1 className="text-3xl font-interBold">
-                {details?.price_decrease || 0}
-              </h1>
+              <h1 className="text-3xl font-interBold">{priceDecrease}</h1>
             )}
             <p className="font-interRegular mt-2 text-stone-500">
               Eligible for Price Reduction
@@ -73,9 +73,7 @@ const PLProductCount = ({
             {loader ? (
               <NSLoaderWithMsg />
             ) : (
-              <h1 className="text-3xl font-interBold">
-                {details?.matched || 0}
-              </h1>
+              <h1 className="text-3xl font-interBold">{matched}</h1>
             )}
             <p className="font-interRegular mt-2 text-stone-500">
               100% Match with Compititors
@@ -88,9 +86,7 @@ const PLProductCount = ({
             {loader ? (
               <NSLoaderWithMsg />
             ) : (
-              <h1 className="text-3xl font-interBold">
-                {details?.starred || 0}
-              </h1>
+              <h1 className="text-3xl font-interBold">{starred}</h1>
             )}
             <p className="font-interRegular mt-2 text-stone-500">Started</p>
           </div>
@@ -125,19 +121,25 @@ const PLProductCount = ({
             </ResponsiveContainer>
             <div className="flex flex-col justify-center font-interRegular">
               <p className="mb-1">
-                <span className="font-interBold">
-                  {details?.total_items} items
-                </span>
+                <span className="font-interBold">{total} items</span>
                 &nbsp;&nbsp;in Webstore Demos
               </p>
               <div className="mt-[2px]">
-                <p>9 items (6.00%) are Optimized</p>
+                <p>
+                  {total - priceIncrease + priceDecrease} items (
+                  {(
+                    ((total - priceIncrease + priceDecrease) / total) *
+                    100
+                  ).toFixed(2)}
+                  %) are Optimized
+                </p>
               </div>
               <div className="mt-[2px]">
-                <p>136 items (90.67%) are Not Optimized</p>
-              </div>
-              <div className="mt-[2px]">
-                <p>5 items (3.33%) are Flagged</p>
+                <p>
+                  {priceIncrease + priceDecrease} items (
+                  {(((priceIncrease + priceDecrease) / total) * 100).toFixed(2)}
+                  %) are Not Optimized
+                </p>
               </div>
             </div>
           </div>
