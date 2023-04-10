@@ -164,6 +164,7 @@ const OnGoingContracts = ({
             header_keys={["Brand", "Units", "VolumeProgressPercentage"]}
             style={{ minHeight: "262px" }}
             loader={loader}
+            showCurrency={false}
           />
           <SalesAndAvgUnitValue
             image="./assets/hand-holding-heart.svg"
