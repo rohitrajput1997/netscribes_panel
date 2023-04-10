@@ -78,7 +78,7 @@ function AddOrEditPricingRule({
             onChange={(e) => setNewRule({ ...newRule, title: e.target.value })}
             value={newRule.title}
             isRequired
-            isError={isValidate && !newRule.title}
+            isError={isValidate && (!newRule.title || newRule.title === "")}
             errorMessage="Rule name is required"
           />
           <NSInput
@@ -91,7 +91,10 @@ function AddOrEditPricingRule({
             }
             value={newRule.short_description}
             isRequired
-            isError={isValidate && !newRule.short_description}
+            isError={
+              isValidate &&
+              (!newRule.short_description || newRule.short_description === "")
+            }
             errorMessage="Short description is required"
           />
         </div>
@@ -145,7 +148,7 @@ function AddOrEditPricingRule({
                 setNewRule(obj);
               }}
               value={newRule.repricing_logic?.[0].selected_competitors}
-              style={{ height: "32px"}}
+              style={{ height: "32px" }}
             />{" "}
             by{" "}
             <NSInput

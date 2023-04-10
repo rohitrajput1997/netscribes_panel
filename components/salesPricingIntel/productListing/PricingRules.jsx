@@ -103,7 +103,12 @@ function PricingRules() {
 
   const handleAddPricingRule = () => {
     setIsValidate(true);
-    if (!newRule.title && !newRule.short_description) {
+    if (
+      !newRule.title ||
+      newRule.title === "" ||
+      !newRule.short_description ||
+      newRule.short_description === ""
+    ) {
       return;
     }
     setIsValidate(false);
