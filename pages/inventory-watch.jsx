@@ -16,7 +16,6 @@ import NSSearchbar from "../components/common/NSSearchbar";
 import { InventoryWatchHeadres } from "../components/json/CustomizedTableHeaders";
 import SalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/SalesAndAvgUnitValue";
 import SelfPresenceChart from "../components/salesPricingIntel/performance/SelfPresenceChart";
-SelfPresenceChart
 
 function InventoryWatch() {
   const initialData = [
@@ -51,12 +50,14 @@ function InventoryWatch() {
             <SelfPresenceChart
               header="Shelf Presence Trend Over Time"
               data={initialData}
+              namesData={["In Stocked", "Staggered Stocked", "Well Stocked"]}
             />
           </NSCard>
           <NSCard className="mb-3" style={{ minHeight: "300px" }}>
             <SelfPresenceChart
               header="Shelf Presence Trend Over Time"
               data={initialData}
+              namesData={["Samsung", "LG", "Whirlpool"]}
             />
           </NSCard>
         </div>
@@ -68,7 +69,7 @@ function InventoryWatch() {
             showIcon={false}
             style={{ height: "318px" }}
             headers={selectorOne}
-            />
+          />
           <SalesAndAvgUnitValue
             title="Additional specs. Selector"
             showPlue

@@ -16,8 +16,22 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle }) {
         className="float-right"
       />
       <div className="mt-3">
-        <h1 className="text-[1.3rem] font-interSemiBold">{title}</h1>
-        <hr className="border-b-2 border-cyan-100 my-1" />
+        <h1 className="text-[1.3rem] font-interSemiBold">
+          {title === "Samsung" ? (
+            <Image src="/assets/samsung.png" alt="" width={100} height={100} />
+          ) : title === "Bosch" ? (
+            <Image
+              src="/assets/bosch.png"
+              alt=""
+              width={100}
+              height={100}
+              className="my-[2rem]"
+            />
+          ) : (
+            title
+          )}
+        </h1>
+        <hr className="border-b-2 border-cyan-100 mb-1" />
         <div className="mt-3">
           <p className="leading-8 text-[1rem] font-interMedium capitalize">
             {subtitle.split("_").join(" ")}

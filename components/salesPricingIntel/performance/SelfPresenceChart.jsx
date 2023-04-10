@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import NSSearchbar from "../../common/NSSearchbar";
 
-function SelfPresenceChart({header, data}) {
+function SelfPresenceChart({ header, data, namesData }) {
   return (
     <>
       <div className="flex justify-between items-center">
@@ -75,6 +75,7 @@ function SelfPresenceChart({header, data}) {
               stroke="rgb(22 163 74)"
               animationDuration={300}
               strokeWidth={3}
+              name={[namesData[0]]}
             />
             <Line
               yAxisId="2"
@@ -83,6 +84,7 @@ function SelfPresenceChart({header, data}) {
               stroke="rgb(225 29 72)"
               animationDuration={300}
               strokeWidth={3}
+              name={[namesData[1]]}
             />
             <Line
               yAxisId="2"
@@ -91,6 +93,7 @@ function SelfPresenceChart({header, data}) {
               stroke="rgb(253 224 71)"
               animationDuration={300}
               strokeWidth={3}
+              name={[namesData[2]]}
             />
           </LineChart>
         </ResponsiveContainer>
