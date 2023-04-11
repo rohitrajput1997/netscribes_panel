@@ -5,12 +5,12 @@ import moment from "moment"
 import React, { useMemo, useState } from "react"
 import NSDropdown from "./NSDropdown"
 
-const now = new Date()
+const now = new Date();
 const yesterdayBegin = new Date(
   now.getFullYear(),
   now.getMonth(),
   now.getDate() - 1
-)
+);
 const todayEnd = new Date(
   now.getFullYear(),
   now.getMonth(),
@@ -19,7 +19,7 @@ const todayEnd = new Date(
   59,
   59,
   999
-)
+);
 
 function CustomDatePicker({
   options,
@@ -32,40 +32,38 @@ function CustomDatePicker({
   setToDate,
   setFromTo,
 }) {
-  const [value, onChange] = useState([yesterdayBegin, todayEnd])
+  const [value, onChange] = useState([yesterdayBegin, todayEnd]);
 
   const handleChange = useMemo(() => {
-    const today = moment().format("YYYY-MM-DD")
+    const today = moment().format("YYYY-MM-DD");
     if (date) {
       if (date === "thisMonth") {
-        const startOfMonth = moment().startOf("month").format("YYYY-MM-DD")
-        setFromDate(today)
-        setToDate(startOfMonth)
+        const startOfMonth = moment().startOf("month").format("YYYY-MM-DD");
+        setFromDate(today);
+        setToDate(startOfMonth);
         setFromTo({
           toDate: today,
           fromDate: startOfMonth,
-        })
+        });
       }
       if (date === "lastMonth") {
         const endOfMonth = moment(moment())
           .subtract(1, "months")
           .endOf("month")
-          .format("YYYY-MM-DD")
+          .format("YYYY-MM-DD");
         const startOfMonth = moment(moment())
           .subtract(1, "months")
           .startOf("month")
-          .format("YYYY-MM-DD")
-        setFromDate(startOfMonth)
-        setToDate(endOfMonth)
+          .format("YYYY-MM-DD");
+        setFromDate(startOfMonth);
+        setToDate(endOfMonth);
         setFromTo({
           fromDate: startOfMonth,
           toDate: endOfMonth,
-        })
+        });
       }
     }
-  }, [date])
-
-  console.log("******", date)
+  }, [date]);
 
   return (
     <>
@@ -77,10 +75,10 @@ function CustomDatePicker({
         onChange={(e) => {
           // setFromDate(undefined);
           // setToDate(undefined);
-          setDate(e)
-          setDatePicker(e)
-          setCustomOpen(e === "customRange")
-          onChange([todayEnd, todayEnd])
+          setDate(e);
+          setDatePicker(e);
+          setCustomOpen(e === "customRange");
+          onChange([todayEnd, todayEnd]);
         }}
         isMultiple={false}
         defaultValue="thisMonth"
@@ -89,21 +87,21 @@ function CustomDatePicker({
         {date === "customRange" && (
           <DateRangePicker
             onChange={(e) => {
-              let from_date = e?.[0]
-              let to_date = e?.[1]
-              setFromDate(moment(from_date).format("MMM DD, YYYY"))
-              setToDate(moment(to_date).format("MMM DD, YYYY"))
+              let from_date = e?.[0];
+              let to_date = e?.[1];
+              setFromDate(moment(from_date).format("YYYY-MM-DD"));
+              setToDate(moment(to_date).format("YYYY-MM-DD"));
               setFromTo({
-                fromDate: moment(from_date).format("MMM DD, YYYY"),
-                toDate: moment(to_date).format("MMM DD, YYYY"),
-              })
-              setCustomOpen(false)
+                fromDate: moment(from_date).format("YYYY-MM-DD"),
+                toDate: moment(to_date).format("YYYY-MM-DD"),
+              });
+              setCustomOpen(false);
               setDate(
-                `${moment(from_date).format("MMM DD, YYYY")} - ${moment(
+                `${moment(from_date).format("YYYY-MM-DD")} - ${moment(
                   to_date
-                ).format("MMM DD, YYYY")}`
-              )
-              onChange([from_date, to_date])
+                ).format("YYYY-MM-DD")}`
+              );
+              onChange([from_date, to_date]);
             }}
             style={{
               width: "0px",
@@ -117,20 +115,20 @@ function CustomDatePicker({
             isOpen={customOpen}
             maxDate={new Date()}
             onClick={() => {
-              setCustomOpen(true)
+              setCustomOpen(true);
             }}
             onOpenChange={() => {
-              setCustomOpen(false)
-              setToDate(undefined)
-              setFromDate(undefined)
-              setDate("")
-              onChange([yesterdayBegin, todayEnd])
+              setCustomOpen(false);
+              setToDate(undefined);
+              setFromDate(undefined);
+              setDate("");
+              onChange([yesterdayBegin, todayEnd]);
             }}
           />
         )}
       </div>
     </>
-  )
+  );
 }
 
-export default CustomDatePicker
+export default CustomDatePicker;
