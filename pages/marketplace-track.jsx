@@ -14,6 +14,9 @@ import {
 } from "../actions/MarketPlaceTrack.action";
 import { useState } from "react";
 import NSLoaderWithMsg from "../components/common/NSLoaderWithMsg";
+import NSCard from "../components/common/NSCard";
+import NewSalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/NewSalesAndAvarageUnitValue";
+import OuterHeaders from "../components/marketPlaceTrack/OuterHeaders";
 
 function MarketplaceTrack() {
   const [selectedBrand1, setselectedBrand1] = useState("");
@@ -72,15 +75,16 @@ function MarketplaceTrack() {
         }}
       />
 
-      <div>
-        <h1 className="my-2 text-[1.2rem]">
-          Comparison between Godrej and Whirlpool
-        </h1>
+      <h1 className="my-2 text-[1.2rem]">
+        Comparison between Godrej and Whirlpool
+      </h1>
 
-        <div className="grid grid-cols-2 gap-2">
-          <div className="col-span-1">
+      <NSCard className="mt-3">
+        <div className="grid grid-cols-8 gap-3">
+          <div className="col-span-2"></div>
+          <div className="col-span-3">
             <NSDropdown
-              className="w-80 my-3"
+              className="w-full my-3"
               options={filterDropdownData()}
               dropdownRender={
                 <NSSearchbar
@@ -104,53 +108,10 @@ function MarketplaceTrack() {
               isError={selectedBrand1 === "" || !selectedBrand1 ? true : false}
               errorMessage="Please Select Brand"
             />
-            {loader ? (
-              <NSLoaderWithMsg />
-            ) : (
-              <>
-                <SingleSalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Unique SKU Count"
-                  showupDownArrow={false}
-                  headers={tileOneTwo}
-                  header_keys={["name", "sku", "sku_percentage"]}
-                  tableData={tilesData?.[selectedBrand1]?.stock}
-                  total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
-                />
-                <SingleSalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Unique SKU Count"
-                  showupDownArrow={false}
-                  headers={tileOneTwo}
-                  header_keys={["name", "sku", "sku_percentage"]}
-                  tableData={tilesData?.[selectedBrand1]?.discounted}
-                  total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
-                />
-                {/* <SalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Unique SKU Count"
-                  showupDownArrow={false}
-                  headers={tileThreeFour}
-                />
-                <SalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Discount SKU Count"
-                  showupDownArrow={false}
-                  headers={tileFiveSix}
-                />
-                <SalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Additional Specs. Selector"
-                  showPlue={true}
-                  showupDownArrow={false}
-                  headers={tileSevenEight}
-                /> */}
-              </>
-            )}
           </div>
-          <div className="col-span-1">
+          <div className="col-span-3">
             <NSDropdown
-              className="w-80 my-3"
+              className="w-full my-3"
               options={filterDropdownData()}
               dropdownRender={
                 <NSSearchbar
@@ -174,52 +135,208 @@ function MarketplaceTrack() {
               isError={selectedBrand2 === "" || !selectedBrand2 ? true : false}
               errorMessage="Please Select Brand"
             />
-            {loader ? (
-              <NSLoaderWithMsg />
-            ) : (
-              <>
-                <SingleSalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Unique SKU Count"
-                  showupDownArrow={false}
-                  headers={tileOneTwo}
-                  header_keys={["name", "sku", "sku_percentage"]}
-                  tableData={tilesData?.[selectedBrand2]?.stock}
-                  total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
-                />
-                <SingleSalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Unique SKU Count"
-                  showupDownArrow={false}
-                  headers={tileOneTwo}
-                  header_keys={["name", "sku", "sku_percentage"]}
-                  tableData={tilesData?.[selectedBrand2]?.discounted}
-                  total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
-                />
-                {/* <SalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Unique SKU Count"
-                  showupDownArrow={false}
-                  headers={tileThreeFour}
-                />
-                <SalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Discount SKU Count"
-                  showupDownArrow={false}
-                  headers={tileFiveSix}
-                />
-                <SalesAndAvgUnitValue
-                  image="./assets/interactive.svg"
-                  title="Additional Specs. Selector"
-                  showPlue={true}
-                  showupDownArrow={false}
-                  headers={tileSevenEight}
-                /> */}
-              </>
-            )}
           </div>
         </div>
-      </div>
+
+        <div className="grid grid-cols-8 gap-3">
+          <div className="col-span-2">
+            <div>
+              <h1 className="underline font-interSemiBold text-lg">
+                Unique SKU Count
+              </h1>
+              <div>
+                {OuterHeaders({
+                  tableData: [
+                    tilesData?.[selectedBrand1]?.stock,
+                    tilesData?.[selectedBrand1]?.discounted,
+                  ],
+                  header_keys: ["name", "sku", "sku_percentage"],
+                  tileHeaders: tileOneTwo,
+                })}
+              </div>
+            </div>
+            <div className="mt-[2.2rem]">
+              <h1 className="underline font-interSemiBold text-lg">
+                Unique SKU Count
+              </h1>
+              <div>
+                {OuterHeaders({
+                  tableData: [
+                    tilesData?.[selectedBrand1]?.stock,
+                    tilesData?.[selectedBrand1]?.discounted,
+                  ],
+                  header_keys: ["name", "sku", "sku_percentage"],
+                  tileHeaders: tileThreeFour,
+                })}
+              </div>
+            </div>
+            <div className="mt-[2.2rem]">
+              <h1 className="underline font-interSemiBold text-lg">
+                Discounted SKU Count
+              </h1>
+              <div>
+                {OuterHeaders({
+                  tableData: [
+                    tilesData?.[selectedBrand1]?.stock,
+                    tilesData?.[selectedBrand1]?.discounted,
+                  ],
+                  header_keys: ["name", "sku", "sku_percentage"],
+                  tileHeaders: tileFiveSix,
+                })}
+              </div>
+            </div>
+            <div className="mt-[1.2rem]">
+              <h1 className="underline font-interSemiBold text-lg">
+                Additional Specs. Selector
+              </h1>
+              <div>
+                {OuterHeaders({
+                  tableData: [
+                    tilesData?.[selectedBrand1]?.stock,
+                    tilesData?.[selectedBrand1]?.discounted,
+                  ],
+                  header_keys: ["name", "sku", "sku_percentage"],
+                  tileHeaders: tileThreeFour,
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="col-span-3">
+            <NSCard className="border border-gray-200 rounded-lg">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                showCount
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand1]?.stock,
+                  tilesData?.[selectedBrand1]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
+                loader={loader}
+              />
+            </NSCard>
+            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                showCount
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand1]?.stock,
+                  tilesData?.[selectedBrand1]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
+                loader={loader}
+              />
+            </NSCard>
+            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                showCount
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand1]?.stock,
+                  tilesData?.[selectedBrand1]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
+                loader={loader}
+              />
+            </NSCard>
+            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand1]?.stock,
+                  tilesData?.[selectedBrand1]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand1]?.Total_SKU_Count}
+                loader={loader}
+                showPlue
+                showCount={false}
+              />
+            </NSCard>
+          </div>
+          <div className="col-span-3">
+            <NSCard className="border border-gray-200 rounded-lg">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                showCount
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand2]?.stock,
+                  tilesData?.[selectedBrand2]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
+                loader={loader}
+              />
+            </NSCard>
+            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                showCount
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand2]?.stock,
+                  tilesData?.[selectedBrand2]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
+                loader={loader}
+              />
+            </NSCard>
+            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                showCount
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand2]?.stock,
+                  tilesData?.[selectedBrand2]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
+                loader={loader}
+              />
+            </NSCard>
+            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+              <NewSalesAndAvgUnitValue
+                image="./assets/interactive.svg"
+                title="Unique SKU Count"
+                showupDownArrow={false}
+                headers={tileOneTwo}
+                header_keys={["name", "sku", "sku_percentage"]}
+                tableData={[
+                  tilesData?.[selectedBrand2]?.stock,
+                  tilesData?.[selectedBrand2]?.discounted,
+                ]}
+                total={tilesData?.[selectedBrand2]?.Total_SKU_Count}
+                loader={loader}
+                showPlue
+                showCount={false}
+              />
+            </NSCard>
+          </div>
+        </div>
+      </NSCard>
     </NSLayout>
   );
 }

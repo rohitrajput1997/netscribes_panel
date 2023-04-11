@@ -4,6 +4,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   Legend,
   ResponsiveContainer,
   XAxis,
@@ -27,51 +28,6 @@ const Reports = () => {
   const { product, optimization, last_result, next_result, graph_details } =
     performanceDetails || {};
 
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-
   useEffect(() => {
     fetchPerformanceReportsData({
       setPerformanceDetails: setPerformanceDetails,
@@ -80,9 +36,15 @@ const Reports = () => {
     });
   }, [selectedFilter]);
 
-  // const today = moment().format("MM-DD-YYYY");
-  // const monthNumber = moment(today, "MM-DD-YYYY").month();
-  // const yearNumber = moment(today, "MM-DD-YYYY").year();
+  const today = moment().format("MM-DD-YYYY");
+  const weekNumber = moment(today, "MM-DD-YYYY").week();
+  const monthNumber = moment(today, "MM-DD-YYYY").month();
+  const yearNumber = moment(today, "MM-DD-YYYY").year();
+
+  const actualData =
+    selectedFilter === "week"
+      ? graph_details?.week_graph || []
+      : graph_details?.month_graph || [];
 
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
@@ -154,7 +116,28 @@ const Reports = () => {
                     radius={[20, 20, 20, 20]}
                     barSize={15}
                     name="Forecasted Revenue"
-                  />
+                  >
+                    {actualData?.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={
+                          selectedFilter === "week"
+                            ? entry?.Week > weekNumber &&
+                              (entry?.Year > yearNumber ||
+                                entry?.Year === yearNumber)
+                              ? "yellow"
+                              : "rgb(8 145 178)"
+                            : selectedFilter === "month"
+                            ? entry?.Month > monthNumber &&
+                              (entry?.Year > yearNumber ||
+                                entry?.Year === yearNumber)
+                              ? "yellow"
+                              : "rgb(8 145 178)"
+                            : "rgb(8 145 178)"
+                        }
+                      />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
