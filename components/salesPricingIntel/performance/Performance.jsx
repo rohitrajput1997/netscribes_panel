@@ -47,6 +47,46 @@ const Reports = () => {
       ? graph_details?.week_graph || []
       : graph_details?.month_graph || [];
 
+  const addFutureForecastedRevenue = () => {
+    const tempArr = actualData?.map((entry, index) => {
+      if (selectedFilter === "week") {
+        if (
+          entry?.Week > weekNumber &&
+          (entry?.Year > yearNumber || entry?.Year === yearNumber)
+        ) {
+          return Object.assign({
+            ...entry,
+            Future_Forecasted_Revenue: entry?.Forecasted_Revenue,
+            Forecasted_Revenue: 0,
+          });
+        } else {
+          return { ...entry };
+        }
+      } else if (selectedFilter === "month") {
+        if (
+          entry?.Month > monthNumber &&
+          (entry?.Year > yearNumber || entry?.Year === yearNumber)
+        ) {
+          return Object.assign({
+            ...entry,
+            Future_Forecasted_Revenue: entry?.Forecasted_Revenue,
+            Forecasted_Revenue: 0,
+          });
+        } else {
+          return { ...entry };
+        }
+      }
+    });
+
+    return tempArr;
+  };
+
+  useEffect(() => {
+    addFutureForecastedRevenue();
+  }, [selectedFilter, actualData, addFutureForecastedRevenue()]);
+
+  console.log("$$$$####$$#$#$#$#$", addFutureForecastedRevenue(), actualData);
+
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
       <div className="col-span-2 row-span-1">
@@ -71,16 +111,12 @@ const Reports = () => {
                 {/* <NSDropdown options={[]} className="w-32 ml-2" /> */}
               </div>
             </div>
-            <div className="w-full h-[328px]">
+            <div className="w-full h-[389px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   width={500}
                   height={300}
-                  data={
-                    selectedFilter === "week"
-                      ? graph_details?.week_graph || []
-                      : graph_details?.month_graph || []
-                  }
+                  data={addFutureForecastedRevenue()}
                   margin={{
                     top: 30,
                     right: 10,
@@ -119,28 +155,14 @@ const Reports = () => {
                     radius={[20, 20, 20, 20]}
                     barSize={15}
                     name="Forecasted Revenue"
-                  >
-                    {actualData?.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={
-                          selectedFilter === "week"
-                            ? entry?.Week > weekNumber &&
-                              (entry?.Year > yearNumber ||
-                                entry?.Year === yearNumber)
-                              ? "rgb(250 204 21)"
-                              : "rgb(8 145 178)"
-                            : selectedFilter === "month"
-                            ? entry?.Month > monthNumber &&
-                              (entry?.Year > yearNumber ||
-                                entry?.Year === yearNumber)
-                              ? "rgb(250 204 21)"
-                              : "rgb(8 145 178)"
-                            : "rgb(8 145 178)"
-                        }
-                      />
-                    ))}
-                  </Bar>
+                  />
+                  <Bar
+                    dataKey="Future_Forecasted_Revenue"
+                    fill={"rgb(250 204 21)"}
+                    radius={[20, 20, 20, 20]}
+                    barSize={15}
+                    name="Forecasted Revenue"
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>

@@ -172,37 +172,11 @@ const MainProductListingPage = ({ setSelectedTab }) => {
       key: "Price",
     },
     {
-      title: "Stock",
+      title: "Stock Status",
       dataIndex: "Stock_Status",
       key: "Stock_Status",
       render: (data) => {
         return <span>{data.split("_").join(" ")}</span>;
-      },
-    },
-    {
-      title: "Re-pricing Rule",
-      dataIndex: "rpr",
-      key: "rpr",
-      render: (data, record, index) => {
-        return (
-          <NSDropdown
-            options={pricingRuleData}
-            className="w-32"
-            value={data}
-            onChange={(e, idx, data) => {
-              setSelectedPricingRule(e);
-              setPricingIndex(index);
-            }}
-            onSelect={(e, data) => {
-              handleFetchNewPrice(data, record).then((data) => {
-                const list = { ...productListingDetails };
-                list.product_list[index].new_price = data?.new_price;
-                setProductListingDetails(list);
-              });
-            }}
-            defaultValue="NetsPrice"
-          />
-        );
       },
     },
     {
@@ -227,7 +201,7 @@ const MainProductListingPage = ({ setSelectedTab }) => {
       },
     },
     {
-      title: "Custom Tags/Labels",
+      title: "Add Custom Tags/Labels",
       dataIndex: "ct",
       key: "ct",
       render: (data) => {
@@ -238,6 +212,32 @@ const MainProductListingPage = ({ setSelectedTab }) => {
             // value={competitorSku}
             // onChange={(e) => setCompetitorSku(e.target.value)}
             // onBlur={() => alert('')}
+          />
+        );
+      },
+    },
+    {
+      title: "Re-pricing Rule",
+      dataIndex: "rpr",
+      key: "rpr",
+      render: (data, record, index) => {
+        return (
+          <NSDropdown
+            options={pricingRuleData}
+            className="w-32"
+            value={data}
+            onChange={(e, idx, data) => {
+              setSelectedPricingRule(e);
+              setPricingIndex(index);
+            }}
+            onSelect={(e, data) => {
+              handleFetchNewPrice(data, record).then((data) => {
+                const list = { ...productListingDetails };
+                list.product_list[index].new_price = data?.new_price;
+                setProductListingDetails(list);
+              });
+            }}
+            defaultValue="NetsPrice"
           />
         );
       },
