@@ -18,6 +18,7 @@ import PerformaceFilterTabs from "../../json/PerformanceFilterTabs";
 import NextandLastQuarters from "./NextandLastQuarters";
 import ProductAndOptimization from "./ProductAndOptimization";
 import moment from "moment/moment";
+import intMonthToCharConvertor from "../../../utils/intMonthToCharConvertor";
 
 const Reports = () => {
   const [selectedFilter, setSelectedFilter] = useState("week");
@@ -92,7 +93,9 @@ const Reports = () => {
                     dataKey={(data) => {
                       return selectedFilter === "week"
                         ? `W${data?.Week} ${data?.Year}`
-                        : `${data?.Month} ${data?.Year}`;
+                        : `${intMonthToCharConvertor(data?.Month)} ${
+                            data?.Year
+                          }`;
                     }}
                     axisLine={{ stroke: "#ffffff" }}
                     tick={{ fontSize: "10px" }}
