@@ -155,7 +155,7 @@ function MarketplaceTrack() {
                 })}
               </div>
             </div>
-            <div className="mt-[2.2rem]">
+            {/* <div className="mt-[2.2rem]">
               <h1 className="underline font-interSemiBold text-lg">
                 Unique SKU Count
               </h1>
@@ -199,7 +199,7 @@ function MarketplaceTrack() {
                   tileHeaders: tileThreeFour,
                 })}
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="col-span-3">
             <NSCard className="border border-gray-200 rounded-lg">
@@ -218,7 +218,7 @@ function MarketplaceTrack() {
                 loader={loader}
               />
             </NSCard>
-            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+            {/* <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
               <NewSalesAndAvgUnitValue
                 image="./assets/interactive.svg"
                 title="Unique SKU Count"
@@ -266,7 +266,7 @@ function MarketplaceTrack() {
                 showPlue
                 showCount={false}
               />
-            </NSCard>
+            </NSCard> */}
           </div>
           <div className="col-span-3">
             <NSCard className="border border-gray-200 rounded-lg">
@@ -285,7 +285,7 @@ function MarketplaceTrack() {
                 loader={loader}
               />
             </NSCard>
-            <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
+            {/* <NSCard className="border border-gray-200 rounded-lg mt-[1rem]">
               <NewSalesAndAvgUnitValue
                 image="./assets/interactive.svg"
                 title="Unique SKU Count"
@@ -333,7 +333,7 @@ function MarketplaceTrack() {
                 showPlue
                 showCount={false}
               />
-            </NSCard>
+            </NSCard> */}
           </div>
         </div>
       </NSCard>

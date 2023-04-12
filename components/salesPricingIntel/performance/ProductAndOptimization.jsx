@@ -17,15 +17,16 @@ function ProductAndOptimization({ product, optimization, loader }) {
           <NSLoaderWithMsg />
         ) : (
           <div className="flex">
-            <div className="w-[50%] border-r-[1px] border-black">
+            <div className="w-[45px]"></div>
+            <div className="w-[50%] border-r-[1px] border-black truncate">
               <Tooltip title={CommaSeperator(product?.Actual_Revenue || 0)}>
-                <h1 className="text-2xl font-interMedium">
+                <h1 className="text-2xl font-interMedium truncate">
                   INR {CommaSeperator(product?.Actual_Revenue || 0)}
                 </h1>
               </Tooltip>
               <p className="text-gray-500 font-interMedium">Revenue</p>
             </div>
-            <div className="w-[50%] pl-4">
+            <div className="w-[45%] pl-4">
               <Tooltip
                 title={product?.Missing_data || CommaSeperator("89208667")}
               >
@@ -41,12 +42,15 @@ function ProductAndOptimization({ product, optimization, loader }) {
       <NSCard className="col-span-1">
         <div className="flex items-center">
           <Image src="./assets/Group 692.svg" alt="" width={30} height={30} />
-          <h1 className="text-gray-500 font-interSemiBold ml-2">Optimization</h1>
+          <h1 className="text-gray-500 font-interSemiBold ml-2">
+            Optimization
+          </h1>
         </div>
         {loader ? (
           <NSLoaderWithMsg />
         ) : (
           <div className="flex">
+            <div className="w-[42px]"></div>
             <div className="w-[50%] border-r-[1px] border-black">
               <h1 className="text-2xl font-interMedium">
                 {optimization?.Model || "Revenue"}

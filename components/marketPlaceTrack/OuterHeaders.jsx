@@ -2,7 +2,7 @@ const OuterHeaders = ({ tableData, header_keys, tileHeaders }) => {
   return (
     <>
       <div>
-        <h1 className="text-orange-500 text-start flex items-center w-full text-[.8rem] font-interMedium mt-[2.1rem]">
+        <h1 className="text-[var(--secondary)] text-start flex items-center w-full text-[.8rem] font-interBold mt-[2.1rem]">
           {tileHeaders?.one?.headerOne}
         </h1>
         {tableData?.[0]?.map((_, index) => (
@@ -17,7 +17,7 @@ const OuterHeaders = ({ tableData, header_keys, tileHeaders }) => {
         ))}
       </div>
       <div>
-        <h1 className="text-orange-500 text-start flex items-center w-full text-[.8rem] font-interMedium mt-[.5rem]">
+        <h1 className="text-[var(--secondary)] text-start flex items-center w-full text-[.8rem] font-interBold mt-[.5rem]">
           {tileHeaders?.two?.headerOne}
         </h1>
         {tableData?.[1]?.map((_, index) => (

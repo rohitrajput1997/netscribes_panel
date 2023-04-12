@@ -43,7 +43,7 @@ function NewSalesAndAvgUnitValue({
           </div>
 
           <div className="mt-2">
-            <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">
+            <div className="flex justify-between rounded-full px-2 mb-2">
               {/* <h1 className="text-orange-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image
@@ -56,13 +56,15 @@ function NewSalesAndAvgUnitValue({
                 )}
                 {headers?.one?.headerOne}
               </h1> */}
-              <h1 className="text-orange-500 text-center w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[var(--secondary)] text-center w-[33%] text-[.8rem] font-interBold">
                 {headers?.one?.headerTwo}
               </h1>
-              <h1 className="text-orange-500 text-center w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[var(--secondary)] text-center w-[33%] text-[.8rem] font-interBold">
                 {headers?.one?.headerThree}
               </h1>
             </div>
+            <hr />
+
             <div className="max-h-[50px] overflow-y-scroll">
               {tableData?.[0]?.map((_, index) => (
                 <div
@@ -75,7 +77,7 @@ function NewSalesAndAvgUnitValue({
                   <h1 className="text-center w-[33%]">
                     {_?.[header_keys[1] || ""]}
                   </h1>
-                  <h1 className="text-center text-orange-500 w-[33%]">
+                  <h1 className="text-center text-[var(--secondary)] w-[33%]">
                     {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
                   </h1>
                 </div>
@@ -84,7 +86,7 @@ function NewSalesAndAvgUnitValue({
           </div>
 
           <div className="mt-2">
-            <div className="flex justify-between bg-pink-200 rounded-full px-2 mb-2">
+            <div className="flex justify-between rounded-full px-2 mb-2">
               {/* <h1 className="text-pink-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image
@@ -97,13 +99,15 @@ function NewSalesAndAvgUnitValue({
                 )}{" "}
                 {headers?.two?.headerOne}
               </h1> */}
-              <h1 className="text-pink-500 text-center w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[var(--secondary)] text-center w-[33%] text-[.8rem] font-interBold">
                 {headers?.one?.headerTwo}
               </h1>
-              <h1 className="text-pink-500 text-center w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[var(--secondary)] text-center w-[33%] text-[.8rem] font-interBold">
                 {headers?.one?.headerThree}
               </h1>
             </div>
+            <hr />
+
             <div className="max-h-[50px] overflow-y-scroll">
               {tableData?.[1]?.map((_) => (
                 <div
@@ -113,10 +117,8 @@ function NewSalesAndAvgUnitValue({
                   {/* <h1 className="text-start w-[33%]">
                     {_?.[header_keys[0]].replaceAll("_", " ")}
                   </h1> */}
-                  <h1 className="text-center w-[33%]">
-                    {_?.[header_keys[1]]}
-                  </h1>
-                  <h1 className="text-center text-orange-500 w-[33%]">
+                  <h1 className="text-center w-[33%]">{_?.[header_keys[1]]}</h1>
+                  <h1 className="text-center text-[var(--secondary)] w-[33%]">
                     {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
                   </h1>
                 </div>

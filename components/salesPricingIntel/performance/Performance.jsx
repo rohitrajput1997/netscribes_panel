@@ -125,13 +125,13 @@ const Reports = () => {
                             ? entry?.Week > weekNumber &&
                               (entry?.Year > yearNumber ||
                                 entry?.Year === yearNumber)
-                              ? "yellow"
+                              ? "rgb(250 204 21)"
                               : "rgb(8 145 178)"
                             : selectedFilter === "month"
                             ? entry?.Month > monthNumber &&
                               (entry?.Year > yearNumber ||
                                 entry?.Year === yearNumber)
-                              ? "yellow"
+                              ? "rgb(250 204 21)"
                               : "rgb(8 145 178)"
                             : "rgb(8 145 178)"
                         }
