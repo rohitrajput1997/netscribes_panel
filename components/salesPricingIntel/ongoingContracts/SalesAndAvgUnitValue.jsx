@@ -6,6 +6,7 @@ import NSCard from "../../common/NSCard";
 import { BiRupee } from "react-icons/bi";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 import commaSeperator from "../../../utils/commaSeperator";
+import CommaSeperator from "../../../utils/commaSeperator";
 
 function SalesAndAvgUnitValue({
   image,
@@ -85,7 +86,7 @@ function SalesAndAvgUnitValue({
                     {_?.[header_keys[0] || ""].replaceAll("_", " ")}
                   </h1>
                   <h1 className="text-center w-[33%]">
-                    {_?.[header_keys[1] || ""]}
+                    {CommaSeperator(_?.[header_keys[1] || ""])}
                   </h1>
                   <h1 className="text-end text-orange-500 w-[33%]">
                     {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
@@ -125,7 +126,7 @@ function SalesAndAvgUnitValue({
                   <h1 className="text-start w-[33%]">
                     {_?.[header_keys[0]].replaceAll("_", " ")}
                   </h1>
-                  <h1 className="text-center w-[33%]">{_?.[header_keys[1]]}</h1>
+                  <h1 className="text-center w-[33%]">{CommaSeperator(_?.[header_keys[1]])}</h1>
                   <h1 className="text-end text-orange-500 w-[33%]">
                     {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
                   </h1>

@@ -13,6 +13,7 @@
     "@wojtekmaj/react-daterange-picker": "5.0.0",
     "antd": "^5.1.4",
     "axios": "^1.2.3",
+    "downloadjs": "^1.4.7",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "js-cookie": "^3.0.1",

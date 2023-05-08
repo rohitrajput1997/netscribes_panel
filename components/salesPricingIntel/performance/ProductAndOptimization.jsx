@@ -17,7 +17,7 @@ function ProductAndOptimization({ product, optimization, loader }) {
           <NSLoaderWithMsg />
         ) : (
           <div className="flex">
-            <div className="w-[45px]"></div>
+            <div className="w-[39px]"></div>
             <div className="w-[50%] border-r-[1px] border-black truncate">
               <Tooltip title={CommaSeperator(product?.Actual_Revenue || 0)}>
                 <h1 className="text-2xl font-interMedium truncate">
@@ -27,14 +27,14 @@ function ProductAndOptimization({ product, optimization, loader }) {
               <p className="text-gray-500 font-interMedium">Revenue</p>
             </div>
             <div className="w-[45%] pl-4">
-              <Tooltip
-                title={product?.Missing_data || CommaSeperator("89208667")}
-              >
+              <Tooltip title={CommaSeperator(product?.Missing_data) || 0}>
                 <h1 className="text-2xl font-interMedium truncate">
-                  INR {product?.Missing_data || CommaSeperator("89208667")}
+                  INR {CommaSeperator(product?.Missing_data) || 0}
                 </h1>
               </Tooltip>
-              <p className="text-gray-500 font-interMedium">Missing Data</p>
+              <p className="text-gray-500 font-interMedium">
+                No sale SKUs count
+              </p>
             </div>
           </div>
         )}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
+import CommaSeperator from "../../../utils/commaSeperator";
 
 function QuaterResults({ header, childs, last_quarter_result, loader }) {
   const QuaterResultsChilds = () => {
@@ -13,7 +14,7 @@ function QuaterResults({ header, childs, last_quarter_result, loader }) {
           ) : (
             <div className="ml-3">
               <h2 className="text-xl font-interRegular leading-4">
-                INR {item?.count}
+                INR {CommaSeperator(item?.count)}
               </h2>
               <p className="text-gray-500 font-interRegular">{item?.subTitle}</p>
             </div>

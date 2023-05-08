@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import NSCard from "../common/NSCard";
+import CommaSeperator from "../../utils/commaSeperator";
 
 function SuggestedBrandUpdatesTile({ title, salesCount, subtitle }) {
   return (
@@ -42,7 +43,7 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle }) {
           <p className="leading-8 text-[1rem] font-interMedium capitalize">
             {subtitle.split("_").join(" ")}
           </p>
-          <h1 className="text-xl font-interRegular">{salesCount}</h1>
+          <h1 className="text-xl font-interRegular">{CommaSeperator(salesCount) || 0}</h1>
         </div>
       </div>
     </NSCard>

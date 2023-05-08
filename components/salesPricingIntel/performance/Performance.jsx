@@ -39,8 +39,8 @@ const Reports = () => {
 
   const today = moment().format("MM-DD-YYYY");
   const weekNumber = moment(today, "MM-DD-YYYY").week();
-  const monthNumber = moment(today, "MM-DD-YYYY").month();
-  const yearNumber = moment(today, "MM-DD-YYYY").year();
+  const monthNumber = moment(today, "MM-DD-YYYY").format('M');
+  const yearNumber = moment(today, "MM-DD-YYYY").format('YYYY');
 
   const actualData =
     selectedFilter === "week"
@@ -84,8 +84,6 @@ const Reports = () => {
   useEffect(() => {
     addFutureForecastedRevenue();
   }, [selectedFilter, actualData, addFutureForecastedRevenue()]);
-
-  console.log("$$$$####$$#$#$#$#$", addFutureForecastedRevenue(), actualData);
 
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
@@ -161,7 +159,7 @@ const Reports = () => {
                     fill={"rgb(250 204 21)"}
                     radius={[20, 20, 20, 20]}
                     barSize={15}
-                    name="Forecasted Revenue"
+                    name="Future Forecasted Revenue"
                   />
                 </BarChart>
               </ResponsiveContainer>

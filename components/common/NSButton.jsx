@@ -24,7 +24,7 @@ function NSButton({
         <NSLoaderWithMsg style={{margin: '1rem 0'}} />
       ) : (
         <button
-          className={`${className} ${bgColors} py-3 text-center ${
+          className={`${className} ${bgColors} py-3 text-center font-interMedium ${
             icon ? "flex justify-center items-center" : ""
           } rounded-full min-w-[100px]`}
           style={style}

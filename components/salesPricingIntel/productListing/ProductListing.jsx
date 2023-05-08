@@ -1,26 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { RiDeleteBin6Fill, RiSettings5Fill } from "react-icons/ri";
+import React, { useState } from "react";
 import NSCard from "../../common/NSCard";
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import NSSearchbar from "../../common/NSSearchbar";
-import NSDropdown from "../../common/NSDropdown";
 import NSTable from "../../common/NSTable";
-import { Radio, Table, Tooltip } from "antd";
-import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import NSPopover from "../../common/NSPopover";
 import NSButton from "../../common/NSButton";
-import productListingRepriceingRadiosJson from "../../json/productListingRepriceingRadiosJson";
-import PLProductCount from "./PLProductCount";
 import RepricingPopover from "./RepricingPopover";
-import {
-  fetchProductListings,
-  fetchProductListingsPrice,
-} from "../../../actions/SalesPricingIntel.action";
-import NSInput from "../../common/NSInput";
-import NSTableTooltipTitle from "../../common/NSTableTooltipTitle";
-import ManageRepricingRuleList from "./ManageRepricingRuleList";
-import PricingRules from "./PricingRules";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
+import dynamic from "next/dynamic";
+
+const PLProductCount = dynamic(() => import("./PLProductCount"));
 
 function ProductListing({
   productListingDetails,
@@ -37,6 +25,7 @@ function ProductListing({
   pricingRuleData,
 }) {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  
   return (
     <>
       <PLProductCount
@@ -65,6 +54,11 @@ function ProductListing({
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <NSButton
+              title={"Download"}
+              className="h-9 flex justify-center items-center"
+              bgBordered
+            />
             <NSSearchbar
               placeholder="Search..."
               className="w-20 font-interRegular"
@@ -89,19 +83,23 @@ function ProductListing({
         </div>
 
         <div className="mt-3">
-          {loader ? <NSLoaderWithMsg /> : <NSTable
-            dataSource={
-              selectedFilter
-                ? handleTableFilter()
-                : productListingDetails?.product_list
-            }
-            columns={columns}
-            loader={loader}
-            rowKey={(record) => record.ASIN_details}
-            rowSelection
-            selectedRowKeys={selectedRowKeys}
-            setSelectedRowKeys={setSelectedRowKeys}
-          />}
+          {loader ? (
+            <NSLoaderWithMsg />
+          ) : (
+            <NSTable
+              dataSource={
+                selectedFilter
+                  ? handleTableFilter()
+                  : productListingDetails?.product_list
+              }
+              columns={columns}
+              loader={loader}
+              rowKey={(record) => record.ASIN_details}
+              rowSelection
+              selectedRowKeys={selectedRowKeys}
+              setSelectedRowKeys={setSelectedRowKeys}
+            />
+          )}
         </div>
       </NSCard>
     </>
