@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import NSCard from "../components/common/NSCard";
 import NSLayout from "../components/common/NSLayout";
+import BusinessTrendsJson from "../components/json/BusinessTrends.json";
 
 const BusinessTrends = () => {
   return (
@@ -29,7 +30,7 @@ const BusinessTrends = () => {
             News
           </h1>
 
-          {[0, 1, 2, 3, 4, 5].map((news, index) => (
+          {BusinessTrendsJson.map((news, index) => (
             <div
               className="w-[100%] px-6 my-6 flex justify-between"
               key={index}
@@ -40,26 +41,15 @@ const BusinessTrends = () => {
                   <span className="ml-2 font-interMedium">CBS News</span>
                 </div> */}
                 <h1 className="text-blue-600 font-interMedium text-xl my-2 cursor-pointer">
-                  Lorem ipsum dolor sit amet <b className="font-interBold">consectetur</b> adipisicing elit.
-                  Libero quibusdam <b className="font-interBold">assumenda</b> earum commodi unde quaerat vitae
-                  sed ullam ipsa doloremque?
+                  {news.title}
                 </h1>
                 <div className="flex items-center">
-                  <h5 className="text-base text-gray-500 border-r-2 pr-2 font-interMedium">
-                    Kelvinator
-                  </h5>
-                  <h5 className="text-base text-gray-500 border-r-2 px-2 font-interMedium">
-                    Kelvinator
-                  </h5>
-                  <h5 className="text-base text-gray-500 px-2 font-interMedium">
-                    www.kelvinator.in
+                  <h5 className="text-base text-gray-500 pr-2 font-interMedium">
+                    {news.subTitle}
                   </h5>
                 </div>
                 <h3 className="text-gray-900 text-[.9rem] font-interRegular my-2">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Debitis, sequi ut! Enim eius quia, nulla quas commodi corporis
-                  exercitationem dignissimos quod, aspernatur quis excepturi
-                  doloremque!
+                  {news.content}
                 </h3>
                 <div className="flex items-center mt-3 mb-4">
                   <Image
