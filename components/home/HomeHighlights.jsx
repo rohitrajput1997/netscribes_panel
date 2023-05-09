@@ -17,7 +17,8 @@ function HomeHighlights({ homeDetails, loader }) {
             <SuggestedHighlitesTiles
               image="/assets/Path 1799.svg"
               title="Newness"
-              content={`${newness?.[0]?.ASIN_details} new SKUs added last month`}
+              // content={`${newness?.[0]?.ASIN_details} new SKUs added last month`}
+              content={`2 new SKUs added last month`}
               bg="bg-yellow-100"
               borderColor="border-yellow-100"
               textColor="text-yellow-500"

@@ -247,7 +247,7 @@ export const fetchBrandsProductListingData = async ({ setBrandList }) => {
             });
           });
 
-          NSToaster.success(data?.status_message);
+          // NSToaster.success(data?.status_message);
           setBrandList && setBrandList(dropdownData);
         } else {
           NSToaster.error(data?.status_message);

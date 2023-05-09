@@ -26,9 +26,22 @@ const BusinessTrends = () => {
         </div>
 
         <NSCard style={{ padding: "15px" }}>
-          <h1 className="text-gray-700 text-[1.2rem] font-interSemiBold">
-            News
-          </h1>
+          <div className="px-6">
+            <div>
+              <h1 className="text-2xl font-interMedium text-gray-800">
+                refrigerator
+              </h1>
+              <div className="w-[200px] flex justify-between items-center mt-2 text-slate-400 font-interMedium">
+                <h6>Daily update</h6>
+                <h6>April 9, 2023</h6>
+              </div>
+            </div>
+            <h1 className="text-slate-500 text-[1rem] font-interSemiBold mt-8">
+              Web
+            </h1>
+
+            <div className="w-full border-b-2 mt-3" />
+          </div>
 
           {BusinessTrendsJson.map((news, index) => (
             <div
@@ -36,10 +49,6 @@ const BusinessTrends = () => {
               key={index}
             >
               <div className="w-[100%] border-b-2">
-                {/* <div className="flex items-center">
-                  <div className="w-5 h-5 bg-gray-600"></div>
-                  <span className="ml-2 font-interMedium">CBS News</span>
-                </div> */}
                 <h1 className="text-blue-600 font-interMedium text-xl my-2 cursor-pointer">
                   {news.title}
                 </h1>
@@ -58,7 +67,7 @@ const BusinessTrends = () => {
                     height={25}
                     alt="facebook"
                     className="mr-2"
-                    />
+                  />
                   <Image
                     src="/assets/twitter.png"
                     width={22}
@@ -66,19 +75,11 @@ const BusinessTrends = () => {
                     alt="twitter"
                     className="mr-2"
                   />
-                  <h5 className="text-sm text-gray-400 font-interRegular ml-6">Flag as irrelevant</h5>
+                  <h5 className="text-sm text-gray-400 font-interRegular ml-6">
+                    Flag as irrelevant
+                  </h5>
                 </div>
-                {/* <h3 className="text-gray-600 text-base font-interRegular my-2 text-[12px]">
-                  2 days ago
-                </h3> */}
               </div>
-              {/* <div className="w-[13%] h-[150px] min-h-[13%] max-h-[13%] bg-gray-100 rounded-md overflow-hidden">
-                <img
-                  src="https://media.istockphoto.com/id/1346129955/photo/making-her-laughing-daily.jpg?b=1&s=170667a&w=0&k=20&c=Dr98kKUgmz6uvdLBJnwXCGhPaJWSXqIp-TFuASpOUIs="
-                  alt="news-image"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </div> */}
             </div>
           ))}
         </NSCard>

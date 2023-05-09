@@ -1,7 +1,7 @@
 import React from "react";
 import SuggestedBrandUpdatesTile from "./SuggestedBrandUpdatesTile";
 
-function HomeBrandUpdates({ homeDetails }) {
+function HomeBrandUpdates({ homeDetails, setOpen }) {
   const { suggested_brands } = homeDetails
 
   return (
@@ -12,6 +12,7 @@ function HomeBrandUpdates({ homeDetails }) {
             title={suggested_brands?.[item]?.Brand}
             salesCount={suggested_brands?.[item]?.[item]}
             subtitle={item}
+            setOpen={setOpen}
           />
         </div>
       ))}

@@ -15,7 +15,7 @@ const ConfirmationModal = ({ open, setOpen, onClickYes, title, loader }) => {
       title={title}
       footer={null}
     >
-      <div className="flex justify-center space-x-4">
+      <div className="flex justify-center space-x-4 mt-3">
         <NSButton title="No" onClick={() => setOpen(false)} />
         <NSButton title="Yes" onClick={onClickYes} isPrimary loading={loader} />
       </div>
