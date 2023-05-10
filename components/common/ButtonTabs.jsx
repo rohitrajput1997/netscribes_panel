@@ -14,7 +14,7 @@ function ButtonTabs({ arr, style, setFunc, selectedValue, selectedKey, disabled 
           style={style}
           onClick={() => {
             setFunc(value);
-            selectedKey(key);
+            selectedKey && selectedKey(key);
           }}
           disabled={disabled}
         >

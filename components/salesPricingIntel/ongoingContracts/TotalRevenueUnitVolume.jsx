@@ -10,11 +10,18 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
   const sales = totalRevenue?.Sales;
   const units = totalUnits?.Units;
 
-  const ShowTile = ({ icon, sales, percentage, title }) => {
+  const ShowTile = ({
+    icon,
+    sales,
+    percentage,
+    title,
+    isNoValue,
+    hideCurrency,
+  }) => {
     return (
       <>
         <div className="col-span-1">
-          <NSCard>
+          <NSCard style={{height: '88px'}}>
             <div className="flex items-center">
               <Image
                 src={icon}
@@ -29,21 +36,34 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
               <NSLoaderWithMsg withMessage={false} />
             ) : (
               <>
-                <h1 className="text-[1.3rem] flex items-center">
-                  {/* <BiRupee size={25} className="mt-[2px]" /> */}
-                  <p className="font-interRegular mr-1 ml-[3.01rem]">
-                    INR {commaSeperator(sales)}
-                  </p>
+                {isNoValue === null || isNoValue === undefined ? (
                   <p
-                    className={`${
-                      percentage.includes("-")
-                        ? "bg-red-500 text-white"
-                        : "bg-green-500 text-white"
-                    } w-[fit-content] px-2 rounded-full mt-1 ml-[.5rem] text-[14px] mt-[-3px]`}
+                    className={
+                      "bg-gray-500 text-white w-[fit-content] px-2 rounded-full mt-1 ml-[3rem] text-[14px]"
+                    }
                   >
                     {Number(percentage).toFixed(2) + "%"}
                   </p>
-                </h1>
+                ) : (
+                  <>
+                    <h1 className="text-[1.3rem] flex items-center">
+                      {!hideCurrency && (
+                        <p className="font-interRegular mr-1 ml-[3.01rem]">
+                          INR {commaSeperator(sales)}
+                        </p>
+                      )}
+                      <p
+                        className={`${
+                          percentage.includes("-")
+                            ? "bg-red-500 text-white"
+                            : "bg-green-500 text-white"
+                        } w-[fit-content] px-2 rounded-full text-[14px] ${hideCurrency ? 'mt-[5px] ml-[3rem]' : 'mt-[-3px] ml-[.5rem]'}`}
+                      >
+                        {Number(percentage).toFixed(2) + "%"}
+                      </p>
+                    </h1>
+                  </>
+                )}
               </>
             )}
           </NSCard>
@@ -59,12 +79,16 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
         percentage={valOne}
         sales={sales}
         title={"Total Revenue"}
+        isNoValue={totalRevenue?.SalesProgressPercentage}
+        hideCurrency={false}
       />
       <ShowTile
         icon={"./assets/Group 692.svg"}
         percentage={valTwo}
         sales={units}
         title={"Total Unit Volume"}
+        isNoValue={totalRevenue?.VolumeProgressPercentage}
+        hideCurrency={true}
       />
     </div>
   );

@@ -26,7 +26,7 @@
 //   },
 // ];
 
-const EstimatedSalesTabs = (days) => {
+export const EstimatedSalesTabs = (days) => {
   return [
     {
       label: "Week",
@@ -42,18 +42,21 @@ const EstimatedSalesTabs = (days) => {
       label: "Quarter",
       value: "quarter",
       key: "quarter",
-    },
-    // {
-    //   label: "Sales",
-    //   value: "sales",
-    //   key: "sales",
-    // },
-    // {
-    //   label: "Unit Sold",
-    //   value: "unitSold",
-    //   key: "unit_sold",
-    // },
+    }
   ].filter(Boolean);
 };
 
-export default EstimatedSalesTabs;
+export const EstimatedSalesUnitsTabs = (days) => {
+  return [
+    {
+      label: "Sales",
+      value: "Sales",
+      key: "Sales",
+    },
+    {
+      label: "Unit Sold",
+      value: "Units",
+      key: "Units",
+    },
+  ].filter(Boolean);
+};

@@ -28,7 +28,10 @@ function AddBrandModal({
       className="logout_modal workflow_model relative add-brand-modal"
       open={open}
       onOk={onClickYes}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        setOpen(false);
+        setData([]);
+      }}
       title={title}
       footer={null}
       width={1000}

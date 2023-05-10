@@ -17,7 +17,7 @@ import ButtonTabs from "../../common/ButtonTabs";
 import NSCard from "../../common/NSCard";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 import { onGoingContracts } from "../../json/CustomizedTableHeaders";
-import EstimatedSalesTabs from "../../json/EstimatedSalesTabs";
+import {EstimatedSalesTabs, EstimatedSalesUnitsTabs} from "../../json/EstimatedSalesTabs";
 import LeaderMarketShare from "./LeaderMarketShare";
 import MarketOverview from "./MarketOverview";
 import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue";
@@ -33,6 +33,7 @@ const OnGoingContracts = ({
 }) => {
   const [selectedGraphFilter, setSelectedGraphFilter] = useState("week");
   const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
+  const [salesAndUnitsFilter, setSalesAndUnitsFilter] = useState('Sales');
   const {
     data_unit_sales_total,
     total_revenue,
@@ -51,6 +52,8 @@ const OnGoingContracts = ({
   setPeriod(selectedGraphFilter);
 
   // const monthDiff = firstDate.diff(lastDate, 'months');
+
+  console.log(selectedFilterKey)
 
   return (
     <div>
@@ -71,12 +74,19 @@ const OnGoingContracts = ({
                   Total Estimates Sales Over Time
                 </h1>
               </div>
-              <div>
+              <div className="flex items-center">
                 <ButtonTabs
                   arr={EstimatedSalesTabs(daysDiff)}
                   setFunc={setSelectedGraphFilter}
                   selectedValue={selectedGraphFilter}
                   selectedKey={setSelectedFilterKey}
+                  setSalesAndUnitsFilter={setSalesAndUnitsFilter}
+                  salesAndUnitsFilter={salesAndUnitsFilter}
+                />
+                <ButtonTabs
+                  arr={EstimatedSalesUnitsTabs(daysDiff)}
+                  setFunc={setSalesAndUnitsFilter}
+                  selectedValue={salesAndUnitsFilter}
                 />
               </div>
             </div>
@@ -140,7 +150,7 @@ const OnGoingContracts = ({
                     <Tooltip />
                     <Area
                       type="monotone"
-                      dataKey="Sales"
+                      dataKey={salesAndUnitsFilter === 'Units' ? 'Units' : "Sales"}
                       stroke="#5a8cd1"
                       fill="url(#colorUv)"
                       fillOpacity={0.3}

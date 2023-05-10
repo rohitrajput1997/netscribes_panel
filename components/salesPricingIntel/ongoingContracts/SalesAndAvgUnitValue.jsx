@@ -49,7 +49,7 @@ function SalesAndAvgUnitValue({
             <h1 className="text-[1.6rem] flex items-center">
               {/* <BiRupee size={25} className="mt-[2px]" /> */}
               <p className="font-interRegular mr-1 mt-[2px]">
-                {showCurrency ? "INR" : ""}
+                {showCurrency && total ? "INR" : ""}
               </p>
               <h1>{commaSeperator(total)}</h1>
             </h1>

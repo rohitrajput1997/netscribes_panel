@@ -86,7 +86,8 @@ body {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   width: 100%;
   height: 50px;
   border: 1px solid #b6b3b3;
@@ -135,4 +136,21 @@ input[type="password"] {
   height: 450px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.ant-collapse { 
+  border: none;
+}
+
+.ant-collapse>.ant-collapse-item {
+  border-bottom: none;
+}
+
+.ant-collapse .ant-collapse-content {
+  border-top: none;
+}
+
+.OSP .ant-table-wrapper {
+  height: 200px;
+  overflow-y: auto;
 }

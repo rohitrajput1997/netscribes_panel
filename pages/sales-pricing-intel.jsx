@@ -8,6 +8,7 @@ import Performance from "../components/salesPricingIntel/performance/Performance
 import MainProductListingPage from "../components/salesPricingIntel/productListing";
 import ProductListing from "../components/salesPricingIntel/productListing/ProductListing";
 import Reports from "../components/salesPricingIntel/reports/Reports";
+import OptimizationSettings from "../components/salesPricingIntel/optimizationSettings/OptimizationSettings";
 
 function SalesPricingIntel() {
   //Perofrmance
@@ -35,7 +36,7 @@ function SalesPricingIntel() {
 
   useEffect(() => {
     handleFetchSalesAndPricingIntelDetails();
-  }, [period]);
+  }, []);
 
   const handleComponent = () => {
     switch (selectedTab) {
@@ -56,6 +57,8 @@ function SalesPricingIntel() {
         return <MainProductListingPage setSelectedTab={setSelectedTab} />;
       case 4:
         return <Reports />;
+      case 5:
+        return <OptimizationSettings />;
     }
   };
 

@@ -1,6 +1,7 @@
 import { Image, Progress } from "antd";
 import React from "react";
 import NSCard from "../../common/NSCard";
+import CommaSeperator from "../../../utils/commaSeperator";
 
 function LeaderMarketShare({ cardData }) {
   const colorsData = ["rgb(202 138 4)", "rgb(107 33 168)", "rgb(139 92 246)"];
@@ -31,7 +32,7 @@ function LeaderMarketShare({ cardData }) {
                 {/* <h1 className="text-xl mb-2 font-interMedium">{data?.Brand}</h1> */}
                 {showIcon(data?.Brand)}
                 <p className="font-interMedium">Sales</p>
-                <h1 className="font-interRegular">INR {data?.Sales}</h1>
+                <h1 className="font-interRegular">INR {CommaSeperator(data?.Sales)}</h1>
               </div>
               <Progress
                 strokeLinecap="butt"
