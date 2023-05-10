@@ -56,8 +56,8 @@ function SalesAndAvgUnitValue({
           )}
 
           <div className="mt-2">
-            <div className="flex justify-between bg-orange-200 rounded-full px-2 mb-2">
-              <h1 className="text-orange-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
+            <div className="flex justify-between bg-blue-200 rounded-full px-2 mb-2">
+              <h1 className="text-[#005f86] text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image
                     src="./assets/arrow-small-up.svg"
@@ -69,10 +69,10 @@ function SalesAndAvgUnitValue({
                 )}
                 {headers?.one?.headerOne}
               </h1>
-              <h1 className="text-orange-500 text-center w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[#005f86] text-center w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerTwo}
               </h1>
-              <h1 className="text-orange-500 text-end w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[#005f86] text-end w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerThree}
               </h1>
             </div>
@@ -88,7 +88,7 @@ function SalesAndAvgUnitValue({
                   <h1 className="text-center w-[33%]">
                     {CommaSeperator(_?.[header_keys[1] || ""])}
                   </h1>
-                  <h1 className="text-end text-orange-500 w-[33%]">
+                  <h1 className="text-end text-[#005f86] w-[33%]">
                     {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
                   </h1>
                 </div>
@@ -97,8 +97,8 @@ function SalesAndAvgUnitValue({
           </div>
 
           <div className="mt-2">
-            <div className="flex justify-between bg-pink-200 rounded-full px-2 mb-2">
-              <h1 className="text-pink-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
+            <div className="flex justify-between bg-blue-200 rounded-full px-2 mb-2">
+              <h1 className="text-[#005f86] text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image
                     src="./assets/arrow-small-up-1.svg"
@@ -110,10 +110,10 @@ function SalesAndAvgUnitValue({
                 )}{" "}
                 {headers?.two?.headerOne}
               </h1>
-              <h1 className="text-pink-500 text-center w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[#005f86] text-center w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerTwo}
               </h1>
-              <h1 className="text-pink-500 text-end w-[33%] text-[.8rem] font-interMedium">
+              <h1 className="text-[#005f86] text-end w-[33%] text-[.8rem] font-interMedium">
                 {headers?.one?.headerThree}
               </h1>
             </div>
@@ -127,7 +127,7 @@ function SalesAndAvgUnitValue({
                     {_?.[header_keys[0]].replaceAll("_", " ")}
                   </h1>
                   <h1 className="text-center w-[33%]">{CommaSeperator(_?.[header_keys[1]])}</h1>
-                  <h1 className="text-end text-orange-500 w-[33%]">
+                  <h1 className="text-end text-[#005f86] w-[33%]">
                     {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
                   </h1>
                 </div>

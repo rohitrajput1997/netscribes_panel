@@ -13,6 +13,7 @@ const Home = ({ homeDetails, loader }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openAddBrandModal, setOpenAddBrandModal] = useState(false);
   const [brandList, setBrandList] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetchBrandsProductListingData({ setBrandList: setBrandList });
@@ -49,6 +50,8 @@ const Home = ({ homeDetails, loader }) => {
         title="Add New Brands"
         brandList={brandList}
         setBrandList={setBrandList}
+        data={data}
+        setData={setData}
       />
       <div className="grid grid-cols-4 gap-3">
         <div className="col-span-3">

@@ -30,7 +30,7 @@ function NewSalesAndAvgUnitValue({
         <>
           <div className="w-full flex justify-end">
             {showCount && (
-              <h1 className="text-[1.6rem]">{commaSeperator(total)}</h1>
+              <h1 className="text-[1.6rem] mr-[2.4rem]">{commaSeperator(total)}</h1>
             )}
             {showPlue && (
               <Image
@@ -43,7 +43,7 @@ function NewSalesAndAvgUnitValue({
           </div>
 
           <div className="mt-2">
-            <div className="flex justify-between rounded-full px-2 mb-2">
+            <div className="flex justify-between rounded-full px-2 mb-2 bg-blue-200">
               {/* <h1 className="text-orange-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image
@@ -86,7 +86,7 @@ function NewSalesAndAvgUnitValue({
           </div>
 
           <div className="mt-2">
-            <div className="flex justify-between rounded-full px-2 mb-2">
+            <div className="flex justify-between rounded-full px-2 mb-2 bg-blue-200">
               {/* <h1 className="text-pink-500 text-start flex items-center w-[33%] text-[.8rem] font-interMedium">
                 {showupDownArrow && (
                   <Image

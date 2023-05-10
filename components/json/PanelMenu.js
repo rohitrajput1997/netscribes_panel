@@ -38,7 +38,7 @@ const PanelMenu = [
   {
     label: "Marketplace Track",
     value: "marketplace-track",
-    icon: <FaRunning size={20} />,
+    icon: '/assets/mpt1.png',
     route: "/marketplace-track",
     key: "/marketplace-track",
   },

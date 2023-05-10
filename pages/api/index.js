@@ -25,7 +25,9 @@ const getPricingRuleById = (payload) =>
   api.post("/api/get_pricing_rule_by_id", payload)
 const deletePricingRuleById = (payload) =>
   api.post("/api/delete_pricing_rule_by_id", payload)
-const log_out = (payload) => api.post("/api/logout", payload)
+  const log_out = (payload) => api.post("/api/logout", payload)
+  const addBrand = (payload) =>
+    api.post("/api/add_brand", payload)
 
 const apis = {
   login,
@@ -45,6 +47,7 @@ const apis = {
   getPricingRuleById,
   deletePricingRuleById,
   log_out,
+  addBrand,
 }
 
 export default apis

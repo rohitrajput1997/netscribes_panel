@@ -39,8 +39,8 @@ const Reports = () => {
 
   const today = moment().format("MM-DD-YYYY");
   const weekNumber = moment(today, "MM-DD-YYYY").week();
-  const monthNumber = moment(today, "MM-DD-YYYY").format('M');
-  const yearNumber = moment(today, "MM-DD-YYYY").format('YYYY');
+  const monthNumber = moment(today, "MM-DD-YYYY").format("M");
+  const yearNumber = moment(today, "MM-DD-YYYY").format("YYYY");
 
   const actualData =
     selectedFilter === "week"
@@ -52,7 +52,8 @@ const Reports = () => {
       if (selectedFilter === "week") {
         if (
           entry?.Week > weekNumber &&
-          (entry?.Year > yearNumber || entry?.Year === yearNumber)
+          (Number(entry?.Year) > Number(yearNumber) ||
+            Number(entry?.Year) === Number(yearNumber))
         ) {
           return Object.assign({
             ...entry,
@@ -65,7 +66,8 @@ const Reports = () => {
       } else if (selectedFilter === "month") {
         if (
           entry?.Month > monthNumber &&
-          (entry?.Year > yearNumber || entry?.Year === yearNumber)
+          (Number(entry?.Year) > Number(yearNumber) ||
+            Number(entry?.Year) === Number(yearNumber))
         ) {
           return Object.assign({
             ...entry,
@@ -84,6 +86,8 @@ const Reports = () => {
   useEffect(() => {
     addFutureForecastedRevenue();
   }, [selectedFilter, actualData, addFutureForecastedRevenue()]);
+
+  console.log(addFutureForecastedRevenue());
 
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
@@ -133,6 +137,8 @@ const Reports = () => {
                     }}
                     axisLine={{ stroke: "#ffffff" }}
                     tick={{ fontSize: "10px" }}
+                    angle={10}
+                    textAnchor="center"
                   />
                   <YAxis
                     axisLine={{ stroke: "#ffffff" }}

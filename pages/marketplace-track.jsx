@@ -202,7 +202,7 @@ function MarketplaceTrack() {
             </div> */}
           </div>
           <div className="col-span-3">
-            <NSCard className="border border-gray-200 rounded-lg">
+            <NSCard className="border border-gray-200 rounded-2xl">
               <NewSalesAndAvgUnitValue
                 image="./assets/interactive.svg"
                 title="Unique SKU Count"
@@ -269,7 +269,7 @@ function MarketplaceTrack() {
             </NSCard> */}
           </div>
           <div className="col-span-3">
-            <NSCard className="border border-gray-200 rounded-lg">
+            <NSCard className="border border-gray-200 rounded-2xl">
               <NewSalesAndAvgUnitValue
                 image="./assets/interactive.svg"
                 title="Unique SKU Count"
