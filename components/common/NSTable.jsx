@@ -9,6 +9,7 @@ function NSTable({
   loader,
   selectedRowKeys,
   setSelectedRowKeys,
+  isPagination = true,
 }) {
   return (
     <>
@@ -26,6 +27,7 @@ function NSTable({
         }
         scroll={{ x: "max-content" }}
         loading={loader}
+        pagination={isPagination}
       />
     </>
   );

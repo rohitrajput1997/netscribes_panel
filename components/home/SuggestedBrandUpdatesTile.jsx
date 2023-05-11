@@ -28,6 +28,27 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle, setOpen }) {
             className="mt-[28px] mb-[10px]"
           />
         );
+      case "Haier":
+        return (
+          <Image
+            src="/assets/haier.png"
+            alt=""
+            width={100}
+            height={100}
+            className="mt-[28px] mb-[10px]"
+          />
+        );
+      case "Godrej":
+        return (
+          <Image
+            src="/assets/godrej.svg"
+            alt=""
+            width={100}
+            height={50}
+            className="mt-[28px] mb-[10px] object-fill"
+            style={{height: '23px'}}
+          />
+        );
       case "Samsung":
         return <p>{title}</p>;
     }

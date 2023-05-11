@@ -1,7 +1,8 @@
+import React, { useState } from "react";
 import { Modal } from "antd";
-import React from "react";
-import { useState } from "react";
 import NSButton from "../common/NSButton";
+import NSDropdown from "../common/NSDropdown";
+import { useEffect } from "react";
 
 function AddBrandModal({
   onClickYes,
@@ -12,17 +13,16 @@ function AddBrandModal({
   brandList,
   data,
   setData,
+  handleAddBrands,
 }) {
-  const handleSelectBrand = (brand) => {
-    let newData = [...data];
+  const [localBrandsList, setLocalBrandsList] = useState([]);
+  console.log(localBrandsList, data);
 
-    if (newData.includes(brand)) {
-      newData.splice(newData.indexOf(brand), 1);
-    } else {
-      newData.push(brand);
+  useEffect(() => {
+    if(open) {
+      setLocalBrandsList(data);
     }
-    setData(newData);
-  };
+  }, [open]);
 
   return (
     <Modal
@@ -31,30 +31,30 @@ function AddBrandModal({
       onOk={onClickYes}
       onCancel={() => {
         setOpen(false);
-        setData([]);
+        setLocalBrandsList(data);
       }}
       title={title}
       footer={null}
-      width={1000}
+      width={500}
     >
-      <div className="grid grid-cols-4 gap-4 mt-4 relative" 
-      style={{height: '310px', overflowY: 'scroll', overflowX: 'hidden'}}>
-        {brandList?.map((item, index) => (
-          <div
-            className={`col-span-1 ${
-              data?.includes(item.label)
-                ? "bg-[#005f86] text-white"
-                : "bg-slate-200"
-            } py-4 flex justify-center rounded font-interRegular cursor-pointer hover:bg-[#005f86] hover:text-white transition-all ease-in-out duration-700 hover:-translate-y-1 hover:scale-110`}
-            key={index}
-            onClick={() => handleSelectBrand(item?.label)}
-          >
-            {item?.label}
-          </div>
-        ))}
-      </div>
-      <div className="absolute bottom-0 right-9 py-2 w-full bg-white flex justify-end">
-        <NSButton title="Add brands" />
+      <div className="mt-8" style={{ minHeight: "150px" }}>
+        <div className="w-full">
+          <NSDropdown
+            options={brandList}
+            className="w-full"
+            isMultiple
+            title="Select Brands"
+            value={localBrandsList}
+            onChange={(e) => setLocalBrandsList(e)}
+          />
+        </div>
+        <div className="mt-6 text-center">
+          <NSButton
+            title="Add brands"
+            onClick={() => handleAddBrands({updatedData: localBrandsList})}
+            isDisabled={!localBrandsList?.length}
+          />
+        </div>
       </div>
     </Modal>
   );

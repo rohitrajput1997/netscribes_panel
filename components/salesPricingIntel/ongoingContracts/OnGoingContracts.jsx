@@ -51,10 +51,6 @@ const OnGoingContracts = ({
   const daysDiff = firstDate.diff(lastDate, "days");
   setPeriod(selectedGraphFilter);
 
-  // const monthDiff = firstDate.diff(lastDate, 'months');
-
-  console.log(selectedFilterKey)
-
   return (
     <div>
       <div className="grid grid-cols-3 gap-2">
@@ -83,6 +79,7 @@ const OnGoingContracts = ({
                   setSalesAndUnitsFilter={setSalesAndUnitsFilter}
                   salesAndUnitsFilter={salesAndUnitsFilter}
                 />
+                <div className="h-10 border-r-2 ml-2" />
                 <ButtonTabs
                   arr={EstimatedSalesUnitsTabs(daysDiff)}
                   setFunc={setSalesAndUnitsFilter}
@@ -144,7 +141,7 @@ const OnGoingContracts = ({
                           ? `${data?.Month} ${data?.Year}`
                           : "";
                       }}
-                      tick={{ fontSize: "10px" }}
+                      tick={{fontSize: '10px'}}
                     />
                     <YAxis tick={{ fontSize: "10px" }} />
                     <Tooltip />

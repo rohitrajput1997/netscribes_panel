@@ -89,7 +89,10 @@ function SalesAndAvgUnitValue({
                     {CommaSeperator(_?.[header_keys[1] || ""])}
                   </h1>
                   <h1 className="text-end text-[#005f86] w-[33%]">
-                    {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
+                    {_?.[header_keys?.[2]] === undefined
+                      ? parseFloat(0).toFixed(2)
+                      : parseFloat(_?.[header_keys?.[2] || 0])?.toFixed(2)}
+                    %
                   </h1>
                 </div>
               ))}
@@ -126,9 +129,14 @@ function SalesAndAvgUnitValue({
                   <h1 className="text-start w-[33%]">
                     {_?.[header_keys[0]].replaceAll("_", " ")}
                   </h1>
-                  <h1 className="text-center w-[33%]">{CommaSeperator(_?.[header_keys[1]])}</h1>
+                  <h1 className="text-center w-[33%]">
+                    {CommaSeperator(_?.[header_keys[1]])}
+                  </h1>
                   <h1 className="text-end text-[#005f86] w-[33%]">
-                    {parseFloat(_?.[header_keys?.[2] || ""])?.toFixed(2)}%
+                    {_?.[header_keys?.[2]] === undefined
+                      ? parseFloat(0).toFixed(2)
+                      : parseFloat(_?.[header_keys?.[2] || 0])?.toFixed(2)}
+                    %
                   </h1>
                 </div>
               ))}

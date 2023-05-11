@@ -25,13 +25,38 @@ export const fetchHomeDetails = async ({ setHomeDetails, setHomeLoader }) => {
   }
 };
 
-export const addBrands = async ({ brands }) => {
+export const addBrands = async ({ brands, setData, setOpen, setBrands }) => {
   try {
     await apis
-      .addBrand()
+      .addBrand({brand: brands})
       .then(({ data }) => {
         if (data?.status_code === 200) {
           NSToaster.success(data?.status_message);
+          getUserBrands && getUserBrands({setBrands, setData})
+          setData(brands);
+        } else {
+          NSToaster.error(data?.status_message);
+        }
+      })
+      .catch((err) => {
+        NSToaster.error(err);
+      })
+      .finally(() => {
+        setOpen(false);
+      });
+  } catch (err) {
+    throw new Error("", err);
+  }
+};
+
+export const getUserBrands = async ({ setBrands, setData }) => {
+  try {
+    await apis
+      .getUserBrand()
+      .then(({ data }) => {
+        if (data?.status_code === 200) {
+          setBrands && setBrands(data?.data);
+          setData && setData(data?.data);
         } else {
           NSToaster.error(data?.status_message);
         }
@@ -42,6 +67,6 @@ export const addBrands = async ({ brands }) => {
       .finally(() => {
       });
   } catch (err) {
-    throw new Error("", err);
+    throw new Error("Something went wrong at the end", err);
   }
 };

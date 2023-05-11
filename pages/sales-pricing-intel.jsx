@@ -23,20 +23,28 @@ function SalesPricingIntel() {
     toDate: today,
   });
   const [period, setPeriod] = useState("week");
+  const [skuFilter, setSkuFilter] = useState("");
 
-  const handleFetchSalesAndPricingIntelDetails = (resetDate) => {
+  const handleFetchSalesAndPricingIntelDetails = (resetDate, searchValue) => {
     fetchSalesAndPricingIntelDetails({
       setOnGoingContractDetails,
       period: period,
       setOngoingContractsLoader,
       fromDate: resetDate ? startOfMonth : fromTo.fromDate,
       toDate: resetDate ? today : fromTo.toDate,
+      brand: searchValue ? searchValue : undefined,
     });
   };
 
   useEffect(() => {
     handleFetchSalesAndPricingIntelDetails();
   }, []);
+
+  const fetchDataBySku = () => {
+    const skus = skuFilter.split(",");
+    handleFetchSalesAndPricingIntelDetails(null, skus);
+    setSkuFilter('');
+  };
 
   const handleComponent = () => {
     switch (selectedTab) {
@@ -67,6 +75,9 @@ function SalesPricingIntel() {
       header_sentence={total_data_first_sentance}
       // loader={ongoingContractsLoader}
       subHeaderTitle="Sales/Pricing Intel"
+      searchValue={skuFilter}
+      searchFunc={setSkuFilter}
+      onClickFunc={fetchDataBySku}
     >
       <div className="bg-[var(--bg-main)] w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
         {SalesPricingIntelTabs.map((val, index) => (

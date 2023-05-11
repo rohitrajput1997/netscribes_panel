@@ -20,7 +20,7 @@ function NSDropdown({
 }) {
   return (
     <div>
-      {title && <p className="font-MontRegular text-[.8rem]">{title}</p>}
+      {title && <p className="font-interMedium text-[.8rem] mb-2 mt-2">{title}</p>}
       <Select
         dropdownRender={(menu) => (
           <>

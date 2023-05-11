@@ -11,6 +11,7 @@ function NSButton({
   style,
   onClick,
   loader,
+  isDisabled,
 }) {
   const bgColors = bgPrimary
     ? "bg-yellow-500 text-white"
@@ -26,9 +27,10 @@ function NSButton({
         <button
           className={`${className} ${bgColors} py-3 text-center font-interMedium ${
             icon ? "flex justify-center items-center" : ""
-          } rounded-full min-w-[100px]`}
+          } rounded-full min-w-[100px] ${isDisabled ? 'cursor-not-allowed bg-slate-400 text-slate-300' : 'cursor-pointer'}`}
           style={style}
           onClick={onClick}
+          disabled={isDisabled}
         >
           {icon && <div className="mr-3">{icon}</div>}
           {title}

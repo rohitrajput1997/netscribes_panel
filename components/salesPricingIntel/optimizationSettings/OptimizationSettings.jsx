@@ -11,9 +11,9 @@ function OptimizationSettings() {
   const handleComponent = () => {
     switch (selectedTab) {
       case 1:
-        return <OSProductListing />;
-      case 2:
         return <OSAndHighLights />;
+      case 2:
+        return <OSProductListing />;
     }
   };
 

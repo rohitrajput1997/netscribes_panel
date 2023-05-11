@@ -7,7 +7,13 @@ import NSSearchbar from "./common/NSSearchbar";
 import { useRouter } from "next/router";
 import NSCookies from "./common/NSCookies";
 
-function NSHeader({ header_sentence, subHeaderTitle }) {
+function NSHeader({
+  header_sentence,
+  subHeaderTitle,
+  searchValue,
+  searchFunc,
+  onClickFunc,
+}) {
   const router = useRouter();
   const userData = NSCookies.getUser();
   const { products, avgsales, companies, marketplace, Brand } =
@@ -36,6 +42,9 @@ function NSHeader({ header_sentence, subHeaderTitle }) {
                   backgroundColor: "var(--bg-main)",
                 }}
                 SearchiconPlaceOnTop="top-6"
+                value={searchValue}
+                onChange={(e) => searchFunc(e.target.value)}
+                onClick={() => onClickFunc()}
               />
             </div>
             <div className="flex">

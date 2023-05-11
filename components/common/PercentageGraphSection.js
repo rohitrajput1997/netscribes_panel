@@ -8,7 +8,7 @@ function PercentageGraphSection() {
           <div className="col-span-1 border-r-2 border-gray-400 p-2">
             <h1 className="font-interSemiBold mb-2">Revenue boosted</h1>
             <div className="flex">
-              <p className="w-[50%] font-interRegular">
+              <p className="w-[50%] font-interRegular text-transparent">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Possimus, quo!
               </p>
@@ -28,7 +28,7 @@ function PercentageGraphSection() {
               Price Optimized Products
             </h1>
             <div className="flex">
-              <p className="w-[50%] font-interRegular">
+              <p className="w-[50%] font-interRegular text-transparent">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Possimus, quo!
               </p>
@@ -48,7 +48,7 @@ function PercentageGraphSection() {
               Products. at Optim Lim
             </h1>
             <div className="flex">
-              <p className="w-[50%] font-interRegular">
+              <p className="w-[50%] font-interRegular text-transparent">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Possimus, quo!
               </p>

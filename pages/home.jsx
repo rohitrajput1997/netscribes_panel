@@ -8,16 +8,35 @@ import NSButton from "../components/common/NSButton";
 import ConfirmationModal from "../components/auth/ConfirmationModal";
 import AddBrandModal from "../components/auth/AddBrandModal";
 import { fetchBrandsProductListingData } from "../actions/SalesPricingIntel.action";
+import { addBrands, getUserBrands } from "../actions/home.action";
 
 const Home = ({ homeDetails, loader }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openAddBrandModal, setOpenAddBrandModal] = useState(false);
   const [brandList, setBrandList] = useState(null);
   const [data, setData] = useState([]);
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     fetchBrandsProductListingData({ setBrandList: setBrandList });
   }, []);
+
+  useEffect(() => {
+    handleGetUserBrands();
+  }, []);
+
+  const handleAddBrands = ({ updatedData }) => {
+    addBrands({
+      brands: updatedData,
+      setData: setData,
+      setOpen: setOpenAddBrandModal,
+      setBrands: setBrands,
+    });
+  };
+
+  const handleGetUserBrands = () => {
+    getUserBrands({ setBrands: setBrands, setData: setData });
+  };
 
   const Heading = ({ title, subTitle, isAddBrand = false }) => (
     <div className="flex justify-between items-center mb-2">
@@ -52,6 +71,8 @@ const Home = ({ homeDetails, loader }) => {
         setBrandList={setBrandList}
         data={data}
         setData={setData}
+        handleAddBrands={handleAddBrands}
+        brands={brands}
       />
       <div className="grid grid-cols-4 gap-3">
         <div className="col-span-3">

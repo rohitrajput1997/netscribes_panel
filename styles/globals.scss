@@ -132,12 +132,6 @@ input[type="number"] {
   overflow: hidden;
 }
 
-.add-brand-modal .ant-modal-content {
-  height: 450px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
 .ant-collapse { 
   border: none;
 }
@@ -153,4 +147,9 @@ input[type="number"] {
 .OSP .ant-table-wrapper {
   height: 200px;
   overflow-y: auto;
+}
+
+.OSP .ant-table-tbody > tr > td {
+  height: 5px;
+  padding: 4px;
 }

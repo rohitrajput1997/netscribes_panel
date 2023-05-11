@@ -20,27 +20,9 @@ function OSProductListing() {
       current: "111,111,111,111",
       target: "",
     },
-    {
-      matrics: "Revenue",
-      period: "",
-      current: "111,111,111,111",
-      target: "",
-    },
-    {
-      matrics: "Revenue",
-      period: "",
-      current: "111,111,111,111",
-      target: "",
-    },
-    {
-      matrics: "Revenue",
-      period: "",
-      current: "111,111,111,111",
-      target: "",
-    },
   ];
   const CollapsibleHeader = ({ title, subTitle, icon }) => (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center text-[12px]">
       <h3>{title}</h3>
       <div className="flex items-center">
         <p className="mr-1">{subTitle}</p>
@@ -50,12 +32,12 @@ function OSProductListing() {
   );
   return (
     <div>
-      <div className="grid grid-cols-6 gap-4">
-        <div className="col-span-3">
+      <div className="grid grid-cols-10 gap-2">
+        <div className="col-span-6">
           <NSCard className='OSP'>
-            <NSTable dataSource={dataSource || []} columns={columnsOne} />
+            <NSTable dataSource={dataSource || []} columns={columnsOne} isPagination={false} />
           </NSCard>
-          <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="grid grid-cols-2 gap-4 mt-2">
             <NSCard className="col-span-1">
               <NSTable dataSource={[
                 {
@@ -63,17 +45,17 @@ function OSProductListing() {
                     optStatus: 'Not Started',
                     lastRepricing: '12 min ago',
                 }
-              ]} columns={columnsTwo} rowSelection />
+              ]} columns={columnsTwo} rowSelection isPagination={false} />
             </NSCard>
             <NSCard className="col-span-1">
               <NSTable dataSource={[]} columns={columnsThree} />
             </NSCard>
           </div>
         </div>
-        <div className="col-span-1">
-          <NSCard className="col-span-1 h-[216px]">
+        <div className="col-span-2">
+          <NSCard className="col-span-1 min-h-[216px]">
             <div className="p-2">
-              <h1 className="text-lg font-interSemiBold mb-3">
+              <h1 className="text-[14px] font-interSemiBold mb-3">
                 Avarage shelf price
               </h1>
               <Collapse accordion>
@@ -93,9 +75,9 @@ function OSProductListing() {
             </div>
           </NSCard>
 
-          <NSCard className="col-span-1 mt-4 h-[216px]">
+          <NSCard className="col-span-1 mt-2 h-[216px]">
             <div className="p-2">
-              <h1 className="text-lg font-interSemiBold mb-3">
+              <h1 className="text-[14px] font-interSemiBold mb-3">
                 Goal Performance
               </h1>
             </div>
@@ -104,8 +86,8 @@ function OSProductListing() {
         </div>
         <NSCard className="col-span-2 h-[500px] overflow-y-scroll">
           <div className="p-2">
-            <h1 className="text-lg font-interSemiBold mb-3">
-              ForeCadst for target matrics
+            <h1 className="text-[14px] font-interSemiBold mb-3">
+              Forecast for target matrics
             </h1>
             <Collapse accordion>
               <Panel
@@ -135,9 +117,9 @@ function OSProductListing() {
             </Collapse>
           </div>
 
-          <div className="mt-4 p-2">
-            <h1 className="text-lg font-interSemiBold mb-3">
-              Forecadst for additional matrics
+          <div className="mt-2 p-2">
+            <h1 className="text-[14px] font-interSemiBold mb-3">
+              Forecast for additional matrics
             </h1>
             <Collapse accordion>
               <Panel
