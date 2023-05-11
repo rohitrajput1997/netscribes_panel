@@ -9,7 +9,7 @@ function NSSearchbar({
   style,
   SearchiconPlaceOnTop,
   showSearchIcon = true,
-  onClick={onClick}
+  onClick,
 }) {
   return (
     <>
