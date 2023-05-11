@@ -36,7 +36,7 @@ function NSSearchbar({
         <div
           className={`absolute ${
             SearchiconPlaceOnTop ? SearchiconPlaceOnTop : "top-3"
-          } left-[35rem] cursor-pointer`}
+          } right-[15px] cursor-pointer`}
           onClick={onClick}
         >
           <Image src="./assets/search.svg" alt="" width={15} height={15} />
