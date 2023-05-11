@@ -13,6 +13,7 @@ function NSHeader({
   searchValue,
   searchFunc,
   onClickFunc,
+  isRoute,
 }) {
   const router = useRouter();
   const userData = NSCookies.getUser();
@@ -44,7 +45,9 @@ function NSHeader({
                 SearchiconPlaceOnTop="top-6"
                 value={searchValue}
                 onChange={(e) => searchFunc(e.target.value)}
-                onClick={() => onClickFunc()}
+                onClick={() => {
+                  isRoute && onClickFunc();
+                }}
               />
             </div>
             <div className="flex">

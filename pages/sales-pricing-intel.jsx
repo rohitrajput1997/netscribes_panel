@@ -43,7 +43,7 @@ function SalesPricingIntel() {
   const fetchDataBySku = () => {
     const skus = skuFilter.split(",");
     handleFetchSalesAndPricingIntelDetails(null, skus);
-    setSkuFilter('');
+    setSkuFilter("");
   };
 
   const handleComponent = () => {
@@ -78,6 +78,7 @@ function SalesPricingIntel() {
       searchValue={skuFilter}
       searchFunc={setSkuFilter}
       onClickFunc={fetchDataBySku}
+      isRoute={true}
     >
       <div className="bg-[var(--bg-main)] w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
         {SalesPricingIntelTabs.map((val, index) => (

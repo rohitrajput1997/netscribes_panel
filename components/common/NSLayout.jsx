@@ -16,6 +16,7 @@ const NSLayout = ({
   searchValue,
   searchFunc,
   onClickFunc,
+  isRoute,
 }) => {
   return (
     <Layout
@@ -50,6 +51,7 @@ const NSLayout = ({
           searchValue={searchValue}
           searchFunc={searchFunc}
           onClickFunc={onClickFunc}
+          isRoute={isRoute}
         />
 
         <Content>
