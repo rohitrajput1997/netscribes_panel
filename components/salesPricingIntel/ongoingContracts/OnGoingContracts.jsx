@@ -17,7 +17,10 @@ import ButtonTabs from "../../common/ButtonTabs";
 import NSCard from "../../common/NSCard";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 import { onGoingContracts } from "../../json/CustomizedTableHeaders";
-import {EstimatedSalesTabs, EstimatedSalesUnitsTabs} from "../../json/EstimatedSalesTabs";
+import {
+  EstimatedSalesTabs,
+  EstimatedSalesUnitsTabs,
+} from "../../json/EstimatedSalesTabs";
 import LeaderMarketShare from "./LeaderMarketShare";
 import MarketOverview from "./MarketOverview";
 import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue";
@@ -33,7 +36,7 @@ const OnGoingContracts = ({
 }) => {
   const [selectedGraphFilter, setSelectedGraphFilter] = useState("week");
   const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
-  const [salesAndUnitsFilter, setSalesAndUnitsFilter] = useState('Sales');
+  const [salesAndUnitsFilter, setSalesAndUnitsFilter] = useState("Sales");
   const {
     data_unit_sales_total,
     total_revenue,
@@ -141,13 +144,15 @@ const OnGoingContracts = ({
                           ? `${data?.Month} ${data?.Year}`
                           : "";
                       }}
-                      tick={{fontSize: '10px'}}
+                      tick={{ fontSize: "10px" }}
                     />
                     <YAxis tick={{ fontSize: "10px" }} />
                     <Tooltip />
                     <Area
                       type="monotone"
-                      dataKey={salesAndUnitsFilter === 'Units' ? 'Units' : "Sales"}
+                      dataKey={
+                        salesAndUnitsFilter === "Units" ? "Units" : "Sales"
+                      }
                       stroke="#5a8cd1"
                       fill="url(#colorUv)"
                       fillOpacity={0.3}
