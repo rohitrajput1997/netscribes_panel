@@ -16,7 +16,6 @@ function AddBrandModal({
   handleAddBrands,
 }) {
   const [localBrandsList, setLocalBrandsList] = useState([]);
-  console.log(localBrandsList, data);
 
   useEffect(() => {
     if(open) {

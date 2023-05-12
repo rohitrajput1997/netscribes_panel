@@ -16,12 +16,13 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
     percentage,
     title,
     isNoValue,
+    isValue,
     hideCurrency,
   }) => {
     return (
       <>
         <div className="col-span-1">
-          <NSCard style={{height: '88px'}}>
+          <NSCard style={{ height: "88px" }}>
             <div className="flex items-center">
               <Image
                 src={icon}
@@ -47,9 +48,9 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
                 ) : (
                   <>
                     <h1 className="text-[1.3rem] flex items-center">
-                      {!hideCurrency && (
+                      {!isValue && (
                         <p className="font-interRegular mr-1 ml-[3.01rem]">
-                          INR {commaSeperator(sales)}
+                          {!hideCurrency && "INR"} {commaSeperator(sales)}
                         </p>
                       )}
                       <p
@@ -57,7 +58,11 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
                           percentage.includes("-")
                             ? "bg-red-500 text-white"
                             : "bg-green-500 text-white"
-                        } w-[fit-content] px-2 rounded-full text-[14px] ${hideCurrency ? 'mt-[5px] ml-[3rem]' : 'mt-[-3px] ml-[.5rem]'}`}
+                        } w-[fit-content] px-2 rounded-full text-[14px] ${
+                          isValue
+                            ? "mt-[5px] ml-[3rem]"
+                            : "mt-[-3px] ml-[.5rem]"
+                        }`}
                       >
                         {Number(percentage).toFixed(2) + "%"}
                       </p>
@@ -80,7 +85,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
         sales={sales}
         title={"Total Revenue"}
         isNoValue={totalRevenue?.SalesProgressPercentage}
-        hideCurrency={false}
+        isValue={sales ? false : true}
       />
       <ShowTile
         icon={"./assets/Group 692.svg"}
@@ -88,6 +93,7 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
         sales={units}
         title={"Total Unit Volume"}
         isNoValue={totalRevenue?.VolumeProgressPercentage}
+        isValue={units ? false : true}
         hideCurrency={true}
       />
     </div>

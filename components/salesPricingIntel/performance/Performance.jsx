@@ -87,7 +87,24 @@ const Reports = () => {
     addFutureForecastedRevenue();
   }, [selectedFilter, actualData, addFutureForecastedRevenue()]);
 
-  console.log(addFutureForecastedRevenue());
+  const CustomizedAxisTick = (props) => {
+    const { x, y, width, height, stroke, payload } = props;
+    const newStr = props.payload.value.split(' ');
+
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text  x={0} y={0} dy={16} fill="#666">
+          <tspan textAnchor="middle" x="0" fontSize={10}>
+            {newStr[0]}
+          </tspan>
+          <br />
+          <tspan textAnchor="middle" x="0" y={30} fontSize={10}>
+            {newStr[1]}
+          </tspan>
+        </text>
+      </g>
+    );
+  };
 
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
@@ -118,7 +135,7 @@ const Reports = () => {
                 <BarChart
                   width={500}
                   height={300}
-                  data={addFutureForecastedRevenue()}
+                  data={actualData}
                   margin={{
                     top: 30,
                     right: 10,
@@ -136,9 +153,9 @@ const Reports = () => {
                           }`;
                     }}
                     axisLine={{ stroke: "#ffffff" }}
-                    tick={{ fontSize: "10px" }}
-                    angle={10}
-                    textAnchor="center"
+                    tick={<CustomizedAxisTick />}
+                    height={70}
+                    width={100}
                   />
                   <YAxis
                     axisLine={{ stroke: "#ffffff" }}
@@ -159,12 +176,20 @@ const Reports = () => {
                     radius={[20, 20, 20, 20]}
                     barSize={15}
                     name="Forecasted Revenue"
-                  />
+                  >
+                    {addFutureForecastedRevenue().map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={entry?.Future_Forecasted_Revenue ? 'rgb(250 204 21)' : 'rgb(8 145 178)'}
+                      />
+                    ))}
+                  </Bar>
+
                   <Bar
-                    dataKey="Future_Forecasted_Revenue"
+                    dataKey=""
                     fill={"rgb(250 204 21)"}
                     radius={[20, 20, 20, 20]}
-                    barSize={15}
+                    barSize={0}
                     name="Future Forecasted Revenue"
                   />
                 </BarChart>
@@ -184,3 +209,4 @@ const Reports = () => {
 };
 
 export default Reports;
+

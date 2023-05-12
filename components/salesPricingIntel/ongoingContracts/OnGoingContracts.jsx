@@ -54,6 +54,25 @@ const OnGoingContracts = ({
   const daysDiff = firstDate.diff(lastDate, "days");
   setPeriod(selectedGraphFilter);
 
+  const CustomizedAxisTick = (props) => {
+    const { x, y, width, height, stroke, payload } = props;
+    const newStr = props.payload.value.split(' ');
+
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text  x={0} y={0} dy={16} fill="#666">
+          <tspan textAnchor="middle" x="0" fontSize={10}>
+            {newStr[0]}
+          </tspan>
+          <br />
+          <tspan textAnchor="middle" x="0" y={30} fontSize={10}>
+            {newStr[1]}
+          </tspan>
+        </text>
+      </g>
+    );
+  };
+
   return (
     <div>
       <div className="grid grid-cols-3 gap-2">
@@ -90,7 +109,7 @@ const OnGoingContracts = ({
                 />
               </div>
             </div>
-            <div className="w-[100%] h-[380px]">
+            <div className="w-[100%] h-[390px]">
               {loader ? (
                 <NSLoaderWithMsg
                   style={{ marginTop: "2rem" }}
@@ -144,7 +163,9 @@ const OnGoingContracts = ({
                           ? `${data?.Month} ${data?.Year}`
                           : "";
                       }}
-                      tick={{ fontSize: "10px" }}
+                      tick={<CustomizedAxisTick />}
+                      height={70}
+                      width={100}
                     />
                     <YAxis tick={{ fontSize: "10px" }} />
                     <Tooltip />
