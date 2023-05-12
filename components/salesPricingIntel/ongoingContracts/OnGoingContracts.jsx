@@ -56,11 +56,11 @@ const OnGoingContracts = ({
 
   const CustomizedAxisTick = (props) => {
     const { x, y, width, height, stroke, payload } = props;
-    const newStr = props.payload.value.split(' ');
+    const newStr = props.payload.value.split(" ");
 
     return (
       <g transform={`translate(${x},${y})`}>
-        <text  x={0} y={0} dy={16} fill="#666">
+        <text x={0} y={0} dy={16} fill="#666">
           <tspan textAnchor="middle" x="0" fontSize={10}>
             {newStr[0]}
           </tspan>
@@ -100,6 +100,7 @@ const OnGoingContracts = ({
                   selectedKey={setSelectedFilterKey}
                   setSalesAndUnitsFilter={setSalesAndUnitsFilter}
                   salesAndUnitsFilter={salesAndUnitsFilter}
+                  disabled={"quarter"}
                 />
                 <div className="h-10 border-r-2 ml-2" />
                 <ButtonTabs
