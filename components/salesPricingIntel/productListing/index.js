@@ -57,12 +57,6 @@ const MainProductListingPage = ({ setSelectedTab }) => {
         </>
       ),
     },
-    // Table.SELECTION_COLUMN,
-    // {
-    //   title: "",
-    //   dataIndex: "name",
-    //   key: "name",
-    // },
     {
       title: "Product Name",
       dataIndex: "Product_Name",

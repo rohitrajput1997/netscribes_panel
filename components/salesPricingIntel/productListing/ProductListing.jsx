@@ -7,6 +7,7 @@ import NSButton from "../../common/NSButton";
 import RepricingPopover from "./RepricingPopover";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 import dynamic from "next/dynamic";
+import { fetchProductListings } from "../../../actions/SalesPricingIntel.action";
 
 const PLProductCount = dynamic(() => import("./PLProductCount"));
 
@@ -25,7 +26,11 @@ function ProductListing({
   pricingRuleData,
 }) {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  
+
+  const handleDownloadProductList = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <PLProductCount
@@ -58,6 +63,7 @@ function ProductListing({
               title={"Download"}
               className="h-9 flex justify-center items-center"
               bgBordered
+              onClick={handleDownloadProductList}
             />
             <NSSearchbar
               placeholder="Search..."

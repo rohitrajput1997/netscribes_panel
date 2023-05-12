@@ -20,56 +20,67 @@ function OSAndHighLights() {
       title: "SKU",
       dataIndex: "sku",
       key: "sku",
+      align: "center",
     },
     {
       title: <NSTableTooltipTitle title="Competitors" tooltip="MP" />,
       dataIndex: "competitors",
       key: "competitors",
+      align: "center",
     },
     {
       title: "Cost",
       dataIndex: "cost",
       key: "cost",
+      align: "center",
     },
     {
       title: "Min Price",
       dataIndex: "minPrice",
       key: "minPrice",
+      align: "center",
     },
     {
       title: "Price",
       dataIndex: "price",
       key: "price",
+      align: "center",
     },
     {
       title: "Stock",
       dataIndex: "stock",
       key: "stock",
+      align: "center",
     },
     {
       title: "Repricing Rule",
       dataIndex: "repricingRule",
       key: "repricingRule",
+      align: "center",
     },
     {
       title: "Shipping",
       dataIndex: "shipping",
       key: "shipping",
+      align: "center",
     },
     {
       title: "Labels",
       dataIndex: "labels",
       key: "labels",
+      align: "center",
     },
     {
       title: "GRP",
       dataIndex: "grp",
       key: "grp",
+      align: "center",
     },
     {
       title: "Opt. Price",
       dataIndex: "optPrice",
       key: "optPrice",
+      align: "center",
     },
   ];
   const dataSource = [
