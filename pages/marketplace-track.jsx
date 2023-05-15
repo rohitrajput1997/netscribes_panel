@@ -64,7 +64,7 @@ function MarketplaceTrack() {
   }, [filterDropdownValues]);
 
   return (
-    <NSLayout>
+    <NSLayout loader={loader}>
       <NSSearchbar
         placeholder="Search for Band, ASIN, SKU, Category, Color, Design, Energy Rating, and Capacity"
         style={{

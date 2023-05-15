@@ -14,7 +14,7 @@ function QuaterResults({ header, childs, last_quarter_result, loader }) {
           ) : (
             <div className="ml-3">
               <h2 className="text-xl font-interRegular leading-4">
-                {index === 2 ? <p>{item?.count}%</p> : <p>INR {CommaSeperator(item?.count)}</p>}
+                {index === 2 ? <p>{item?.count}%</p> : <p>INR {item?.count}</p>}
               </h2>
               <p className="text-gray-500 font-interRegular">
                 {item?.subTitle}

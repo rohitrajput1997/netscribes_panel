@@ -57,7 +57,7 @@ const Home = ({ homeDetails, loader }) => {
   );
 
   return (
-    <NSLayout loader={false}>
+    <NSLayout loader={loader}>
       <ConfirmationModal
         open={openModal}
         setOpen={setOpenModal}

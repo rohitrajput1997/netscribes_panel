@@ -1,14 +1,12 @@
 function CommaSeperator(number) {
-  // return number?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  let x = String(number);
+  const finalString = typeof number === 'string' ? Number(number) : number;
+  
+  function formatNumberWithCommas(num) {
+    return num.toLocaleString('en-IN');
+  }
+  const formattedNumber = formatNumberWithCommas(finalString);
 
-    var lastThree = x.substring(x.length-3);
-    var otherNumbers = x.substring(0,x.length-3);
-    if(otherNumbers != '')
-        lastThree = ',' + lastThree;
-    var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-
-    return res;
+  return formattedNumber;
 }
 
 export default CommaSeperator;

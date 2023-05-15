@@ -4,24 +4,25 @@ const PerformanceNextAndLastQuaters = ({
   last_quarter_result,
   next_quarter_result,
 }) => {
+  
   return {
     last: [
       {
         icon: "./assets/Group 693.svg",
-        count: CommaSeperator(String(last_quarter_result?.Actual_Revenue || 0)),
+        count: CommaSeperator(last_quarter_result?.Actual_Revenue || 0),
         subTitle: "In Actual",
       },
       {
         icon: "./assets/Group 694.svg",
         count: CommaSeperator(
-          String(last_quarter_result?.Forecasted_Revenue || 0)
+          last_quarter_result?.Forecasted_Revenue || 0
         ),
         subTitle: "Forecasted",
       },
       {
         icon: "./assets/Group 695.svg",
         count: CommaSeperator(
-          String(last_quarter_result?.Forecasted_Revenue_Variance || 0)
+          last_quarter_result?.Forecasted_Revenue_Accuracy || 0
         ),
         subTitle: "Forecast Accuracy",
       },
@@ -39,20 +40,20 @@ const PerformanceNextAndLastQuaters = ({
       // },
       {
         icon: "./assets/Group 693.svg",
-        count: CommaSeperator(String(next_quarter_result?.Actual_Revenue || 0)),
+        count: CommaSeperator(next_quarter_result?.Actual_Revenue || 0),
         subTitle: "In Actual",
       },
       {
         icon: "./assets/Group 694.svg",
         count: CommaSeperator(
-          String(next_quarter_result?.Forecasted_Revenue || 0)
+          next_quarter_result?.Forecasted_Revenue || 0
         ),
         subTitle: "Forecasted",
       },
       {
         icon: "./assets/Group 695.svg",
         count: CommaSeperator(
-          String(next_quarter_result?.Forecasted_Revenue_Variance || 0)
+          next_quarter_result?.Forecasted_Revenue_Accuracy || 0
         ),
         subTitle: "Forecast Accuracy",
       },

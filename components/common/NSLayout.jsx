@@ -6,6 +6,7 @@ import React from "react";
 import NSHeader from "../NSHeader";
 import SidebarMenu from "../SidebarMenu";
 import NSLoaderWithMsg from "./NSLoaderWithMsg";
+import NSGlobalSpinner from "./nsglobalSpinner";
 const { Content, Footer, Sider } = Layout;
 
 const NSLayout = ({
@@ -19,53 +20,58 @@ const NSLayout = ({
   isRoute,
 }) => {
   return (
-    <Layout
-      className="layout"
-      style={{ minHeight: "100vh", overflow: "hidden" }}
-    >
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {}}
-        collapsible
-        onCollapse={(collapsed, type) => {}}
-        width={230}
-      >
-        <div className="logo flex justify-center items-center">
-          <Image src="./images/logo.svg" alt="" width={200} height={200} />
-        </div>
-        <SidebarMenu />
-      </Sider>
-
+    <div className="relative">
       <Layout
-        style={{
-          height: "100vh",
-          overflow: "scroll",
-          backgroundColor: "var(--bg-main)",
-        }}
+        className="layout"
+        style={{ minHeight: "100vh", overflow: "hidden" }}
       >
-        {/* header section */}
-        <NSHeader
-          header_sentence={header_sentence}
-          subHeaderTitle={subHeaderTitle}
-          searchValue={searchValue}
-          searchFunc={searchFunc}
-          onClickFunc={onClickFunc}
-          isRoute={isRoute}
-        />
-
-        <Content>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-            }}
-          >
-            {loader ? <NSLoaderWithMsg /> : children}
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {}}
+          collapsible
+          onCollapse={(collapsed, type) => {}}
+          width={230}
+        >
+          <div className="logo flex justify-center items-center">
+            <Image src="./images/logo.svg" alt="" width={200} height={200} />
           </div>
-        </Content>
+          <SidebarMenu />
+        </Sider>
+
+        <Layout
+          style={{
+            height: "100vh",
+            overflow: "scroll",
+            backgroundColor: "var(--bg-main)",
+          }}
+        >
+          {/* header section */}
+          <NSHeader
+            header_sentence={header_sentence}
+            subHeaderTitle={subHeaderTitle}
+            searchValue={searchValue}
+            searchFunc={searchFunc}
+            onClickFunc={onClickFunc}
+            isRoute={isRoute}
+          />
+          {/* {loader && <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.3)] w-[100vw] h-[100vh] z-[10000]">
+            <NSGlobalSpinner isVisible={loader} />
+          </div>} */}
+
+          <Content>
+            <div
+              style={{
+                padding: 24,
+                minHeight: 360,
+              }}
+            >
+              {loader ? <NSLoaderWithMsg /> : children}
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </div>
   );
 };
 export default NSLayout;

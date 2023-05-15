@@ -8,6 +8,7 @@
 @import "../styles/loading.scss";
 @import "../styles/datePicker.css";
 @import "../styles/dateCalender.css";
+@import "../styles//globalSpinner.css";
 
 :root {
   --primary-color: rgb(202 138 4);
@@ -132,11 +133,11 @@ input[type="number"] {
   overflow: hidden;
 }
 
-.ant-collapse { 
+.ant-collapse {
   border: none;
 }
 
-.ant-collapse>.ant-collapse-item {
+.ant-collapse > .ant-collapse-item {
   border-bottom: none;
 }
 

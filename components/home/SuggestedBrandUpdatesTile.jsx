@@ -85,7 +85,7 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle, setOpen }) {
             {subtitle.split("_").join(" ")}
           </p>
           <h1 className="text-xl font-interRegular">
-            {CommaSeperator(salesCount) || 0}
+            {CommaSeperator(salesCount || 0) || 0}
           </h1>
         </div>
       </div>
