@@ -89,11 +89,11 @@ const Reports = () => {
 
   const CustomizedAxisTick = (props) => {
     const { x, y, width, height, stroke, payload } = props;
-    const newStr = props.payload.value.split(' ');
+    const newStr = props?.payload?.value?.split(" ");
 
     return (
       <g transform={`translate(${x},${y})`}>
-        <text  x={0} y={0} dy={16} fill="#666">
+        <text x={0} y={0} dy={16} fill="#666">
           <tspan textAnchor="middle" x="0" fontSize={10}>
             {newStr[0]}
           </tspan>
@@ -154,7 +154,7 @@ const Reports = () => {
                     }}
                     axisLine={{ stroke: "#ffffff" }}
                     tick={<CustomizedAxisTick />}
-                    height={70}
+                    height={50}
                     width={100}
                   />
                   <YAxis
@@ -180,7 +180,11 @@ const Reports = () => {
                     {addFutureForecastedRevenue().map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}
-                        fill={entry?.Future_Forecasted_Revenue ? 'rgb(250 204 21)' : 'rgb(8 145 178)'}
+                        fill={
+                          entry?.Future_Forecasted_Revenue
+                            ? "rgb(250 204 21)"
+                            : "rgb(8 145 178)"
+                        }
                       />
                     ))}
                   </Bar>
@@ -203,10 +207,10 @@ const Reports = () => {
         last_quarter_result={last_result}
         next_quarter_result={next_result}
         loader={loader}
+        selectedFilter={selectedFilter}
       />
     </div>
   );
 };
 
 export default Reports;
-

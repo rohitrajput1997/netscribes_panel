@@ -1,4 +1,4 @@
-import { Checkbox, Select } from "antd";
+import { Checkbox, Select, Tooltip } from "antd";
 import React from "react";
 const { Option } = Select;
 
@@ -20,7 +20,9 @@ function NSDropdown({
 }) {
   return (
     <div>
-      {title && <p className="font-interMedium text-[.8rem] mb-2 mt-2">{title}</p>}
+      {title && (
+        <p className="font-interMedium text-[.8rem] mb-2 mt-2">{title}</p>
+      )}
       <Select
         dropdownRender={(menu) => (
           <>
@@ -46,16 +48,22 @@ function NSDropdown({
               className="flex items-center"
               value={item?.value}
             >
-              <div className="flex items-center">
-                {optionsWithCheckbox && <Checkbox />}
-                <p className="ml-2">{item?.label}</p>
-              </div>
+              <Tooltip title={item?.label} placement="left">
+                <div className="flex items-center">
+                  {optionsWithCheckbox && <Checkbox />}
+                  <p className="ml-2">{item?.label}</p>
+                </div>
+              </Tooltip>
             </Option>
           );
         })}
       </Select>
 
-      {isError && <p className="text-red-500 font-montMedium mt-[-10px] mb-6">{errorMessage || "This field is required"}</p>}
+      {isError && (
+        <p className="text-red-500 font-montMedium mt-[-10px] mb-6">
+          {errorMessage || "This field is required"}
+        </p>
+      )}
     </div>
   );
 }

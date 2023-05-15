@@ -29,6 +29,7 @@ function ProductListing({
 
   const handleDownloadProductList = (e) => {
     e.preventDefault();
+    fetchProductListings({ download: "yes", isDownload: true });
   };
 
   return (

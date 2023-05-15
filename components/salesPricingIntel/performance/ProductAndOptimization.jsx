@@ -27,9 +27,9 @@ function ProductAndOptimization({ product, optimization, loader }) {
               <p className="text-gray-500 font-interMedium">Revenue</p>
             </div>
             <div className="w-[45%] pl-4">
-              <Tooltip title={CommaSeperator(product?.Missing_data) || 0}>
+              <Tooltip title={CommaSeperator(product?.Missing_data || 0) || 0}>
                 <h1 className="text-2xl font-interMedium truncate">
-                  INR {CommaSeperator(product?.Missing_data) || 0}
+                  INR {CommaSeperator(product?.Missing_dat || 0) || 0}
                 </h1>
               </Tooltip>
               <p className="text-gray-500 font-interMedium">

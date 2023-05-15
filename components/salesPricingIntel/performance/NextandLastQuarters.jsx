@@ -3,7 +3,12 @@ import NSCard from "../../common/NSCard";
 import PerformanceNextAndLastQuaters from "../../json/PerformanceNextAndLastQuaters";
 import QuaterResults from "./QuaterResults";
 
-function NextandLastQuarters({ last_quarter_result, next_quarter_result, loader }) {
+function NextandLastQuarters({
+  last_quarter_result,
+  next_quarter_result,
+  loader,
+  selectedFilter,
+}) {
   return (
     <div className="col-span-1 row-span-1">
       <NSCard>
@@ -11,12 +16,12 @@ function NextandLastQuarters({ last_quarter_result, next_quarter_result, loader 
         <hr className="my-3 border-b-0 border-[var(--bg-main)]" />
 
         <QuaterResults
-          header="Last Quarter Results"
+          header={`Last ${selectedFilter || "Week"} Results`}
           childs={PerformanceNextAndLastQuaters({ last_quarter_result }).last}
           loader={loader}
         />
         <QuaterResults
-          header="Next Quarter Results"
+          header={`Next ${selectedFilter || "Week"} Results`}
           childs={PerformanceNextAndLastQuaters({ next_quarter_result }).next}
           loader={loader}
         />

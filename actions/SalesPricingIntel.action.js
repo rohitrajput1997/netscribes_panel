@@ -2,6 +2,7 @@
 
 import NSToaster from "../components/common/NSToaster";
 import apis from "../pages/api";
+import downloadFile from 'downloadjs';
 
 export const fetchSalesAndPricingIntelDetails = async ({
   setOnGoingContractDetails,
@@ -67,25 +68,30 @@ export const fetchPerformanceReportsData = async ({
 export const fetchProductListings = async ({
   setLoader,
   setProductListingDetails,
+  download,
+  isDownload,
 }) => {
-  setLoader(true);
+  setLoader && setLoader(true);
 
   try {
     await apis
-      .fetchProductListingData()
+      .fetchProductListingData({download: download === 'yes' ? 'yes' : undefined}, isDownload)
       .then(({ data }) => {
         if (data?.status_code === 200) {
           NSToaster.success(data?.status_message);
           setProductListingDetails && setProductListingDetails(data?.data);
         } else {
-          NSToaster.error(data?.status_message);
+          // NSToaster.error(data?.status_message);
+          if(isDownload) {
+            downloadFile(data, 'productListing.csv');
+          }
         }
       })
       .catch((err) => {
         NSToaster.error(data?.status_message);
       })
       .finally(() => {
-        setLoader(false);
+        setLoader && setLoader(false);
       });
   } catch (err) {
     throw new Error("", err);
