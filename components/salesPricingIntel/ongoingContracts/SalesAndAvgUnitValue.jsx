@@ -51,7 +51,7 @@ function SalesAndAvgUnitValue({
               <p className="font-interRegular mr-1 mt-[2px]">
                 {showCurrency && total ? "INR" : ""}
               </p>
-              <h1>{commaSeperator(total)}</h1>
+              <h1>{commaSeperator(total || '')}</h1>
             </h1>
           )}
 
