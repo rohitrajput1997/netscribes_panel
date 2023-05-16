@@ -21,26 +21,26 @@ function NSProfileLayout({ children }) {
             <Image src="./images/logo.svg" alt="" width={200} height={200} />
           </div>
           <div className="col-span-3 col-end-6 h-full flex justify-end items-center mr-5">
-            <ul className="flex font-MontMedium">
+            <ul className="flex font-interMedium">
               <li
                 className="min-w-[100px] text-center cursor-pointer"
                 onClick={() => router.push("/")}
               >
                 Home
               </li>
-              <li className="min-w-[100px] text-center cursor-pointer">
+              <li className="min-w-[100px] text-center cursor-not-allowed">
                 Solutions
               </li>
-              <li className="min-w-[100px] text-center cursor-pointer">
+              <li className="min-w-[100px] text-center cursor-not-allowed">
                 Why Us
               </li>
-              <li className="min-w-[100px] text-center cursor-pointer">
+              <li className="min-w-[100px] text-center cursor-not-allowed">
                 About us
               </li>
-              <li className="min-w-[100px] text-center cursor-pointer">
+              <li className="min-w-[100px] text-center cursor-not-allowed">
                 Blogs
               </li>
-              <li className="min-w-[100px] text-center cursor-pointer">
+              <li className="min-w-[100px] text-center cursor-not-allowed">
                 Case studies
               </li>
             </ul>
@@ -67,7 +67,7 @@ function NSProfileLayout({ children }) {
           <div className="flex items-center justify-center">
             {ProfileFooterMenuJson.map((_, index) => (
               <h1
-                className={`min-w-[150px] text-[var(--pure)] text-[.9rem] cursor-pointer ${
+                className={`min-w-[150px] text-[var(--pure)] text-[.9rem] cursor-not-allowed ${
                   index === 0 ? "" : "border-l-2"
                 } border-white text-center`}
                 key={index}

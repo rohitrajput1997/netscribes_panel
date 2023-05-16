@@ -6,7 +6,6 @@ import React from "react";
 import NSHeader from "../NSHeader";
 import SidebarMenu from "../SidebarMenu";
 import NSLoaderWithMsg from "./NSLoaderWithMsg";
-import NSGlobalSpinner from "./nsglobalSpinner";
 const { Content, Footer, Sider } = Layout;
 
 const NSLayout = ({

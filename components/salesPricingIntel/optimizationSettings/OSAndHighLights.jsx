@@ -141,14 +141,16 @@ function OSAndHighLights() {
           className="ml-2 h-9 flex justify-center items-center mt-[-5px]"
         />
       </div>
-      <NSTable
-        dataSource={dataSource}
-        columns={columns}
-        rowKey={(record) => record.sku}
-        rowSelection
-        setSelectedRowKeys={setSelectedRowKeys}
-        selectedRowKeys={selectedRowKeys}
-      />
+      <div className="opt-set">
+        <NSTable
+          dataSource={dataSource}
+          columns={columns}
+          rowKey={(record) => record.sku}
+          rowSelection
+          setSelectedRowKeys={setSelectedRowKeys}
+          selectedRowKeys={selectedRowKeys}
+        />
+      </div>
     </div>
   );
 }

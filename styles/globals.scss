@@ -154,3 +154,7 @@ input[type="number"] {
   height: 5px;
   padding: 4px;
 }
+
+.ant-table-wrapper .ant-table-thead >tr>th, .ant-table-wrapper .ant-table-thead >tr>td {
+  background-color: #cccccc;
+}

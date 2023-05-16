@@ -12,7 +12,7 @@ const profile = () => {
   return (
     <NSProfileLayout>
       <div className="w-[85vw] mx-auto">
-        <h1 className="text-[1.3rem] my-3 font-MontBold">
+        <h1 className="text-[1.3rem] my-3 font-interSemiBold">
           Pricing and Promotions
         </h1>
         <NSCard className="min-h-[400px]" style={{ padding: "32px" }}>
@@ -21,10 +21,10 @@ const profile = () => {
               {PricingAndPromotions.map((_, index) => (
                 <div
                   key={index}
-                  className={`flex py-2 px-4 w-fit mb-4 rounded-full cursor-pointer text-[1rem] ${
+                  className={`flex py-2 px-4 w-fit mb-4 rounded-full text-[1rem] ${
                     selectedTab === index
-                      ? "bg-[var(--secondary)] text-[var(--pure)] font-MontMedium"
-                      : ""
+                      ? "bg-[var(--secondary)] text-[var(--pure)] font-MontMedium cursor-pointer"
+                      : "text-slate-400 cursor-not-allowed"
                   }`}
                   // onClick={() => setSelectedTab(index)}
                 >
@@ -60,8 +60,9 @@ const profile = () => {
                     alt="plus-tag"
                     width={25}
                     height={25}
+                    className="cursor-not-allowed"
                   />
-                  <p className="pl-4 text-orange-600 text-[1.1rem] font-MontMedium">
+                  <p className="pl-4 text-orange-600 text-[1.1rem] font-MontMedium cursor-not-allowed">
                     Add Intelligence
                   </p>
                 </div>

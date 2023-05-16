@@ -10,11 +10,45 @@ function LeaderMarketShare({ cardData }) {
     switch (brand) {
       case "Samsung":
         return (
-          <Image src="/assets/samsung1.png" alt="" width={100} height={20} preview={false} />
+          <Image
+            src="/assets/samsung1.png"
+            alt=""
+            width={100}
+            height={20}
+            preview={false}
+          />
         );
       case "Whirlpool":
         return (
-          <Image src="/assets/whirlpool.png" alt="" width={100} height={25} preview={false} />
+          <Image
+            src="/assets/whirlpool.png"
+            alt=""
+            width={100}
+            height={25}
+            preview={false}
+          />
+        );
+      case "AmazonBasics":
+        return (
+          <Image
+            src="/assets/anazonBasis.png"
+            alt=""
+            width={100}
+            height={25}
+            preview={false}
+            className="mix-blend-hard-light"
+          />
+        );
+      case "CROMA":
+        return (
+          <Image
+            src="/assets/Croma.png"
+            alt=""
+            width={100}
+            height={30}
+            preview={false}
+            className="object-cover"
+          />
         );
     }
   };
@@ -32,7 +66,9 @@ function LeaderMarketShare({ cardData }) {
                 {/* <h1 className="text-xl mb-2 font-interMedium">{data?.Brand}</h1> */}
                 {showIcon(data?.Brand)}
                 <p className="font-interMedium">Sales</p>
-                <h1 className="font-interRegular">INR {CommaSeperator(data?.Sales)}</h1>
+                <h1 className="font-interRegular">
+                  INR {CommaSeperator(data?.Sales)}
+                </h1>
               </div>
               <Progress
                 strokeLinecap="butt"

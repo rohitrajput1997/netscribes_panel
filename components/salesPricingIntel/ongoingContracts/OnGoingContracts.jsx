@@ -25,6 +25,7 @@ import LeaderMarketShare from "./LeaderMarketShare";
 import MarketOverview from "./MarketOverview";
 import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue";
 import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume";
+import intMonthToCharConvertor from "../../../utils/intMonthToCharConvertor";
 
 const OnGoingContracts = ({
   details,
@@ -161,7 +162,7 @@ const OnGoingContracts = ({
                         return selectedFilterKey === "week_graph"
                           ? `W${data?.Week} ${data?.Year}`
                           : selectedFilterKey === "month_graph"
-                          ? `${data?.Month} ${data?.Year}`
+                          ? `${intMonthToCharConvertor(data?.Month)} ${data?.Year}`
                           : "";
                       }}
                       tick={<CustomizedAxisTick />}
