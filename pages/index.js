@@ -7,15 +7,21 @@ import HomeComp from "./home";
 function Home() {
   const [homeDetails, setHomeDetails] = useState([]);
   const [homeLoader, setHomeLoader] = useState(false);
+  const [addBrand, setAddBrand] = useState(false);
 
-  useEffect(() => {
+  const handleFetchHomeDetails = () => {
+    console.log('main api calling');
     fetchHomeDetails({
       setHomeDetails: setHomeDetails,
       setHomeLoader: setHomeLoader,
     });
-  }, []);
+  }
 
-  return <HomeComp homeDetails={homeDetails} loader={homeLoader} />;
+  useEffect(() => {
+    handleFetchHomeDetails();
+  }, [addBrand]);
+
+  return <HomeComp homeDetails={homeDetails} loader={homeLoader} setAddBrand={setAddBrand} addBrand={addBrand} />;
 }
 
 export default Home;

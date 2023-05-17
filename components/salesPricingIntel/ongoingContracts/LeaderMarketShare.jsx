@@ -42,7 +42,18 @@ function LeaderMarketShare({ cardData }) {
       case "CROMA":
         return (
           <Image
-            src="/assets/Croma.png"
+            src="/assets/croma.png"
+            alt=""
+            width={100}
+            height={30}
+            preview={false}
+            className="object-cover"
+          />
+        );
+      case "TOSHIBA":
+        return (
+          <Image
+            src="/assets/toshiba.png"
             alt=""
             width={100}
             height={30}

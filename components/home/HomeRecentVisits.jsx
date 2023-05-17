@@ -9,21 +9,23 @@ function HomeRecentVisits() {
   return (
     <div className="col-span-1 max-h-[39rem]">
       <NSCard
-        style={{ padding: "1.3rem" }}
-        className={
-          `${collapsible
+        style={{ padding: "9px 13px" }}
+        className={`${
+          collapsible
             ? "h-full duration-150 ease-in-out"
-            : "h-16 overflow-y-hidden duration-700 ease-in-out"} cursor-pointer`
-        }
+            : "h-[2.7rem] overflow-y-hidden duration-700 ease-in-out"
+        } cursor-pointer`}
       >
         <div
           className="flex justify-between items-center"
           onClick={() => setCollapsible(!collapsible)}
         >
           <h1 className="text-[1.3rem] font-interSemiBold">Recent Visits</h1>
-          <h4 className="text-[1.1rem] text-[#005f86] font-interMedium">Seek</h4>
+          <h4 className="text-[1.1rem] text-[#005f86] font-interMedium">
+            Seek
+          </h4>
         </div>
-        <hr className="border-b-1 border-cyan-500 my-4" />
+        <hr className="border-b-1 border-cyan-500 my-1" />
 
         {RecentVisits.map((listItem, index) => (
           <div className="flex items-center mb-2 cursor-pointer" key={index}>

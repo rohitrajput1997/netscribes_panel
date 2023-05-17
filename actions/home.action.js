@@ -25,7 +25,7 @@ export const fetchHomeDetails = async ({ setHomeDetails, setHomeLoader }) => {
   }
 };
 
-export const addBrands = async ({ brands, setData, setOpen, setBrands }) => {
+export const addBrands = async ({ brands, setData, setOpen, setBrands, setAddBrand, addBrand }) => {
   try {
     await apis
       .addBrand({brand: brands})
@@ -34,6 +34,7 @@ export const addBrands = async ({ brands, setData, setOpen, setBrands }) => {
           NSToaster.success(data?.status_message);
           getUserBrands && getUserBrands({setBrands, setData})
           setData(brands);
+          setAddBrand && setAddBrand(!addBrand);
         } else {
           NSToaster.error(data?.status_message);
         }

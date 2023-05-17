@@ -39,7 +39,7 @@ function HomeHighlights({ homeDetails, loader }) {
             <SuggestedHighlitesTiles
               image="/assets/Group 685.svg"
               title="Competitiveness"
-              content={`Brands ${competitiveness?.[0].Brand} and ${competitiveness?.[1].Brand} ranked 1 and 2 in unit sales value, volume`}
+              content={`${competitiveness?.[0].Brand} and ${competitiveness?.[1].Brand} ranked 1 and 2 in unit sales value, volume`}
               bg="bg-blue-200"
               textColor="text-blue-800"
               borderColor="border-blue-200"

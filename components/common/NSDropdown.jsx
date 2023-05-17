@@ -17,6 +17,7 @@ function NSDropdown({
   isError = false,
   errorMessage,
   onSelect,
+  isTooltip = true,
 }) {
   return (
     <div>
@@ -40,6 +41,8 @@ function NSDropdown({
         tagRender={(props) => props?.label?.props?.children?.[1]}
         defaultValue={defaultValue}
         onSelect={onSelect}
+        tokenSeparators={[","]}
+        allowClear
       >
         {options?.map((item, index) => {
           return (
@@ -48,12 +51,16 @@ function NSDropdown({
               className="flex items-center"
               value={item?.value}
             >
-              <Tooltip title={item?.label} placement="left">
-                <div className="flex items-center">
-                  {optionsWithCheckbox && <Checkbox />}
+              <div className="flex items-center">
+                {optionsWithCheckbox && <Checkbox />}
+                {isTooltip ? (
+                  <Tooltip title={item?.label} placement="left">
+                    <p className="ml-2">{item?.label}</p>
+                  </Tooltip>
+                ) : (
                   <p className="ml-2">{item?.label}</p>
-                </div>
-              </Tooltip>
+                )}
+              </div>
             </Option>
           );
         })}

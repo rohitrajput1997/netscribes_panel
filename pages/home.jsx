@@ -10,7 +10,13 @@ import AddBrandModal from "../components/auth/AddBrandModal";
 import { fetchBrandsProductListingData } from "../actions/SalesPricingIntel.action";
 import { addBrands, getUserBrands } from "../actions/home.action";
 
-const Home = ({ homeDetails, loader }) => {
+const Home = ({
+  homeDetails,
+  loader,
+  handleFetchHomeDetails,
+  setAddBrand,
+  addBrand,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const [openAddBrandModal, setOpenAddBrandModal] = useState(false);
   const [brandList, setBrandList] = useState(null);
@@ -31,6 +37,8 @@ const Home = ({ homeDetails, loader }) => {
       setData: setData,
       setOpen: setOpenAddBrandModal,
       setBrands: setBrands,
+      setAddBrand: setAddBrand,
+      addBrand: addBrand,
     });
   };
 

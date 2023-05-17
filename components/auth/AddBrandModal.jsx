@@ -18,8 +18,9 @@ function AddBrandModal({
   const [localBrandsList, setLocalBrandsList] = useState([]);
 
   useEffect(() => {
-    if(open) {
+    if (open) {
       setLocalBrandsList(data);
+      console.log("in");
     }
   }, [open]);
 
@@ -45,13 +46,16 @@ function AddBrandModal({
             title="Select Brands"
             value={localBrandsList}
             onChange={(e) => setLocalBrandsList(e)}
+            isTooltip={false}
           />
         </div>
         <div className="mt-6 text-center">
           <NSButton
             title="Add brands"
-            onClick={() => handleAddBrands({updatedData: localBrandsList})}
-            isDisabled={!localBrandsList?.length}
+            onClick={() => handleAddBrands({ updatedData: localBrandsList })}
+            isDisabled={
+              !localBrandsList?.length || localBrandsList?.length === 0
+            }
           />
         </div>
       </div>

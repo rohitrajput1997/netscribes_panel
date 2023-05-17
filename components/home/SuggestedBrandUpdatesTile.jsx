@@ -34,26 +34,26 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle, setOpen }) {
             src="/assets/haier.png"
             alt=""
             width={100}
-            height={100}
+            height={30}
             className="mt-[28px] mb-[10px]"
           />
         );
       case "Godrej":
         return (
           <Image
-            src="/assets/godrej.svg"
+            src="/assets/godrej.png"
             alt=""
             width={100}
-            height={50}
+            height={100}
             className="mt-[28px] mb-[10px] object-fill"
-            style={{height: '23px'}}
+            style={{ height: "23px" }}
           />
         );
       case "Samsung":
         return <p>{title}</p>;
     }
   };
-  
+
   return (
     <NSCard
       className="col-span-1 mt-3 min-h-[190px]"

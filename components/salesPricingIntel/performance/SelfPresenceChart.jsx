@@ -72,7 +72,7 @@ function SelfPresenceChart({ header, data, namesData }) {
               yAxisId="1"
               type="natural"
               dataKey="cost"
-              stroke="rgb(22 163 74)"
+              stroke="rgb(34 197 94)"
               animationDuration={300}
               strokeWidth={3}
               name={[namesData[0]]}
@@ -81,7 +81,7 @@ function SelfPresenceChart({ header, data, namesData }) {
               yAxisId="2"
               type="natural"
               dataKey="impression"
-              stroke="rgb(225 29 72)"
+              stroke="rgb(190 242 100)"
               animationDuration={300}
               strokeWidth={3}
               name={[namesData[1]]}
@@ -90,7 +90,7 @@ function SelfPresenceChart({ header, data, namesData }) {
               yAxisId="2"
               type="natural"
               dataKey="count"
-              stroke="rgb(253 224 71)"
+              stroke="rgb(244 63 94)"
               animationDuration={300}
               strokeWidth={3}
               name={[namesData[2]]}

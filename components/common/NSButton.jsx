@@ -17,6 +17,7 @@ function NSButton({
     ? "bg-yellow-500 text-white"
     : bgBordered
     ? "border border-gray-300 text-black px-2"
+    : isDisabled ? 'cursor-not-allowed bg-[#cccccc] text-[#666666]'
     : "bg-yellow-500";
 
   return (
@@ -27,7 +28,7 @@ function NSButton({
         <button
           className={`${className} ${bgColors} py-3 text-center font-interMedium ${
             icon ? "flex justify-center items-center" : ""
-          } rounded-full min-w-[100px] ${isDisabled ? 'cursor-not-allowed bg-slate-400 text-slate-300' : 'cursor-pointer'}`}
+          } rounded-full min-w-[100px] ${isDisabled ? 'cursor-not-allowed bg-[#cccccc] text-[#666666]' : 'cursor-pointer'}`}
           style={style}
           onClick={onClick}
           disabled={isDisabled}
