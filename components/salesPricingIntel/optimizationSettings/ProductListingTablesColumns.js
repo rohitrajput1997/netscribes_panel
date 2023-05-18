@@ -4,8 +4,8 @@ import NSInput from "../../common/NSInput";
 export const columnsOne = [
     {
       title: "Matrics",
-      dataIndex: "matrics",
-      key: "matrics",
+      dataIndex: "metrics",
+      key: "metrics",
     },
     {
       title: "Period",

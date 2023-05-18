@@ -13,13 +13,13 @@ import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 function OSProductListing() {
   const dataSource = [
     {
-      Metrics: "Revenue",
+      metrics: "Revenue",
       period: "",
       current: "111,111,111,111",
       target: "",
     },
     {
-      Metrics: "Revenue",
+      metrics: "Revenue",
       period: "",
       current: "111,111,111,111",
       target: "",
