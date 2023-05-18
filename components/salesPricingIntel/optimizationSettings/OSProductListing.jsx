@@ -1,7 +1,11 @@
 import React from "react";
 import NSCard from "../../common/NSCard";
 import NSTable from "../../common/NSTable";
-import { columnsOne, columnsTwo, columnsThree } from "./ProductListingTablesColumns";
+import {
+  columnsOne,
+  columnsTwo,
+  columnsThree,
+} from "./ProductListingTablesColumns";
 import { Collapse } from "antd";
 const { Panel } = Collapse;
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
@@ -9,13 +13,13 @@ import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 function OSProductListing() {
   const dataSource = [
     {
-      matrics: "Revenue",
+      Metrics: "Revenue",
       period: "",
       current: "111,111,111,111",
       target: "",
     },
     {
-      matrics: "Revenue",
+      Metrics: "Revenue",
       period: "",
       current: "111,111,111,111",
       target: "",
@@ -34,18 +38,27 @@ function OSProductListing() {
     <div>
       <div className="grid grid-cols-10 gap-2">
         <div className="col-span-6">
-          <NSCard className='OSP border border-2-[var(--bg-main)]'>
-            <NSTable dataSource={dataSource || []} columns={columnsOne} isPagination={false} />
+          <NSCard className="OSP border border-2-[var(--bg-main)]">
+            <NSTable
+              dataSource={dataSource || []}
+              columns={columnsOne}
+              isPagination={false}
+            />
           </NSCard>
           <div className="grid grid-cols-2 gap-4 mt-2">
             <NSCard className="col-span-1 border border-2-[var(--bg-main)]">
-              <NSTable dataSource={[
-                {
-                    productName: 'Samsung 550 Ltr. sku 704492',
-                    optStatus: 'Not Started',
-                    lastRepricing: '12 min ago',
-                }
-              ]} columns={columnsTwo} rowSelection isPagination={false} />
+              <NSTable
+                dataSource={[
+                  {
+                    productName: "Samsung 550 Ltr. sku 704492",
+                    optStatus: "Not Started",
+                    lastRepricing: "12 min ago",
+                  },
+                ]}
+                columns={columnsTwo}
+                rowSelection
+                isPagination={false}
+              />
             </NSCard>
             <NSCard className="col-span-1 border border-2-[var(--bg-main)]">
               <NSTable dataSource={[]} columns={columnsThree} />
@@ -56,7 +69,7 @@ function OSProductListing() {
           <NSCard className="col-span-1 min-h-[216px] border border-2-[var(--bg-main)]">
             <div className="p-2">
               <h1 className="text-[14px] font-interSemiBold mb-3">
-                Avarage shelf price
+                Average shelf price
               </h1>
               <Collapse accordion>
                 <Panel header={<CollapsibleHeader title="Revenue" />} key="1">
@@ -82,12 +95,11 @@ function OSProductListing() {
               </h1>
             </div>
           </NSCard>
-
         </div>
         <NSCard className="col-span-2 h-[500px] overflow-y-scroll border border-2-[var(--bg-main)]">
           <div className="p-2">
             <h1 className="text-[14px] font-interSemiBold mb-3">
-              Forecast for target matrics
+              Forecast for target Metrics
             </h1>
             <Collapse accordion>
               <Panel
@@ -119,7 +131,7 @@ function OSProductListing() {
 
           <div className="mt-2 p-2">
             <h1 className="text-[14px] font-interSemiBold mb-3">
-              Forecast for additional matrics
+              Forecast for additional Metrics
             </h1>
             <Collapse accordion>
               <Panel
@@ -165,7 +177,6 @@ function OSProductListing() {
               </Panel>
             </Collapse>
           </div>
-
         </NSCard>
       </div>
     </div>

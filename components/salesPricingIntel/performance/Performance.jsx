@@ -94,7 +94,6 @@ const Reports = ({ handleGetLoader }) => {
   const CustomizedAxisTick = (props) => {
     const { x, y, width, height, stroke, payload } = props;
     const newStr = props?.payload?.value?.split(" ");
-    console.log(newStr);
 
     return (
       <g transform={`translate(${x},${y})`}>

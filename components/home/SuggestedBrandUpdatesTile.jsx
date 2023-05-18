@@ -69,14 +69,14 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle, setOpen }) {
       <div className="mt-3">
         <h1 className="text-[1.3rem] font-interSemiBold flex justify-between items-center">
           {showIcon(title)}
-          <Tooltip title={`Delete ${title}`}>
+          {/* <Tooltip title={`Delete ${title}`}>
             <RiDeleteBin6Fill
               size={20}
               className="mt-4 mr-[-20px] cursor-pointer"
               color="#005f86"
               onClick={() => setOpen(true)}
             />
-          </Tooltip>
+          </Tooltip> */}
         </h1>
 
         <hr className="border-b-2 border-cyan-100 mb-1" />

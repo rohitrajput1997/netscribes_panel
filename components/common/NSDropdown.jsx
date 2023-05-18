@@ -1,4 +1,4 @@
-import { Checkbox, Select, Tooltip } from "antd";
+import { Checkbox, Select, Tag, Tooltip } from "antd";
 import React from "react";
 const { Option } = Select;
 
@@ -19,6 +19,48 @@ function NSDropdown({
   onSelect,
   isTooltip = true,
 }) {
+  const DropdownTagging = (props) => {
+    const { label, closable, onClose } = props;
+
+    const onPreventMouseDown = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
+    let title = "";
+    if (typeof label === "string" || typeof label === "boolean") {
+      // title = label;
+    } else {
+      title = label?.[1]
+        ? String(label?.[1])
+        : label?.props?.children?.[1]?.props.children
+        ? String(label?.props?.children?.[1]?.props.children)
+        : "";
+    }
+
+    if (!title) return;
+
+    return (
+      <Tag
+        color={"lightGrey"}
+        onMouseDown={onPreventMouseDown}
+        closable={closable}
+        onClose={onClose}
+        style={{
+          maxWidth: "100%",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          color: "black",
+        }}
+        title={title}
+        className="font-interMedium"
+      >
+        {title}
+      </Tag>
+    );
+  };
+
   return (
     <div>
       {title && (
@@ -38,7 +80,9 @@ function NSDropdown({
         placeholder={placeholder}
         className={className}
         style={style}
-        tagRender={(props) => props?.label?.props?.children?.[1]}
+        tagRender={
+          (props) => DropdownTagging(props) //, props?.label?.props?.children?.[1]
+        }
         defaultValue={defaultValue}
         onSelect={onSelect}
         tokenSeparators={[","]}
