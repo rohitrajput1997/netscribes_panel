@@ -93,17 +93,18 @@ const Reports = ({ handleGetLoader }) => {
 
   const CustomizedAxisTick = (props) => {
     const { x, y, width, height, stroke, payload } = props;
-    const newStr = String(props?.payload?.value)?.split(" ");
+    const newStr = props?.payload?.value?.split(" ");
+    console.log(newStr);
 
     return (
       <g transform={`translate(${x},${y})`}>
         <text x={0} y={0} dy={16} fill="#666">
           <tspan textAnchor="middle" x="0" fontSize={10}>
-            {newStr[0]}
+            {String(newStr[0])}
           </tspan>
           <br />
           <tspan textAnchor="middle" x="0" y={30} fontSize={10}>
-            {newStr[1]}
+            {String(newStr[1])}
           </tspan>
         </text>
       </g>
