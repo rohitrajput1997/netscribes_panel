@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PercentageGraphSection from "../../common/PercentageGraphSection";
 import NSCard from "../../common/NSCard";
 import OptimizationSettingsTabsJson from "../../json/OptimizationSettingsTabs.json";
 import OSProductListing from "./OSProductListing";
 import OSAndHighLights from "./OSAndHighLights";
 
-function OptimizationSettings() {
+function OptimizationSettings({ handleGetLoader }) {
   const [selectedTab, setSelectedTab] = useState(1);
+  const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    handleGetLoader(loader);
+  }, [handleGetLoader, loader]);
 
   const handleComponent = () => {
     switch (selectedTab) {
@@ -18,9 +23,9 @@ function OptimizationSettings() {
   };
 
   return (
-    <NSCard style={{ backgroundColor: "white" }}>
+    <NSCard style={{ backgroundColor: "var(--main-bg)" }}>
       <PercentageGraphSection />
-      <NSCard style={{ backgroundColor: "var(--bg-main)" }}>
+      <NSCard style={{ backgroundColor: "var(--pure)" }}>
         <div className="w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
           {OptimizationSettingsTabsJson.map((val, index) => (
             <div

@@ -4,7 +4,7 @@ import NSCard from "../../common/NSCard";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 import commaSeperator from "../../../utils/commaSeperator";
 
-function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
+function totalRevenueUnitVolume({ totalRevenue, totalUnits }) {
   const valOne = String(totalRevenue?.SalesProgressPercentage || 0);
   const valTwo = String(totalRevenue?.VolumeProgressPercentage || 0);
   const sales = totalRevenue?.Sales;
@@ -33,44 +33,38 @@ function totalRevenueUnitVolume({ totalRevenue, totalUnits, loader = false }) {
               />
               <p className="font-interMedium">{title}</p>
             </div>
-            {loader ? (
-              <NSLoaderWithMsg withMessage={false} />
-            ) : (
-              <>
-                {isNoValue === null || isNoValue === undefined ? (
-                  <p
-                    className={
-                      "bg-gray-500 text-white w-[fit-content] px-2 rounded-full mt-1 ml-[3rem] text-[14px]"
-                    }
-                  >
-                    {Number(percentage).toFixed(2) + "%"}
-                  </p>
-                ) : (
-                  <>
-                    <h1 className="text-[1.3rem] flex items-center">
-                      {!isValue && (
-                        <p className="font-interRegular mr-1 ml-[3.01rem]">
-                          {!hideCurrency && "INR"} {commaSeperator(sales)}
-                        </p>
-                      )}
-                      <p
-                        className={`${
-                          percentage.includes("-")
-                            ? "bg-red-500 text-white"
-                            : "bg-green-500 text-white"
-                        } w-[fit-content] px-2 rounded-full text-[14px] ${
-                          isValue
-                            ? "mt-[5px] ml-[3rem]"
-                            : "mt-[-3px] ml-[.5rem]"
-                        }`}
-                      >
-                        {Number(percentage).toFixed(2) + "%"}
+            <>
+              {isNoValue === null || isNoValue === undefined ? (
+                <p
+                  className={
+                    "bg-gray-500 text-white w-[fit-content] px-2 rounded-full mt-1 ml-[3rem] text-[14px]"
+                  }
+                >
+                  {Number(percentage).toFixed(2) + "%"}
+                </p>
+              ) : (
+                <>
+                  <h1 className="text-[1.3rem] flex items-center">
+                    {!isValue && (
+                      <p className="font-interRegular mr-1 ml-[3.01rem]">
+                        {!hideCurrency && "INR"} {commaSeperator(sales)}
                       </p>
-                    </h1>
-                  </>
-                )}
-              </>
-            )}
+                    )}
+                    <p
+                      className={`${
+                        percentage.includes("-")
+                          ? "bg-red-500 text-white"
+                          : "bg-green-500 text-white"
+                      } w-[fit-content] px-2 rounded-full text-[14px] ${
+                        isValue ? "mt-[5px] ml-[3rem]" : "mt-[-3px] ml-[.5rem]"
+                      }`}
+                    >
+                      {Number(percentage).toFixed(2) + "%"}
+                    </p>
+                  </h1>
+                </>
+              )}
+            </>
           </NSCard>
         </div>
       </>

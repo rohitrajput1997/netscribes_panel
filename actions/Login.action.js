@@ -26,7 +26,6 @@ export const handleLogin = ({
     .login({ email: email, password: password, removetoken })
     .then(({ data }) => {
       if (data?.access_token !== undefined) {
-        NSToaster.success("Login successfully!")
         NSCookies.setUser(data.user)
         NSCookies.setToken(data.access_token)
         router.push("/")

@@ -6,6 +6,7 @@ import React from "react";
 import NSHeader from "../NSHeader";
 import SidebarMenu from "../SidebarMenu";
 import NSLoaderWithMsg from "./NSLoaderWithMsg";
+import NSGlobalSpinner from "../common/NSGlobalSpinner";
 const { Content, Footer, Sider } = Layout;
 
 const NSLayout = ({
@@ -54,9 +55,7 @@ const NSLayout = ({
             onClickFunc={onClickFunc}
             isRoute={isRoute}
           />
-          {/* {loader && <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.3)] w-[100vw] h-[100vh] z-[10000]">
-            <NSGlobalSpinner isVisible={loader} />
-          </div>} */}
+          {loader && <NSGlobalSpinner isVisible={loader} />}
 
           <Content>
             <div
@@ -65,7 +64,8 @@ const NSLayout = ({
                 minHeight: 360,
               }}
             >
-              {loader ? <NSLoaderWithMsg /> : children}
+              {children}
+              {/* {loader ? <NSLoaderWithMsg /> : children} */}
             </div>
           </Content>
         </Layout>

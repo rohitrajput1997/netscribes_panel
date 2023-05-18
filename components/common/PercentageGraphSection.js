@@ -4,7 +4,7 @@ import { Progress } from 'antd'
 
 function PercentageGraphSection() {
   return (
-        <NSCard className="my-3 p-4 grid grid-cols-3" style={{backgroundColor: 'var(--bg-main)'}}>
+        <NSCard className="my-3 p-4 grid grid-cols-3" style={{backgroundColor: 'var(--pure)'}}>
           <div className="col-span-1 border-r-2 border-gray-400 p-2">
             <h1 className="font-interSemiBold mb-2">Revenue boosted</h1>
             <div className="flex">

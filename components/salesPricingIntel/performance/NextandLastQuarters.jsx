@@ -6,7 +6,6 @@ import QuaterResults from "./QuaterResults";
 function NextandLastQuarters({
   last_quarter_result,
   next_quarter_result,
-  loader,
   selectedFilter,
 }) {
   return (
@@ -18,12 +17,10 @@ function NextandLastQuarters({
         <QuaterResults
           header={`Last ${selectedFilter || "Week"} Results`}
           childs={PerformanceNextAndLastQuaters({ last_quarter_result }).last}
-          loader={loader}
         />
         <QuaterResults
           header={`Next ${selectedFilter || "Week"} Results`}
           childs={PerformanceNextAndLastQuaters({ next_quarter_result }).next}
-          loader={loader}
         />
       </NSCard>
     </div>

@@ -13,7 +13,6 @@ export const fetchMarketPlaceTracks = async ({
       .fetchMarketPlaceTrackData({ brand1: brand1, brand2: brand2 })
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           setTilesData && setTilesData(data?.data);
         } else {
           NSToaster.error(data?.status_message);
@@ -37,7 +36,6 @@ export const fetchMarketPlaceTracksBrands = async ({ setBrandList, setselectedBr
       .then(({ data }) => {
         if (data?.status_code === 200) {
           const brands = [];
-          NSToaster.success(data?.status_message);
 
           data?.data?.suggested_brands?.map((b) => {
             brands.push({ label: b?.Brand, value: b?.Brand });

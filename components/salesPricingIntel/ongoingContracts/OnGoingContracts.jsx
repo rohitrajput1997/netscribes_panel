@@ -82,7 +82,6 @@ const OnGoingContracts = ({
           <TotalRevenueUnitVolume
             totalRevenue={data_unit_sales_total}
             totalUnits={data_unit_sales_total}
-            loader={loader}
           />
 
           <NSCard className="w-full mt-2 min-h-[467px]">
@@ -112,77 +111,56 @@ const OnGoingContracts = ({
               </div>
             </div>
             <div className="w-[100%] h-[390px]">
-              {loader ? (
-                <NSLoaderWithMsg
-                  style={{ marginTop: "2rem" }}
-                  withMessage={false}
-                />
-              ) : (
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart
-                    width={500}
-                    height={400}
-                    data={graph_details?.[selectedFilterKey]}
-                    margin={{
-                      top: 50,
-                      right: 30,
-                      left: 0,
-                      bottom: 0,
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart
+                  width={500}
+                  height={400}
+                  data={graph_details?.[selectedFilterKey]}
+                  margin={{
+                    top: 50,
+                    right: 30,
+                    left: 0,
+                    bottom: 0,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <defs>
+                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#5a8cd1" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#5a8cd1" stopOpacity={0} />
+                    </linearGradient>
+                    <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#82a5ca" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#82a5ca" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <XAxis
+                    dataKey={(data) => {
+                      return selectedFilterKey === "week_graph"
+                        ? `W${data?.Week} ${data?.Year}`
+                        : selectedFilterKey === "month_graph"
+                        ? `${intMonthToCharConvertor(data?.Month)} ${
+                            data?.Year
+                          }`
+                        : "";
                     }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <defs>
-                      <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                        <stop
-                          offset="5%"
-                          stopColor="#5a8cd1"
-                          stopOpacity={0.8}
-                        />
-                        <stop
-                          offset="95%"
-                          stopColor="#5a8cd1"
-                          stopOpacity={0}
-                        />
-                      </linearGradient>
-                      <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                        <stop
-                          offset="5%"
-                          stopColor="#82a5ca"
-                          stopOpacity={0.8}
-                        />
-                        <stop
-                          offset="95%"
-                          stopColor="#82a5ca"
-                          stopOpacity={0}
-                        />
-                      </linearGradient>
-                    </defs>
-                    <XAxis
-                      dataKey={(data) => {
-                        return selectedFilterKey === "week_graph"
-                          ? `W${data?.Week} ${data?.Year}`
-                          : selectedFilterKey === "month_graph"
-                          ? `${intMonthToCharConvertor(data?.Month)} ${data?.Year}`
-                          : "";
-                      }}
-                      tick={<CustomizedAxisTick />}
-                      height={70}
-                      width={100}
-                    />
-                    <YAxis tick={{ fontSize: "10px" }} />
-                    <Tooltip />
-                    <Area
-                      type="monotone"
-                      dataKey={
-                        salesAndUnitsFilter === "Units" ? "Units" : "Sales"
-                      }
-                      stroke="#5a8cd1"
-                      fill="url(#colorUv)"
-                      fillOpacity={0.3}
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              )}
+                    tick={<CustomizedAxisTick />}
+                    height={70}
+                    width={100}
+                  />
+                  <YAxis tick={{ fontSize: "10px" }} />
+                  <Tooltip />
+                  <Area
+                    type="monotone"
+                    dataKey={
+                      salesAndUnitsFilter === "Units" ? "Units" : "Sales"
+                    }
+                    stroke="#5a8cd1"
+                    fill="url(#colorUv)"
+                    fillOpacity={0.3}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </div>
           </NSCard>
 

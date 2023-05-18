@@ -34,11 +34,11 @@ function OSProductListing() {
     <div>
       <div className="grid grid-cols-10 gap-2">
         <div className="col-span-6">
-          <NSCard className='OSP'>
+          <NSCard className='OSP border border-2-[var(--bg-main)]'>
             <NSTable dataSource={dataSource || []} columns={columnsOne} isPagination={false} />
           </NSCard>
           <div className="grid grid-cols-2 gap-4 mt-2">
-            <NSCard className="col-span-1">
+            <NSCard className="col-span-1 border border-2-[var(--bg-main)]">
               <NSTable dataSource={[
                 {
                     productName: 'Samsung 550 Ltr. sku 704492',
@@ -47,13 +47,13 @@ function OSProductListing() {
                 }
               ]} columns={columnsTwo} rowSelection isPagination={false} />
             </NSCard>
-            <NSCard className="col-span-1">
+            <NSCard className="col-span-1 border border-2-[var(--bg-main)]">
               <NSTable dataSource={[]} columns={columnsThree} />
             </NSCard>
           </div>
         </div>
         <div className="col-span-2">
-          <NSCard className="col-span-1 min-h-[216px]">
+          <NSCard className="col-span-1 min-h-[216px] border border-2-[var(--bg-main)]">
             <div className="p-2">
               <h1 className="text-[14px] font-interSemiBold mb-3">
                 Avarage shelf price
@@ -75,7 +75,7 @@ function OSProductListing() {
             </div>
           </NSCard>
 
-          <NSCard className="col-span-1 mt-2 h-[216px]">
+          <NSCard className="col-span-1 mt-2 h-[216px] border border-2-[var(--bg-main)]">
             <div className="p-2">
               <h1 className="text-[14px] font-interSemiBold mb-3">
                 Goal Performance
@@ -84,7 +84,7 @@ function OSProductListing() {
           </NSCard>
 
         </div>
-        <NSCard className="col-span-2 h-[500px] overflow-y-scroll">
+        <NSCard className="col-span-2 h-[500px] overflow-y-scroll border border-2-[var(--bg-main)]">
           <div className="p-2">
             <h1 className="text-[14px] font-interSemiBold mb-3">
               Forecast for target matrics

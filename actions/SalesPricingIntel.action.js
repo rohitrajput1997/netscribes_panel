@@ -19,7 +19,6 @@ export const fetchSalesAndPricingIntelDetails = async ({
       .fetchOngoingContracts({ period, from: fromDate, to: toDate, brand: brand })
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           setOnGoingContractDetails && setOnGoingContractDetails(data?.data);
         } else {
           NSToaster.error(data?.status_message);
@@ -48,7 +47,6 @@ export const fetchPerformanceReportsData = async ({
       .fetchPerformanceReports({ period: selectedFilter })
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           setPerformanceDetails && setPerformanceDetails(data?.data);
         } else {
           NSToaster.error(data?.status_message);
@@ -78,7 +76,6 @@ export const fetchProductListings = async ({
       .fetchProductListingData({download: download === 'yes' ? 'yes' : undefined}, isDownload)
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           setProductListingDetails && setProductListingDetails(data?.data);
         } else {
           // NSToaster.error(data?.status_message);
@@ -111,7 +108,6 @@ export const fetchProductListingsPrice = async ({
       .fetchProductListingPrice({ competitor_sku: competitor_sku })
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           listingDetails = data;
         } else {
           NSToaster.error(data?.status_message);
@@ -144,7 +140,6 @@ export const fetchRepricingRules = async ({
       .then(({ data }) => {
         if (data?.status_code === 200) {
           let dropdownData = [];
-          // NSToaster.success(data?.status_message);
 
           data?.data?.map((item) => {
             dropdownData?.push({
@@ -187,7 +182,6 @@ export const setProductListingRule = async ({
       .setRule({ rule_id: rule_id, price: price })
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          // NSToaster.success(data?.status_message);
           setNewPrice && setNewPrice(data?.data?.new_price);
           listingDetails = data?.data;
         } else {
@@ -218,7 +212,6 @@ export const addPricingRuleData = async ({
       .addPricingRule(payload)
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           fetchRepricingRules({
             setPricingRuleData: setPricingRuleData,
             setPricingRuleFullData: setPricingRuleFullData,
@@ -254,7 +247,6 @@ export const fetchBrandsProductListingData = async ({ setBrandList }) => {
             });
           });
 
-          // NSToaster.success(data?.status_message);
           setBrandList && setBrandList(dropdownData);
         } else {
           NSToaster.error(data?.status_message);
@@ -275,7 +267,6 @@ export const getPricingRuleById = async ({ id, setDataToEdit }) => {
       .getPricingRuleById({ id: id })
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           setDataToEdit && setDataToEdit(data?.data);
         } else {
           NSToaster.error(data?.status_message);
@@ -303,7 +294,6 @@ export const deletePricingRuleById = async ({
       .deletePricingRuleById({ id: id })
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           fetchRepricingRules({
             setPricingRuleFullData: setPricingRuleFullData,
             setAddOrEditRule: setAddOrEditRule,

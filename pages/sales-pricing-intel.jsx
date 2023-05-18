@@ -24,6 +24,11 @@ function SalesPricingIntel() {
   });
   const [period, setPeriod] = useState("week");
   const [skuFilter, setSkuFilter] = useState("");
+  const [performanceLoader, setPerformanceLoader] = useState(false);
+  const [productListingLoader, setproductListingLoader] = useState(false);
+  const [ReportsLoader, setReportsLoader] = useState(false);
+  const [optimizationSettingsLoader, setOptimizationSettingsLoader] =
+    useState(false);
 
   const handleFetchSalesAndPricingIntelDetails = (resetDate, searchValue) => {
     fetchSalesAndPricingIntelDetails({
@@ -46,6 +51,22 @@ function SalesPricingIntel() {
     setSkuFilter("");
   };
 
+  const handleGetPerformanceLoader = (loader) => {
+    setPerformanceLoader(loader);
+  };
+
+  const handleGetproductListingLoader = (loader) => {
+    setproductListingLoader(loader);
+  };
+
+  const handleGetReportsLoader = (loader) => {
+    setReportsLoader(loader);
+  };
+
+  const handleGetOptimizationSettingsLoader = (loader) => {
+    setOptimizationSettingsLoader(loader);
+  };
+
   const handleComponent = () => {
     switch (selectedTab) {
       case 1:
@@ -60,20 +81,43 @@ function SalesPricingIntel() {
           />
         );
       case 2:
-        return <Performance />;
+        return (
+          <Performance
+            handleGetLoader={(value) => handleGetPerformanceLoader(value)}
+          />
+        );
       case 3:
-        return <MainProductListingPage setSelectedTab={setSelectedTab} />;
+        return (
+          <MainProductListingPage
+            setSelectedTab={setSelectedTab}
+            handleGetLoader={(value) => handleGetproductListingLoader(value)}
+          />
+        );
       case 4:
-        return <Reports />;
+        return (
+          <Reports handleGetLoader={(value) => handleGetReportsLoader(value)} />
+        );
       case 5:
-        return <OptimizationSettings />;
+        return (
+          <OptimizationSettings
+            handleGetLoader={(value) =>
+              handleGetOptimizationSettingsLoader(value)
+            }
+          />
+        );
     }
   };
 
   return (
     <NSLayout
       header_sentence={total_data_first_sentance}
-      // loader={ongoingContractsLoader}
+      loader={
+        ongoingContractsLoader ||
+        performanceLoader ||
+        ReportsLoader ||
+        productListingLoader ||
+        optimizationSettingsLoader
+      }
       subHeaderTitle="Sales/Pricing Intel"
       searchValue={skuFilter}
       searchFunc={setSkuFilter}

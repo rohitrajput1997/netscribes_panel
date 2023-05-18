@@ -4,12 +4,12 @@ import NSCard from "../../common/NSCard";
 
 const RepricingHighlightsTileTwo = ({ title, subtitle, showupDownArrow }) => {
   return (
-    <NSCard className="max-h-[250px] overflow-y-scroll relative" style={{backgroundColor: 'var(--bg-main)'}}>
+    <NSCard className="max-h-[250px] overflow-y-scroll relative" style={{backgroundColor: 'var(--pure)'}}>
       <div className="sticky top-[-10px]">
         <h4 className="font-interSemiBold">{title}</h4>
         <h1
           className={`font-interSemiBold text-xl ${
-            subtitle ? "text-black" : "text-[#eaeaea]"
+            subtitle ? "text-black" : "text-[var(--pure)]"
           }`}
         >
           {subtitle || "Nothing"}

@@ -14,7 +14,6 @@ export const logoutApi = async () => {
     })
     .then(({ data }) => {
       if (data.status_code === 200) {
-        NSToaster.success(data.status_message)
         window.location.reload()
         window.location.href = `${window.location.origin}/login`
         sessionStorage.setItem("logout", "true")

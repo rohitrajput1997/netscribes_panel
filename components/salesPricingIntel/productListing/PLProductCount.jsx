@@ -44,11 +44,7 @@ const PLProductCount = ({
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("price_increase")}
           >
-            {loader ? (
-              <NSLoaderWithMsg />
-            ) : (
-              <h1 className="text-3xl font-interBold">{priceIncrease}</h1>
-            )}
+            <h1 className="text-3xl font-interBold">{priceIncrease}</h1>
             <p className="font-interRegular mt-2 text-stone-500">
               Eligible for Price Increase
             </p>
@@ -57,11 +53,7 @@ const PLProductCount = ({
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("price_decrease")}
           >
-            {loader ? (
-              <NSLoaderWithMsg />
-            ) : (
-              <h1 className="text-3xl font-interBold">{priceDecrease}</h1>
-            )}
+            <h1 className="text-3xl font-interBold">{priceDecrease}</h1>
             <p className="font-interRegular mt-2 text-stone-500">
               Eligible for Price Reduction
             </p>
@@ -70,11 +62,7 @@ const PLProductCount = ({
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("matched")}
           >
-            {loader ? (
-              <NSLoaderWithMsg />
-            ) : (
-              <h1 className="text-3xl font-interBold">{matched}</h1>
-            )}
+            <h1 className="text-3xl font-interBold">{matched}</h1>
             <p className="font-interRegular mt-2 text-stone-500">
               100% Match with Compititors
             </p>
@@ -83,11 +71,7 @@ const PLProductCount = ({
             className="col-span-1 cursor-pointer"
             onClick={() => setSelectedFilter("")}
           >
-            {loader ? (
-              <NSLoaderWithMsg />
-            ) : (
-              <h1 className="text-3xl font-interBold">{starred}</h1>
-            )}
+            <h1 className="text-3xl font-interBold">{starred}</h1>
             <p className="font-interRegular mt-2 text-stone-500">Started</p>
           </div>
         </div>
@@ -95,55 +79,51 @@ const PLProductCount = ({
 
       {/* PiChart Graph */}
       <div className="col-span-1 py-1 px-2">
-        {loader ? (
-          <NSLoaderWithMsg style={{ marginTop: "4rem" }} />
-        ) : (
-          <div className="flex">
-            <ResponsiveContainer width={150} height={150}>
-              <PieChart width={150} height={150}>
-                <Pie
-                  data={data}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  outerRadius={60}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {data.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
-            <div className="flex flex-col justify-center font-interRegular">
-              <p className="mb-1">
-                <span className="font-interBold">{total} items</span>
-                &nbsp;&nbsp;in Webstore Demos
+        <div className="flex">
+          <ResponsiveContainer width={150} height={150}>
+            <PieChart width={150} height={150}>
+              <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                outerRadius={60}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+          <div className="flex flex-col justify-center font-interRegular">
+            <p className="mb-1">
+              <span className="font-interBold">{total} items</span>
+              &nbsp;&nbsp;in Webstore Demos
+            </p>
+            <div className="mt-[2px]">
+              <p>
+                {total - priceIncrease + priceDecrease} items (
+                {(
+                  ((total - priceIncrease + priceDecrease) / total) *
+                  100
+                ).toFixed(2)}
+                %) are Optimized
               </p>
-              <div className="mt-[2px]">
-                <p>
-                  {total - priceIncrease + priceDecrease} items (
-                  {(
-                    ((total - priceIncrease + priceDecrease) / total) *
-                    100
-                  ).toFixed(2)}
-                  %) are Optimized
-                </p>
-              </div>
-              <div className="mt-[2px]">
-                <p>
-                  {priceIncrease + priceDecrease} items (
-                  {(((priceIncrease + priceDecrease) / total) * 100).toFixed(2)}
-                  %) are Not Optimized
-                </p>
-              </div>
+            </div>
+            <div className="mt-[2px]">
+              <p>
+                {priceIncrease + priceDecrease} items (
+                {(((priceIncrease + priceDecrease) / total) * 100).toFixed(2)}
+                %) are Not Optimized
+              </p>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </NSCard>
   );

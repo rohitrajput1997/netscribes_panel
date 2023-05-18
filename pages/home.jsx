@@ -94,15 +94,11 @@ const Home = ({
               subTitle="Explore"
               isAddBrand={true}
             />
-            {loader ? (
-              <NSLoaderWithMsg withMessage={false} />
-            ) : (
-              <HomeBrandUpdates
-                homeDetails={homeDetails}
-                loader={loader}
-                setOpen={setOpenModal}
-              />
-            )}
+            <HomeBrandUpdates
+              homeDetails={homeDetails}
+              loader={loader}
+              setOpen={setOpenModal}
+            />
           </div>
         </div>
 

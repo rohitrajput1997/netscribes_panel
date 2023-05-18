@@ -11,14 +11,18 @@ import {
   fetchRepricingRules,
 } from "../../../actions/SalesPricingIntel.action";
 
-const Performance = () => {
+const Performance = ({ handleGetLoader }) => {
   const [selectedTab, setSelectedTab] = useState(1);
+  const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    handleGetLoader(loader);
+  }, [handleGetLoader, loader]);
 
   const repricingHubTabs = [
     { key: 1, label: "General" },
     { key: 2, label: "Repricing Rules" },
   ];
-
 
   const handleComponent = () => {
     switch (selectedTab) {
@@ -31,7 +35,7 @@ const Performance = () => {
 
   return (
     <div>
-      <NSCard>
+      <NSCard style={{ backgroundColor: "var(--main-bg)" }}>
         <div className="w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
           {repricingHubTabs.map((val, index) => (
             <div

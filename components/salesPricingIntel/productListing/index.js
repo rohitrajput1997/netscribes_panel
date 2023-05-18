@@ -15,7 +15,7 @@ import PricingRules from "./PricingRules";
 import ProductListing from "./ProductListing";
 import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
 
-const MainProductListingPage = ({ setSelectedTab }) => {
+const MainProductListingPage = ({ setSelectedTab, handleGetLoader }) => {
   const [activeStar, setActiveStar] = useState(false);
   const [popoverOne, setPopoverOne] = useState(1);
   const [popoverTwo, setPopoverTwo] = useState(1);
@@ -32,6 +32,11 @@ const MainProductListingPage = ({ setSelectedTab }) => {
   const [addOrEditRule, setAddOrEditRule] = useState(false);
   const [brandList, setBrandList] = useState([]);
   const [pricingIndex, setPricingIndex] = useState(null);
+
+  
+  useEffect(() => {
+    handleGetLoader(loader);
+  }, [handleGetLoader, loader]);
 
   const columns = [
     {

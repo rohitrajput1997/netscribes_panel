@@ -8,7 +8,6 @@ export const fetchHomeDetails = async ({ setHomeDetails, setHomeLoader }) => {
       .fetchHomeDetails()
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           setHomeDetails && setHomeDetails(data?.data);
         } else {
           NSToaster.error(data?.status_message);
@@ -31,7 +30,6 @@ export const addBrands = async ({ brands, setData, setOpen, setBrands, setAddBra
       .addBrand({brand: brands})
       .then(({ data }) => {
         if (data?.status_code === 200) {
-          NSToaster.success(data?.status_message);
           getUserBrands && getUserBrands({setBrands, setData})
           setData(brands);
           setAddBrand && setAddBrand(!addBrand);

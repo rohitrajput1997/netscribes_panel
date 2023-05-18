@@ -20,7 +20,7 @@ import ProductAndOptimization from "./ProductAndOptimization";
 import moment from "moment/moment";
 import intMonthToCharConvertor from "../../../utils/intMonthToCharConvertor";
 
-const Reports = () => {
+const Reports = ({ handleGetLoader }) => {
   const [selectedFilter, setSelectedFilter] = useState("week");
   const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
   const [performanceDetails, setPerformanceDetails] = useState(null);
@@ -36,6 +36,10 @@ const Reports = () => {
       selectedFilter,
     });
   }, [selectedFilter]);
+
+  useEffect(() => {
+    handleGetLoader(loader);
+  }, [handleGetLoader, loader]);
 
   const today = moment().format("MM-DD-YYYY");
   const weekNumber = moment(today, "MM-DD-YYYY").week();
@@ -89,7 +93,7 @@ const Reports = () => {
 
   const CustomizedAxisTick = (props) => {
     const { x, y, width, height, stroke, payload } = props;
-    const newStr = props?.payload?.value?.split(" ");
+    const newStr = String(props?.payload?.value)?.split(" ");
 
     return (
       <g transform={`translate(${x},${y})`}>
@@ -109,11 +113,7 @@ const Reports = () => {
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
       <div className="col-span-2 row-span-1">
-        <ProductAndOptimization
-          product={product}
-          optimization={optimization}
-          loader={loader}
-        />
+        <ProductAndOptimization product={product} optimization={optimization} />
 
         <div className="mt-3">
           <NSCard className="col-span-1">
@@ -206,7 +206,6 @@ const Reports = () => {
       <NextandLastQuarters
         last_quarter_result={last_result}
         next_quarter_result={next_result}
-        loader={loader}
         selectedFilter={selectedFilter}
       />
     </div>

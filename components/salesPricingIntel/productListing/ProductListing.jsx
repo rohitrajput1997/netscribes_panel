@@ -90,9 +90,6 @@ function ProductListing({
         </div>
 
         <div className="mt-3">
-          {loader ? (
-            <NSLoaderWithMsg />
-          ) : (
             <NSTable
               dataSource={
                 selectedFilter
@@ -106,7 +103,6 @@ function ProductListing({
               selectedRowKeys={selectedRowKeys}
               setSelectedRowKeys={setSelectedRowKeys}
             />
-          )}
         </div>
       </NSCard>
     </>
