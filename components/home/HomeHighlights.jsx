@@ -25,7 +25,7 @@ function HomeHighlights({ homeDetails, loader }) {
               loader={loader}
             />
             <SuggestedHighlitesTiles
-              image="/assets/Path 1799.svg"
+              image="/assets/recyclee.svg"
               title="Revival"
               content={`3 older than a month SKU's re-added last month`}
               bg="bg-blue-100"
