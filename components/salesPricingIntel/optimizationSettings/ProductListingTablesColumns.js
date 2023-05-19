@@ -3,7 +3,7 @@ import NSInput from "../../common/NSInput";
 
 export const columnsOne = [
     {
-      title: "Matrics",
+      title: "Metrics",
       dataIndex: "metrics",
       key: "metrics",
     },
