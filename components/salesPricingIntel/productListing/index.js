@@ -1,5 +1,5 @@
 import { Table, Tooltip } from "antd";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import {
   fetchBrandsProductListingData,
@@ -33,10 +33,21 @@ const MainProductListingPage = ({ setSelectedTab, handleGetLoader }) => {
   const [brandList, setBrandList] = useState([]);
   const [pricingIndex, setPricingIndex] = useState(null);
 
-  
   useEffect(() => {
     handleGetLoader(loader);
   }, [handleGetLoader, loader]);
+
+  const handleFetchProductListingList = useCallback((e, index) => {
+    if (e.target.value !== "") {
+      fetchProductListingsPrice({
+        competitor_sku: e.target.value?.split(","),
+      }).then((data) => {
+        const list = { ...productListingDetails };
+        list.product_list[index].cp_selected = data?.data?.competitor_pricing;
+        setProductListingDetails(list);
+      });
+    }
+  }, [competitorSku]);
 
   const columns = [
     {
@@ -104,19 +115,11 @@ const MainProductListingPage = ({ setSelectedTab, handleGetLoader }) => {
             onChange={(e) => {
               const list = { ...productListingDetails };
               list.product_list[index].cp = e.target.value;
-              // setCompetitorSku(e.target.value);
+              setCompetitorSku(e.target.value);
             }}
             onBlur={(e) => {
-              if (e.target.value !== "") {
-                fetchProductListingsPrice({
-                  competitor_sku: e.target.value?.split(","),
-                }).then((data) => {
-                  const list = { ...productListingDetails };
-                  list.product_list[index].cp_selected =
-                    data?.data?.competitor_pricing;
-                  setProductListingDetails(list);
-                });
-              }
+              setCompetitorSku(e.target.value);
+              handleFetchProductListingList(e, index);
             }}
           />
         );
@@ -237,6 +240,7 @@ const MainProductListingPage = ({ setSelectedTab, handleGetLoader }) => {
               });
             }}
             defaultValue="NetsPrice"
+            style={{backgroundColor: 'var(--bg-main)', overflow: 'hidden', borderRadius: '8px'}}
           />
         );
       },

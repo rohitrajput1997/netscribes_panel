@@ -25,7 +25,7 @@ function OptimizationSettings({ handleGetLoader }) {
   return (
     <NSCard style={{ backgroundColor: "var(--main-bg)" }}>
       <PercentageGraphSection />
-      <NSCard style={{ backgroundColor: "var(--pure)" }}>
+      <NSCard style={{ backgroundColor: "var(--pure)" }} className='min-w-[50vw] flex-wrap'>
         <div className="w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
           {OptimizationSettingsTabsJson.map((val, index) => (
             <div

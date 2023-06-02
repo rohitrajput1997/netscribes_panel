@@ -16,6 +16,7 @@
   --light-shadow: rgb(90 114 123 / 11%) 0px 7px 30px 0px;
   --bg-main: #eaeaea;
   --secondary: #005f86;
+  --bg-second: #e4e3e3;
 }
 
 @font-face {
@@ -133,10 +134,6 @@ input[type="number"] {
   overflow: hidden;
 }
 
-.ant-collapse {
-  border: none;
-}
-
 .ant-collapse > .ant-collapse-item {
   border-bottom: none;
 }
@@ -155,10 +152,15 @@ input[type="number"] {
   padding: 4px;
 }
 
-.ant-table-wrapper .ant-table-thead >tr>th, .ant-table-wrapper .ant-table-thead >tr>td {
+.ant-table-wrapper .ant-table-thead > tr > th,
+.ant-table-wrapper .ant-table-thead > tr > td {
   background-color: #e4e3e3;
 }
 
 .ant-select-selection-overflow-item {
   margin-top: 5px;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: var(--bg-main);
+  border: none;
 }

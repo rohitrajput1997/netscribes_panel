@@ -1,5 +1,8 @@
-import { Tooltip } from "antd";
-import React, { useEffect, useState } from "react";
+/** @format */
+
+import { Tooltip } from "antd"
+import moment from "moment/moment"
+import React, { useEffect, useState } from "react"
 import {
   Bar,
   BarChart,
@@ -9,47 +12,45 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-} from "recharts";
-import { fetchPerformanceReportsData } from "../../../actions/SalesPricingIntel.action";
-import ButtonTabs from "../../common/ButtonTabs";
-import NSCard from "../../common/NSCard";
-import NSDropdown from "../../common/NSDropdown";
-import PerformaceFilterTabs from "../../json/PerformanceFilterTabs";
-import NextandLastQuarters from "./NextandLastQuarters";
-import ProductAndOptimization from "./ProductAndOptimization";
-import moment from "moment/moment";
-import intMonthToCharConvertor from "../../../utils/intMonthToCharConvertor";
+} from "recharts"
+import { fetchPerformanceReportsData } from "../../../actions/SalesPricingIntel.action"
+import intMonthToCharConvertor from "../../../utils/intMonthToCharConvertor"
+import ButtonTabs from "../../common/ButtonTabs"
+import NSCard from "../../common/NSCard"
+import PerformaceFilterTabs from "../../json/PerformanceFilterTabs"
+import NextandLastQuarters from "./NextandLastQuarters"
+import ProductAndOptimization from "./ProductAndOptimization"
 
 const Reports = ({ handleGetLoader }) => {
-  const [selectedFilter, setSelectedFilter] = useState("week");
-  const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
-  const [performanceDetails, setPerformanceDetails] = useState(null);
-  const [loader, setLoader] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("week")
+  const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph")
+  const [performanceDetails, setPerformanceDetails] = useState(null)
+  const [loader, setLoader] = useState(false)
 
   const { product, optimization, last_result, next_result, graph_details } =
-    performanceDetails || {};
+    performanceDetails || {}
 
   useEffect(() => {
     fetchPerformanceReportsData({
       setPerformanceDetails: setPerformanceDetails,
       setLoader: setLoader,
       selectedFilter,
-    });
-  }, [selectedFilter]);
+    })
+  }, [selectedFilter])
 
   useEffect(() => {
-    handleGetLoader(loader);
-  }, [handleGetLoader, loader]);
+    handleGetLoader(loader)
+  }, [handleGetLoader, loader])
 
-  const today = moment().format("MM-DD-YYYY");
-  const weekNumber = moment(today, "MM-DD-YYYY").week();
-  const monthNumber = moment(today, "MM-DD-YYYY").format("M");
-  const yearNumber = moment(today, "MM-DD-YYYY").format("YYYY");
+  const today = moment().format("MM-DD-YYYY")
+  const weekNumber = moment(today, "MM-DD-YYYY").week()
+  const monthNumber = moment(today, "MM-DD-YYYY").format("M")
+  const yearNumber = moment(today, "MM-DD-YYYY").format("YYYY")
 
   const actualData =
     selectedFilter === "week"
       ? graph_details?.week_graph || []
-      : graph_details?.month_graph || [];
+      : graph_details?.month_graph || []
 
   const addFutureForecastedRevenue = () => {
     const tempArr = actualData?.map((entry, index) => {
@@ -63,9 +64,9 @@ const Reports = ({ handleGetLoader }) => {
             ...entry,
             Future_Forecasted_Revenue: entry?.Forecasted_Revenue,
             Forecasted_Revenue: 0,
-          });
+          })
         } else {
-          return { ...entry };
+          return { ...entry }
         }
       } else if (selectedFilter === "month") {
         if (
@@ -77,23 +78,23 @@ const Reports = ({ handleGetLoader }) => {
             ...entry,
             Future_Forecasted_Revenue: entry?.Forecasted_Revenue,
             Forecasted_Revenue: 0,
-          });
+          })
         } else {
-          return { ...entry };
+          return { ...entry }
         }
       }
-    });
+    })
 
-    return tempArr;
-  };
+    return tempArr
+  }
 
   useEffect(() => {
-    addFutureForecastedRevenue();
-  }, [selectedFilter, actualData, addFutureForecastedRevenue()]);
+    addFutureForecastedRevenue()
+  }, [selectedFilter, actualData, addFutureForecastedRevenue()])
 
   const CustomizedAxisTick = (props) => {
-    const { x, y, width, height, stroke, payload } = props;
-    const newStr = props?.payload?.value?.split(" ");
+    const { x, y, width, height, stroke, payload } = props
+    const newStr = String(props?.payload?.value)?.split(" ")
 
     return (
       <g transform={`translate(${x},${y})`}>
@@ -107,8 +108,8 @@ const Reports = ({ handleGetLoader }) => {
           </tspan>
         </text>
       </g>
-    );
-  };
+    )
+  }
 
   return (
     <div className="grid grid-cols-3 gap-3 grid-rows-1">
@@ -150,7 +151,7 @@ const Reports = ({ handleGetLoader }) => {
                         ? `W${data?.Week} ${data?.Year}`
                         : `${intMonthToCharConvertor(data?.Month)} ${
                             data?.Year
-                          }`;
+                          }`
                     }}
                     axisLine={{ stroke: "#ffffff" }}
                     tick={<CustomizedAxisTick />}
@@ -209,7 +210,7 @@ const Reports = ({ handleGetLoader }) => {
         selectedFilter={selectedFilter}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Reports;
+export default Reports

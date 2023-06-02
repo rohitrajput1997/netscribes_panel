@@ -15,19 +15,19 @@ function OSProductListing() {
     {
       metrics: "Revenue",
       period: "",
-      current: "111,111,111,111",
+      current: "11,00,110",
       target: "",
     },
     {
       metrics: "Revenue",
       period: "",
-      current: "111,111,111,111",
+      current: "19,41,818",
       target: "",
     },
   ];
   const CollapsibleHeader = ({ title, subTitle, icon }) => (
     <div className="flex justify-between items-center text-[12px]">
-      <h3>{title}</h3>
+      <h3 className="w-[100px] truncate">{title}</h3>
       <div className="flex items-center">
         <p className="mr-1">{subTitle}</p>
         {icon}
@@ -50,7 +50,7 @@ function OSProductListing() {
               <NSTable
                 dataSource={[
                   {
-                    productName: "Samsung 550 Ltr. sku 704492",
+                    productName: "Samsung 550 Ltr. SKU 704492",
                     optStatus: "Not Started",
                     lastRepricing: "12 min ago",
                   },
@@ -61,17 +61,31 @@ function OSProductListing() {
               />
             </NSCard>
             <NSCard className="col-span-1 border border-2-[var(--bg-main)]">
-              <NSTable dataSource={[]} columns={columnsThree} />
+              <NSTable
+                dataSource={[
+                  {
+                    repricing: "Sales Items",
+                    focus: "Grow",
+                    repricingSen: "Medium (-0.94)",
+                    repricingSenSub: "Self-elasticity",
+                  },
+                ]}
+                columns={columnsThree}
+                isPagination={false}
+              />
             </NSCard>
           </div>
         </div>
         <div className="col-span-2">
-          <NSCard className="col-span-1 min-h-[216px] border border-2-[var(--bg-main)]">
-            <div className="p-2">
+          <NSCard className="col-span-1 auto-cols-[250px] min-h-[216px] border border-2-[var(--bg-main)]">
+            <div className="p-2 overflow-x-scroll">
               <h1 className="text-[14px] font-interSemiBold mb-3">
                 Average shelf price
               </h1>
-              <Collapse accordion>
+              <Collapse
+                accordion
+                className="bg-[#e4e3e3] w-[fit-content] min-w-[100%]"
+              >
                 <Panel header={<CollapsibleHeader title="Revenue" />} key="1">
                   <div>
                     <h1 className="flex justify-between items-center text-[12px]">
@@ -96,12 +110,15 @@ function OSProductListing() {
             </div>
           </NSCard>
         </div>
-        <NSCard className="col-span-2 h-[500px] overflow-y-scroll border border-2-[var(--bg-main)]">
-          <div className="p-2">
+        <NSCard className="col-span-2 auto-cols-[250px] h-[500px] overflow-y-scroll border border-2-[var(--bg-main)]">
+          <div className="p-2 overflow-x-scroll">
             <h1 className="text-[14px] font-interSemiBold mb-3">
               Forecast for target Metrics
             </h1>
-            <Collapse accordion>
+            <Collapse
+              accordion
+              className="bg-[#e4e3e3] w-[fit-content] min-w-[100%]"
+            >
               <Panel
                 header={
                   <CollapsibleHeader
@@ -129,11 +146,14 @@ function OSProductListing() {
             </Collapse>
           </div>
 
-          <div className="mt-2 p-2">
+          <div className="mt-2 p-2 overflow-x-scroll">
             <h1 className="text-[14px] font-interSemiBold mb-3">
               Forecast for additional Metrics
             </h1>
-            <Collapse accordion>
+            <Collapse
+              accordion
+              className="bg-[#e4e3e3] w-[fit-content] min-w-[100%]"
+            >
               <Panel
                 header={
                   <CollapsibleHeader

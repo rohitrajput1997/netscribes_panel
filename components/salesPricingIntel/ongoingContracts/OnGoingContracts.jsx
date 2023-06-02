@@ -1,9 +1,8 @@
 /** @format */
 
-import moment from "moment";
-import Image from "next/image";
-import React from "react";
-import { useState, useEffect } from "react";
+import moment from "moment"
+import Image from "next/image"
+import React, { useState } from "react"
 import {
   Area,
   AreaChart,
@@ -12,20 +11,19 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts";
-import ButtonTabs from "../../common/ButtonTabs";
-import NSCard from "../../common/NSCard";
-import NSLoaderWithMsg from "../../common/NSLoaderWithMsg";
-import { onGoingContracts } from "../../json/CustomizedTableHeaders";
+} from "recharts"
+import intMonthToCharConvertor from "../../../utils/intMonthToCharConvertor"
+import ButtonTabs from "../../common/ButtonTabs"
+import NSCard from "../../common/NSCard"
+import { onGoingContracts } from "../../json/CustomizedTableHeaders"
 import {
   EstimatedSalesTabs,
   EstimatedSalesUnitsTabs,
-} from "../../json/EstimatedSalesTabs";
-import LeaderMarketShare from "./LeaderMarketShare";
-import MarketOverview from "./MarketOverview";
-import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue";
-import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume";
-import intMonthToCharConvertor from "../../../utils/intMonthToCharConvertor";
+} from "../../json/EstimatedSalesTabs"
+import LeaderMarketShare from "./LeaderMarketShare"
+import MarketOverview from "./MarketOverview"
+import SalesAndAvgUnitValue from "./SalesAndAvgUnitValue"
+import TotalRevenueUnitVolume from "./TotalRevenueUnitVolume"
 
 const OnGoingContracts = ({
   details,
@@ -35,9 +33,9 @@ const OnGoingContracts = ({
   setPeriod,
   loader = false,
 }) => {
-  const [selectedGraphFilter, setSelectedGraphFilter] = useState("week");
-  const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph");
-  const [salesAndUnitsFilter, setSalesAndUnitsFilter] = useState("Sales");
+  const [selectedGraphFilter, setSelectedGraphFilter] = useState("week")
+  const [selectedFilterKey, setSelectedFilterKey] = useState("week_graph")
+  const [salesAndUnitsFilter, setSalesAndUnitsFilter] = useState("Sales")
   const {
     data_unit_sales_total,
     total_revenue,
@@ -48,16 +46,16 @@ const OnGoingContracts = ({
     avg,
     total_data_first_sentance,
     Avrage,
-  } = details || {};
+  } = details || {}
 
-  const firstDate = moment(fromTo.toDate);
-  const lastDate = moment(fromTo.fromDate);
-  const daysDiff = firstDate.diff(lastDate, "days");
-  setPeriod(selectedGraphFilter);
+  const firstDate = moment(fromTo.toDate)
+  const lastDate = moment(fromTo.fromDate)
+  const daysDiff = firstDate.diff(lastDate, "days")
+  setPeriod(selectedGraphFilter)
 
   const CustomizedAxisTick = (props) => {
-    const { x, y, width, height, stroke, payload } = props;
-    const newStr = props.payload.value.split(" ");
+    const { x, y, width, height, stroke, payload } = props
+    const newStr = String(props?.payload?.value)?.split(" ")
 
     return (
       <g transform={`translate(${x},${y})`}>
@@ -71,8 +69,8 @@ const OnGoingContracts = ({
           </tspan>
         </text>
       </g>
-    );
-  };
+    )
+  }
 
   return (
     <div>
@@ -142,7 +140,7 @@ const OnGoingContracts = ({
                         ? `${intMonthToCharConvertor(data?.Month)} ${
                             data?.Year
                           }`
-                        : "";
+                        : ""
                     }}
                     tick={<CustomizedAxisTick />}
                     height={70}
@@ -202,7 +200,7 @@ const OnGoingContracts = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OnGoingContracts;
+export default OnGoingContracts

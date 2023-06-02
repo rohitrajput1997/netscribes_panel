@@ -85,6 +85,7 @@ function ProductListing({
                   pricingRuleData={pricingRuleData}
                 />
               }
+              parentStyle={{borderRadius: '6px'}}
             />
           </div>
         </div>
