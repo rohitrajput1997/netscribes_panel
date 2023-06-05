@@ -56,7 +56,7 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle, setOpen }) {
 
   return (
     <NSCard
-      className="col-span-1 mt-3 min-h-[190px]"
+      className="col-span-1 mt-3 min-h-[190px] rounded-[15px]"
       style={{ padding: "10px 1rem" }}
     >
       <Image
@@ -84,7 +84,7 @@ function SuggestedBrandUpdatesTile({ title, salesCount, subtitle, setOpen }) {
           <p className="leading-8 text-[1rem] font-interMedium capitalize">
             {subtitle.split("_").join(" ")}
           </p>
-          <h1 className="text-xl font-interRegular">
+          <h1 className="text-xl font-interMedium">
             {CommaSeperator(salesCount || 0) || 0}
           </h1>
         </div>

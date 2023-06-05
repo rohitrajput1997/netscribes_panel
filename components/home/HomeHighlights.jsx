@@ -1,6 +1,7 @@
 import React from "react";
 import NSCard from "../common/NSCard";
 import SuggestedHighlitesTiles from "./SuggestedHighlitesTiles";
+import NSButton from "../common/NSButton";
 
 function HomeHighlights({ homeDetails, loader }) {
   const { newness, competitiveness, assortment, most_expensive_SKU } =
@@ -8,10 +9,16 @@ function HomeHighlights({ homeDetails, loader }) {
 
   return (
     <>
-      <NSCard style={{ padding: "1.3rem", marginTop: "10px" }}>
-        <h1 className="pb-3 text-[1.2rem] font-interMedium">
-          5 Star Rated Refrigerators
-        </h1>
+      <NSCard
+        style={{ padding: "1.3rem", marginTop: "10px" }}
+        className="rounded-[15px]"
+      >
+        <div className="flex justify-between items-center mb-3">
+          <h1 className="text-[1.2rem] font-interMedium">
+            5 Star Rated Refrigerators
+          </h1>
+          <NSButton title='Explore' small isSecondary />
+        </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="col-span-1">
             <SuggestedHighlitesTiles
@@ -23,6 +30,8 @@ function HomeHighlights({ homeDetails, loader }) {
               borderColor="border-yellow-100"
               textColor="text-yellow-500"
               loader={loader}
+              showProgress
+              count={66}
             />
             <SuggestedHighlitesTiles
               image="/assets/recyclee.svg"
@@ -32,6 +41,8 @@ function HomeHighlights({ homeDetails, loader }) {
               textColor="text-blue-500"
               borderColor="border-blue-100"
               loader={loader}
+              showProgress
+              count={100}
             />
           </div>
 

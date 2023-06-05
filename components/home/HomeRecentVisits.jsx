@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import NSCard from "../common/NSCard";
 import RecentVisits from "../json/HomeRecentVisits";
+import NSButton from "../common/NSButton";
 
 function HomeRecentVisits() {
   const [collapsible, setCollapsible] = useState(true);
@@ -14,16 +15,17 @@ function HomeRecentVisits() {
           collapsible
             ? "h-full duration-150 ease-in-out"
             : "h-[2.7rem] overflow-y-hidden duration-700 ease-in-out"
-        } cursor-pointer`}
+        } cursor-pointer rounded-[15px]`}
       >
         <div
           className="flex justify-between items-center"
           onClick={() => setCollapsible(!collapsible)}
         >
           <h1 className="text-[1.3rem] font-interSemiBold">Recent Visits</h1>
-          <h4 className="text-[1.1rem] text-[#005f86] font-interMedium">
+          {/* <h4 className="text-[1.1rem] text-[#005f86] font-interMedium">
             Seek
-          </h4>
+          </h4> */}
+          <NSButton title="Seek" small isSecondary />
         </div>
         <hr className="border-b-1 border-cyan-500 my-1" />
 
