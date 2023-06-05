@@ -71,7 +71,7 @@ function OSProductListing() {
               <h1 className="text-[14px] font-interSemiBold mb-3">
                 Average shelf price
               </h1>
-              <Collapse accordion>
+              <Collapse accordion className="bg-[#e4e3e3]">
                 <Panel header={<CollapsibleHeader title="Revenue" />} key="1">
                   <div>
                     <h1 className="flex justify-between items-center text-[12px]">
@@ -101,7 +101,7 @@ function OSProductListing() {
             <h1 className="text-[14px] font-interSemiBold mb-3">
               Forecast for target Metrics
             </h1>
-            <Collapse accordion>
+            <Collapse accordion className="bg-[#e4e3e3]">
               <Panel
                 header={
                   <CollapsibleHeader
@@ -133,7 +133,7 @@ function OSProductListing() {
             <h1 className="text-[14px] font-interSemiBold mb-3">
               Forecast for additional Metrics
             </h1>
-            <Collapse accordion>
+            <Collapse accordion className="bg-[#e4e3e3]">
               <Panel
                 header={
                   <CollapsibleHeader
