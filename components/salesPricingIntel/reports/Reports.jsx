@@ -20,6 +20,15 @@ const Performance = ({ handleGetLoader }) => {
     handleGetLoader(loader);
   }, [handleGetLoader, loader]);
 
+  const details = {
+    action_required: 20,
+    price_increase: 8,
+    price_decrease: 30,
+    matched: 8,
+    starred: 19,
+    total_items: 88,
+  };
+
   const repricingHubTabs = [
     { key: 1, label: "General" },
     { key: 2, label: "Repricing Rules" },
@@ -36,6 +45,11 @@ const Performance = ({ handleGetLoader }) => {
 
   return (
     <div>
+      <ProductCount
+        details={details}
+        setSelectedTab={selectedTab}
+        loader={loader}
+      />
       <NSCard style={{ backgroundColor: "var(--main-bg)" }}>
         <div className="w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
           {repricingHubTabs.map((val, index) => (
@@ -57,7 +71,6 @@ const Performance = ({ handleGetLoader }) => {
             </div>
           ))}
         </div>
-        <ProductCount />
         {handleComponent()}
       </NSCard>
     </div>

@@ -6,7 +6,7 @@ import NSCard from "./NSCard";
 
 const ProductCount = ({
   details,
-  setSelectedFilter,
+  setSelectedFilter = () => {},
   setSelectedTab,
   loader,
 }) => {
@@ -25,7 +25,7 @@ const ProductCount = ({
     total = details?.total_items || 0;
 
   return (
-    <NSCard className="grid grid-cols-3">
+    <NSCard className="grid grid-cols-3 mb-3">
       <div className="col-span-2 py-1 px-2 border-r-2">
         <div className="flex justify-between items-center">
           <p className="font-interRegular text-xl">
