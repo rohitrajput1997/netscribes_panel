@@ -1,9 +1,27 @@
 .login-container-center {
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Upload Photo";
+  display: inline-block;
+  border: 2px dashed #00cffe;
+  border-radius: 6px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
 }

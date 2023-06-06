@@ -82,7 +82,15 @@ function Login({ token }) {
   return (
     <>
       <div className="login-container-center">
-        <div className="w-full h-full bg-slate-400 rounded-[15px] px-12 flex justify-start items-center">
+        <div
+          className="w-full h-full bg-slate-400 rounded-[15px] px-12 flex justify-start items-center"
+          style={{
+            backgroundImage: "url(./images/loginbg.png)",
+            height: "100%",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
           <div className="min-w-[30%] min-h-[300px] aspect-auto bg-white rounded-[20px] px-12 py-8">
             <div className="text-center">
               <h1 className="font-interRegular text-gray-400 text-sm mb-2">

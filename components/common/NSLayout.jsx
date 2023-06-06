@@ -18,6 +18,7 @@ const NSLayout = ({
   searchFunc,
   onClickFunc,
   isRoute,
+  setOpenProfile,
 }) => {
   return (
     <div className="relative">
@@ -54,6 +55,7 @@ const NSLayout = ({
             searchFunc={searchFunc}
             onClickFunc={onClickFunc}
             isRoute={isRoute}
+            setOpenProfile={setOpenProfile}
           />
           {loader && <NSGlobalSpinner isVisible={loader} />}
 

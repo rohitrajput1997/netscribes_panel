@@ -9,6 +9,7 @@ import ConfirmationModal from "../components/auth/ConfirmationModal";
 import AddBrandModal from "../components/auth/AddBrandModal";
 import { fetchBrandsProductListingData } from "../actions/SalesPricingIntel.action";
 import { addBrands, getUserBrands } from "../actions/home.action";
+import ProfileModal from "../components/auth/ProfileModal";
 
 const Home = ({
   homeDetails,
@@ -18,6 +19,7 @@ const Home = ({
   addBrand,
 }) => {
   const [openModal, setOpenModal] = useState(false);
+  const [openProfileModal, setOpenProfileModal] = useState(false);
   const [openAddBrandModal, setOpenAddBrandModal] = useState(false);
   const [brandList, setBrandList] = useState(null);
   const [data, setData] = useState([]);
@@ -68,7 +70,7 @@ const Home = ({
   );
 
   return (
-    <NSLayout loader={loader}>
+    <NSLayout loader={loader} setOpenProfile={setOpenProfileModal}>
       <ConfirmationModal
         open={openModal}
         setOpen={setOpenModal}
@@ -85,6 +87,7 @@ const Home = ({
         handleAddBrands={handleAddBrands}
         brands={brands}
       />
+      <ProfileModal open={openProfileModal} setOpen={setOpenProfileModal} />
       <div className="grid grid-cols-4 gap-3">
         <div className="col-span-3">
           <Heading
