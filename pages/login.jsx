@@ -1,30 +1,31 @@
 /** @format */
 
-import Image from "next/image"
-import { useRouter } from "next/router"
-import React, { useState } from "react"
-import { GoogleLogin } from "react-google-login"
-import { handleLogin } from "../actions/Login.action"
-import ConfirmationModal from "../components/auth/ConfirmationModal"
-import NSButton from "../components/common/NSButton"
-import NSInput from "../components/common/NSInput"
-import OrHr from "../components/common/OrHr"
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { GoogleLogin } from "react-google-login";
+import { handleLogin } from "../actions/Login.action";
+import ConfirmationModal from "../components/auth/ConfirmationModal";
+import NSButton from "../components/common/NSButton";
+import NSInput from "../components/common/NSInput";
+import OrHr from "../components/common/OrHr";
+import NSSocialButton from "../components/common/NSSocialButton";
 
 function Login({ token }) {
-  const router = useRouter()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [validate, setValidate] = useState(false)
-  const [loader, setLoader] = useState(false)
-  const [open, setOpen] = useState(false)
-  const [isSocial, setisSocial] = useState(false)
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [validate, setValidate] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [isSocial, setisSocial] = useState(false);
   React.useEffect(() => {
     if (token) {
-      router.push("/login")
+      router.push("/login");
     } else {
-      router.push("/")
+      router.push("/");
     }
-  }, [token])
+  }, [token]);
 
   // const responseGoogle = (response, removetoken) => {
   //   NSCookies.clearCookies();
@@ -75,36 +76,71 @@ function Login({ token }) {
       router: router,
       removetoken,
       setOpen,
-    })
-  }
+    });
+  };
 
   return (
     <>
       <div className="login-container-center">
-        <div className="w-[100vw] h-[100vh] min-h-[100vh] max-h-[100vh] bg-white box-shadow grid grid-cols-2">
-          <div className="col-span-1 bg-blue-300">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="./assets/Mask Group 183.jpg"
-              alt=""
-              style={{ width: "100vw", height: "100vh", objectFit: "fill" }}
-            />
-          </div>
-          <div className="col-span-1 bg-white flex justify-center items-center">
-            <div className="w-[70%] h-[80%] overflow-y-scroll">
-              <h2 className="text-[2.8rem] pb-3 font-MontBold">Login</h2>
+        <div className="w-full h-full bg-slate-400 rounded-[15px] px-12 flex justify-start items-center">
+          <div className="min-w-[30%] min-h-[300px] aspect-auto bg-white rounded-[20px] px-12 py-8">
+            <div className="text-center">
+              <h1 className="font-interRegular text-gray-400 text-sm mb-2">
+                Welcome to..
+              </h1>
+              <div className="w-full flex justify-center mb-3">
+                <Image
+                  src="./images/logo.svg"
+                  height={120}
+                  width={120}
+                  alt="logo"
+                />
+              </div>
+              <h1 className="text-[1.6rem] font-interSemiBold mb-3">
+                Market Intelligence
+              </h1>
+
+              <div className="flex justify-center">
+                <GoogleLogin
+                  clientId={
+                    "795852775299-u0r1kc6lpag4j9uonj1247mncg5h1rva.apps.googleusercontent.com"
+                  }
+                  render={(renderProps) => (
+                    <NSSocialButton
+                      icon={
+                        <Image
+                          src="/images/google.png"
+                          alt="google"
+                          width={22}
+                          height={22}
+                        />
+                      }
+                      title="Sign in with Google"
+                      bgBordered
+                      className="w-[fit-content] mt-4 mb-2 text-[.9rem] cursor-pointer"
+                      onClick={renderProps.onClick}
+                    />
+                  )}
+                  buttonText="Login"
+                  // onSuccess={responseGoogle}
+                  // onFailure={responseGoogle}
+                />
+              </div>
+            </div>
+            <OrHr />
+
+            <div>
               <NSInput
                 type="text"
-                title="User Name"
-                placeholder="Enter your email/User name"
+                placeholder="Email ID"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 isError={validate && (!email || email === "")}
                 errorMessage="Email id is required"
+                className="mt-4"
               />
               <NSInput
                 type="password"
-                title="Password"
                 isForgotPassword
                 placeholder="Password"
                 value={password}
@@ -112,51 +148,26 @@ function Login({ token }) {
                 isError={validate && (!password || password === "")}
                 errorMessage="Password is required"
                 router={router}
+                className="mt-2"
+                isReminder
               />
               <div>
                 <NSButton
-                  className="w-full uppercase rounded-full mt-8 font-semibold text-[.9rem]"
-                  title="Login"
+                  className="w-full rounded-full mt-8 font-interMedium text-[.9rem]"
+                  title="Log In"
                   bgPrimary
                   onClick={handleLoginUser}
                   loader={loader}
                 />
-                <div className="py-3 flex justify-center text-[.9rem]">
-                  <span>
-                    Dont have an account?{" "}
-                    <span className="text-blue-600 font-semibold cursor-pointer">
+                <div className="py-3 flex justify-center text-[.9rem] mt-2">
+                  <span className="font-interRegular text-slate-400 text-sm">
+                    Don&apos;t have an account?{" "}
+                    <span className="text-blue-600 font-semibold cursor-pointer text-[.8rem]">
                       Sign Up
                     </span>
                   </span>
                 </div>
               </div>
-
-              <OrHr />
-
-              <GoogleLogin
-                clientId={
-                  "795852775299-u0r1kc6lpag4j9uonj1247mncg5h1rva.apps.googleusercontent.com"
-                }
-                render={(renderProps) => (
-                  <NSButton
-                    icon={
-                      <Image
-                        src="/images/google.png"
-                        alt="google"
-                        width={22}
-                        height={22}
-                      />
-                    }
-                    title="Login with Google"
-                    bgBordered
-                    className="w-full mt-4 mb-2 rounded-md text-[.9rem]"
-                    onClick={renderProps.onClick}
-                  />
-                )}
-                buttonText="Login"
-                // onSuccess={responseGoogle}
-                // onFailure={responseGoogle}
-              />
             </div>
           </div>
         </div>
@@ -165,7 +176,7 @@ function Login({ token }) {
             if (isSocial) {
               // responseGoogle(accessToken, 1)
             } else {
-              handleLoginUser({ removetoken: 1 })
+              handleLoginUser({ removetoken: 1 });
             }
           }}
           open={open}
@@ -175,8 +186,7 @@ function Login({ token }) {
         />
       </div>
     </>
-  )
+  );
 }
 
-export default Login
-
+export default Login;

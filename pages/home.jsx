@@ -46,7 +46,12 @@ const Home = ({
     getUserBrands({ setBrands: setBrands, setData: setData });
   };
 
-  const Heading = ({ title, subTitle, isAddBrand = false }) => (
+  const Heading = ({
+    title,
+    subTitle,
+    isAddBrand = false,
+    isSubTitle = true,
+  }) => (
     <div className="flex justify-between items-center mb-2">
       <div className=" flex justify-center items-center">
         <h1 className="text-[1.3rem] mb-0 font-interBold">{title}</h1>
@@ -58,9 +63,7 @@ const Home = ({
           />
         )}
       </div>
-      <h3 className="text-[1.1rem] text-[#005f86] font-interMedium cursor-pointer">
-        {subTitle}
-      </h3>
+      {isSubTitle && <NSButton title={subTitle} isSecondary small />}
     </div>
   );
 
@@ -84,7 +87,11 @@ const Home = ({
       />
       <div className="grid grid-cols-4 gap-3">
         <div className="col-span-3">
-          <Heading title="Key Highlights" subTitle="Explore" />
+          <Heading
+            title="Key Highlights"
+            subTitle="Explore"
+            isSubTitle={false}
+          />
 
           <HomeHighlights homeDetails={homeDetails} loader={loader} />
 

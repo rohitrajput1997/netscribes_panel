@@ -1,4 +1,5 @@
 import React from "react";
+import { Checkbox } from "antd";
 
 function NSInput(
   {
@@ -16,6 +17,7 @@ function NSInput(
     ref,
     onBlur,
     isRequired,
+    isReminder = false,
   },
   ...rest
 ) {
@@ -31,25 +33,32 @@ function NSInput(
         ref={ref}
         placeholder={placeholder}
         type={type}
-        className={className}
+        className={`${className} font-interRegular text-sm`}
         onChange={onChange}
         onBlur={onBlur}
         value={value}
         style={style}
         {...rest}
       />
-      <div className="flex justify-between mt-2">
-        {isError && (
-          <p className="text-red-500 font-interMedium text-[.8rem]">
-            {errorMessage || "This field is required"}
-          </p>
+
+      {isError && (
+        <p className="text-red-500 font-interMedium text-[.8rem]">
+          {errorMessage || "This field is required"}
+        </p>
+      )}
+
+      <div className="flex justify-between mt-2 items-center">
+        {isReminder && (
+          <Checkbox className="font-interMedium text-slate-400">
+            <p className="text-[.8rem]">Remember for 30 days</p>
+          </Checkbox>
         )}
         {isForgotPassword && (
           <p
-            className="text-blue-600 font-MontMedium text-[.8rem] cursor-pointer"
+            className="text-blue-600 font-interSemiBold text-[.8rem] cursor-pointer"
             onClick={() => router.push("/forgot-password")}
           >
-            Forgot Your Password?
+            Forgot Password?
           </p>
         )}
       </div>

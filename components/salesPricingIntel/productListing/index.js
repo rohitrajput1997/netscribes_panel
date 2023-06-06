@@ -37,17 +37,20 @@ const MainProductListingPage = ({ setSelectedTab, handleGetLoader }) => {
     handleGetLoader(loader);
   }, [handleGetLoader, loader]);
 
-  const handleFetchProductListingList = useCallback((e, index) => {
-    if (e.target.value !== "") {
-      fetchProductListingsPrice({
-        competitor_sku: e.target.value?.split(","),
-      }).then((data) => {
-        const list = { ...productListingDetails };
-        list.product_list[index].cp_selected = data?.data?.competitor_pricing;
-        setProductListingDetails(list);
-      });
-    }
-  }, [competitorSku]);
+  const handleFetchProductListingList = useCallback(
+    (e, index) => {
+      if (e.target.value !== "") {
+        fetchProductListingsPrice({
+          competitor_sku: e.target.value?.split(","),
+        }).then((data) => {
+          const list = { ...productListingDetails };
+          list.product_list[index].cp_selected = data?.data?.competitor_pricing;
+          setProductListingDetails(list);
+        });
+      }
+    },
+    [competitorSku]
+  );
 
   const columns = [
     {
@@ -224,24 +227,30 @@ const MainProductListingPage = ({ setSelectedTab, handleGetLoader }) => {
       key: "rpr",
       render: (data, record, index) => {
         return (
-          <NSDropdown
-            options={pricingRuleData}
-            className="w-32"
-            value={data}
-            onChange={(e, idx, data) => {
-              setSelectedPricingRule(e);
-              setPricingIndex(index);
-            }}
-            onSelect={(e, data) => {
-              handleFetchNewPrice(data, record).then((data) => {
-                const list = { ...productListingDetails };
-                list.product_list[index].new_price = data?.new_price;
-                setProductListingDetails(list);
-              });
-            }}
-            defaultValue="NetsPrice"
-            style={{backgroundColor: 'var(--bg-main)', overflow: 'hidden', borderRadius: '8px'}}
-          />
+          <div className="rpr">
+            <NSDropdown
+              options={pricingRuleData}
+              className="w-32"
+              value={data}
+              onChange={(e, idx, data) => {
+                setSelectedPricingRule(e);
+                setPricingIndex(index);
+              }}
+              onSelect={(e, data) => {
+                handleFetchNewPrice(data, record).then((data) => {
+                  const list = { ...productListingDetails };
+                  list.product_list[index].new_price = data?.new_price;
+                  setProductListingDetails(list);
+                });
+              }}
+              defaultValue="NetsPrice"
+              style={{
+                backgroundColor: "var(--bg-main)",
+                overflow: "hidden",
+                borderRadius: "8px",
+              }}
+            />
+          </div>
         );
       },
     },

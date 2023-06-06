@@ -2,7 +2,7 @@
 
 import NSToaster from "../components/common/NSToaster";
 import apis from "../pages/api";
-import downloadFile from 'downloadjs';
+import downloadFile from "downloadjs";
 
 export const fetchSalesAndPricingIntelDetails = async ({
   setOnGoingContractDetails,
@@ -16,7 +16,12 @@ export const fetchSalesAndPricingIntelDetails = async ({
     setOngoingContractsLoader(true);
 
     await apis
-      .fetchOngoingContracts({ period, from: fromDate, to: toDate, brand: brand })
+      .fetchOngoingContracts({
+        period,
+        from: fromDate,
+        to: toDate,
+        brand: brand,
+      })
       .then(({ data }) => {
         if (data?.status_code === 200) {
           setOnGoingContractDetails && setOnGoingContractDetails(data?.data);
@@ -73,14 +78,17 @@ export const fetchProductListings = async ({
 
   try {
     await apis
-      .fetchProductListingData({download: download === 'yes' ? 'yes' : undefined}, isDownload)
+      .fetchProductListingData(
+        { download: download === "yes" ? "yes" : undefined },
+        isDownload
+      )
       .then(({ data }) => {
         if (data?.status_code === 200) {
           setProductListingDetails && setProductListingDetails(data?.data);
         } else {
           // NSToaster.error(data?.status_message);
-          if(isDownload) {
-            downloadFile(data, 'productListing.csv');
+          if (isDownload) {
+            downloadFile(data, "productListing.csv");
           }
         }
       })
@@ -257,7 +265,7 @@ export const fetchBrandsProductListingData = async ({ setBrandList }) => {
       })
       .finally(() => {});
   } catch (err) {
-    throw new Error("", err);
+    console.log(err);
   }
 };
 
