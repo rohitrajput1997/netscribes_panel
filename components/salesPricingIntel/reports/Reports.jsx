@@ -56,7 +56,7 @@ const Performance = ({ handleGetLoader }) => {
             </div>
           ))}
         </div>
-
+        
         {handleComponent()}
       </NSCard>
     </div>

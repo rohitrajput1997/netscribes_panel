@@ -31,7 +31,7 @@ function ManageRepricingRuleList({
   };
 
   return (
-    <div>
+    <div className="border rounded-[15px] p-3 mt-2">
       <h1 className="text-xl font-interBold mt-6">Manage Repricing Rules</h1>
       {loader ? (
         <NSLoaderWithMsg style={{ marginTop: "6rem" }} />
