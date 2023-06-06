@@ -6,6 +6,7 @@ import NSInput from "../../common/NSInput";
 import RepricingHighlightsTileTwo from "./RepricingHighlightsTileTwo";
 import RepricingGeneral from "./RepricingGeneral";
 import PricingRules from "../productListing/PricingRules";
+import ProductCount from "../../common/ProductCount";
 import {
   fetchBrandsProductListingData,
   fetchRepricingRules,
@@ -56,7 +57,7 @@ const Performance = ({ handleGetLoader }) => {
             </div>
           ))}
         </div>
-
+        <ProductCount />
         {handleComponent()}
       </NSCard>
     </div>
