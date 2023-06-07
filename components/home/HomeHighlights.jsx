@@ -14,10 +14,8 @@ function HomeHighlights({ homeDetails, loader }) {
         className="rounded-[15px]"
       >
         <div className="flex justify-between items-center mb-3">
-          <h1 className="text-[1.2rem] font-interMedium">
-            5 Star Rated Refrigerators
-          </h1>
-          <NSButton title='Explore' small isSecondary />
+          <h1 className="text-[1.2rem] font-interMedium">Refrigerators</h1>
+          <NSButton title="Explore" small isSecondary />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="col-span-1">
