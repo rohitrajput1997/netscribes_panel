@@ -52,7 +52,7 @@ function ForgotPassword() {
         <Image src="/images/logo.svg" width={246} height={43} alt="logo" />
       </div>
       <div className="mt-9 w-[450px] bg-white p-[1.2rem] absolute left-6 rounded-md">
-        <p className="text-xl font-MontBold">Email to Reset Password</p>
+        <p className="text-xl font-interSemiBold">Email to Reset Password</p>
         <div className="form_input mt-6">
           <div className="flex flex-col">
             <NSInput
@@ -72,7 +72,7 @@ function ForgotPassword() {
             />
           </div>
           <NSButton
-            className="mt-6 w-[100%] h-[40px] pt-[6px] font-MontMedium"
+            className="mt-6 w-[100%] h-[40px] pt-[6px] font-interMedium"
             title={"Send"}
             isPrimary
             // onClick={() => router.push('/resetpass')}

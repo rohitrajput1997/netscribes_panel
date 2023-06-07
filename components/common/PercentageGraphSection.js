@@ -24,7 +24,7 @@ function PercentageGraphSection() {
             </div>
           </div>
           <div className="col-span-1 border-r-2 border-gray-400 p-2">
-            <h1 className="font-MontBold mb-2 font-interSemiBold">
+            <h1 className="mb-2 font-interSemiBold">
               Price Optimized Products
             </h1>
             <div className="flex">
@@ -44,7 +44,7 @@ function PercentageGraphSection() {
             </div>
           </div>
           <div className="col-span-1 p-2">
-            <h1 className="font-MontBold mb-2 font-interSemiBold">
+            <h1 className="mb-2 font-interSemiBold">
               Products. at Optim Lim
             </h1>
             <div className="flex">

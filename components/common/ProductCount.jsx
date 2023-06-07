@@ -64,7 +64,7 @@ const ProductCount = ({
           >
             <h1 className="text-3xl font-interBold">{matched}</h1>
             <p className="font-interRegular mt-2 text-stone-500">
-              100% Match with Compititors
+              100% Match with Competitors
             </p>
           </div>
           <div

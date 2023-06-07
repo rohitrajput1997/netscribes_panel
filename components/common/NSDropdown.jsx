@@ -111,7 +111,7 @@ function NSDropdown({
       </Select>
 
       {isError && (
-        <p className="text-red-500 font-montMedium mt-[-10px] mb-6">
+        <p className="text-red-500 font-interMedium mt-[-10px] mb-6">
           {errorMessage || "This field is required"}
         </p>
       )}

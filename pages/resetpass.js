@@ -77,7 +77,7 @@ function ResetPass() {
       </div>
       <div className="mt-9 w-[500px] bg-white rounded-md absolute left-10 p-[1.2rem]">
         <div className="login_inner_container_card">
-          <p className="text-xl font-MontBold">Reset Password</p>
+          <p className="text-xl font-interMedium">Reset Password</p>
           <div className="form_input mt-6">
             <div className="flex flex-col">
               <NSInput
@@ -124,7 +124,7 @@ function ResetPass() {
               {(!isValidate && reEnterPassword === "") ||
               (!isValidate && !passwordValidation(reEnterPassword)) ? (
                 <ul
-                  className="common_error font-MontMedium"
+                  className="common_error font-interMedium"
                   style={{ color: "black", fontSize: ".8rem" }}
                 >
                   <li>Password must be at least 8 characters long.</li>
@@ -141,7 +141,7 @@ function ResetPass() {
 
             <div className="flex flex-col forgot_password">
               <NSButton
-                className="mt-6 w-[100%] h-[40px] pt-[6px] font-MontMedium"
+                className="mt-6 w-[100%] h-[40px] pt-[6px] font-interMedium"
                 title={"Reset Password"}
                 isPrimary
                 onClick={handleChangePassword}

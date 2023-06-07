@@ -21,7 +21,7 @@ const RepricingPopover = ({
           {productListingRepriceingRadiosJson?.first.map((item) => (
             <Radio
               value={item?.value}
-              className="font-MontRegular"
+              className="font-interRegular"
               key={item?.value}
             >
               {item?.label}
@@ -31,7 +31,7 @@ const RepricingPopover = ({
         </Radio.Group>
       </div>
       <div>
-        <h1 className="font-MontBold mt-4">Repricing Rules:</h1>
+        <h1 className="font-interSemiBold mt-4">Repricing Rules:</h1>
         <Radio.Group
           onChange={(e) => setPopoverTwo(e.target.value)}
           value={popoverTwo}
@@ -39,7 +39,7 @@ const RepricingPopover = ({
           {productListingRepriceingRadiosJson?.second.map((item) => (
             <Radio
               value={item.value}
-              className="font-MontRegular"
+              className="font-interRegular"
               key={item?.value}
             >
               {item?.label}

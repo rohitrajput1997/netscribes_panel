@@ -7,7 +7,7 @@ function NSLoaderWithMsg({ style, withMessage, loaderSize = "large" }) {
       <div className="text-center" style={style}>
         <Spin size={loaderSize} style={{ color: "var(--secondary)" }} />
         {withMessage && (
-          <p className="font-MontMedium mt-2">Please wait fetching data!</p>
+          <p className="font-interMedium mt-2">Please wait fetching data!</p>
         )}
       </div>
     </>

@@ -23,7 +23,7 @@ const profile = () => {
                   key={index}
                   className={`flex py-2 px-4 w-fit mb-4 rounded-full text-[1rem] ${
                     selectedTab === index
-                      ? "bg-[var(--secondary)] text-[var(--pure)] font-MontMedium cursor-pointer"
+                      ? "bg-[var(--secondary)] text-[var(--pure)] font-interMedium cursor-pointer"
                       : "text-slate-400 cursor-not-allowed"
                   }`}
                   // onClick={() => setSelectedTab(index)}
@@ -62,7 +62,7 @@ const profile = () => {
                     height={25}
                     className="cursor-not-allowed"
                   />
-                  <p className="pl-4 text-orange-600 text-[1.1rem] font-MontMedium cursor-not-allowed">
+                  <p className="pl-4 text-orange-600 text-[1.1rem] font-interMedium cursor-not-allowed">
                     Add Intelligence
                   </p>
                 </div>

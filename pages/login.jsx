@@ -105,7 +105,7 @@ function Login({ token }) {
                 />
               </div>
               <h1 className="text-[1.6rem] font-interSemiBold mb-3">
-                Market Intelligence
+                InsightsIQ
               </h1>
 
               <div className="flex justify-center">

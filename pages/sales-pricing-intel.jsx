@@ -138,7 +138,7 @@ function SalesPricingIntel() {
                   }
                 : { borderBottom: "" }
             }
-            className="w-auto h-[inherit] flex justify-center items-center cursor-pointer mr-[30px]"
+            className="w-auto h-[inherit] flex justify-center items-center cursor-pointer mr-[30px] font-interRegular"
           >
             {val.label}
           </div>
