@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "antd";
 import Image from "next/image";
 const { Header } = Layout;
@@ -6,6 +6,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import NSSearchbar from "./common/NSSearchbar";
 import { useRouter } from "next/router";
 import NSCookies from "./common/NSCookies";
+import ProfileModal from "./auth/ProfileModal";
 
 function NSHeader({
   header_sentence,
@@ -16,6 +17,7 @@ function NSHeader({
   isRoute,
   setOpenProfile,
 }) {
+  const [openProfileModal, setOpenProfileModal] = useState(false);
   const router = useRouter();
   const userData = NSCookies.getUser();
   const { products, avgsales, companies, marketplace, Brand } =
@@ -23,6 +25,7 @@ function NSHeader({
 
   return (
     <>
+      <ProfileModal open={openProfileModal} setOpen={setOpenProfileModal} />
       <div className="sticky top-0" style={{ zIndex: 1000 }}>
         <Header
           style={{
@@ -59,7 +62,7 @@ function NSHeader({
                 <div className="flex items-center">
                   <div
                     className="w-10 h-10 bg-gray-400 rounded-full overflow-hidden"
-                    // onClick={() => setOpenProfile(true)}
+                    // onClick={() => setOpenProfileModal(true)}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="./assets/userone.jpeg" alt="" />

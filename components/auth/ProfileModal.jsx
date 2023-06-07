@@ -68,7 +68,12 @@ function ProfileModal({ title, open, setOpen, onClickYes }) {
           })}
 
           <div className="flex justify-end">
-            <NSButton title="Cancel" bgBordered className='mr-4' />
+            <NSButton
+              title="Cancel"
+              bgBordered
+              className="mr-4"
+              onClick={() => setOpen(false)}
+            />
             <NSButton title="Update" bgPrimary />
           </div>
         </div>

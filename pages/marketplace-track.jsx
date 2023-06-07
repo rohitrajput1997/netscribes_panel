@@ -66,7 +66,7 @@ function MarketplaceTrack() {
   return (
     <NSLayout loader={loader}>
       <NSSearchbar
-        placeholder="Search for Band, ASIN, SKU, Category, Color, Design, Energy Rating, and Capacity"
+        placeholder="Search for Brand, ASIN, SKU, Category, Color, Design, Energy Rating, and Capacity"
         style={{
           backgroundColor: "white",
           border: "none",

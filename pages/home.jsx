@@ -19,7 +19,6 @@ const Home = ({
   addBrand,
 }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [openProfileModal, setOpenProfileModal] = useState(false);
   const [openAddBrandModal, setOpenAddBrandModal] = useState(false);
   const [brandList, setBrandList] = useState(null);
   const [data, setData] = useState([]);
@@ -70,7 +69,7 @@ const Home = ({
   );
 
   return (
-    <NSLayout loader={loader} setOpenProfile={setOpenProfileModal}>
+    <NSLayout loader={loader}>
       <ConfirmationModal
         open={openModal}
         setOpen={setOpenModal}
@@ -87,7 +86,6 @@ const Home = ({
         handleAddBrands={handleAddBrands}
         brands={brands}
       />
-      <ProfileModal open={openProfileModal} setOpen={setOpenProfileModal} />
       <div className="grid grid-cols-4 gap-3">
         <div className="col-span-3">
           <Heading
