@@ -4,7 +4,7 @@ import NSTableTooltipTitle from "../../common/NSTableTooltipTitle";
 import NSInput from "../../common/NSInput";
 import NSDropdown from "../../common/NSDropdown";
 import NSButton from "../../common/NSButton";
-
+import OSActionsOptions from "../../json/OSActionsOptions.json";
 function OSAndHighLights() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
@@ -134,11 +134,11 @@ function OSAndHighLights() {
         <NSDropdown
           placeholder="Actions"
           className="h-[40px] ml-2 w-40"
-          options={[]}
+          options={OSActionsOptions}
         />
         <NSButton
           title="Opt. Price"
-          className="ml-2 h-9 flex justify-center items-center mt-[-5px]"
+          className="ml-2 h-8 flex justify-center items-center mt-[-8px] rounded-[5px]"
         />
       </div>
       <div className="opt-set">
