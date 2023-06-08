@@ -1,31 +1,31 @@
 const BusinessTrendsTabs = [
   {
-    key: 1,
+    key: 0,
     label: "Tags",
     value: "Tags",
   },
   {
-    key: 2,
+    key: 1,
     label: "Analysis",
     value: "Analysis",
   },
   {
-    key: 3,
+    key: 2,
     label: "Comments",
     value: "Comments",
   },
   {
-    key: 4,
+    key: 3,
     label: "Attachments",
     value: "Attachments",
   },
   {
-    key: 5,
+    key: 4,
     label: "Similar",
     value: "Similar",
   },
   {
-    key: 6,
+    key: 5,
     label: "Share",
     value: "Share",
   },
