@@ -39,7 +39,7 @@ function ManageRepricingRuleList({
         <div className="mt-4">
           {pricingRuleFullData.map((item, index) => (
             <div key={item} className="w-[100%] min-h-[50px] mt-2">
-              <div className="flex items-center justify-between shadow cursor-pointer hover:bg-[#005f86] hover:text-white duration-700 ease-in-out p-3">
+              <div className={`flex items-center justify-between shadow cursor-pointer ${index % 2 === 0 ? 'bg-gray-200' : 'bg-gray-100' } hover:bg-[#005f86] hover:text-white duration-700 ease-in-out p-3`}>
                 <span className="w-[30%] font-interSemiBold flex items-center">
                   <AiFillTag size={20} className="mr-3" />
                   {item?.title}

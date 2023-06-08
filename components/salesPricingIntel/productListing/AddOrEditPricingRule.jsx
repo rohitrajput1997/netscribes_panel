@@ -365,13 +365,14 @@ function AddOrEditPricingRule({
               }}
               className="font-interMedium px-2 mr-2"
               bgBordered
-              style={{ border: "1px solid black" }}
+              style={{ border: "1px solid black", borderRadius: '10px' }}
             />
             <NSButton
-              title="Save Changes"
+              title="Save"
               onClick={handleAddPricingRule}
               className="font-interMedium px-2"
               bgPrimary
+              style={{ borderRadius: '10px' }}
             />
           </div>
         )}

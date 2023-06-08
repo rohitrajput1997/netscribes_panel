@@ -50,7 +50,7 @@ const Performance = ({ handleGetLoader }) => {
         setSelectedTab={selectedTab}
         loader={loader}
       />
-      <NSCard style={{ backgroundColor: "var(--main-bg)" }}>
+      <NSCard>
         <div className="w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400">
           {repricingHubTabs.map((val, index) => (
             <div

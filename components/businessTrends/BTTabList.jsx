@@ -7,13 +7,8 @@ import BTAttachments from "./BTAttachments";
 import BTSimilar from "./BTSimilar";
 import BtShare from "./BtShare";
 
-function BTTabList({
-  selectedCard,
-  setSelectedCard,
-  cardIndex,
-}) {
+function BTTabList({ selectedCard, setSelectedCard, cardIndex }) {
   const handleTabComponents = useCallback(() => {
-    console.log(selectedCard[cardIndex]);
     switch (selectedCard[cardIndex]) {
       case 0:
         return <BTTags />;
@@ -51,7 +46,7 @@ function BTTabList({
 
   return (
     <>
-      <div className="w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400 mt-3">
+      <div className="w-full h-12 mb-4 flex items-center border-b-[1px] border-gray-400 mt-3 overflow-x-auto overflow-y-hidden">
         {BusinessTrendsTabs.map((val, index) => (
           <div
             key={val.key}

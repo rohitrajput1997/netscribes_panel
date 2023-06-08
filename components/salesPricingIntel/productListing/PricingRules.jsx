@@ -146,7 +146,7 @@ function PricingRules() {
   }, []);
 
   return (
-    <NSCard style={{ backgroundColor: "var(--bg-main)" }}>
+    <NSCard>
       {!addOrEditRule && (
         <>
           {/* <div
@@ -200,7 +200,7 @@ function PricingRules() {
               />
             </div>
             <NSButton
-              title="New Rule"
+              title="Add Rule"
               onClick={() => {
                 setAddOrEditRule(true);
                 setNewRule(initialNewRuleData);
