@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import NSSearchbar from "../../common/NSSearchbar";
 
-function SelfPresenceChart({ header, data, namesData }) {
+function SelfPresenceChart({ header, data, namesData ,hide}) {
   return (
     <>
       <div className="flex justify-between items-center">
@@ -29,7 +29,10 @@ function SelfPresenceChart({ header, data, namesData }) {
             paddingLeft: "32px",
             backgroundColor: "var(--bg-main)",
             width: "350px",
+            borderRadius: "20px",
           }}
+          className="rounded-full"
+          showSearchIcon={false}
           SearchiconPlaceOnTop="top-3"
         />
       </div>
@@ -65,6 +68,7 @@ function SelfPresenceChart({ header, data, namesData }) {
               type="number"
               yAxisId="2"
               axisLine={{ stroke: "#ffffff" }}
+              tick={false} hide
             />
             <Tooltip />
             <Legend />
@@ -72,7 +76,7 @@ function SelfPresenceChart({ header, data, namesData }) {
               yAxisId="1"
               type="natural"
               dataKey="cost"
-              stroke="rgb(34 197 94)"
+              stroke="rgb(56 189 248)"
               animationDuration={300}
               strokeWidth={3}
               name={[namesData[0]]}
@@ -81,7 +85,7 @@ function SelfPresenceChart({ header, data, namesData }) {
               yAxisId="2"
               type="natural"
               dataKey="impression"
-              stroke="rgb(190 242 100)"
+              stroke="rgb(2 132 199)"
               animationDuration={300}
               strokeWidth={3}
               name={[namesData[1]]}
@@ -90,7 +94,7 @@ function SelfPresenceChart({ header, data, namesData }) {
               yAxisId="2"
               type="natural"
               dataKey="count"
-              stroke="rgb(244 63 94)"
+              stroke="rgb(12 74 110)"
               animationDuration={300}
               strokeWidth={3}
               name={[namesData[2]]}

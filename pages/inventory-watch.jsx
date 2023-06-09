@@ -50,7 +50,7 @@ function InventoryWatch() {
             <SelfPresenceChart
               header="Shelf Presence Trend Over Time"
               data={initialData}
-              namesData={["In Stocked", "Staggered Stocked", "Well Stocked"]}
+              namesData={["In Stock", "Staggered Stock", "Out of Stock"]}
             />
           </NSCard>
           <NSCard className="mb-3" style={{ minHeight: "300px" }}>
