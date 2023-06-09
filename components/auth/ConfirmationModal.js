@@ -8,7 +8,7 @@ import NSButton from "../common/NSButton"
 const ConfirmationModal = ({ open, setOpen, onClickYes, title, loader }) => {
   return (
     <Modal
-      className="logout_modal workflow_model"
+      className="logout_modal workflow_model font-interBold"
       open={open}
       onOk={onClickYes}
       onCancel={() => setOpen(false)}
