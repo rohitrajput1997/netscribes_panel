@@ -16,6 +16,7 @@ import NSSearchbar from "../components/common/NSSearchbar";
 import { InventoryWatchHeadres } from "../components/json/CustomizedTableHeaders";
 import SalesAndAvgUnitValue from "../components/salesPricingIntel/ongoingContracts/SalesAndAvgUnitValue";
 import SelfPresenceChart from "../components/salesPricingIntel/performance/SelfPresenceChart";
+import IWCollapsibleTable from "../components/inventoryWatch/IWCollapsibleTable";
 
 function InventoryWatch() {
   const initialData = [
@@ -41,6 +42,31 @@ function InventoryWatch() {
     { name: 20, cost: 7, impression: 100, count: 200 },
   ];
   const { selectorOne, selectorTwo } = InventoryWatchHeadres || {};
+  const dummyDataOne = [
+    {
+      Units: "XX",
+      Brand: "Capacity (Litre)",
+      VolumeProgressPercentage: "XX",
+    },
+    {
+      Units: "XX",
+      Brand: "Energy Rating",
+      VolumeProgressPercentage: "XX",
+    },
+  ];
+
+  const dummyDataTwo = [
+    {
+      Units: "Yes/No",
+      Brand: "Capacity (Litre)",
+      VolumeProgressPercentage: "All",
+    },
+    {
+      Units: "Yes/No",
+      Brand: "Energy Rating",
+      VolumeProgressPercentage: "All",
+    },
+  ];
 
   return (
     <NSLayout>
@@ -62,21 +88,25 @@ function InventoryWatch() {
           </NSCard>
         </div>
         <div className="col-span-1">
-          <SalesAndAvgUnitValue
+          <IWCollapsibleTable
             title="Additional specs. Selector"
             showPlue
             showCount={false}
             showIcon={false}
             style={{ height: "318px" }}
             headers={selectorOne}
+            header_keys={["Brand", "Units", "VolumeProgressPercentage"]}
+            tableData={[dummyDataOne, dummyDataTwo]}
           />
-          <SalesAndAvgUnitValue
+          <IWCollapsibleTable
             title="Additional specs. Selector"
             showPlue
             showCount={false}
             showIcon={false}
             style={{ height: "318px" }}
             headers={selectorTwo}
+            header_keys={["Brand", "Units", "VolumeProgressPercentage"]}
+            tableData={[dummyDataOne, dummyDataTwo]}
           />
         </div>
       </div>
