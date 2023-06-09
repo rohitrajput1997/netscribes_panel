@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import NSSearchbar from "../../common/NSSearchbar";
 
-function SelfPresenceChart({ header, data, namesData ,hide}) {
+function SelfPresenceChart({ header, data, namesData, hide }) {
   return (
     <>
       <div className="flex justify-between items-center">
@@ -55,6 +55,7 @@ function SelfPresenceChart({ header, data, namesData ,hide}) {
               dataKey="name"
               type="number"
               axisLine={{ stroke: "#ffffff" }}
+              padding={{ right: 30 }}
             />
             <YAxis
               allowDataOverflow
@@ -68,7 +69,8 @@ function SelfPresenceChart({ header, data, namesData ,hide}) {
               type="number"
               yAxisId="2"
               axisLine={{ stroke: "#ffffff" }}
-              tick={false} hide
+              tick={false}
+              hide
             />
             <Tooltip />
             <Legend />
