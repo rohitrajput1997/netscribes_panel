@@ -17,14 +17,20 @@ const RepricingGeneral = () => {
         <PercentageGraphSection />
 
         <div className="grid grid-cols-2 gap-3">
-          <NSCard className="col-span-1" style={{backgroundColor: 'var(--pure)'}}>
+          <NSCard
+            className="col-span-1 border border-slate-300"
+            style={{ backgroundColor: "var(--pure)" }}
+          >
             <RepricingHighlightsTileTwo
               title="Our Price"
               subtitle="INR 4,232"
               showupDownArrow={false}
             />
           </NSCard>
-          <NSCard className="col-span-1" style={{backgroundColor: 'var(--pure)'}}>
+          <NSCard
+            className="col-span-1 border border-slate-300"
+            style={{ backgroundColor: "var(--pure)" }}
+          >
             <RepricingHighlightsTileTwo
               title="SKU in Focus"
               showupDownArrow={false}

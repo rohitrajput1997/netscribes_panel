@@ -75,7 +75,7 @@ function MarketplaceTrack() {
         }}
       />
 
-      <h1 className="my-2 text-[1.2rem]">
+      <h1 className="my-2 text-[1.2rem] font-interSemiBold">
         Comparison between Godrej and Whirlpool
       </h1>
 

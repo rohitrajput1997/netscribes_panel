@@ -74,14 +74,26 @@ export const columnsThree = [
     render: (data) => <p>Grow</p>,
   },
   {
-    title: "Repricing Sensitivity",
-    dataIndex: "repricingSen",
+    title: "Repricing",
+    dataIndex: "repricing",
     key: "repricingSen",
     render: (data, record, index) => {
       console.log(record);
       return (
         <div className="flex justify-between items-center">
-          <p>{record?.repricingSen}</p>&nbsp;&nbsp;
+          <p>{record?.repricingSen}</p>
+        </div>
+      );
+    },
+  },
+  {
+    title: "Sensitivity",
+    dataIndex: "sen",
+    key: "repricingSen",
+    render: (data, record, index) => {
+      console.log(record);
+      return (
+        <div className="flex justify-between items-center">
           <p>{record?.repricingSenSub}</p>
         </div>
       );

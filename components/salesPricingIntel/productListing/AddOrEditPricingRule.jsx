@@ -19,6 +19,14 @@ function AddOrEditPricingRule({
   setIsViewOnly,
 }) {
   const { one, two, rank, price, measurment, status } = PricingRuleJson || {};
+  const inputStyle = {
+    height: "30px",
+    backgroundColor: "var(--bg-main)",
+    padding: "0 10px",
+    borderRadius: "5px",
+    marginTop: "8px",
+    width: '100px',
+  };
 
   useEffect(() => {
     return () => {
@@ -71,7 +79,7 @@ function AddOrEditPricingRule({
         <div className="flex items-center gap-2">
           <AiFillTag size={25} className="mt-[2.4rem]" />
           <NSInput
-            className="w-[220px] rounded-md pl-3 font-interRegular"
+            className="w-[220px] rounded-md pl-3 font-interRegular border"
             style={{ height: "40px" }}
             placeholder="Name your rule"
             title="Name your rule"
@@ -82,7 +90,7 @@ function AddOrEditPricingRule({
             errorMessage="Rule name is required"
           />
           <NSInput
-            className="w-[500px] rounded-md pl-3 font-interRegular"
+            className="w-[500px] rounded-md pl-3 font-interRegular border"
             style={{ height: "40px" }}
             placeholder="Short Description (upto 160 charachters)"
             title="Short Description"
@@ -152,7 +160,7 @@ function AddOrEditPricingRule({
             />{" "}
             by{" "}
             <NSInput
-              style={{ height: "30px" }}
+              style={inputStyle}
               onChange={(e) => {
                 let obj = { ...newRule };
                 obj.repricing_logic[0].price_by = e.target.value;
@@ -212,7 +220,7 @@ function AddOrEditPricingRule({
             />{" "}
             by{" "}
             <NSInput
-              style={{ height: "30px" }}
+              style={inputStyle}
               onChange={(e) => {
                 let obj = { ...newRule };
                 obj.repricing_logic[1].price_by = e.target.value;
@@ -272,7 +280,7 @@ function AddOrEditPricingRule({
             />{" "}
             by{" "}
             <NSInput
-              style={{ height: "30px" }}
+              style={inputStyle}
               onChange={(e) => {
                 let obj = { ...newRule };
                 obj.repricing_logic[2].price_by = e.target.value;
@@ -365,14 +373,14 @@ function AddOrEditPricingRule({
               }}
               className="font-interMedium px-2 mr-2"
               bgBordered
-              style={{ border: "1px solid black", borderRadius: '10px' }}
+              style={{ border: "1px solid black", borderRadius: "10px" }}
             />
             <NSButton
               title="Save"
               onClick={handleAddPricingRule}
               className="font-interMedium px-2"
               bgPrimary
-              style={{ borderRadius: '10px' }}
+              style={{ borderRadius: "10px" }}
             />
           </div>
         )}

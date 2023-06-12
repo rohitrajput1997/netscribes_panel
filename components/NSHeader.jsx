@@ -62,7 +62,7 @@ function NSHeader({
                 <div className="flex items-center">
                   <div
                     className="w-10 h-10 bg-gray-400 rounded-full overflow-hidden"
-                    // onClick={() => setOpenProfileModal(true)}
+                    onClick={() => setOpenProfileModal(true)}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="./assets/userone.jpeg" alt="" />
